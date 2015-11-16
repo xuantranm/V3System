@@ -1,0 +1,8 @@
+D:\MyPractice\Vivablast\Web\Vivablast\ApBusiness\obj\Debug\ApBusiness.csprojResolveAssemblyReference.cache
+D:\MyPractice\Vivablast\Web\Vivablast\ApBusiness\bin\Debug\ApBusiness.dll.config
+D:\MyPractice\Vivablast\Web\Vivablast\ApBusiness\bin\Debug\ApBusiness.dll
+D:\MyPractice\Vivablast\Web\Vivablast\ApBusiness\bin\Debug\ApBusiness.pdb
+D:\MyPractice\Vivablast\Web\Vivablast\ApBusiness\bin\Debug\EntityFramework.dll
+D:\MyPractice\Vivablast\Web\Vivablast\ApBusiness\bin\Debug\EntityFramework.xml
+D:\MyPractice\Vivablast\Web\Vivablast\ApBusiness\obj\Debug\ApBusiness.dll
+D:\MyPractice\Vivablast\Web\Vivablast\ApBusiness\obj\Debug\ApBusiness.pdb

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6A133BC9-1F88-474A-A1EB-C1F83FAA763C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApBusiness</RootNamespace>
+    <AssemblyName>ApBusiness</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domains\Change_Code.cs" />
+    <Compile Include="Domains\Country.cs" />
+    <Compile Include="Domains\Function.cs" />
+    <Compile Include="Domains\LookUp.cs" />
+    <Compile Include="Domains\Model1.Context.cs" />
+    <Compile Include="Domains\Model1.cs" />
+    <Compile Include="Domains\Model1.designer.cs">
+      <DependentUpon>Model1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domains\PaymentTerm.cs" />
+    <Compile Include="Domains\Product_Price.cs" />
+    <Compile Include="Domains\Project_Client.cs" />
+    <Compile Include="Domains\SIV.cs" />
+    <Compile Include="Domains\SRV.cs" />
+    <Compile Include="Domains\Stock_File.cs" />
+    <Compile Include="Domains\Stock_Picture.cs" />
+    <Compile Include="Domains\Store.cs" />
+    <Compile Include="Domains\Store_Stock.cs" />
+    <Compile Include="Domains\sysdiagram.cs" />
+    <Compile Include="Domains\WAMS_ASSIGNING_WORKER.cs" />
+    <Compile Include="Domains\WAMS_ASSIGNING_WORKER_TOOLS.cs" />
+    <Compile Include="Domains\WAMS_ASSIGNNING_STOCKS.cs" />
+    <Compile Include="Domains\WAMS_ATTACHMENT.cs" />
+    <Compile Include="Domains\WAMS_AUDIT.cs" />
+    <Compile Include="Domains\WAMS_AUDIT_TRAILS.cs" />
+    <Compile Include="Domains\WAMS_BRAND_FUEL.cs" />
+    <Compile Include="Domains\WAMS_CAR.cs" />
+    <Compile Include="Domains\WAMS_CAR_FUELOIL_DETAIL.cs" />
+    <Compile Include="Domains\WAMS_CATALOGUE_CONFIGURATION.cs" />
+    <Compile Include="Domains\WAMS_CATEGORY.cs" />
+    <Compile Include="Domains\WAMS_COMPANY_DETAILS.cs" />
+    <Compile Include="Domains\WAMS_CONSUMABLE_LIST.cs" />
+    <Compile Include="Domains\WAMS_COUNTRY.cs" />
+    <Compile Include="Domains\WAMS_CURRENCY_TYPE.cs" />
+    <Compile Include="Domains\WAMS_CURRENT_SUPERVISOR.cs" />
+    <Compile Include="Domains\WAMS_DESCRIPTION.cs" />
+    <Compile Include="Domains\WAMS_EQUIPMENT.cs" />
+    <Compile Include="Domains\WAMS_EQUIPMENT_FUELOIL_DETAIL.cs" />
+    <Compile Include="Domains\WAMS_ERROR_MESSAGE.cs" />
+    <Compile Include="Domains\WAMS_FUEL_OIL.cs" />
+    <Compile Include="Domains\WAMS_FULFILLMENT_DETAIL.cs" />
+    <Compile Include="Domains\WAMS_FUNCTION_MANAGEMENT.cs" />
+    <Compile Include="Domains\WAMS_HISTORY_ACTION.cs" />
+    <Compile Include="Domains\WAMS_HISTORY_FORM.cs" />
+    <Compile Include="Domains\WAMS_HISTORY_LOG.cs" />
+    <Compile Include="Domains\WAMS_HISTORY_OBJECT.cs" />
+    <Compile Include="Domains\WAMS_IMAGES.cs" />
+    <Compile Include="Domains\WAMS_ITEMS_SERVICE.cs" />
+    <Compile Include="Domains\WAMS_LABELS.cs" />
+    <Compile Include="Domains\WAMS_MEASUREMENT.cs" />
+    <Compile Include="Domains\WAMS_PAINT.cs" />
+    <Compile Include="Domains\WAMS_POSITION.cs" />
+    <Compile Include="Domains\WAMS_PO_DETAILS.cs" />
+    <Compile Include="Domains\WAMS_PO_EVALUATION.cs" />
+    <Compile Include="Domains\WAMS_PO_Info.cs" />
+    <Compile Include="Domains\WAMS_PO_TYPE.cs" />
+    <Compile Include="Domains\WAMS_PRODUCT.cs" />
+    <Compile Include="Domains\WAMS_PROJECT.cs" />
+    <Compile Include="Domains\WAMS_PROJECT_SUPERVISOR.cs" />
+    <Compile Include="Domains\WAMS_PURCHASE_ORDER.cs" />
+    <Compile Include="Domains\WAMS_REPORT.cs" />
+    <Compile Include="Domains\WAMS_REPORT_DETAILS.cs" />
+    <Compile Include="Domains\WAMS_REQUISITION_DETAILS.cs" />
+    <Compile Include="Domains\WAMS_REQUISITION_MASTER.cs" />
+    <Compile Include="Domains\WAMS_RETURNING_WORKER_TOOLS.cs" />
+    <Compile Include="Domains\WAMS_RETURN_LIST.cs" />
+    <Compile Include="Domains\WAMS_RETURN_PRODUCT_TO_SUPPLIER.cs" />
+    <Compile Include="Domains\WAMS_SCAFOLDING.cs" />
+    <Compile Include="Domains\WAMS_SERVICE.cs" />
+    <Compile Include="Domains\WAMS_SERVICE_ALERT_CONFIG.cs" />
+    <Compile Include="Domains\WAMS_SERVICE_HISTORY.cs" />
+    <Compile Include="Domains\WAMS_SHIPMENT.cs" />
+    <Compile Include="Domains\WAMS_SHIPMENT_DETAIL.cs" />
+    <Compile Include="Domains\WAMS_SPAREPART.cs" />
+    <Compile Include="Domains\WAMS_STOCK.cs" />
+    <Compile Include="Domains\WAMS_STOCKIN.cs" />
+    <Compile Include="Domains\WAMS_STOCK_ALERT_CONFIG.cs" />
+    <Compile Include="Domains\WAMS_STOCK_APPROVAL.cs" />
+    <Compile Include="Domains\WAMS_STOCK_LOG.cs" />
+    <Compile Include="Domains\WAMS_STOCK_LOW.cs" />
+    <Compile Include="Domains\WAMS_STOCK_MANAGEMENT_QUANTITY.cs" />
+    <Compile Include="Domains\WAMS_STOCK_STATUS.cs" />
+    <Compile Include="Domains\WAMS_STOCK_TYPE.cs" />
+    <Compile Include="Domains\WAMS_SUB_CATEGORY.cs" />
+    <Compile Include="Domains\WAMS_SUPERVISOR.cs" />
+    <Compile Include="Domains\WAMS_SUPPLIER.cs" />
+    <Compile Include="Domains\WAMS_SUPPLIER_SERVICE.cs" />
+    <Compile Include="Domains\WAMS_SUPPLIER_TYPE.cs" />
+    <Compile Include="Domains\WAMS_TYPE_FUEL.cs" />
+    <Compile Include="Domains\WAMS_UNIT.cs" />
+    <Compile Include="Domains\WAMS_USEFOR.cs" />
+    <Compile Include="Domains\WAMS_USER.cs" />
+    <Compile Include="Domains\WAMS_USERALERT.cs" />
+    <Compile Include="Domains\WAMS_WAREHOUSE.cs" />
+    <Compile Include="Domains\WAMS_WARRANTY_EXPIRE_ALERT.cs" />
+    <Compile Include="Domains\WAMS_WORKER.cs" />
+    <Compile Include="Domains\WAMS_WORKER_STATUS.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+    <Folder Include="Seedworks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppData\AppData.csproj">
+      <Project>{bab6361c-1aa6-4727-af1c-d22cc85297fb}</Project>
+      <Name>AppData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

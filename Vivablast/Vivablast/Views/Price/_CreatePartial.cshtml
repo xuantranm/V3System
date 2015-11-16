@@ -1,0 +1,142 @@
+﻿@using Vivablast.Common
+@using Vivablast.ViewModels.Builders
+@model PriceViewModelBuilder
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    @if (Model.ProductPriceV.Id != 0)
+    {
+        <h4 class="modal-title">Edit Price</h4>
+    }
+    else
+    {
+        <h4 class="modal-title">Create New Price</h4>
+    }
+</div>
+@using (Html.BeginForm("Create", "Price", FormMethod.Post, new { @id = "formCreatePrice", @class = "modal-form" }))
+{
+    <input type="hidden" value="@Url.Action("Create", "Price")" id="hidSaveUrl" />
+    <input type="hidden" value="@Url.Action("Delete", "Price")" id="hidDeleteUrl" />
+    @Html.HiddenFor(x => x.ProductPriceV.Id)
+    @Html.HiddenFor(x => x.ProductPriceV.Id, new { @id = "hidCheckCode" })
+    @Html.HiddenFor(x => x.ProductPriceV.iEnable)
+    @Html.HiddenFor(x => x.ProductPriceV.iCreated)
+    @Html.HiddenFor(x => x.ProductPriceV.dCreated)
+    <div class="modal-body scroll">
+        <div class="float-left">
+            <div class="float-left width80">
+                <label>Stock</label>
+                <label class="red">*</label>
+            </div>
+            <div class="float-left">
+                @Html.HiddenFor(x => x.ProductPriceV.StockId)
+                @Html.TextBoxFor(model => model.ProductPriceV.StockCode, new { @placeholder = "Stock Code", @class = "form-control width150" })
+            </div>
+            <div class="float-left marginleft5">
+                <button type="button" id="searchStockPrice">...</button>
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Price</label>
+                <label class="red">*</label>
+            </div>
+            <div class="float-left">
+                @Html.TextBoxFor(model => model.ProductPriceV.Price, new { @placeholder = "Price", @class = "form-control width270" })
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Currency</label>
+                <label class="red">*</label>
+            </div>
+            <div class="float-left">
+                @Html.DropDownListFor(model => model.ProductPriceV.CurrencyId, Model.Currencies, Constants.SelectDDL, new { @class = "form-control width150" })
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Supplier</label>
+            </div>
+            <div class="float-left">
+                @Html.DropDownListFor(model => model.ProductPriceV.SupplierId, Model.Suppliers, Constants.SelectDDL, new { @class = "form-control width150" })
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Store</label>
+            </div>
+            <div class="float-left">
+                @Html.DropDownListFor(model => model.ProductPriceV.StoreId, Model.Stores, new { @class = "form-control width150" })
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Start Date</label>
+            </div>
+            <div class="float-left">
+                @Html.TextBoxFor(model => model.ProductPriceV.dStart, new { @class = "form-control datepicker" })
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>End Date</label>
+            </div>
+            <div class="float-left">
+                @Html.TextBoxFor(model => model.ProductPriceV.dEnd, new { @class = "form-control datepicker", Value = "" })
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Stock Name</label>
+            </div>
+            <div class="float-left">
+                <label id="lblStockName" class="lblredbol">@Model.ProductPriceV.StockName</label>
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Stock Type</label>
+            </div>
+            <div class="float-left">
+               <label id="lblStockType" class="lblredbol">@Model.ProductPriceV.StockType</label>
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Unit</label>
+            </div>
+            <div class="float-left">
+                <label id="lblStockUnit" class="lblredbol">@Model.ProductPriceV.StockUnit</label>
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Part No</label>
+            </div>
+            <div class="float-left">
+                <label id="lblPartNo" class="lblredbol">@Model.ProductPriceV.PartNo</label>
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Ral No</label>
+            </div>
+            <div class="float-left">
+                <label id="lblRalNo" class="lblredbol">@Model.ProductPriceV.RalNo</label>
+            </div>
+            <div class="clearboth height10"></div>
+            <div class="float-left width80">
+                <label>Color</label>
+            </div>
+            <div class="float-left">
+                <label id="lblColor" class="lblredbol">@Model.ProductPriceV.ColorName</label>
+            </div>
+            <div class="clearboth height10"></div>
+        </div>
+
+        <div class="float-right">
+        </div>
+    </div>
+        
+    <div class="clearboth"></div>
+    <div class="modal-footer">
+        <button id="btnSave" type="button" class="btn btn-primary">Save</button>
+        @if (Model.ProductPriceV.Id != 0)
+        {
+            if (Model.UserLogin.Price == 4)
+            {
+                <button id="btnDelete" type="button" class="btn btn-danger">Delete</button>
+            }
+        }
+        <button id="btnClose" type="button" class="btn btn-default">Close</button>
+    </div>
+}

@@ -1,0 +1,96 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+
+@model RequisitionViewModel
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    <div>
+        @Model.TotalRecords @Constants.DisplayResult
+    </div>
+    <div class="table-responsive">
+        <table id="RequisitionLst" class="table table-bordered table-hover">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.RequisitionR > 2)
+                    {
+                        <th class="center" style="width: 196px!important">Action</th>
+                    }
+                    <th class="center">Store</th>
+                    <th class="center">MRF</th>
+                    <th class="center hidden-xs">From</th>
+                    <th class="center">Project Code</th>
+                    <th class="center">Project Name</th>
+                    <th class="center  hidden-xs">Deliver Date</th>
+                    <th class="center hidden-xs">Deliver Location</th>
+                    <th class="center hidden-xs">Status</th>
+                    <th class="center hidden-xs">Created Date</th>
+                    <th class="center hidden-xs">By</th>
+                    <th class="center hidden-xs">Modified Date</th>
+                    <th class="center hidden-xs">By</th>
+                    <th class="center hidden-xs"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.RequisitionGetListResults)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.RequisitionR > 2)
+                        {
+                            <td class="center">
+                                <a href="@Url.Action("Create", "Requisition", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Edit
+                                </a>
+                                @if (Model.UserLogin.RequisitionR > 3)
+                                {
+                                    <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Delete
+                                    </a>
+                                }
+                                @if (Model.UserLogin.RequisitionR > 1)
+                                {
+                                    <a href="@Url.Action("PDF", "Requisition", new { id = @item.Id }, null)" target="_blank" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-print"></span>
+                                        PDF
+                                    </a>
+                                }
+                                <input type="hidden" value="@item.Id" class="ItemKey" />
+                            </td>
+                        }
+                        <td>@item.Store</td>
+                        <td class="center MainEntity">@item.MRF</td>
+                        <td class="hidden-xs">@item.From</td>
+                        <td>@item.Project_Code</td>
+                        <td>@item.Project_Name</td>
+                        <td class="center hidden-xs">@item.Deliver_Date.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                        <td class="hidden-xs">@item.Location</td>
+                        <td class="center hidden-xs">@item.Status</td>
+                        <td class="center hidden-xs">@Constants.ConvertDate(@item.Created_Date.ToString())</td>
+                        <td class="center hidden-xs">@item.Created_By</td>
+                        <td class="center hidden-xs">@Constants.ConvertDate(item.Modified_Date.ToString())</td>
+                        <td class="center hidden-xs">@item.Modified_By</td>
+                        <td class="center hidden-xs">
+                            <div class="arrow"></div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="clearboth"></div>
+                if (Model.TotalPages > 1)
+                {
+    <div class="float-left">
+        @Html.Partial("Partials/_PreparePagingPartial")
+    </div>
+                }
+}
+
+

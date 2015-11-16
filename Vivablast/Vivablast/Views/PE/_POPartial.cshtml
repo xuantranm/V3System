@@ -1,0 +1,100 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model POViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    <div>
+        @Model.TotalRecords @Constants.DisplayResult
+    </div>
+    <div class="table-responsive">
+        <table id="POLst" class="table table-bordered table-hover">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.PER > 2)
+                    {
+                        <th class="center" style="width: 196px!important">Action</th>
+                    }
+                    <th class="center">Store</th>
+                    <th class="center">PE</th>
+                    <th class="center hidden-xs">Type</th>
+                    <th class="center hidden-xs">Date</th>
+                    <th class="center hidden-xs">Project Code</th>
+                    <th class="center hidden-xs">Project Name</th>
+                    <th class="center hidden-xs">Supplier</th>
+                    <th class="center">PO Total</th>
+                    <th class="center">Currency</th>
+                    <th class="center">Status</th>
+                    <th class="center hidden-xs">Term Of Payment</th>
+                    <th class="center hidden-xs">Remark</th>
+                    <th class="center hidden-xs"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PoGetListResults)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.PER > 2)
+                        {
+                            <td class="center">
+                                <a href="@Url.Action("Create", "Pe", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Edit
+                                </a>
+                                @if (Model.UserLogin.PER > 3)
+                                {
+                                    <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Delete
+                                    </a>
+                                }
+                                @if (Model.UserLogin.PER > 1)
+                                {
+                                    <a href="@Url.Action("PDF", "Pe", new { id = @item.Id }, null)" target="_blank" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-print"></span>
+                                        PDF
+                                    </a>
+                                }
+                                <input type="hidden" value="@item.Id" class="ItemKey" />
+                            </td>
+                        }
+                        <td>@item.Store</td>
+                        <td class="center">@item.PE</td>
+                        <td class="hidden-xs">@item.Type</td>
+                        <td class="hidden-xs">@item.PE_Date.ToString("dd/MM/yyyy")</td>
+                        <td class="hidden-xs">@item.Project_Code</td>
+                        <td class="hidden-xs">@item.Project_Name</td>
+                        <td class="hidden-xs">@item.Supplier</td>
+                        <td>
+                            @if (@item.Total != null)
+                            {
+                                @(((decimal)@item.Total).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                            }
+                        </td>
+                        <td>@item.Currency</td>
+                        <td>@item.Status</td>
+                        <td class="hidden-xs">@item.Payment_Term</td>
+                        <td class="hidden-xs">@item.Remark</td>
+                        <td class="center hidden-xs">
+                            <div class="arrow"></div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="clearboth"></div>
+    if (Model.TotalPages > 1)
+    {
+        <div class="float-left">
+            @Html.Partial("Partials/_PreparePagingPartial")
+        </div>
+    }
+}

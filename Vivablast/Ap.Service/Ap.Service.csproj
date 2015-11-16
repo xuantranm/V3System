@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9EB536B1-D175-440E-9D4B-DC1A512C522A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ap.Service</RootNamespace>
+    <AssemblyName>Ap.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seedworks\IServiceService.cs" />
+    <Compile Include="Seedworks\IStockReturnService.cs" />
+    <Compile Include="Seedworks\IStockOutService.cs" />
+    <Compile Include="Seedworks\ICategoryService.cs" />
+    <Compile Include="Seedworks\IStockTypeService.cs" />
+    <Compile Include="Seedworks\ISupplierService.cs" />
+    <Compile Include="Seedworks\IStockInService.cs" />
+    <Compile Include="Seedworks\IAccountingService.cs" />
+    <Compile Include="Seedworks\IPOService.cs" />
+    <Compile Include="Seedworks\IRequisitionService.cs" />
+    <Compile Include="Seedworks\IPriceService.cs" />
+    <Compile Include="Seedworks\IStockService.cs" />
+    <Compile Include="Seedworks\IStoreService.cs" />
+    <Compile Include="Seedworks\IUserService.cs" />
+    <Compile Include="Seedworks\IProjectService.cs" />
+    <Compile Include="Seedworks\ISystemService.cs" />
+    <Compile Include="Services\AccountingService.cs" />
+    <Compile Include="Services\ServiceService.cs" />
+    <Compile Include="Services\StockReturnService.cs" />
+    <Compile Include="Services\StockOutService.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\StockTypeService.cs" />
+    <Compile Include="Services\SupplierService.cs" />
+    <Compile Include="Services\StockInService.cs" />
+    <Compile Include="Services\POService.cs" />
+    <Compile Include="Services\RequisitionService.cs" />
+    <Compile Include="Services\PriceService.cs" />
+    <Compile Include="Services\StockService.cs" />
+    <Compile Include="Services\StoreService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\ProjectService.cs" />
+    <Compile Include="Services\SystemService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ap.Business\Ap.Business.csproj">
+      <Project>{d7746763-1ce2-4e25-b3f5-9c9e97f65e94}</Project>
+      <Name>Ap.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ap.Common\Ap.Common.csproj">
+      <Project>{6415201a-b820-4f8b-8caa-1366d068461f}</Project>
+      <Name>Ap.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ap.Data\Ap.Data.csproj">
+      <Project>{84654d38-7e62-4308-8f86-a8e2eae3712c}</Project>
+      <Name>Ap.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,67 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model StockViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="float-left margintop5">
+    <label>Store</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.StoreId, Model.Stores, @Constants.AllDLL, new { @id = "searchStore", @class = "form-control" })
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Type</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.iType, Model.Types, @Constants.AllDLL, new { @id = "searchType", @class = "form-control" })
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Category</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.bCategoryID, Model.Categories, @Constants.AllDLL, new { @id = "searchCategory", @class = "form-control width150" })
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Stock Code</label>
+</div>
+<div class="float-left marginleft10">
+    <input type="text" name="StockCode" class="form-control" id="StockCode" placeholder="Stock Code">
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Stock Name</label>
+</div>
+<div class="float-left marginleft10">
+    <input type="text" name="StockName" class="form-control" id="StockName" placeholder="Stock Name">
+</div>
+
+<div class="clearboth height10"></div>
+
+<div style="text-align: center">
+    <div class="float-left margintop5">
+        <label>@Constants.Rows</label>
+    </div>
+    <div class="float-left marginleft10 marginright10">
+        <select id="pageSize" class="form-control width70">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="1000">1000</option>
+        </select>
+    </div>
+    <button type="button" id="btnSearch" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span>Search
+    </button>
+    <button type="button" id="btnExport" class="btn btn-primary">
+        <span class="glyphicon glyphicon-export"></span>Export
+    </button>
+</div>
+<div class="clearboth height10"></div>
+<div id="list-session">
+    <div class="alert alert-info bold" role="alert">LOADING...</div>
+</div>
+
+<script src="/Scripts/tmx.reactivestockmanager.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

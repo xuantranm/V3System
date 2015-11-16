@@ -1,0 +1,1232 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40"
+ xmlns:u1="urn:schemas-    microsoft-com:office:excel">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <LastAuthor>Xuan, Tran Minh</LastAuthor>
+  <LastSaved>2015-10-26T03:48:23Z</LastSaved>
+  <Version>15.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11235</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Font ss:FontName="Arial" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s63">
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Vertical="Center"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Vertical="Center"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s72">
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Color="#FF0000" ss:Bold="1"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="RootTable1">
+  <Table ss:ExpandedColumnCount="26" ss:ExpandedRowCount="39" x:FullColumns="1"
+   x:FullRows="1">
+   <Column ss:Index="3" ss:Width="98.25"/>
+   <Column ss:Width="51"/>
+   <Column ss:Width="51.75"/>
+   <Column ss:Width="105"/>
+   <Column ss:Width="65.25"/>
+   <Column ss:Width="58.5" ss:Span="1"/>
+   <Column ss:Index="10" ss:Width="51"/>
+   <Column ss:Width="56.25"/>
+   <Column ss:Width="90.75"/>
+   <Column ss:Width="106.5"/>
+   <Column ss:Width="107.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="389.25"/>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">User ID</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Project</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Stock Management</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Assinging</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Returning</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">ServiceManagement</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Supplier List</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Requisition</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Purchasing</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Shipment</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fulfillment</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">ReturnToSupplier</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Worker Management</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Service Maintenance</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">SQL</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:Height="38.25" ss:StyleID="s67">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =4 ,StockR =4 ,RequisitionR = 4,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =4 ,SupplierR = 4,StockServiceR = 4 WHERE Id=1</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR = ,RequisitionR = ,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR =  WHERE Id=2</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">34</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =4 ,StockR =3 ,RequisitionR = 1,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=34</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">41</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =2 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 3 WHERE Id=41</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">47</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =2 ,RequisitionR = 3,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 2 WHERE Id=47</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">49</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=49</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = ,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR =  WHERE Id=50</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">51</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =3 ,StockR =1 ,RequisitionR = ,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR =  WHERE Id=51</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">52</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =4 ,StockR = ,RequisitionR = ,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR =  WHERE Id=52</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">53</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =4 ,RequisitionR = 4,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 4 WHERE Id=53</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">63</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = ,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR =  WHERE Id=63</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">64</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = ,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR =  WHERE Id=64</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">65</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =2 ,RequisitionR = 3,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 2 WHERE Id=65</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">66</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =3 ,RequisitionR = 1,StockOutR =3 ,StockReturnR =3 ,StockInR = 3,PER =1 ,SupplierR = 1,StockServiceR =  WHERE Id=66</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">67</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =4 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 4 WHERE Id=67</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">69</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =4 ,StockR =4 ,RequisitionR = 4,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =4 ,SupplierR = 4,StockServiceR = 4 WHERE Id=69</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">71</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=71</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">72</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=72</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">74</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =2 ,RequisitionR = 3,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 2 WHERE Id=74</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">75</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR = ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =1 ,SupplierR = 1,StockServiceR =  WHERE Id=75</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">76</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=76</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">77</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR =  WHERE Id=77</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">78</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=78</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">79</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =4 ,StockR =3 ,RequisitionR = ,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=79</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">80</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=80</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">81</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=81</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">82</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =4 ,StockR =3 ,RequisitionR = ,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=82</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">83</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR = ,RequisitionR = ,StockOutR = ,StockReturnR = ,StockInR = ,PER =1 ,SupplierR = ,StockServiceR =  WHERE Id=83</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">84</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=84</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">85</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =2 ,RequisitionR = 3,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 2 WHERE Id=85</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">86</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 1 WHERE Id=86</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">87</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =4 ,RequisitionR = 4,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 4 WHERE Id=87</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">88</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER = ,SupplierR = ,StockServiceR = 1 WHERE Id=88</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">89</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR = ,RequisitionR = ,StockOutR = ,StockReturnR = ,StockInR = ,PER =1 ,SupplierR = ,StockServiceR =  WHERE Id=89</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">90</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=90</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">91</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = 1,StockOutR =1 ,StockReturnR =1 ,StockInR = 1,PER =1 ,SupplierR = 1,StockServiceR = 1 WHERE Id=91</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row ss:Height="38.25">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">92</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s70"
+     ss:Formula="=&quot;UPDATE XUser SET ProjectR =&quot;&amp;RC[-13]&amp;&quot; ,StockR =&quot;&amp;RC[-12]&amp;&quot; ,RequisitionR = &quot;&amp;RC[-7]&amp;&quot;,StockOutR =&quot;&amp;RC[-11]&amp;&quot; ,StockReturnR =&quot;&amp;RC[-10]&amp;&quot; ,StockInR = &quot;&amp;RC[-4]&amp;&quot;,PER =&quot;&amp;RC[-6]&amp;&quot; ,SupplierR = &quot;&amp;RC[-8]&amp;&quot;,StockServiceR = &quot;&amp;RC[-9]&amp;&quot; WHERE Id=&quot;&amp;RC[-14]&amp;&quot;&quot;"><Data
+      ss:Type="String">UPDATE XUser SET ProjectR = ,StockR =1 ,RequisitionR = 1,StockOutR = ,StockReturnR = ,StockInR = ,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=92</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+   </Row>
+   <Row>
+    <Cell ss:Index="15" ss:StyleID="s70"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <TopRowVisible>36</TopRowVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>14</ActiveCol>
+     <RangeSelection>R2C15:R38C15</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

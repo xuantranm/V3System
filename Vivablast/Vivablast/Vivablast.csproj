@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{506F1AD9-A4BB-42B7-914A-FB6DE0FB9F2B}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vivablast</RootNamespace>
+    <AssemblyName>Vivablast</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.1.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.SmartTag, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\DB\Export\Export\Export\bin\Microsoft.Office.Interop.SmartTag.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\..\Excel\DLL\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NReco.PdfGenerator">
+      <HintPath>..\packages\NReco.PdfGenerator.1.1.6.0\lib\net20\NReco.PdfGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.3.12153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountingController.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\HelperController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PEController.cs" />
+    <Compile Include="Controllers\PriceController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ReActiveStockController.cs" />
+    <Compile Include="Controllers\RequisitionController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\StockInController.cs" />
+    <Compile Include="Controllers\StockOutController.cs" />
+    <Compile Include="Controllers\StockReturnController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\StockTypeController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AccountingViewModel.cs" />
+    <Compile Include="ViewModels\AssignAddViewModel.cs" />
+    <Compile Include="ViewModels\AssignViewModel.cs" />
+    <Compile Include="ViewModels\FileViewModel.cs" />
+    <Compile Include="ViewModels\FulfillmentViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\POViewModel.cs" />
+    <Compile Include="ViewModels\PriceViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\RequisitionViewModel.cs" />
+    <Compile Include="ViewModels\ReturnAddViewModel.cs" />
+    <Compile Include="ViewModels\ReturnViewModel.cs" />
+    <Compile Include="ViewModels\ServiceViewModel.cs" />
+    <Compile Include="ViewModels\StockViewModel.cs" />
+    <Compile Include="ViewModels\StockTypeViewModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\StoreViewModel.cs" />
+    <Compile Include="ViewModels\SupplierViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Autofac.dll" />
+    <Content Include="bin\Autofac.Integration.Mvc.dll" />
+    <Content Include="bin\DotNetOpenAuth.AspNet.dll" />
+    <Content Include="bin\DotNetOpenAuth.Core.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.Consumer.dll" />
+    <Content Include="bin\DotNetOpenAuth.OAuth.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.dll" />
+    <Content Include="bin\DotNetOpenAuth.OpenId.RelyingParty.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\log4net.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Microsoft.Web.WebPages.OAuth.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\Vivablast.dll" />
+    <Content Include="bin\Vivablast.pdb" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\WebMatrix.Data.dll" />
+    <Content Include="bin\WebMatrix.WebData.dll" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\js\npm.js" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\chosen.min.css" />
+    <Content Include="Content\Copy of custom.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\datatable\demo_table.css" />
+    <Content Include="Content\datatable\site.css" />
+    <Content Include="Content\fixscreen.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker\css\datepicker3.css" />
+    <Content Include="Content\bootstrap-datepicker\docs\_static\demo_head.png" />
+    <Content Include="Content\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ar.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.az.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.bg.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ca.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.cy.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.da.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.de.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.el.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.es.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.et.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.fa.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.gl.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.he.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.hr.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.hu.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.is.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ka.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.kk.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.mk.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.nb.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.nl-BE.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.no.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.pt-BR.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ro.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.rs-latin.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.rs.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sk.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sl.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sq.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.sw.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.th.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.ua.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.vi.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="Content\bootstrap-datepicker\js\locales\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\assets\coverage.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\assets\jquery-1.7.1.min.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\assets\mock.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\assets\qunit-logging.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\assets\qunit.css" />
+    <Content Include="Content\bootstrap-datepicker\tests\assets\qunit.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\assets\utils.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\run-qunit.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\calendar-weeks.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\component.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\data-api.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\events.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\formats.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\inline.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\keyboard_navigation\2011.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\keyboard_navigation\2012.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\keyboard_navigation\all.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\methods.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\mouse_navigation\2011.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\mouse_navigation\2012.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\mouse_navigation\all.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\noconflict.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\suites\options.js" />
+    <Content Include="Content\bootstrap-datepicker\tests\tests.html" />
+    <Content Include="Content\bootstrap-datepicker\tests\_coverage.html" />
+    <Content Include="Content\jquery.multiselect.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\datatable\sort_asc.jpg" />
+    <Content Include="Images\datatable\sort_asc.png" />
+    <Content Include="Images\datatable\sort_asc_disabled.png" />
+    <Content Include="Images\datatable\sort_both.jpg" />
+    <Content Include="Images\datatable\sort_both.png" />
+    <Content Include="Images\datatable\sort_desc.jpg" />
+    <Content Include="Images\datatable\sort_desc.png" />
+    <Content Include="Images\datatable\sort_desc_disabled.png" />
+    <Content Include="Images\Icons\wink.png" />
+    <Content Include="Images\Icons\wink.svg" />
+    <Content Include="Images\img\5.png" />
+    <Content Include="Images\img\ajax-loader.gif" />
+    <Content Include="Images\img\arrows.png" />
+    <Content Include="Images\img\chosen-sprite.png" />
+    <Content Include="Images\img\favicon.ico" />
+    <Content Include="Images\img\glyphicons-halflings-white.png" />
+    <Content Include="Images\img\glyphicons-halflings.png" />
+    <Content Include="Images\img\loader.gif" />
+    <Content Include="Images\img\loading.gif" />
+    <Content Include="Images\img\logo-vb.png" />
+    <Content Include="Images\img\logoVB.gif" />
+    <Content Include="Images\img\sort_asc.png" />
+    <Content Include="Images\img\sort_asc_disabled.png" />
+    <Content Include="Images\img\sort_both.png" />
+    <Content Include="Images\img\sort_desc.png" />
+    <Content Include="Images\img\sort_desc_disabled.png" />
+    <Content Include="Images\img\text-loading.gif" />
+    <Content Include="Images\No-Image-Available.gif" />
+    <Content Include="log4net.config" />
+    <Content Include="Scripts\autosize.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\ExportToPDF.js" />
+    <Content Include="Scripts\jquery.multiselect.js" />
+    <Content Include="Scripts\jquery.multiselect.min.js" />
+    <Content Include="Scripts\tmx.projectdetail.js" />
+    <Content Include="Scripts\tmx.stocktypeaction.js" />
+    <Content Include="Scripts\tmx.priceact.js" />
+    <Content Include="Scripts\tmx.stockreturnact.js" />
+    <Content Include="Scripts\tmx.stockoutact.js" />
+    <Content Include="Scripts\tmx.stockin.act.js" />
+    <Content Include="Scripts\tmx.categoryaction.js" />
+    <Content Include="Scripts\tmx.categorymanager.js" />
+    <Content Include="Scripts\tmx.stocktypemanager.js" />
+    <Content Include="Scripts\tmx.supplieract.js" />
+    <Content Include="Scripts\jquery.tmpl.min.js" />
+    <Content Include="Scripts\sidleimg.js" />
+    <Content Include="Scripts\tmx.peact.js" />
+    <Content Include="Scripts\tmx.stocktrackquantity.js" />
+    <Content Include="Scripts\tmx.requisitionact.js" />
+    <Content Include="Scripts\tmx.storeact.js" />
+    <Content Include="Scripts\tmx.projectact.js" />
+    <Content Include="Scripts\tmx.service.js" />
+    <Content Include="Scripts\tmx.service.act.js" />
+    <Content Include="Scripts\tmx.useraction.js" />
+    <Content Include="Scripts\tmx.stockact.js" />
+    <Content Include="Scripts\tmx.accountingmanager.js" />
+    <Content Include="Scripts\tmx.stockreturnmanager.js" />
+    <Content Include="Scripts\tmx.stockoutmanager.js" />
+    <Content Include="Scripts\tmx.pricemanager.js" />
+    <Content Include="Scripts\tmx.homemanager.js" />
+    <Content Include="Scripts\tmx.reactivestockmanager.js" />
+    <Content Include="Scripts\jquery.numeric.js" />
+    <Content Include="Scripts\tmx.supmanager.js" />
+    <Content Include="Scripts\tmx.stockinmanager.js" />
+    <Content Include="Scripts\tmx.pemanager.js" />
+    <Content Include="Scripts\tmx.stockmanager.js" />
+    <Content Include="Scripts\tmx.projectmanager.js" />
+    <Content Include="Scripts\core\tmx.regionViews.js" />
+    <Content Include="Scripts\helpers.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\modernizr 2.6.2.js" />
+    <Content Include="Scripts\pages\ColReorderWithResize.js" />
+    <Content Include="Scripts\pages\CompleteMin.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\pages\jquery.dataTables.js" />
+    <Content Include="Scripts\pages\jquery.dataTables.min.js" />
+    <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Content\bootstrap-datepicker\.gitignore" />
+    <Content Include="Content\bootstrap-datepicker\.hgignore" />
+    <Content Include="Content\bootstrap-datepicker\.hgtags" />
+    <Content Include="Content\bootstrap-datepicker\.jscs.json" />
+    <Content Include="Content\bootstrap-datepicker\.jshintrc" />
+    <Content Include="Content\bootstrap-datepicker\.travis.yml" />
+    <Content Include="Content\bootstrap-datepicker\bower.json" />
+    <Content Include="Content\bootstrap-datepicker\build\build.less" />
+    <Content Include="Content\bootstrap-datepicker\build\build3.less" />
+    <Content Include="Content\bootstrap-datepicker\build\build_standalone.less" />
+    <Content Include="Content\bootstrap-datepicker\build\build_standalone3.less" />
+    <Content Include="Content\bootstrap-datepicker\CHANGELOG.md" />
+    <Content Include="Content\bootstrap-datepicker\composer.json" />
+    <Content Include="Content\bootstrap-datepicker\CONTRIBUTING.md" />
+    <Content Include="Content\bootstrap-datepicker\docs\conf.py" />
+    <Content Include="Content\bootstrap-datepicker\docs\events.rst" />
+    <Content Include="Content\bootstrap-datepicker\docs\i18n.rst" />
+    <Content Include="Content\bootstrap-datepicker\docs\index.rst" />
+    <Content Include="Content\bootstrap-datepicker\docs\keyboard.rst" />
+    <Content Include="Content\bootstrap-datepicker\docs\make.bat" />
+    <Content Include="Content\bootstrap-datepicker\docs\Makefile" />
+    <Content Include="Content\bootstrap-datepicker\docs\markup.rst" />
+    <Content Include="Content\bootstrap-datepicker\docs\methods.rst" />
+    <Content Include="Content\bootstrap-datepicker\docs\options.rst" />
+    <Content Include="Content\bootstrap-datepicker\docs\REAME.md" />
+    <Content Include="Content\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="Content\bootstrap-datepicker\less\datepicker3.less" />
+    <Content Include="Content\bootstrap-datepicker\LICENSE" />
+    <Content Include="Content\bootstrap-datepicker\README.md" />
+    <Content Include="Content\bootstrap-datepicker\tests\README.md" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Content\toastr.scss" />
+    <None Include="Properties\PublishProfiles\V3Deploy.pubxml" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\plugins\tmx.popup.js" />
+    <Content Include="Scripts\prettify.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tmx.layout.js" />
+    <Content Include="Scripts\tmx.storemanager.js" />
+    <Content Include="Scripts\tmx.usermanager.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Stock\Index.cshtml" />
+    <Content Include="Views\Stock\_StockPartial.cshtml" />
+    <Content Include="Views\Stock\_DetailPartial.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\Store\_StorePartial.cshtml" />
+    <Content Include="Views\Shared\Partials\_PreparePagingPartial.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
+    <Content Include="Views\Requisition\Index.cshtml" />
+    <Content Include="Views\Project\_ProjectPartial.cshtml" />
+    <Content Include="Views\PE\Index.cshtml" />
+    <Content Include="Views\PE\_POPartial.cshtml" />
+    <Content Include="Views\Requisition\_RequisitionDetailPartial.cshtml" />
+    <Content Include="Views\Requisition\_RequisitionPartial.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\_UserPartial.cshtml" />
+    <Content Include="Views\Supplier\_SupplierPartial.cshtml" />
+    <Content Include="Views\PE\_PODetailPartial.cshtml" />
+    <Content Include="Views\StockOut\_StockOutPartial.cshtml" />
+    <Content Include="Views\StockOut\Index.cshtml" />
+    <Content Include="Views\StockIn\_StockInPartial.cshtml" />
+    <Content Include="Views\StockIn\Index.cshtml" />
+    <Content Include="Views\Stock\_LstQtyMngPartial.cshtml" />
+    <Content Include="Scripts\tmx.requimanager.js" />
+    <Content Include="Views\Supplier\_SupplierDetailPartial.cshtml" />
+    <Content Include="Views\Shared\Partials\_FindStockPartial.cshtml" />
+    <Content Include="Views\ReActiveStock\Index.cshtml" />
+    <Content Include="Views\ReActiveStock\_StockPartial.cshtml" />
+    <Content Include="Views\StockIn\_LstProductSearchPartial.cshtml" />
+    <Content Include="Views\Supplier\_LstProductSearchPartial.cshtml" />
+    <Content Include="Views\PE\_LstProductSearchPartial.cshtml" />
+    <Content Include="Views\Price\_CreatePartial.cshtml" />
+    <Content Include="Views\Price\_PricePartial.cshtml" />
+    <Content Include="Views\Price\Index.cshtml" />
+    <Content Include="Views\Price\_LstProductSearchPartial.cshtml" />
+    <Content Include="Views\Requisition\_LstProductSearchPartial.cshtml" />
+    <Content Include="Views\StockReturn\Index.cshtml" />
+    <Content Include="Views\StockOut\_LstProductSearchPartial.cshtml" />
+    <Content Include="Views\StockReturn\_LstProductSearchPartial.cshtml" />
+    <Content Include="Views\StockReturn\_ReturnPartial.cshtml" />
+    <Content Include="Views\Accounting\Index.cshtml" />
+    <Content Include="Views\Accounting\_AccountingPartial.cshtml" />
+    <Content Include="Views\Stock\Create.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\Service\_ServicePartial.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Shared\Copy of _Layout.cshtml" />
+    <Content Include="Views\Home\MenuPartial.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Requisition\Create.cshtml" />
+    <Content Include="Views\Stock\Manage.cshtml" />
+    <Content Include="Views\Shared\Partials\UploadDocument.cshtml" />
+    <Content Include="Views\Shared\Partials\_SearchStockRequisitionPartial.cshtml" />
+    <Content Include="Views\PE\Create.cshtml" />
+    <Content Include="Views\Supplier\Create.cshtml" />
+    <Content Include="Views\Price\Create.cshtml" />
+    <Content Include="Views\StockIn\Create.cshtml" />
+    <Content Include="Views\StockIn\_StockInDetailPartial.cshtml" />
+    <Content Include="Views\StockOut\_StockOutDetailPartial.cshtml" />
+    <Content Include="Views\StockOut\Create.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\EmailTemplate.cshtml" />
+    <Content Include="Views\Shared\Partials\UploadPicture.cshtml" />
+    <Content Include="Views\Requisition\PDF.cshtml" />
+    <Content Include="Views\Shared\Partials\_SearchStockStockInPartial.cshtml" />
+    <Content Include="Views\Shared\Partials\_SearchStockPEPartial.cshtml" />
+    <Content Include="Views\Service\Create.cshtml" />
+    <Content Include="Views\PE\PDF.cshtml" />
+    <Content Include="Views\StockReturn\Create.cshtml" />
+    <Content Include="Views\Stock\StockType.cshtml" />
+    <Content Include="Views\Category\_CategoryPartial.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\StockType\_StockTypePartial.cshtml" />
+    <Content Include="Views\StockType\Create.cshtml" />
+    <Content Include="Views\StockType\Index.cshtml" />
+    <Content Include="Views\Home\MenuPartialBK.cshtml" />
+    <Content Include="Views\User\Detail.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\PE\_MultiMrf.cshtml" />
+    <Content Include="Views\StockReturn\_ReturnDetailPartial.cshtml" />
+    <Content Include="Views\Project\Detail.cshtml" />
+    <Content Include="Views\Project\_TransactionStockPartial.cshtml" />
+    <Content Include="Views\Shared\Partials\_SearchStockStockOutPartial.cshtml" />
+    <Content Include="Views\Shared\Partials\_SearchStockStockReturnPartial.cshtml" />
+    <Content Include="Views\Shared\Partials\LoadPictureStock.cshtml" />
+    <Content Include="Views\Project\_ClientPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Documents\" />
+    <Folder Include="Pictures\" />
+    <Folder Include="Report\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ap.Business\Ap.Business.csproj">
+      <Project>{d7746763-1ce2-4e25-b3f5-9c9e97f65e94}</Project>
+      <Name>Ap.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ap.Common\Ap.Common.csproj">
+      <Project>{6415201a-b820-4f8b-8caa-1366d068461f}</Project>
+      <Name>Ap.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ap.Data\Ap.Data.csproj">
+      <Project>{84654d38-7e62-4308-8f86-a8e2eae3712c}</Project>
+      <Name>Ap.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ap.Service\Ap.Service.csproj">
+      <Project>{9eb536b1-d175-440e-9d4b-dc1a512c522a}</Project>
+      <Name>Ap.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10532</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8090/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

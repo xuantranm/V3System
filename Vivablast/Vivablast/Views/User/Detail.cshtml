@@ -1,0 +1,217 @@
+﻿@using Ap.Common.Constants
+@model Ap.Business.Domains.XUser
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+<div class="container" role="list">
+    <h2>Detail</h2>
+    <div class="row">
+        <form class="form-horizontal">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.UserName)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.UserName)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.FirstName)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.FirstName)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.LastName)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.LastName)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.Department)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.Department)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.Telephone)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.Telephone)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.Mobile)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.Mobile)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.Email)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.Email)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.Store)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.Store)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.Created)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.Created)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.CreatedBy)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.CreatedBy)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.Modified)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.Modified)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.ModifiedBy)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ModifiedBy)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.UserR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.UserR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.ProjectR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.ProjectR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.StoreR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.StoreR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.StockR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.StockR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.RequisitionR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.RequisitionR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.StockOutR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.StockOutR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.StockReturnR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.StockReturnR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.StockInR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.StockInR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.ReActiveStockR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.ReActiveStockR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.PER)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.PER)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.SupplierR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.SupplierR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.PriceR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.PriceR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.StockServiceR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.StockServiceR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.AccountingR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.AccountingR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.MaintenanceR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.MaintenanceR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.WorkerR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.WorkerR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.ShippmentR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.ShippmentR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.ReturnSupplierR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.ReturnSupplierR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.StockTypeR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.StockTypeR)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">@Html.DisplayNameFor(model => model.CategoryR)</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Constants.Action(Model.CategoryR)</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+
+

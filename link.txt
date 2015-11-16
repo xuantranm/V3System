@@ -1,0 +1,4 @@
+http://www.w3resource.com/twitter-bootstrap/layout-tutorial.php
+http://eternicode.github.io/bootstrap-datepicker/?#sandbox
+http://stackoverflow.com/questions/7826546/how-to-add-an-existing-solution-to-a-team-foundation-server
+http://www.chrisrenner.com/2010/03/toggle-table-rows-with-jquery-no-plug-in-required/

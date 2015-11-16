@@ -1,0 +1,59 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model StockViewModel
+
+<div>
+    <div role="search">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>Store</label>
+                        @Html.DropDownListFor(model => model.StoreId, Model.Stores, new { @id = "searchProductSearchStore", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        @Html.DropDownListFor(model => model.iType, Model.Types, @Constants.AllDLL, new { @id = "searchProductSearchType", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        @Html.DropDownListFor(model => model.bCategoryID, Model.Categories, @Constants.AllDLL, new { @id = "searchProductSearchCategory", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Code</label>
+                        <input type="text" name="StockCode" class="form-control" id="searchProductSearchStockCode" placeholder="Stock Code" />
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Name</label>
+                        <input type="text" name="StockName" class="form-control" id="searchProductSearchStockName" placeholder="Stock Name" />
+                    </div>
+                    <div class="form-group">
+                        <label>@Constants.Rows</label>
+                        <select id="searchProductPageSize" class="form-control">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="0">All</option>
+                        </select>
+                    </div>
+                    <div class="form-group button-control">
+                        <button type="button" id="searchProductbtnSearch" class="btn btn-primary btn-block">
+                            <span class="glyphicon glyphicon-search"></span>Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="" role="list">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="searchProductDiv">
+                <div class="alert alert-info bold" role="alert">LOADING...</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+		<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+		<title>DataTables - Usage</title>
+		
+		<link rel="shortcut icon" type="image/ico" href="http://datatables.net/media/images/favicon.ico">
+		<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+		
+		<style type="text/css" media="screen">
+			@import "/media/css/site.ccss";
+		</style>
+		
+		<script src="DataTables%20-%20Usage_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="DataTables%20-%20Usage_files/complete.js"></script>
+	<script src="DataTables%20-%20Usage_files/bsa.js" async="" type="text/javascript"></script><script async="async" src="DataTables%20-%20Usage_files/s_4b4cb470d035b673ad498e2a46300b4d.js" id="_bsap_js_4b4cb470d035b673ad498e2a46300b4d" type="text/javascript"></script><style id="bsa_css" type="text/css">.one{position:relative}.one .bsa_it_ad{display:block;padding:15px;border:1px solid #e1e1e1;background:#f9f9f9;font-family:helvetica,arial,sans-serif;line-height:100%;position:relative}.one .bsa_it_ad a{text-decoration:none}.one .bsa_it_ad a:hover{text-decoration:none}.one .bsa_it_ad .bsa_it_t{display:block;font-size:12px;font-weight:bold;color:#212121;line-height:125%;padding:0 0 5px 0}.one .bsa_it_ad .bsa_it_d{display:block;font-size:11px;color:#434343;font-size:12px;line-height:135%}.one .bsa_it_ad .bsa_it_i{float:left;margin:0 15px 10px 0}.one .bsa_it_p{display:block;text-align:right;position:absolute;bottom:10px;right:15px}.one .bsa_it_p a{font-size:10px;color:#666;text-decoration:none}.one .bsa_it_ad .bsa_it_p a:hover{font-style:italic}</style></head>
+	<body class="grid_2_3">
+		<div id="fw_container">
+			
+			
+<script type="text/javascript">
+
+(function(){
+  var bsa = document.createElement('script');
+     bsa.type = 'text/javascript';
+     bsa.async = true;
+     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+
+</script>
+
+
+			<div id="fw_header">
+				<h1>
+					<a href="http://datatables.net/index">
+						<img src="DataTables%20-%20Usage_files/DataTables.jpg" alt="DataTables logo">
+						DataTables
+					</a>
+				</h1>
+				<ul>
+					<li><a class="active" href="http://datatables.net/usage">Usage</a></li>
+					<li><a href="http://datatables.net/examples">Examples</a></li>
+					<li><a href="http://datatables.net/styling">Styling</a></li>
+					<li><a href="http://datatables.net/api">API</a></li>
+					<li><a href="http://datatables.net/development">Development</a></li>
+					<li><a href="http://editor.datatables.net/">Editor</a></li>
+					<li><a href="http://datatables.net/extras">Extras</a></li>
+					<li><a href="http://datatables.net/plug-ins">Plug-ins</a></li>
+					<li><a href="http://datatables.net/blog">Blog</a></li>
+					<li><a href="http://datatables.net/faqs">FAQs</a></li>
+					<li><a href="http://datatables.net/forums">Forums</a></li>
+									</ul>
+				<div class="css_clear"></div>
+									<ul class="submenu submenu_usage">
+						<li><a href="http://datatables.net/usage/features">Features</a></li>
+						<li><a href="http://datatables.net/usage/options">Options</a></li>
+						<li><a href="http://datatables.net/usage/callbacks">Callbacks</a></li>
+						<li><a href="http://datatables.net/usage/columns">Columns</a></li>
+						<li><a class="active" href="http://datatables.net/usage/i18n">Internationalisation</a></li>
+						<li><a href="http://datatables.net/usage/server-side">Server-side processing</a></li>
+						<li><a href="http://datatables.net/ref">Full reference</a></li>
+					</ul>
+					<div class="css_clear"></div>
+								
+								
+				
+				<div id="header_options">
+					<div id="options_donate" class="option">
+						<a href="http://datatables.net/donate">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tbody><tr>
+									<td>
+										<img src="DataTables%20-%20Usage_files/beer.png" alt="Donate icon">
+									</td>
+									<td style="line-height:16px;">
+										Donate <br><span class="css_vsmall"></span>
+									</td>
+								</tr>
+							</tbody></table>
+						</a>
+					</div>
+					<div id="options_download" class="option">
+						<a href="http://datatables.net/download">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tbody><tr>
+									<td>
+										<img src="DataTables%20-%20Usage_files/download.png" alt="Download icon">
+									</td>
+									<td style="line-height:16px;">
+										Download <br><span class="css_vsmall">v1.9.4</span>
+									</td>
+								</tr>
+							</tbody></table>
+						</a>
+					</div>
+					<div id="options_support" class="option">
+						<a href="http://datatables.net/support">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tbody><tr>
+									<td>
+										<img src="DataTables%20-%20Usage_files/support.png" alt="Support icon">
+									</td>
+									<td style="line-height: 16px;">
+										Support<br><span class="css_vsmall">3h 11m avg response</span>
+									</td>
+								</tr>
+							</tbody></table>
+						</a>
+					</div>
+			 		<div id="options_search" class="option">
+			 			<form action="http://datatables.net/search" id="cse-search-box">
+			 				<img src="DataTables%20-%20Usage_files/search.png" alt="Search icon">
+		   				<input name="cx" value="004673356914326163298:bcgejkcchl4" type="hidden">
+			 				<input name="cof" value="FORID:9" type="hidden">
+			 				<input name="ie" value="UTF-8" type="hidden">
+			 				<input style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: url(&quot;http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif&quot;) no-repeat scroll left center rgb(255, 255, 255);" name="q" size="31" type="text">
+			 				<input name="sa" value="Search" type="submit">
+			 			<input value="datatables.net/usage/i18n" name="siteurl" type="hidden"><input value="www.google.com.vn/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;ved=0CD4QFjAC&amp;url=http%3A%2F%2Fdatatables.net%2Fusage%2Fi18n&amp;ei=mJEdU-2YBemsiAf4xoDYAg&amp;usg=AFQjCNG5qki4e2Wvl0T5PMPmm8Z1RbHBJg&amp;sig2=ztJBo2yXgsfmKZOMS0Drxw&amp;bvm=bv.62578216,d.aGc" name="ref" type="hidden"><input name="ss" type="hidden"></form>
+			 			<script type="text/javascript" src="DataTables%20-%20Usage_files/brand"></script>
+			 		</div>
+				</div>
+				
+				<div id="header_advert">
+					<div id="bsap_1266180" class="bsap_1266180 bsap"><div class="bsa_it one"><div class="bsa_it_ad ad1 odd" id="bsa_4072747"><a href="http://stats.buysellads.com/click.go?z=1266180&amp;b=4072747&amp;g=&amp;s=&amp;sw=1366&amp;sh=768&amp;br=firefox,27,win&amp;r=0.7588157815683273&amp;link=http://www.nwoods.com/components/canvas/gojs-overview.htm?utm_source=adpacksDev&amp;utm_medium=c130x100&amp;utm_term=canvas&amp;utm_content=euler-badge&amp;utm_campaign=bsa-gojs" onmouseover="window.status = 'http://www.nwoods.com/components/canvas/gojs-overview.htm?utm_source=adpacksDev&amp;utm_medium=c130x100&amp;utm_term=canvas&amp;utm_content=euler-badge&amp;utm_campaign=bsa-gojs'; return true;" onmouseout="window.status=''; return true;" target="_blank"><span class="bsa_it_i"><img src="DataTables%20-%20Usage_files/195134-1383319438.png" alt="GoJS for HTML5 Canvas" height="100" width="130"></span></a><a href="http://stats.buysellads.com/click.go?z=1266180&amp;b=4072747&amp;g=&amp;s=&amp;sw=1366&amp;sh=768&amp;br=firefox,27,win&amp;r=0.1347541316467631&amp;link=http://www.nwoods.com/components/canvas/gojs-overview.htm?utm_source=adpacksDev&amp;utm_medium=c130x100&amp;utm_term=canvas&amp;utm_content=euler-badge&amp;utm_campaign=bsa-gojs" onmouseover="window.status = 'http://www.nwoods.com/components/canvas/gojs-overview.htm?utm_source=adpacksDev&amp;utm_medium=c130x100&amp;utm_term=canvas&amp;utm_content=euler-badge&amp;utm_campaign=bsa-gojs'; return true;" onmouseout="window.status=''; return true;" target="_blank"><span class="bsa_it_t">GoJS for HTML5 Canvas</span><span class="bsa_it_d">is a fast and powerful JavaScript library for implementing interactive diagrams.</span></a><div style="clear:both"></div></div><span class="bsa_it_p"><a href="http://buysellads.com/buy/detail/110715/zone/1266180?utm_source=site_110715&amp;utm_medium=website&amp;utm_campaign=imagetext&amp;utm_content=zone_1266180">ads by BSA</a></span></div></div><a href="http://adpacks.com/" id="bsap_aplink">via Ad Packs</a>					<div id="donate_advert" class="button" style="display:none; position:absolute; width:130px; padding:10px; top:10px; color:#4E6CA3">
+						Help DataTables
+						<span class="small" style="line-height:1.4em; margin: 6px 0 0 0; font-size: 12px">Make a donation to help DataTables support and development</span>
+					</div>
+				</div>
+			</div>
+			
+						
+			<h2>Language</h2>
+			<p>The language information presented by DataTables can be completely
+ altered for internationalisation (or localisation) using the properties
+ of the <b>oLanguage</b> object. Note that all strings in the following may contain HTML tags (i.e. you can include images etc. if you so wish in them).</p>
+				<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.oAria.sSortAscending"></a><b>oLanguage.oAria.sSortAscending</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>ARIA label that is added to the table headers when the column may be
+sorted ascending by activing the column (click or return when focused).
+Note that the column header is prefixed to this string.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">: activate to sort column ascending</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_859323" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oAria"</code><code class="js plain">: {</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sSortAscending"</code><code class="js plain">: </code><code class="js string">" - click/return to sort ascending"</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number9 index8 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.oAria.sSortDescending"></a><b>oLanguage.oAria.sSortDescending</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>ARIA label that is added to the table headers when the column may be
+sorted descending by activing the column (click or return when focused).
+Note that the column header is prefixed to this string.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">: activate to sort column ascending</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_983291" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oAria"</code><code class="js plain">: {</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sSortDescending"</code><code class="js plain">: </code><code class="js string">" - click/return to sort descending"</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number9 index8 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.oPaginate.sFirst"></a><b>oLanguage.oPaginate.sFirst</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Text to use when using the 'full_numbers' type of pagination for the
+button to take the user to the first page.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">First</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_837158" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oPaginate"</code><code class="js plain">: {</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sFirst"</code><code class="js plain">: </code><code class="js string">"First page"</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number9 index8 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.oPaginate.sLast"></a><b>oLanguage.oPaginate.sLast</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Text to use when using the 'full_numbers' type of pagination for the
+button to take the user to the last page.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Last</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_155435" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oPaginate"</code><code class="js plain">: {</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sLast"</code><code class="js plain">: </code><code class="js string">"Last page"</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number9 index8 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.oPaginate.sNext"></a><b>oLanguage.oPaginate.sNext</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Text to use for the 'next' pagination button (to take the user to the 
+next page).</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Next</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_556752" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oPaginate"</code><code class="js plain">: {</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sNext"</code><code class="js plain">: </code><code class="js string">"Next page"</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number9 index8 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.oPaginate.sPrevious"></a><b>oLanguage.oPaginate.sPrevious</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Text to use for the 'previous' pagination button (to take the user to<br><br>the previous page).</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Previous</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_442044" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oPaginate"</code><code class="js plain">: {</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sPrevious"</code><code class="js plain">: </code><code class="js string">"Previous page"</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number9 index8 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sEmptyTable"></a><b>oLanguage.sEmptyTable</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>This string is shown in preference to sZeroRecords when the table is
+empty of data (regardless of filtering). Note that this is an optional
+parameter - if it is not given, the value of sZeroRecords will be used
+instead (either the default or given value).</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">No data available in table</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_117654" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sEmptyTable"</code><code class="js plain">: </code><code class="js string">"No data available in table"</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sInfo"></a><b>oLanguage.sInfo</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>This string gives information to the end user about the information that 
+is current on display on the page. The <em>START</em>, <em>END</em> and <em>TOTAL</em> 
+variables are all dynamically replaced as the table display updates, and 
+can be freely moved or removed as the language requirements change.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Showing _START_ to _END_ of _TOTAL_ entries</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_551800" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sInfo"</code><code class="js plain">: </code><code class="js string">"Got a total of _TOTAL_ entries to show (_START_ to _END_)"</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sInfoEmpty"></a><b>oLanguage.sInfoEmpty</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Display information string for when the table is empty. Typically the 
+format of this string should match sInfo.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Showing 0 to 0 of 0 entries</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_793378" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sInfoEmpty"</code><code class="js plain">: </code><code class="js string">"No entries to show"</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sInfoFiltered"></a><b>oLanguage.sInfoFiltered</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>When a user filters the information in a table, this string is appended 
+to the information (sInfo) to give an idea of how strong the filtering 
+is. The variable <em>MAX</em> is dynamically updated.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">(filtered from _MAX_ total entries)</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_347347" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sInfoFiltered"</code><code class="js plain">: </code><code class="js string">" - filtering from _MAX_ records"</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sInfoPostFix"></a><b>oLanguage.sInfoPostFix</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>If can be useful to append extra information to the info string at times,
+and this variable does exactly that. This information will be appended to
+the sInfo (sInfoEmpty and sInfoFiltered in whatever combination they are
+being used) at all times.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top"><i>Empty string</i></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_121373" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sInfoPostFix"</code><code class="js plain">: </code><code class="js string">"All records shown are derived from real information."</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sInfoThousands"></a><b>oLanguage.sInfoThousands</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>DataTables has a build in number formatter (fnFormatNumber) which is used
+to format large numbers that are used in the table information. By
+default a comma is used, but this can be trivially changed to any
+character you wish with this parameter.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">,</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_551848" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sInfoThousands"</code><code class="js plain">: </code><code class="js string">"'"</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sLengthMenu"></a><b>oLanguage.sLengthMenu</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Detail the action that will be taken when the drop down menu for the
+pagination length option is changed. The '<em>MENU</em>' variable is replaced
+with a default select list of 10, 25, 50 and 100, and can be replaced
+with a custom select box if required.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Show _MENU_ entries</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_943065" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">// Language change only</code></div><div class="line number2 index1 alt1"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sLengthMenu"</code><code class="js plain">: </code><code class="js string">"Display _MENU_ records"</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number8 index7 alt1"><code class="js plain">} );</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="js comments">// Language and options change</code></div><div class="line number12 index11 alt1"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sLengthMenu"</code><code class="js plain">: </code><code class="js string">'Display &lt;select&gt;'</code><code class="js plain">+</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'&lt;option value="10"&gt;10&lt;/option&gt;'</code><code class="js plain">+</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'&lt;option value="20"&gt;20&lt;/option&gt;'</code><code class="js plain">+</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'&lt;option value="30"&gt;30&lt;/option&gt;'</code><code class="js plain">+</code></div><div class="line number19 index18 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'&lt;option value="40"&gt;40&lt;/option&gt;'</code><code class="js plain">+</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'&lt;option value="50"&gt;50&lt;/option&gt;'</code><code class="js plain">+</code></div><div class="line number21 index20 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'&lt;option value="-1"&gt;All&lt;/option&gt;'</code><code class="js plain">+</code></div><div class="line number22 index21 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'&lt;/select&gt; records'</code></div><div class="line number23 index22 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number24 index23 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number25 index24 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sLoadingRecords"></a><b>oLanguage.sLoadingRecords</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>When using Ajax sourced data and during the first draw when DataTables is
+gathering the data, this message is shown in an empty row in the table to
+indicate to the end user the the data is being loaded. Note that this
+parameter is not used when loading data by server-side processing, just
+Ajax sourced data with client-side processing.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Loading...</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_1518" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sLoadingRecords"</code><code class="js plain">: </code><code class="js string">"Please wait - loading..."</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sProcessing"></a><b>oLanguage.sProcessing</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Text which is displayed when the table is processing a user action
+(usually a sort command or similar).</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Processing...</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_796052" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sProcessing"</code><code class="js plain">: </code><code class="js string">"DataTables is currently busy"</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sSearch"></a><b>oLanguage.sSearch</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Details the actions that will be taken when the user types into the
+filtering input text box. The variable "<em>INPUT</em>", if used in the string,
+is replaced with the HTML text box for the filtering input allowing
+control over where it appears in the string. If "<em>INPUT</em>" is not given
+then the input box is appended to the string automatically.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">Search:</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_479223" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">// Input text box will be appended at the end automatically</code></div><div class="line number2 index1 alt1"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sSearch"</code><code class="js plain">: </code><code class="js string">"Filter records:"</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number8 index7 alt1"><code class="js plain">} );</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="js comments">// Specify where the filter should appear</code></div><div class="line number12 index11 alt1"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number13 index12 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number14 index13 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sSearch"</code><code class="js plain">: </code><code class="js string">"Apply filter _INPUT_ to table"</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number17 index16 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number18 index17 alt1"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sUrl"></a><b>oLanguage.sUrl</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>All of the language information can be stored in a file on the
+server-side, which DataTables will look up if this parameter is passed.
+It must store the URL of the language file, which is in a JSON format,
+and the object has the same properties as the oLanguage object in the
+initialiser object (i.e. the above parameters). Please refer to one of
+the example language files to see how this works in action.</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top"><i>Empty string - i.e. disabled</i></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_692921" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sUrl"</code><code class="js plain">: </code><code class="js string">"<a href="http://www.sprymedia.co.uk/dataTables/lang.txt">http://www.sprymedia.co.uk/dataTables/lang.txt</a>"</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+	<table class="parameters" border="0" cellpadding="0" cellspacing="5">
+		<tbody><tr>
+			<td class="parameter" valign="top">
+				<a name="oLanguage.sZeroRecords"></a><b>oLanguage.sZeroRecords</b>
+				<br><span class="css_link css_small">Show details</span>
+			</td>
+			<td valign="top"><p>Text shown inside the table records when the is no information to be
+displayed after filtering. sEmptyTable is shown when there is simply no
+information in the table at all (regardless of filtering).</p></td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Default:</td>
+			<td valign="top">No matching records found</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Type:</td>
+			<td valign="top">string</td>
+		</tr>
+		<tr style="display: none;" class="details">
+			<td class="label" valign="top">Code example:</td>
+			<td valign="top">
+				<div><div id="highlighter_481110" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_jsbin jsbin">Run in JS Bin</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(document).ready( </code><code class="js keyword">function</code><code class="js plain">() {</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">'#example'</code><code class="js plain">).dataTable( {</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"oLanguage"</code><code class="js plain">: {</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">"sZeroRecords"</code><code class="js plain">: </code><code class="js string">"No records to display"</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">}</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">} );</code></div><div class="line number7 index6 alt2"><code class="js plain">} );</code></div></div></td></tr></tbody></table></div></div>
+			</td>
+		</tr>
+	</tbody></table>
+			
+						<div id="fw_footer">
+				<div class="css_center">
+					DataTables designed and created by <a href="http://www.sprymedia.co.uk/">SpryMedia</a> © 2008-2014<br>
+					DataTables is dual licensed under the <a href="http://datatables.net/license_gpl2">GPL v2 license</a> or a <a href="http://datatables.net/license_bsd">BSD (3-point) license</a>.
+				</div>
+			</div>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-365466-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+		</div>
+		
+	
+
+</body></html>

@@ -1,0 +1,6 @@
+D:\PROJECT\ExportScriptSQL\ExportScriptSQL\bin\Debug\ExportScriptSQL.exe.config
+D:\PROJECT\ExportScriptSQL\ExportScriptSQL\bin\Debug\ExportScriptSQL.exe
+D:\PROJECT\ExportScriptSQL\ExportScriptSQL\bin\Debug\ExportScriptSQL.pdb
+D:\PROJECT\ExportScriptSQL\ExportScriptSQL\obj\Debug\ExportScriptSQL.csprojResolveAssemblyReference.cache
+D:\PROJECT\ExportScriptSQL\ExportScriptSQL\obj\Debug\ExportScriptSQL.exe
+D:\PROJECT\ExportScriptSQL\ExportScriptSQL\obj\Debug\ExportScriptSQL.pdb

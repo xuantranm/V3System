@@ -1,0 +1,2 @@
+1. PROJECT: base on Country. No need base on Store. Because 1 project can get products from multi Store ????
+2. PROJECT: have 2 field Remark and Description???? 

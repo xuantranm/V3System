@@ -1,0 +1,199 @@
+﻿@using System.Data
+@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model ReturnViewModel
+
+@{
+    ViewBag.Title = "Stock Return";
+}
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "stock-return-create-form", @class = "form-horizontal" }))
+        {
+            @Html.HiddenFor(x => x.bReturnListID)
+            @Html.HiddenFor(x => x.SRV, new { @id = "hidCheckCode" })
+            @Html.HiddenFor(x => x.Timestamp)
+            @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
+            @Html.HiddenFor(x => x.Mode)
+            <input type="hidden" value="@Url.Action("Create", "StockReturn")" id="hidSaveUrl" />
+            <input type="hidden" value="" id="hidDeleteItemDetail" />
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+            <label class="col-sm-12 bold20 linered">Stock Return Information</label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Project Code <span class="red">*</span></label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(model => model.vProjectID, Model.Projects, @Constants.SelectDDL, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Project Name <span class="red">*</span></label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(model => model.ProjectName, Model.ProjectNames, @Constants.SelectDDL, new { @class = "form-control" })
+            </div>
+        </div>
+        @*<div class="form-group">
+                <label class="col-sm-3 control-label">To Store</label>
+                <div class="col-sm-9">
+                    @Html.DropDownListFor(model => model.ToStore, Model.Stores, Constants.SelectDDL, new { @class = "form-control" })
+                </div>
+            </div>*@
+        <div class="form-group">
+            <label class="col-sm-3 control-label">To Store <span class="red">*</span></label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(model => model.ToStore, Model.Stores, Constants.SelectDDL, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-12 h3">Return Detail</label>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 col-xs-12 control-label">Stock Code</label>
+            <div class="col-sm-4 col-xs-10">
+                @Html.HiddenFor(x => x.StockId)
+                @Html.TextBoxFor(model => model.StockCode, new { @placeholder = "Stock Code", @class = "form-control" })
+            </div>
+            <div class="col-sm-2 col-xs-2">
+                <button type="button" id="btnSearchStock">...</button>
+            </div>
+            <div class="col-sm-3 hidden-xs">
+                <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-xs-12 picture-effect">
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Qty Return</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.bQuantity, new { @placeholder = "Quantity Assign", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Condition</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vCondition, new { @placeholder = "Condition", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Store Quantity</label>
+                    <label id="lblStockQty" class="col-xs-9 lblredbol"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs-block">
+            <div class="col-xs-12 visible-xs-block">
+                <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+            <div class="row">
+                <div class="gallery-stock">
+                </div>
+            </div>
+        </div>
+
+        <div style="clear: both"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Stock Name</label>
+                    <label id="lblStockName" class="col-xs-9 lblredbol"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Stock Type</label>
+                    <div class="col-xs-9">
+                        <label id="lblStockType" class="lblredbol"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Stock Unit</label>
+                    <div class="col-xs-9">
+                        <label id="lblStockUnit" class="lblredbol"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Part No</label>
+                    <div class="col-xs-9">
+                        <label id="lblPartNo" class="lblredbol"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Ral No</label>
+                    <div class="col-xs-9">
+                        <label id="lblRalNo" class="lblredbol"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Color</label>
+                    <label id="lblColor" class="col-xs-9 lblredbol"></label>
+                </div>
+            </div>
+
+            @*In future will implement Assigned List: List of all item assigned for this project*@
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-12 bold20 linered">Stock Item List</label>
+                </div>
+                <div class="table-responsive">
+                    <table id="LstItem" class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="vbheaddetail">
+                                <th class="width106"></th>
+                                <th class="center">Stock Code</th>
+                                <th class="center">Stock Name</th>
+                                <th class="center">Qty Return</th>
+                                <th class="center">Condition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TotalRecords > 0)
+                            {
+                                foreach (var item in Model.StockReturnDetailList)
+                                {
+                                    <tr class="vbcolum">
+                                        <td class="center">
+                                            <input type="hidden" value="@item.Id" class="DetailId" />
+                                            <input type="hidden" value="@item.Stock_Id" class="StockId" />
+                                            <input type="hidden" value="0" class="StockId" />
+                                            <input type="hidden" value="0" class="hidQuantity" />
+                                            <button type="button" class="btnEdit btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>Edit</button>
+                                            <button type="button" class="btnDelete btn btn-xs btn-danger marginleft2"><span class="glyphicon glyphicon-remove"></span>Delete</button>
+                                        </td>
+                                        <td class="center StockCode">@item.Stock_Code</td>
+                                        <td class="center StockName">@item.Stock_Name</td>
+                                        <td class="center Quantity">@item.Stock_Code</td>
+                                        <td class="center Remark">@item.Condition</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="alert alert-danger col-xs-12" style="display: none">
+                <strong>Error!</strong> No item in list.
+            </div>
+            <div class="modal-footer center">
+                <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
+                    <span class="glyphicon glyphicon-save"></span> Save
+                </button>
+                <a href="@Url.Action("Create", "StockReturn")" class="btn btn-primary btnAdd displaynone">
+                    <span class="glyphicon glyphicon-plus"></span> New
+                </a>
+                @Html.ActionLink("Back To List", "Index", "StockReturn", new { @class = "btn btn-default" })
+            </div>
+            }
+        </div>
+    </div>
+
+<script src="/Scripts/tmx.stockreturnact.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

@@ -1,0 +1,45 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model ReturnViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div style="color: red;font-weight: bold">
+        @Constants.EmptyData
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="DetailList table table-bordered table-hover">
+            <thead>
+                <tr class="vbheaddetail">
+                    <th class="center">Stock Code</th>
+                    <th class="center">Stock Name</th>
+                    <th class="center">Qty Out</th>
+                    <th class="center">Date Out</th>
+                    <th class="center">Condition</th>
+                    <th class="center hidden-xs">Stock Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.StockReturnDetailList)
+                {
+                    <tr class="vbcolum">
+                        <td class="center">@item.Stock_Code</td>
+                        <td class="center">@item.Stock_Name</td>
+                        <td class="center">
+                            @item.Quantity.ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat)
+                        </td>
+                        <td class="center">@item.ReturnDate</td>
+                        <td class="center">@item.Condition</td>
+                        <td class="hidden-xs">@item.Type</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+

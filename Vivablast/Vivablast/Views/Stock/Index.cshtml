@@ -1,0 +1,76 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model StockViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="bs-docs-header">
+    <div class="container" role="search">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>Store</label>
+                        @Html.DropDownListFor(model => model.StoreId, Model.Stores, @Constants.AllDLL, new { @id = "searchStore", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        @Html.DropDownListFor(model => model.iType, Model.Types, @Constants.AllDLL, new { @id = "searchType", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        @Html.DropDownListFor(model => model.bCategoryID, Model.Categories, @Constants.AllDLL, new { @id = "searchCategory", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Code</label>
+                        <input type="text" name="StockCode" class="form-control" id="StockCode" placeholder="Stock Code">
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Name</label>
+                        <input type="text" name="StockCode" class="form-control" id="StockName" placeholder="Stock Name">
+                    </div>
+                    <div class="form-group">
+                        <label>@Constants.Rows</label>
+                        <select id="pageSize" class="form-control">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="1000">All</option>
+                        </select>
+                    </div>
+                    <div class="form-group button-control">
+                        <button type="button" id="btnSearch" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-search"></span> Search
+                        </button>
+                        @if (Model.UserLogin.UserR > 1)
+                        {
+                            <a href="@Url.Action("Create","Stock")" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span> New
+                            </a>
+                        }
+
+                        <button type="button" id="btnExport" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-export"></span> Export
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" role="list">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="list-session">
+                <div class="alert alert-info bold" role="alert">LOADING...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="@Url.Action("Delete", "Stock")" id="hidDeleteUrl" />
+
+<script src="/Scripts/tmx.stockmanager.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

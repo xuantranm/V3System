@@ -1,0 +1,172 @@
+﻿@using Ap.Common.Constants
+@using Microsoft.Ajax.Utilities
+@using Vivablast.ViewModels
+@model POViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Vivablast Management System</title>
+    <link href="/Images/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    @*<link href="/Content/styles.css" rel="stylesheet" />*@
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Scripts/common.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="PrintLocation">
+            <style type="text/css">
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                th {
+                    height: 50px;
+                    text-align: center;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    background-color: white;
+                }
+
+                td {
+                    vertical-align: bottom;
+                }
+
+                td {
+                    padding: 10px;
+                }
+
+                .th td {
+                    height: 40px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            </style>
+            <div>
+                <div style="float: left; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">Project No:</span> @Model.PurchaseOrderCustom.Project_Code
+                </div>
+                <div style="float: left; width: 400px">
+                    <span style="font-weight: bold; margin-right: 10px;">Project Name:</span> @Model.PurchaseOrderCustom.Project_Name
+                </div>
+                <div style="float: left; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">P.O nb:</span> @Model.PurchaseOrderCustom.PE
+                </div>
+            </div>
+            <div style="clear: both"></div>
+            <div>
+                <div style="float: left; width: 300px">
+                </div>
+                <div style="float: left; width: 400px">
+                    <span style="font-weight: bold; margin-right: 10px;">VAT:</span> @Model.VAT
+                </div>
+                <div style="float: left; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">PO Sample:</span> 
+                </div>
+            </div>
+            <div style="clear: both; height: 10px;"></div>
+            <div>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Stock ID</th>
+                        <th>Description</th>
+                        <th>Ral</th>
+                        <th>Color</th>
+                        <th>Unit</th>
+                        <th>Qty</th>
+                        <th>MRF#</th>
+                        <th>UNIT PRICE<br />(VND)</th>
+                        <th>DISC<br />(%)</th>
+                        <th>TOTAL<br />(VND)</th>
+                    </tr>
+                    @{var i = 1;}
+                    @foreach (var item in Model.PoDetailsVResults)
+                    {
+                        <tr>
+                            <td style="text-align: center">@i</td>
+                            <td>@item.Stock_Code</td>
+                            <td>@item.Stock_Name</td>
+                            <td></td>
+                            <td></td>
+                            <td>@item.Unit</td>
+                            <td>@item.Quantity.Value.ToString("g29")</td>
+                            <td>@item.MRF</td>
+                            <td>@item.UnitPrice</td>
+                            <td style="text-align: center">@item.Discount</td>
+                            <td style="text-align: center">@item.Item_Total</td>
+                        </tr>
+                        i++;
+                    }
+                    <tr>
+                        <td colspan="8"></td>
+                        <td style="font-size: 12px;">Sub Total</td>
+                        <td colspan="2" style="font-size: 12px;">@Model.PurchaseOrderCustom.TotalNotVAT</td>
+                    </tr>
+                    <tr>
+                        <td colspan="8"></td>
+                        <td style="font-size: 12px;">VAT</td>
+                        <td colspan="2" style="font-size: 12px;">@Model.PurchaseOrderCustom.TotalVAT</td>
+                    </tr>
+                    <tr>
+                        <td colspan="8"></td>
+                        <td style="font-size: 12px;">Total</td>
+                        <td colspan="2" style="font-size: 12px;">@Model.PurchaseOrderCustom.Total</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="clear: both"></div>
+            <div style="margin-top: -10px;">
+                
+            </div>
+        </div>
+        
+        @using (Html.BeginForm("PrintPdf", "Helper", FormMethod.Post, new { id = "myform" }))
+        {
+            <div style="clear: both; height: 10px;"></div>
+            <button type="button" id="btnPrint">Download</button>
+            <input type="hidden" name="content" id="hidContent" value="" />
+            <input type="hidden" name="fileName" id="fileName" value="PE" />
+            <input type="hidden" name="voucher" id="voucher" value="@Model.Id" />
+        }
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+        /// <summary>Enum for Page Type</summary>
+        var PDFPageType = {
+            Default: 'Default',
+            Portrait: 'Portrait',
+            Landscape: 'Landscape'
+        }
+
+        $('#btnPrint').click(function () {
+            var printContents = '<html><head><title></title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body>' + $('#PrintLocation').html() + '</body></html>';
+            var pageType = PDFPageType.Portrait;
+            $('#hidContent').val(htmlEncode(printContents));
+            $('#myform').submit();
+        });
+
+        function htmlEncode(value) {
+            //create a in-memory div, set it's inner text(which jQuery automatically encodes)
+            //then grab the encoded contents back out.  The div never exists on the page.
+            return $('<div/>').text(value).html();
+        }
+
+        function htmlDecode(value) {
+            return $('<div/>').html(value).text();
+        }
+    </script>
+</body>

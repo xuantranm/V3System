@@ -1,0 +1,98 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+
+@model StoreViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    
+    <div>@Model.TotalRecords @Constants.DisplayResult</div>
+    
+    <div class="table-responsive">
+        <table id="StoreLst" class="table table-bordered table-hover">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.StoreR > 2)
+                    {
+                        <th class="center" style="width: 150px!important">Action</th>
+                    }
+                    <th class="center hidden-xs">Key</th>
+                    <th class="center">Name</th>
+                    <th class="center">Code</th>
+                    <th class="center hidden-xs">Country</th>
+                    <th class="center hidden-xs">Address</th>
+                    <th class="center hidden-xs">Tel</th>
+                    <th class="center hidden-xs">Phone</th>
+                    <th class="center hidden-xs">Description</th>
+                    <th class="center hidden-xs">Created Date</th>
+                    <th class="center hidden-xs">By</th>
+                    <th class="center hidden-xs">Modified Date</th>
+                    <th class="center hidden-xs">By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.StoreManagements)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.StoreR > 2)
+                        {
+                            <td class="center">
+                                @*<a href="@Url.Action("Detail", "Store", new {id = @item.Id}, null)" class="btn btn-xs btn-info" style="color: white; text-decoration:none;">
+                                        Detail
+                                    </a>*@
+                                @if (Model.UserLogin.StoreR > 2)
+                                {
+                                    <a href="@Url.Action("Create", "Store", new {id = @item.Id}, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration: none;">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                        Edit
+                                    </a>
+                                }
+                                @if (Model.UserLogin.StoreR > 3)
+                                {
+                                    <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Delete
+                                    </a>
+                                }
+                                <input type="hidden" class="ItemKey" value="@item.Id" />
+                            </td>
+                        }
+                        <td class="center hidden-xs">@item.Id</td>
+                        <td class="center StoreName">@item.Name</td>
+                        <td>@item.Code</td>
+                        <td class="center hidden-xs">@item.Country</td>
+                        <td class="center hidden-xs">@item.Address</td>
+                        <td class="center hidden-xs">@item.Tel</td>
+                        <td class="center hidden-xs">@item.Mobile</td>
+                        <td class="hidden-xs">
+                            @if (!string.IsNullOrEmpty(item.Description))
+                            {
+                                @item.Description.Truncate(10)
+                            }
+                        </td>
+                        <td class="center hidden-xs">@Constants.ConvertDate(item.Created_Date.ToString())</td>
+                        <td class="center hidden-xs">@item.Created_By</td>
+                        <td class="center hidden-xs">@Constants.ConvertDate(item.Modified_Date.ToString())</td>
+                        <td class="center hidden-xs">
+                            @item.Modified_By
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+    if (Model.TotalPages > 1)
+    {
+        <div>
+            @Html.Partial("Partials/_PreparePagingPartial")
+        </div>
+    }
+}
+

@@ -1,0 +1,73 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+
+@model RequisitionViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div style="color: red;font-weight: bold">
+        @Constants.EmptyData
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="DetailLst table table-bordered table-hover">
+            <thead>
+                <tr class="vbheaddetail">
+                    <th class="center hidden-xs">MRF</th>
+                    <th class="center">Stock Code</th>
+                    <th class="center hidden-xs">Stock Name</th>
+                    <th class="center hidden-xs">Stock Type</th>
+                    <th class="center">Quantity</th>
+                    <th class="center">To Be PE</th>
+                    <th class="center hidden-xs">Remark</th>
+                    <th class="center hidden-xs">Unit</th>
+                    <th class="center hidden-xs">Status</th>
+                    <th class="center hidden-xs">Follow Up</th>
+                    <th class="center hidden-xs">PE</th>
+                    <th class="center hidden-xs">Sent</th>
+                    <th class="center hidden-xs">Date Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.GetRequisitionDetailsVResults)
+                {
+                    <tr class="vbcolum">
+                        <td class="center hidden-xs">@item.MRF</td>
+                        <td class="center">@item.Stock_Code</td>
+                        <td class="hidden-xs">@item.Stock_Name</td>
+                        <td class="center hidden-xs">@item.Type</td>
+                        <td class="center">
+                            @if (@item.Quantity != null)
+                            {
+                                @(((decimal)@item.Quantity).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                            }
+                        </td>
+                        <td class="center">
+                            @if (@item.Quantity_PE != null)
+                            {
+                                @(((decimal)@item.Quantity_PE).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                            }
+                        </td>
+                        <td class="hidden-xs">@item.Remark</td>
+                        <td class="center hidden-xs">@item.Unit</td>
+                        <td class="center hidden-xs">@item.Status</td>
+                        <td class="center hidden-xs">
+                            <input type="checkbox" @Constants.Checked(item.FollowUpRequired) disabled="disabled" />
+                        </td>
+                        <td class="center hidden-xs">
+                            <input type="checkbox" @Constants.Checked(item.Purchased) disabled="disabled" />
+                        </td>
+                        <td class="center hidden-xs">
+                            <input type="checkbox" @Constants.Checked(item.Sent) disabled="disabled" />
+                        </td>
+                        <td class="center hidden-xs">@item.Created_Date.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+}

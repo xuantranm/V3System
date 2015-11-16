@@ -1,0 +1,6 @@
+D:\02_DEV\Project\Vivablast\Web\ConsoleApp\ReadFolder\ReadFolder\ReadFolder\bin\Debug\ReadFolder.exe.config
+D:\02_DEV\Project\Vivablast\Web\ConsoleApp\ReadFolder\ReadFolder\ReadFolder\bin\Debug\ReadFolder.exe
+D:\02_DEV\Project\Vivablast\Web\ConsoleApp\ReadFolder\ReadFolder\ReadFolder\bin\Debug\ReadFolder.pdb
+D:\02_DEV\Project\Vivablast\Web\ConsoleApp\ReadFolder\ReadFolder\ReadFolder\obj\Debug\ReadFolder.csprojResolveAssemblyReference.cache
+D:\02_DEV\Project\Vivablast\Web\ConsoleApp\ReadFolder\ReadFolder\ReadFolder\obj\Debug\ReadFolder.exe
+D:\02_DEV\Project\Vivablast\Web\ConsoleApp\ReadFolder\ReadFolder\ReadFolder\obj\Debug\ReadFolder.pdb

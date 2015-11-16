@@ -1,0 +1,55 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model CategoryViewModel
+
+@{
+    ViewBag.Title = "Category";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "category-create-form", @class = "form-horizontal" }))
+            {
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(x => x.bCategoryID)
+                @Html.HiddenFor(x => x.CategoryCode, new { @id = "hidCheckCode" })
+                @Html.HiddenFor(x => x.vCategoryName, new { @id = "hidCheckName" })
+                @Html.HiddenFor(x => x.Timestamp)
+                @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
+                <input type="hidden" value="@Url.Action("Create", "Category")" id="hidSaveUrl" />
+
+                <div class="form-group">
+                    <label class="col-sm-4">Type <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.iType, Model.Types, Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Name <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.vCategoryName, new { @placeholder = "Name", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Code <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.CategoryCode, new { @placeholder = "Code", @class = "form-control" })
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-xs-12 modal-footer center">
+            <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
+                <span class="glyphicon glyphicon-save"></span>Save
+            </button>
+            <a href="@Url.Action("Create", "Category")" class="btn btn-primary btnAdd displaynone">
+                <span class="glyphicon glyphicon-plus"></span>New
+            </a>
+            @Html.ActionLink("Back To List", "Index", "Category", new { @class = "btn btn-default" })
+        </div>
+
+    </div>
+</div>
+<script src="/Scripts/tmx.categoryaction.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

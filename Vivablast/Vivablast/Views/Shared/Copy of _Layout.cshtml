@@ -1,0 +1,152 @@
+﻿@using Vivablast.Common
+@using Vivablast.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Vivablast Management System</title>
+    <link href="/Images/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/custom.css?v=1.0" rel="stylesheet" />
+    <link href="/Content/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+    <link href="/Content/chosen.min.css" rel="stylesheet" />
+
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Content/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="/Scripts/pages/jquery.dataTables.js"></script>
+    @*<script src="/Scripts/pages/jquery.dataTables.min.js"></script>*@
+    <script src="/Scripts/pages/ColReorderWithResize.js"></script>
+    <script src="/Scripts/chosen.jquery.min.js"></script>
+    <script src="/Scripts/common.js"></script>
+    <script src="/Scripts/tmx.layout.js"></script>
+</head>
+    <body>
+        @Html.Hidden("resolve-url", Url.Content("~"))
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    @{ 
+                        var user = (V3_User_GetItemByCondition_Result)HttpContext.Current.Session["userS"]; 
+                        if (user != null)
+                        {
+                            <ul class="nav navbar-nav">
+                                @if (user.User != 0)
+                                {
+                                    <li id="userMenu" class="active">@Html.ActionLink("User", "Index", "User")</li>
+                                }
+                                @if (user.Project !=0)
+                                {
+                                    <li id="projectMenu" class="active">@Html.ActionLink("Project", "Index", "Project")</li>
+                                }
+                                <li id="storeMenu" class="dropdown">
+                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Store<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        @if (user.Store != 0)
+                                        {
+                                            <li id="storeMenuSub">@Html.ActionLink("Store", "Index", "Store")</li>
+                                        }
+                                        @if(user.StockR !=0)
+                                        {
+                                            <li id="stockMenuSub">@Html.ActionLink("Stock List", "Index", "Stock")</li>
+                                        }
+                                        @if(user.Requisition !=0)
+                                        {
+                                            <li id="requisitionMenuSub">@Html.ActionLink("Requisition", "Index", "Requisition")</li>
+                                        }
+                                        @if(user.StockInR !=0)
+                                        {
+                                           <li id="stockinMenuSub">@Html.ActionLink("Stock In", "Index", "StockIn")</li> 
+                                        }
+                                        @if(user.StockROut !=0)
+                                        {
+                                            <li id="stockoutMenuSub">@Html.ActionLink("Stock Out", "Index", "StockOut")</li>
+                                        }
+                                        @if(user.StockRReturn !=0)
+                                        {
+                                            <li id="stockreturnMenuSub">@Html.ActionLink("Stock Return", "Index", "StockReturn")</li>
+                                        }
+                                        @if(user.ReActiveStock != 0)
+                                        {
+                                            <li id="reactiveMenuSub">@Html.ActionLink("Re-active Stock", "Index", "ReActiveStock")</li>
+                                        }
+                                    </ul>
+                                </li>
+                                <li id="procurementMenu" class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Procurement<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        @if (user.PE != 0)
+                                        {
+                                            <li id="peMenuSub">@Html.ActionLink("Purchase Order", "Index", "Pe")</li> 
+                                        }
+                                        @if(user.Supplier !=0)
+                                        {
+                                            <li id="supplierMenuSub">@Html.ActionLink("Supplier", "Index", "Supplier")</li>
+                                        }
+                                        @if (user.Price != 0)
+                                        {
+                                            <li id="priceMenuSub">@Html.ActionLink("Managment Price", "Index", "Price")</li>
+                                        }
+                                        @if (user.StockServiceR != 0)
+                                        {
+                                            <li id="serviceMenuSub">@Html.ActionLink("Service", "Index", "Service")</li>
+                                        }
+                                    </ul>
+                                </li>
+                                @if (user.AccountingR != 0)
+                                {
+                                    <li id="accountingMenu" class="active">@Html.ActionLink("Accounting", "Index", "Accounting")</li>
+                                }
+                                <li class="active"><a id="maintenanceMenu" href="#">Maintenance</a></li>
+                            </ul>
+                        <div class="float-left" style="margin-top: 16px; font-size: 12px;">
+                            <span>Welcome <label id="lblLoginUser"><b>@user.Last_Name @user.First_Name</b></label></span>
+                        </div>
+                        }
+                        else
+                        {
+                        <span>Please login!</span>
+                        }
+                    }
+                    
+                    <form class="navbar-form navbar-right">
+                        <button type="button" id="btnSignOut" class="btn btn-success">Sign Out/Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div id="mycontent" class="content-inner">
+                @RenderBody()
+            </div>
+        </div>
+@*        <div class="col-xs-12">
+            <div id="mycontent" class="content-inner">
+                @RenderBody()
+            </div>
+        </div>*@
+
+        <input type="hidden" id="controller" value="@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()"/>
+        <input type="hidden" value="@Constants.Duplicate" id="hidDuplicate" />
+        <input type="hidden" value="@Constants.DuplicateCode" id="hidDuplicateCode" />
+        <input type="hidden" value="@Constants.Success" id="hidSuccess" />
+        <input type="hidden" value="@Constants.UnDelete" id="hidUnDelete" />
+        <input type="hidden" value="@Constants.DataJustChanged" id="hidDataJustChanged" />
+        <div class="clearboth"></div>
+        <div id="loading-indicator"></div>
+    </body>
+</html>

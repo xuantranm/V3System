@@ -1,0 +1,2971 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="V3Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="V3ModelStoreContainer">
+    <EntitySet Name="Change_Code" EntityType="V3Model.Store.Change_Code" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Country" EntityType="V3Model.Store.Country" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dtproperties" EntityType="V3Model.Store.dtproperties" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Functions" EntityType="V3Model.Store.Functions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LookUp" EntityType="V3Model.Store.LookUp" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PaymentTerm" EntityType="V3Model.Store.PaymentTerm" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product_Price" EntityType="V3Model.Store.Product_Price" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Project_Client" EntityType="V3Model.Store.Project_Client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SIV" EntityType="V3Model.Store.SIV" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SRV" EntityType="V3Model.Store.SRV" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stock_File" EntityType="V3Model.Store.Stock_File" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stock_Picture" EntityType="V3Model.Store.Stock_Picture" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Store" EntityType="V3Model.Store.Store" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Store_Stock" EntityType="V3Model.Store.Store_Stock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="V3Model.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_ASSIGNING_WORKER" EntityType="V3Model.Store.WAMS_ASSIGNING_WORKER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_ASSIGNING_WORKER_TOOLS" EntityType="V3Model.Store.WAMS_ASSIGNING_WORKER_TOOLS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_ASSIGNNING_STOCKS" EntityType="V3Model.Store.WAMS_ASSIGNNING_STOCKS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_ATTACHMENT" EntityType="V3Model.Store.WAMS_ATTACHMENT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_AUDIT" EntityType="V3Model.Store.WAMS_AUDIT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_AUDIT_TRAILS" EntityType="V3Model.Store.WAMS_AUDIT_TRAILS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_BRAND_FUEL" EntityType="V3Model.Store.WAMS_BRAND_FUEL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_CAR" EntityType="V3Model.Store.WAMS_CAR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_CAR_FUELOIL_DETAIL" EntityType="V3Model.Store.WAMS_CAR_FUELOIL_DETAIL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_CATALOGUE_CONFIGURATION" EntityType="V3Model.Store.WAMS_CATALOGUE_CONFIGURATION" store:Type="Tables" store:Schema="dbo" store:Name="WAMS_CATALOGUE_CONFIGURATION">
+      <DefiningQuery>SELECT 
+      [WAMS_CATALOGUE_CONFIGURATION].[bConfiguration] AS [bConfiguration], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vConfigurationName] AS [vConfigurationName], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vDisplay1] AS [vDisplay1], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vDisplay2] AS [vDisplay2], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vDisplay3] AS [vDisplay3], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vDisplay4] AS [vDisplay4], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vDisplay5] AS [vDisplay5], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vDisplay6] AS [vDisplay6], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vColor] AS [vColor], 
+      [WAMS_CATALOGUE_CONFIGURATION].[vStockType] AS [vStockType]
+      FROM [dbo].[WAMS_CATALOGUE_CONFIGURATION] AS [WAMS_CATALOGUE_CONFIGURATION]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WAMS_CATEGORY" EntityType="V3Model.Store.WAMS_CATEGORY" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_COMPANY_DETAILS" EntityType="V3Model.Store.WAMS_COMPANY_DETAILS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_CONSUMABLE_LIST" EntityType="V3Model.Store.WAMS_CONSUMABLE_LIST" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_COUNTRY" EntityType="V3Model.Store.WAMS_COUNTRY" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_CURRENCY_TYPE" EntityType="V3Model.Store.WAMS_CURRENCY_TYPE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_CURRENT_SUPERVISOR" EntityType="V3Model.Store.WAMS_CURRENT_SUPERVISOR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_DESCRIPTION" EntityType="V3Model.Store.WAMS_DESCRIPTION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_EQUIPMENT" EntityType="V3Model.Store.WAMS_EQUIPMENT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_EQUIPMENT_FUELOIL_DETAIL" EntityType="V3Model.Store.WAMS_EQUIPMENT_FUELOIL_DETAIL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_ERROR_MESSAGE" EntityType="V3Model.Store.WAMS_ERROR_MESSAGE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_FUEL_OIL" EntityType="V3Model.Store.WAMS_FUEL_OIL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_FULFILLMENT_DETAIL" EntityType="V3Model.Store.WAMS_FULFILLMENT_DETAIL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_FUNCTION_MANAGEMENT" EntityType="V3Model.Store.WAMS_FUNCTION_MANAGEMENT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_HISTORY_ACTION" EntityType="V3Model.Store.WAMS_HISTORY_ACTION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_HISTORY_FORM" EntityType="V3Model.Store.WAMS_HISTORY_FORM" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_HISTORY_LOG" EntityType="V3Model.Store.WAMS_HISTORY_LOG" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_HISTORY_OBJECT" EntityType="V3Model.Store.WAMS_HISTORY_OBJECT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_IMAGES" EntityType="V3Model.Store.WAMS_IMAGES" store:Type="Tables" store:Schema="dbo" store:Name="WAMS_IMAGES">
+      <DefiningQuery>SELECT 
+      [WAMS_IMAGES].[vPhotoPath] AS [vPhotoPath], 
+      [WAMS_IMAGES].[Picture] AS [Picture], 
+      [WAMS_IMAGES].[Timestamp] AS [Timestamp]
+      FROM [dbo].[WAMS_IMAGES] AS [WAMS_IMAGES]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WAMS_ITEMS_SERVICE" EntityType="V3Model.Store.WAMS_ITEMS_SERVICE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_LABELS" EntityType="V3Model.Store.WAMS_LABELS" store:Type="Tables" store:Schema="dbo" store:Name="WAMS_LABELS">
+      <DefiningQuery>SELECT 
+      [WAMS_LABELS].[bLabelID] AS [bLabelID], 
+      [WAMS_LABELS].[vLabelName] AS [vLabelName], 
+      [WAMS_LABELS].[isDislay1] AS [isDislay1], 
+      [WAMS_LABELS].[isDislay2] AS [isDislay2], 
+      [WAMS_LABELS].[isDislay3] AS [isDislay3], 
+      [WAMS_LABELS].[isDislay4] AS [isDislay4], 
+      [WAMS_LABELS].[isDislay5] AS [isDislay5], 
+      [WAMS_LABELS].[isDislay6] AS [isDislay6], 
+      [WAMS_LABELS].[vColorsmall] AS [vColorsmall], 
+      [WAMS_LABELS].[vColorbig] AS [vColorbig], 
+      [WAMS_LABELS].[iTypeLabel] AS [iTypeLabel], 
+      [WAMS_LABELS].[vStockType] AS [vStockType], 
+      [WAMS_LABELS].[iType] AS [iType], 
+      [WAMS_LABELS].[Timestamp] AS [Timestamp]
+      FROM [dbo].[WAMS_LABELS] AS [WAMS_LABELS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WAMS_MEASUREMENT" EntityType="V3Model.Store.WAMS_MEASUREMENT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_PAINT" EntityType="V3Model.Store.WAMS_PAINT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_PO_DETAILS" EntityType="V3Model.Store.WAMS_PO_DETAILS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_PO_EVALUATION" EntityType="V3Model.Store.WAMS_PO_EVALUATION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_PO_Info" EntityType="V3Model.Store.WAMS_PO_Info" store:Type="Tables" store:Schema="dbo" store:Name="WAMS_PO_Info">
+      <DefiningQuery>SELECT 
+      [WAMS_PO_Info].[NameUser] AS [NameUser], 
+      [WAMS_PO_Info].[Tel] AS [Tel], 
+      [WAMS_PO_Info].[Fax] AS [Fax], 
+      [WAMS_PO_Info].[CC] AS [CC], 
+      [WAMS_PO_Info].[Timestamp] AS [Timestamp]
+      FROM [dbo].[WAMS_PO_Info] AS [WAMS_PO_Info]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WAMS_PO_TYPE" EntityType="V3Model.Store.WAMS_PO_TYPE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_POSITION" EntityType="V3Model.Store.WAMS_POSITION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_PRODUCT" EntityType="V3Model.Store.WAMS_PRODUCT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_PROJECT" EntityType="V3Model.Store.WAMS_PROJECT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_PROJECT_SUPERVISOR" EntityType="V3Model.Store.WAMS_PROJECT_SUPERVISOR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_PURCHASE_ORDER" EntityType="V3Model.Store.WAMS_PURCHASE_ORDER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_REPORT" EntityType="V3Model.Store.WAMS_REPORT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_REPORT_DETAILS" EntityType="V3Model.Store.WAMS_REPORT_DETAILS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_REQUISITION_DETAILS" EntityType="V3Model.Store.WAMS_REQUISITION_DETAILS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_REQUISITION_MASTER" EntityType="V3Model.Store.WAMS_REQUISITION_MASTER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_RETURN_LIST" EntityType="V3Model.Store.WAMS_RETURN_LIST" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_RETURN_PRODUCT_TO_SUPPLIER" EntityType="V3Model.Store.WAMS_RETURN_PRODUCT_TO_SUPPLIER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_RETURNING_WORKER_TOOLS" EntityType="V3Model.Store.WAMS_RETURNING_WORKER_TOOLS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SCAFOLDING" EntityType="V3Model.Store.WAMS_SCAFOLDING" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SERVICE" EntityType="V3Model.Store.WAMS_SERVICE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SERVICE_ALERT_CONFIG" EntityType="V3Model.Store.WAMS_SERVICE_ALERT_CONFIG" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SERVICE_HISTORY" EntityType="V3Model.Store.WAMS_SERVICE_HISTORY" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SHIPMENT" EntityType="V3Model.Store.WAMS_SHIPMENT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SHIPMENT_DETAIL" EntityType="V3Model.Store.WAMS_SHIPMENT_DETAIL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SPAREPART" EntityType="V3Model.Store.WAMS_SPAREPART" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_STOCK" EntityType="V3Model.Store.WAMS_STOCK" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_STOCK_ALERT_CONFIG" EntityType="V3Model.Store.WAMS_STOCK_ALERT_CONFIG" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_STOCK_APPROVAL" EntityType="V3Model.Store.WAMS_STOCK_APPROVAL" store:Type="Tables" store:Schema="dbo" store:Name="WAMS_STOCK_APPROVAL">
+      <DefiningQuery>SELECT 
+      [WAMS_STOCK_APPROVAL].[vStockID] AS [vStockID], 
+      [WAMS_STOCK_APPROVAL].[dDate] AS [dDate], 
+      [WAMS_STOCK_APPROVAL].[bStatus] AS [bStatus]
+      FROM [dbo].[WAMS_STOCK_APPROVAL] AS [WAMS_STOCK_APPROVAL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WAMS_STOCK_LOG" EntityType="V3Model.Store.WAMS_STOCK_LOG" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_STOCK_LOW" EntityType="V3Model.Store.WAMS_STOCK_LOW" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_STOCK_MANAGEMENT_QUANTITY" EntityType="V3Model.Store.WAMS_STOCK_MANAGEMENT_QUANTITY" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_STOCK_STATUS" EntityType="V3Model.Store.WAMS_STOCK_STATUS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_STOCK_TYPE" EntityType="V3Model.Store.WAMS_STOCK_TYPE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_STOCKIN" EntityType="V3Model.Store.WAMS_STOCKIN" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SUB_CATEGORY" EntityType="V3Model.Store.WAMS_SUB_CATEGORY" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SUPERVISOR" EntityType="V3Model.Store.WAMS_SUPERVISOR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SUPPLIER" EntityType="V3Model.Store.WAMS_SUPPLIER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SUPPLIER_SERVICE" EntityType="V3Model.Store.WAMS_SUPPLIER_SERVICE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_SUPPLIER_TYPE" EntityType="V3Model.Store.WAMS_SUPPLIER_TYPE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_TYPE_FUEL" EntityType="V3Model.Store.WAMS_TYPE_FUEL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_UNIT" EntityType="V3Model.Store.WAMS_UNIT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_USEFOR" EntityType="V3Model.Store.WAMS_USEFOR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_USER" EntityType="V3Model.Store.WAMS_USER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_USERALERT" EntityType="V3Model.Store.WAMS_USERALERT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_WAREHOUSE" EntityType="V3Model.Store.WAMS_WAREHOUSE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_WARRANTY_EXPIRE_ALERT" EntityType="V3Model.Store.WAMS_WARRANTY_EXPIRE_ALERT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_WORKER" EntityType="V3Model.Store.WAMS_WORKER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WAMS_WORKER_STATUS" EntityType="V3Model.Store.WAMS_WORKER_STATUS" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_WAMS_ASSIGN_WORKER_TOOLS_WAMS_WORKER" Association="V3Model.Store.FK_WAMS_ASSIGN_WORKER_TOOLS_WAMS_WORKER">
+      <End Role="WAMS_WORKER" EntitySet="WAMS_WORKER" />
+      <End Role="WAMS_ASSIGNING_WORKER_TOOLS" EntitySet="WAMS_ASSIGNING_WORKER_TOOLS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_ASSIGNING_WORKER_WAMS_WORKER" Association="V3Model.Store.FK_WAMS_ASSIGNING_WORKER_WAMS_WORKER">
+      <End Role="WAMS_WORKER" EntitySet="WAMS_WORKER" />
+      <End Role="WAMS_ASSIGNING_WORKER" EntitySet="WAMS_ASSIGNING_WORKER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_ASSIGNNING_STOCKS_WAMS_PROJECT" Association="V3Model.Store.FK_WAMS_ASSIGNNING_STOCKS_WAMS_PROJECT">
+      <End Role="WAMS_PROJECT" EntitySet="WAMS_PROJECT" />
+      <End Role="WAMS_ASSIGNNING_STOCKS" EntitySet="WAMS_ASSIGNNING_STOCKS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_ASSIGNNING_STOCKS_WAMS_STOCK" Association="V3Model.Store.FK_WAMS_ASSIGNNING_STOCKS_WAMS_STOCK">
+      <End Role="WAMS_STOCK" EntitySet="WAMS_STOCK" />
+      <End Role="WAMS_ASSIGNNING_STOCKS" EntitySet="WAMS_ASSIGNNING_STOCKS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_CAR_FUELOIL_DETAIL_WAMS_CAR" Association="V3Model.Store.FK_WAMS_CAR_FUELOIL_DETAIL_WAMS_CAR">
+      <End Role="WAMS_CAR" EntitySet="WAMS_CAR" />
+      <End Role="WAMS_CAR_FUELOIL_DETAIL" EntitySet="WAMS_CAR_FUELOIL_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_CAR_WAMS_POSITION" Association="V3Model.Store.FK_WAMS_CAR_WAMS_POSITION">
+      <End Role="WAMS_POSITION" EntitySet="WAMS_POSITION" />
+      <End Role="WAMS_CAR" EntitySet="WAMS_CAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_EQUIPMENT_WAMS_POSITION" Association="V3Model.Store.FK_WAMS_EQUIPMENT_WAMS_POSITION">
+      <End Role="WAMS_POSITION" EntitySet="WAMS_POSITION" />
+      <End Role="WAMS_EQUIPMENT" EntitySet="WAMS_EQUIPMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_FULFILLMENT_DETAIL_WAMS_STOCK" Association="V3Model.Store.FK_WAMS_FULFILLMENT_DETAIL_WAMS_STOCK">
+      <End Role="WAMS_STOCK" EntitySet="WAMS_STOCK" />
+      <End Role="WAMS_FULFILLMENT_DETAIL" EntitySet="WAMS_FULFILLMENT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_FUNCTION_MANAGEMENT_WAMS_USER" Association="V3Model.Store.FK_WAMS_FUNCTION_MANAGEMENT_WAMS_USER">
+      <End Role="WAMS_USER" EntitySet="WAMS_USER" />
+      <End Role="WAMS_FUNCTION_MANAGEMENT" EntitySet="WAMS_FUNCTION_MANAGEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_PAINT_WAMS_USEFOR" Association="V3Model.Store.FK_WAMS_PAINT_WAMS_USEFOR">
+      <End Role="WAMS_USEFOR" EntitySet="WAMS_USEFOR" />
+      <End Role="WAMS_PAINT" EntitySet="WAMS_PAINT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_PROJECT_Country" Association="V3Model.Store.FK_WAMS_PROJECT_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="WAMS_PROJECT" EntitySet="WAMS_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_PROJECT_Project_Client" Association="V3Model.Store.FK_WAMS_PROJECT_Project_Client">
+      <End Role="Project_Client" EntitySet="Project_Client" />
+      <End Role="WAMS_PROJECT" EntitySet="WAMS_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_PROJECT_WAMS_WORKER" Association="V3Model.Store.FK_WAMS_PROJECT_WAMS_WORKER">
+      <End Role="WAMS_WORKER" EntitySet="WAMS_WORKER" />
+      <End Role="WAMS_PROJECT" EntitySet="WAMS_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_PURCHASE_ORDER_WAMS_CURRENCY_TYPE" Association="V3Model.Store.FK_WAMS_PURCHASE_ORDER_WAMS_CURRENCY_TYPE">
+      <End Role="WAMS_CURRENCY_TYPE" EntitySet="WAMS_CURRENCY_TYPE" />
+      <End Role="WAMS_PURCHASE_ORDER" EntitySet="WAMS_PURCHASE_ORDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_PURCHASE_ORDER_WAMS_PO_TYPE" Association="V3Model.Store.FK_WAMS_PURCHASE_ORDER_WAMS_PO_TYPE">
+      <End Role="WAMS_PO_TYPE" EntitySet="WAMS_PO_TYPE" />
+      <End Role="WAMS_PURCHASE_ORDER" EntitySet="WAMS_PURCHASE_ORDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_PURCHASE_ORDER_WAMS_SUPPLIER" Association="V3Model.Store.FK_WAMS_PURCHASE_ORDER_WAMS_SUPPLIER">
+      <End Role="WAMS_SUPPLIER" EntitySet="WAMS_SUPPLIER" />
+      <End Role="WAMS_PURCHASE_ORDER" EntitySet="WAMS_PURCHASE_ORDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_RETURN_LIST_WAMS_PROJECT" Association="V3Model.Store.FK_WAMS_RETURN_LIST_WAMS_PROJECT">
+      <End Role="WAMS_PROJECT" EntitySet="WAMS_PROJECT" />
+      <End Role="WAMS_RETURN_LIST" EntitySet="WAMS_RETURN_LIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_RETURN_LIST_WAMS_STOCK" Association="V3Model.Store.FK_WAMS_RETURN_LIST_WAMS_STOCK">
+      <End Role="WAMS_STOCK" EntitySet="WAMS_STOCK" />
+      <End Role="WAMS_RETURN_LIST" EntitySet="WAMS_RETURN_LIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_RETURN_PRODUCT_TO_SUPPLIER_WAMS_SUPPLIER" Association="V3Model.Store.FK_WAMS_RETURN_PRODUCT_TO_SUPPLIER_WAMS_SUPPLIER">
+      <End Role="WAMS_SUPPLIER" EntitySet="WAMS_SUPPLIER" />
+      <End Role="WAMS_RETURN_PRODUCT_TO_SUPPLIER" EntitySet="WAMS_RETURN_PRODUCT_TO_SUPPLIER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_RETURNING_WORKER_TOOLS_WAMS_WORKER" Association="V3Model.Store.FK_WAMS_RETURNING_WORKER_TOOLS_WAMS_WORKER">
+      <End Role="WAMS_WORKER" EntitySet="WAMS_WORKER" />
+      <End Role="WAMS_RETURNING_WORKER_TOOLS" EntitySet="WAMS_RETURNING_WORKER_TOOLS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_STOCK_WAMS_MEASUREMENT" Association="V3Model.Store.FK_WAMS_STOCK_WAMS_MEASUREMENT">
+      <End Role="WAMS_MEASUREMENT" EntitySet="WAMS_MEASUREMENT" />
+      <End Role="WAMS_STOCK" EntitySet="WAMS_STOCK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_SUPPLIER_WAMS_SUPPLIER_TYPE" Association="V3Model.Store.FK_WAMS_SUPPLIER_WAMS_SUPPLIER_TYPE">
+      <End Role="WAMS_SUPPLIER_TYPE" EntitySet="WAMS_SUPPLIER_TYPE" />
+      <End Role="WAMS_SUPPLIER" EntitySet="WAMS_SUPPLIER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_USER_Store" Association="V3Model.Store.FK_WAMS_USER_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="WAMS_USER" EntitySet="WAMS_USER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAMS_WORKER_WAMS_POSITION" Association="V3Model.Store.FK_WAMS_WORKER_WAMS_POSITION">
+      <End Role="WAMS_POSITION" EntitySet="WAMS_POSITION" />
+      <End Role="WAMS_WORKER" EntitySet="WAMS_WORKER" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Change_Code">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FunctionId" Type="int" Nullable="false" />
+    <Property Name="OldCode" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="NewCode" Type="varbinary" Nullable="false" MaxLength="500" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Iso" Type="char" MaxLength="2" />
+    <Property Name="NameBasic" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="NameNice" Type="nvarchar" MaxLength="80" />
+    <Property Name="Iso3" Type="char" MaxLength="3" />
+    <Property Name="NumCode" Type="int" />
+    <Property Name="PhoneCode" Type="int" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="dtproperties">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="property" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="objectid" Type="int" />
+    <Property Name="property" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="value" Type="varchar" MaxLength="255" />
+    <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+    <Property Name="lvalue" Type="image" />
+    <Property Name="version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Functions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FName" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LookUp">
+    <Key>
+      <PropertyRef Name="LookUpId" />
+    </Key>
+    <Property Name="LookUpId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LookUpType" Type="nvarchar" MaxLength="50" />
+    <Property Name="LookUpKey" Type="nvarchar" MaxLength="100" />
+    <Property Name="LookUpValue" Type="nvarchar" MaxLength="200" />
+    <Property Name="Enable" Type="bit" />
+  </EntityType>
+  <EntityType Name="PaymentTerm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentName" Type="nvarchar" MaxLength="500" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Product_Price">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StockId" Type="int" />
+    <Property Name="Price" Type="decimal" Scale="2" />
+    <Property Name="StoreId" Type="int" />
+    <Property Name="SupplierId" Type="int" />
+    <Property Name="CurrencyId" Type="int" />
+    <Property Name="dStart" Type="datetime" />
+    <Property Name="dEnd" Type="datetime" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Project_Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="SIV">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SIV" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="vStatus" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="SRV">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SRV" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+    <Property Name="dDate" Type="datetime" Nullable="false" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Stock_File">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StockId" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+  </EntityType>
+  <EntityType Name="Stock_Picture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StockId" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sName" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="sCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Store_Stock">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Store" Type="int" Nullable="false" />
+    <Property Name="StockID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Nullable="false" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="WAMS_ASSIGNING_WORKER">
+    <Key>
+      <PropertyRef Name="bAssignWorkerID" />
+    </Key>
+    <Property Name="bAssignWorkerID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vWorkerID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vProjectID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="bDuration" Type="bigint" Nullable="false" />
+    <Property Name="dAssigningDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WAMS_ASSIGNING_WORKER_TOOLS">
+    <Key>
+      <PropertyRef Name="bWorkerToolID" />
+    </Key>
+    <Property Name="bWorkerToolID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vWorkerID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="bQuantity" Type="bigint" />
+    <Property Name="vStatus" Type="nvarchar" MaxLength="1024" />
+    <Property Name="dAssigningDate" Type="datetime" />
+    <Property Name="vReturned" Type="varchar" MaxLength="5" />
+    <Property Name="vReason" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="WAMS_ASSIGNNING_STOCKS">
+    <Key>
+      <PropertyRef Name="bAssignningStockID" />
+    </Key>
+    <Property Name="bAssignningStockID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vStockID" Type="int" Nullable="false" />
+    <Property Name="vProjectID" Type="int" />
+    <Property Name="bQuantity" Type="decimal" Scale="2" />
+    <Property Name="vWorkerID" Type="nvarchar" MaxLength="50" />
+    <Property Name="SIV" Type="nvarchar" MaxLength="50" />
+    <Property Name="vMRF" Type="nvarchar" MaxLength="50" />
+    <Property Name="FromStore" Type="int" />
+    <Property Name="ToStore" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="AccCheck" Type="int" />
+    <Property Name="AccDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="AccdCreated" Type="datetime" />
+    <Property Name="AccdModified" Type="datetime" />
+    <Property Name="AcciCreated" Type="int" />
+    <Property Name="AcciModidied" Type="int" />
+    <Property Name="FlagFile" Type="bit" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_ATTACHMENT">
+    <Key>
+      <PropertyRef Name="iAttachmentID" />
+    </Key>
+    <Property Name="iAttachmentID" Type="bigint" Nullable="false" />
+    <Property Name="bAttachment" Type="binary" Nullable="false" MaxLength="50" />
+    <Property Name="vAttachmentName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="dDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WAMS_AUDIT">
+    <Key>
+      <PropertyRef Name="iAuditID" />
+    </Key>
+    <Property Name="iAuditID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="iUserID" Type="bigint" Nullable="false" />
+    <Property Name="dDate" Type="datetime" Nullable="false" />
+    <Property Name="vName" Type="nvarchar" MaxLength="512" />
+    <Property Name="vAction" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="vTypeName" Type="nvarchar" MaxLength="512" />
+    <Property Name="iEnable" Type="bigint" />
+  </EntityType>
+  <EntityType Name="WAMS_AUDIT_TRAILS">
+    <Key>
+      <PropertyRef Name="bAuditID" />
+    </Key>
+    <Property Name="bAuditID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vUserName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vActionID" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vActionName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vActionType" Type="char" Nullable="false" MaxLength="64" />
+    <Property Name="dDate" Type="datetime" Nullable="false" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="WAMS_BRAND_FUEL">
+    <Key>
+      <PropertyRef Name="bBrandFuelID" />
+    </Key>
+    <Property Name="bBrandFuelID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vBrandName" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_CAR">
+    <Key>
+      <PropertyRef Name="bCarID" />
+    </Key>
+    <Property Name="bCarID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vCarID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vPlateNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="iRegistrationFrequency" Type="int" />
+    <Property Name="dLastRegistration" Type="datetime" />
+    <Property Name="bPositionID" Type="bigint" />
+    <Property Name="vColor" Type="nvarchar" MaxLength="64" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="1024" />
+    <Property Name="vModel" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vCondition" Type="nvarchar" Nullable="false" MaxLength="18" />
+  </EntityType>
+  <EntityType Name="WAMS_CAR_FUELOIL_DETAIL">
+    <Key>
+      <PropertyRef Name="bCFDID" />
+    </Key>
+    <Property Name="bCFDID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bCarID" Type="bigint" Nullable="false" />
+    <Property Name="bFuelOilID" Type="varchar" MaxLength="8" />
+    <Property Name="vProjectID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="dLastRefilled" Type="datetime" Nullable="false" />
+    <Property Name="bFuelQuantity" Type="float" />
+    <Property Name="bFuelKm" Type="float" />
+    <Property Name="bFuelHourUse" Type="float" />
+    <Property Name="bOillQuantity" Type="float" />
+    <Property Name="bOillKm" Type="float" />
+    <Property Name="bOillHourUse" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'V3.dbo.WAMS_CATALOGUE_CONFIGURATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="WAMS_CATALOGUE_CONFIGURATION">
+    <Key>
+      <PropertyRef Name="bConfiguration" />
+      <PropertyRef Name="vConfigurationName" />
+      <PropertyRef Name="vColor" />
+      <PropertyRef Name="vStockType" />
+    </Key>
+    <Property Name="bConfiguration" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vConfigurationName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="vDisplay1" Type="varchar" MaxLength="50" />
+    <Property Name="vDisplay2" Type="varchar" MaxLength="50" />
+    <Property Name="vDisplay3" Type="varchar" MaxLength="50" />
+    <Property Name="vDisplay4" Type="varchar" MaxLength="50" />
+    <Property Name="vDisplay5" Type="varchar" MaxLength="50" />
+    <Property Name="vDisplay6" Type="varchar" MaxLength="50" />
+    <Property Name="vColor" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="vStockType" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_CATEGORY">
+    <Key>
+      <PropertyRef Name="bCategoryID" />
+    </Key>
+    <Property Name="bCategoryID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vCategoryName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vCategoryType" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="iType" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_COMPANY_DETAILS">
+    <Key>
+      <PropertyRef Name="iCompanyID" />
+    </Key>
+    <Property Name="iCompanyID" Type="bigint" Nullable="false" />
+    <Property Name="vCompanyName" Type="nvarchar" MaxLength="256" />
+    <Property Name="vCompanyDetail" Type="nvarchar" MaxLength="1024" />
+    <Property Name="vCompanyPhone" Type="nvarchar" MaxLength="256" />
+    <Property Name="vFax" Type="nvarchar" MaxLength="50" />
+    <Property Name="vAddress" Type="nvarchar" MaxLength="256" />
+    <Property Name="vEmail" Type="nvarchar" MaxLength="256" />
+    <Property Name="vSite" Type="nvarchar" MaxLength="256" />
+    <Property Name="vCity" Type="nvarchar" MaxLength="256" />
+    <Property Name="vCountry" Type="nvarchar" MaxLength="256" />
+    <Property Name="TaxCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WAMS_CONSUMABLE_LIST">
+    <Key>
+      <PropertyRef Name="bConsumableListID" />
+    </Key>
+    <Property Name="bConsumableListID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vProjectID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="bQuantity" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WAMS_COUNTRY">
+    <Key>
+      <PropertyRef Name="iCountryID" />
+    </Key>
+    <Property Name="iCountryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vCountryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="vShortName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WAMS_CURRENCY_TYPE">
+    <Key>
+      <PropertyRef Name="bCurrencyTypeID" />
+    </Key>
+    <Property Name="bCurrencyTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vCurrencyName" Type="nvarchar" Nullable="false" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="WAMS_CURRENT_SUPERVISOR">
+    <Key>
+      <PropertyRef Name="vProjectID" />
+    </Key>
+    <Property Name="vProjectID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="bSupervisorID" Type="nvarchar" Nullable="false" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="WAMS_DESCRIPTION">
+    <Key>
+      <PropertyRef Name="bDescriptionID" />
+    </Key>
+    <Property Name="bDescriptionID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vDescriptionName" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_EQUIPMENT">
+    <Key>
+      <PropertyRef Name="bEquipmentID" />
+    </Key>
+    <Property Name="bEquipmentID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vEquipmentID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vWeight" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vPowerSource" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vPlugType" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="dWarrantyDate" Type="datetime" Nullable="false" />
+    <Property Name="dDateOfReceive" Type="datetime" Nullable="false" />
+    <Property Name="vSystematicMaintenance" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="bPositionID" Type="bigint" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="1024" />
+    <Property Name="vCondition" Type="nvarchar" Nullable="false" MaxLength="18" />
+  </EntityType>
+  <EntityType Name="WAMS_EQUIPMENT_FUELOIL_DETAIL">
+    <Key>
+      <PropertyRef Name="bEFDID" />
+    </Key>
+    <Property Name="bEFDID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bEquipmentID" Type="bigint" Nullable="false" />
+    <Property Name="bFuelOilID" Type="varchar" MaxLength="8" />
+    <Property Name="vProjectID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="dLastRefilled" Type="datetime" Nullable="false" />
+    <Property Name="bFuelQuantity" Type="float" />
+    <Property Name="bFuelKm" Type="float" />
+    <Property Name="bFuelHourUse" Type="float" />
+    <Property Name="bOillQuantity" Type="float" />
+    <Property Name="bOillKm" Type="float" />
+    <Property Name="bOillHourUse" Type="float" />
+  </EntityType>
+  <EntityType Name="WAMS_ERROR_MESSAGE">
+    <Key>
+      <PropertyRef Name="vErroID" />
+    </Key>
+    <Property Name="vErroID" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vEngMessage" Type="nvarchar" MaxLength="1024" />
+    <Property Name="vVNMessage" Type="nvarchar" MaxLength="1024" />
+  </EntityType>
+  <EntityType Name="WAMS_FUEL_OIL">
+    <Key>
+      <PropertyRef Name="bFuelOilID" />
+    </Key>
+    <Property Name="bFuelOilID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vBrand" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vType" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_FULFILLMENT_DETAIL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vPOID" Type="int" />
+    <Property Name="vStockID" Type="int" />
+    <Property Name="dQuantity" Type="decimal" Scale="2" />
+    <Property Name="dReceivedQuantity" Type="decimal" Scale="2" />
+    <Property Name="dPendingQuantity" Type="decimal" Scale="2" />
+    <Property Name="dDateDelivery" Type="datetime" />
+    <Property Name="iShipID" Type="nvarchar" MaxLength="16" />
+    <Property Name="tDescription" Type="text" />
+    <Property Name="vMRF" Type="nvarchar" MaxLength="16" />
+    <Property Name="dCurrenQuantity" Type="decimal" Scale="2" />
+    <Property Name="dInvoiceDate" Type="datetime" />
+    <Property Name="vInvoiceNo" Type="nvarchar" MaxLength="16" />
+    <Property Name="dImportTax" Type="decimal" Scale="2" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="dDateAssign" Type="datetime" />
+    <Property Name="SRV" Type="nvarchar" MaxLength="20" />
+    <Property Name="iStore" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="AccCheck" Type="int" />
+    <Property Name="AccDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="AccdCreated" Type="datetime" />
+    <Property Name="AccdModified" Type="datetime" />
+    <Property Name="AcciCreated" Type="int" />
+    <Property Name="AcciModidied" Type="int" />
+    <Property Name="FlagFile" Type="bit" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_FUNCTION_MANAGEMENT">
+    <Key>
+      <PropertyRef Name="bFunctionID" />
+    </Key>
+    <Property Name="bFunctionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bUserID" Type="int" />
+    <Property Name="vFunctionManagement" Type="nvarchar" MaxLength="256" />
+    <Property Name="vPrice" Type="nvarchar" MaxLength="32" />
+    <Property Name="iReport" Type="int" />
+    <Property Name="vLanguage" Type="nvarchar" MaxLength="50" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="User" Type="int" />
+    <Property Name="Project" Type="int" />
+    <Property Name="Store" Type="int" />
+    <Property Name="Stock" Type="int" />
+    <Property Name="Requisition" Type="int" />
+    <Property Name="StockOut" Type="int" />
+    <Property Name="StockReturn" Type="int" />
+    <Property Name="StockIn" Type="int" />
+    <Property Name="ReActiveStock" Type="int" />
+    <Property Name="PE" Type="int" />
+    <Property Name="Supplier" Type="int" />
+    <Property Name="Price" Type="int" />
+    <Property Name="StockService" Type="int" />
+    <Property Name="Accounting" Type="int" />
+    <Property Name="Maintenance" Type="int" />
+    <Property Name="Worker" Type="int" />
+    <Property Name="Shippment" Type="int" />
+    <Property Name="ReturnSupplier" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_HISTORY_ACTION">
+    <Key>
+      <PropertyRef Name="bActionID" />
+    </Key>
+    <Property Name="bActionID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nActionName" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="WAMS_HISTORY_FORM">
+    <Key>
+      <PropertyRef Name="bFormID" />
+    </Key>
+    <Property Name="bFormID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nFormName" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="WAMS_HISTORY_LOG">
+    <Key>
+      <PropertyRef Name="bHistoryLogID" />
+    </Key>
+    <Property Name="bHistoryLogID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vUserName" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="vFormName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vObject" Type="nvarchar" MaxLength="64" />
+    <Property Name="vActionName" Type="nvarchar" MaxLength="64" />
+    <Property Name="bQuantity" Type="float" />
+    <Property Name="dDate" Type="datetime" Nullable="false" />
+    <Property Name="dActionDate" Type="datetime" />
+    <Property Name="vDescription" Type="nvarchar" />
+    <Property Name="bObjectID" Type="bigint" />
+    <Property Name="bFormID" Type="bigint" />
+    <Property Name="bActionID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="WAMS_HISTORY_OBJECT">
+    <Key>
+      <PropertyRef Name="bObjectID" />
+    </Key>
+    <Property Name="bObjectID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nObjectName" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'V3.dbo.WAMS_IMAGES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="WAMS_IMAGES">
+    <Key>
+      <PropertyRef Name="vPhotoPath" />
+      <PropertyRef Name="Picture" />
+      <PropertyRef Name="Timestamp" />
+    </Key>
+    <Property Name="vPhotoPath" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Picture" Type="image" Nullable="false" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_ITEMS_SERVICE">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vIDServiceItem" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vServiceItemName" Type="nvarchar" MaxLength="2000" />
+    <Property Name="vDescription" Type="nvarchar" />
+    <Property Name="bCategoryID" Type="int" />
+    <Property Name="bUnitID" Type="int" />
+    <Property Name="bPositionID" Type="int" />
+    <Property Name="bSupplierID" Type="bigint" />
+    <Property Name="vStockType" Type="nvarchar" MaxLength="50" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="bWeight" Type="float" />
+    <Property Name="vAccountCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="StoreId" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'V3.dbo.WAMS_LABELS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="WAMS_LABELS">
+    <Key>
+      <PropertyRef Name="bLabelID" />
+      <PropertyRef Name="vLabelName" />
+      <PropertyRef Name="iTypeLabel" />
+      <PropertyRef Name="vStockType" />
+      <PropertyRef Name="Timestamp" />
+    </Key>
+    <Property Name="bLabelID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vLabelName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="isDislay1" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDislay2" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDislay3" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDislay4" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDislay5" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDislay6" Type="nvarchar" MaxLength="50" />
+    <Property Name="vColorsmall" Type="nvarchar" MaxLength="50" />
+    <Property Name="vColorbig" Type="nvarchar" MaxLength="50" />
+    <Property Name="iTypeLabel" Type="int" Nullable="false" />
+    <Property Name="vStockType" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="iType" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_MEASUREMENT">
+    <Key>
+      <PropertyRef Name="bMeasurementID" />
+    </Key>
+    <Property Name="bMeasurementID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vMeasurementName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_PAINT">
+    <Key>
+      <PropertyRef Name="bPaintID" />
+    </Key>
+    <Property Name="bPaintID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vPaintID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vRalNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="vColorName" Type="nvarchar" MaxLength="64" />
+    <Property Name="vPosition" Type="nvarchar" MaxLength="50" />
+    <Property Name="bSubcategoryID" Type="bigint" Nullable="false" />
+    <Property Name="bUseForID" Type="bigint" Nullable="false" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_PO_DETAILS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vPOID" Type="int" />
+    <Property Name="vUnit" Type="nvarchar" MaxLength="32" />
+    <Property Name="vInvoiceNo" Type="nvarchar" MaxLength="64" />
+    <Property Name="dInvoiceDate" Type="datetime" />
+    <Property Name="vMRF" Type="int" />
+    <Property Name="iDiscount" Type="int" />
+    <Property Name="vProductID" Type="int" />
+    <Property Name="fQuantity" Type="decimal" Scale="2" />
+    <Property Name="fVAT" Type="int" />
+    <Property Name="fImportTax" Type="decimal" Scale="2" />
+    <Property Name="fUnitPrice" Type="decimal" Scale="2" />
+    <Property Name="fItemTotal" Type="decimal" Scale="2" />
+    <Property Name="dDeliveryDate" Type="datetime" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="vRemark" Type="nvarchar" MaxLength="500" />
+    <Property Name="vPODetailStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="dDateAssign" Type="datetime" />
+    <Property Name="PriceId" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_PO_EVALUATION">
+    <Key>
+      <PropertyRef Name="bPOEvalID" />
+    </Key>
+    <Property Name="bPOEvalID" Type="bigint" Nullable="false" />
+    <Property Name="bPrice" Type="bigint" Nullable="false" />
+    <Property Name="bQuantity" Type="bigint" Nullable="false" />
+    <Property Name="bDelivery" Type="bigint" Nullable="false" />
+    <Property Name="bConformecyToV3" Type="bigint" Nullable="false" />
+    <Property Name="bGoodFrom" Type="bigint" Nullable="false" />
+    <Property Name="bGoodTo" Type="bigint" Nullable="false" />
+    <Property Name="bAcceptFrom" Type="bigint" Nullable="false" />
+    <Property Name="bAcceptTo" Type="bigint" Nullable="false" />
+    <Property Name="bPoorFrom" Type="bigint" Nullable="false" />
+    <Property Name="bPoorTo" Type="bigint" Nullable="false" />
+    <Property Name="bUnacceptFrom" Type="bigint" Nullable="false" />
+    <Property Name="bUnacceptTo" Type="bigint" Nullable="false" />
+    <Property Name="dDateChange" Type="datetime" Nullable="false" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'V3.dbo.WAMS_PO_Info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="WAMS_PO_Info">
+    <Key>
+      <PropertyRef Name="Timestamp" />
+    </Key>
+    <Property Name="NameUser" Type="nvarchar" MaxLength="500" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="CC" Type="nvarchar" MaxLength="100" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_PO_TYPE">
+    <Key>
+      <PropertyRef Name="bPOTypeID" />
+    </Key>
+    <Property Name="bPOTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vPOTypeName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_POSITION">
+    <Key>
+      <PropertyRef Name="bPositionID" />
+    </Key>
+    <Property Name="bPositionID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vPositionName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vProductID" Type="int" Nullable="false" />
+    <Property Name="bSupplierID" Type="int" Nullable="false" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="1024" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_PROJECT">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vProjectID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vProjectName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vLocation" Type="nvarchar" Nullable="false" MaxLength="300" />
+    <Property Name="vMainContact" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="vCompanyName" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="dBeginDate" Type="datetime" Nullable="false" />
+    <Property Name="vStatus" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vRemark" Type="nvarchar" MaxLength="1024" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="1024" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="iClient" Type="int" />
+    <Property Name="iCountry" Type="int" />
+    <Property Name="vSuppervisor" Type="nvarchar" MaxLength="16" />
+    <Property Name="iStore" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="dEnd" Type="datetime" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_PROJECT_SUPERVISOR">
+    <Key>
+      <PropertyRef Name="bProjectSupervisorID" />
+    </Key>
+    <Property Name="bProjectSupervisorID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bSupervisorID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vProjectID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_PURCHASE_ORDER">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vPOID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vProjectID" Type="int" />
+    <Property Name="bSupplierID" Type="int" Nullable="false" />
+    <Property Name="bPOTypeID" Type="int" />
+    <Property Name="bCurrencyTypeID" Type="int" />
+    <Property Name="dPODate" Type="datetime" Nullable="false" />
+    <Property Name="fPOTotal" Type="decimal" Scale="2" />
+    <Property Name="vRemark" Type="nvarchar" MaxLength="1024" />
+    <Property Name="vPriceEval" Type="nvarchar" MaxLength="16" />
+    <Property Name="vQuanlityEval" Type="nvarchar" MaxLength="16" />
+    <Property Name="vDeliveryEval" Type="nvarchar" MaxLength="16" />
+    <Property Name="vConformancyToV3Eval" Type="nvarchar" MaxLength="16" />
+    <Property Name="vFromCC" Type="nvarchar" MaxLength="256" />
+    <Property Name="vFromContact" Type="nvarchar" MaxLength="256" />
+    <Property Name="vFromTel" Type="nvarchar" MaxLength="64" />
+    <Property Name="vFromFax" Type="nvarchar" MaxLength="64" />
+    <Property Name="vTermOfPayment" Type="nvarchar" MaxLength="64" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="iExample" Type="int" />
+    <Property Name="vPOStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="vLocation" Type="nvarchar" MaxLength="200" />
+    <Property Name="dDeliverDate" Type="datetime" />
+    <Property Name="iStore" Type="int" />
+    <Property Name="iPayment" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_REPORT">
+    <Key>
+      <PropertyRef Name="bReportID" />
+    </Key>
+    <Property Name="bReportID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vReportName" Type="nvarchar" MaxLength="100" />
+    <Property Name="vProjectID" Type="nvarchar" MaxLength="16" />
+    <Property Name="bStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="WAMS_REPORT_DETAILS">
+    <Key>
+      <PropertyRef Name="bReportDetailID" />
+    </Key>
+    <Property Name="bReportDetailID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bReportID" Type="bigint" />
+    <Property Name="vStockName" Type="nvarchar" MaxLength="200" />
+    <Property Name="bQuantity" Type="float" />
+    <Property Name="dDateAssign" Type="datetime" />
+    <Property Name="vWorkerID" Type="nvarchar" MaxLength="100" />
+    <Property Name="vWorkerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="vStockID" Type="nvarchar" MaxLength="16" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="WAMS_REQUISITION_DETAILS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vMRF" Type="int" />
+    <Property Name="vStockID" Type="int" />
+    <Property Name="fQuantity" Type="decimal" Scale="2" />
+    <Property Name="fUMO" Type="float" />
+    <Property Name="fInStock" Type="float" />
+    <Property Name="fTobePurchased" Type="decimal" Scale="2" />
+    <Property Name="iFollowUpRequired" Type="int" />
+    <Property Name="iPurchased" Type="int" />
+    <Property Name="iSent" Type="int" />
+    <Property Name="vStatus" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="dDateAssign" Type="datetime" />
+    <Property Name="iStore" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_REQUISITION_MASTER">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vMRF" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vFrom" Type="nvarchar" MaxLength="500" />
+    <Property Name="vProjectID" Type="int" />
+    <Property Name="dDeliverDate" Type="datetime" />
+    <Property Name="vDeliverLocation" Type="nvarchar" MaxLength="300" />
+    <Property Name="vRemark" Type="nvarchar" MaxLength="500" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="vStatus" Type="nvarchar" MaxLength="16" />
+    <Property Name="iStore" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_RETURN_LIST">
+    <Key>
+      <PropertyRef Name="bReturnListID" />
+    </Key>
+    <Property Name="bReturnListID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vStockID" Type="int" Nullable="false" />
+    <Property Name="vProjectID" Type="int" />
+    <Property Name="bQuantity" Type="decimal" Scale="2" />
+    <Property Name="vCondition" Type="nvarchar" MaxLength="18" />
+    <Property Name="SRV" Type="nvarchar" MaxLength="20" />
+    <Property Name="FromStore" Type="int" />
+    <Property Name="ToStore" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="AccCheck" Type="int" />
+    <Property Name="AccDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="AccdCreated" Type="datetime" />
+    <Property Name="AccdModified" Type="datetime" />
+    <Property Name="AcciCreated" Type="int" />
+    <Property Name="AcciModidied" Type="int" />
+    <Property Name="FlagFile" Type="bit" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_RETURN_PRODUCT_TO_SUPPLIER">
+    <Key>
+      <PropertyRef Name="bReturnID" />
+    </Key>
+    <Property Name="bReturnID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vStockID" Type="nvarchar" MaxLength="16" />
+    <Property Name="bSupplierID" Type="int" />
+    <Property Name="fQuantity" Type="float" />
+    <Property Name="dDateReturn" Type="datetime" />
+    <Property Name="vCondition" Type="nvarchar" MaxLength="50" />
+    <Property Name="iServiceFlag" Type="int" />
+    <Property Name="vRemark" Type="nvarchar" MaxLength="50" />
+    <Property Name="vPOID" Type="nvarchar" MaxLength="16" />
+    <Property Name="iEnable" Type="int" />
+    <Property Name="fStockQuantity" Type="float" />
+    <Property Name="chkPurchased" Type="varchar" MaxLength="20" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_RETURNING_WORKER_TOOLS">
+    <Key>
+      <PropertyRef Name="bWorkerReturnID" />
+    </Key>
+    <Property Name="bWorkerReturnID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vWorkerID" Type="nvarchar" MaxLength="16" />
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="bQuantity" Type="float" Nullable="false" />
+    <Property Name="dDateReturn" Type="datetime" Nullable="false" />
+    <Property Name="vStatus" Type="nvarchar" MaxLength="1024" />
+    <Property Name="IssuedQuantity" Type="float" />
+  </EntityType>
+  <EntityType Name="WAMS_SCAFOLDING">
+    <Key>
+      <PropertyRef Name="bScaffoldingID" />
+    </Key>
+    <Property Name="bScaffoldingID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vScaffoldingID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vScaffoldingType" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="vScaffoldingName" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_SERVICE">
+    <Key>
+      <PropertyRef Name="bServiceID" />
+    </Key>
+    <Property Name="bServiceID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="bSupplierID" Type="bigint" Nullable="false" />
+    <Property Name="bHourSpend" Type="bigint" Nullable="false" />
+    <Property Name="vMaintenanceWorker" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="bPrice" Type="bigint" Nullable="false" />
+    <Property Name="bVAT" Type="bigint" />
+    <Property Name="fSubTotal" Type="float" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="bReturn" Type="bigint" />
+  </EntityType>
+  <EntityType Name="WAMS_SERVICE_ALERT_CONFIG">
+    <Key>
+      <PropertyRef Name="bServiceAlertID" />
+    </Key>
+    <Property Name="bServiceAlertID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bServiceCost" Type="bigint" />
+  </EntityType>
+  <EntityType Name="WAMS_SERVICE_HISTORY">
+    <Key>
+      <PropertyRef Name="bServiceID" />
+    </Key>
+    <Property Name="bServiceID" Type="bigint" Nullable="false" />
+    <Property Name="dServiceDate" Type="datetime" Nullable="false" />
+    <Property Name="dReturnDate" Type="datetime" />
+    <Property Name="vCondition" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WAMS_SHIPMENT">
+    <Key>
+      <PropertyRef Name="iShipID" />
+    </Key>
+    <Property Name="iShipID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="dShipDate" Type="datetime" />
+    <Property Name="vCountry" Type="nvarchar" MaxLength="16" />
+    <Property Name="vRemark" Type="nvarchar" MaxLength="500" />
+    <Property Name="dETAatPort" Type="datetime" />
+    <Property Name="dETABC" Type="datetime" />
+    <Property Name="vForWhat" Type="nvarchar" MaxLength="500" />
+    <Property Name="vPaymentStatus" Type="nvarchar" MaxLength="150" />
+    <Property Name="fTotalShip" Type="float" />
+    <Property Name="iEnable" Type="int" />
+  </EntityType>
+  <EntityType Name="WAMS_SHIPMENT_DETAIL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="iShipID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="vPOID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="dPODate" Type="datetime" />
+    <Property Name="vPOStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="vCusStatement" Type="nvarchar" MaxLength="50" />
+    <Property Name="dStatementDate" Type="datetime" />
+    <Property Name="fImportTax" Type="float" />
+    <Property Name="fVAT" Type="float" />
+    <Property Name="fRealArriveQuantity" Type="float" />
+    <Property Name="vCurrencyName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="vClearanceByShipper" Type="nvarchar" MaxLength="50" />
+    <Property Name="vGoodDescription" Type="nvarchar" MaxLength="150" />
+    <Property Name="iEnable" Type="int" />
+  </EntityType>
+  <EntityType Name="WAMS_SPAREPART">
+    <Key>
+      <PropertyRef Name="bSparepartID" />
+    </Key>
+    <Property Name="bSparepartID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vSparepartID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="bMinimumQuantity" Type="bigint" Nullable="false" />
+    <Property Name="vFor" Type="nchar" Nullable="false" MaxLength="64" />
+    <Property Name="vPartNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WAMS_STOCK">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vStockName" Type="nvarchar" Nullable="false" MaxLength="2000" />
+    <Property Name="vRemark" Type="nvarchar" MaxLength="1024" />
+    <Property Name="bUnitID" Type="int" />
+    <Property Name="bMeasurementID" Type="bigint" />
+    <Property Name="vBrand" Type="nvarchar" MaxLength="128" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="bCategoryID" Type="int" />
+    <Property Name="bPositionID" Type="int" />
+    <Property Name="bLabelID" Type="int" />
+    <Property Name="bWeight" Type="float" />
+    <Property Name="vAccountCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="iType" Type="int" />
+    <Property Name="PartNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartNoFor" Type="nvarchar" MaxLength="64" />
+    <Property Name="PartNoMiniQty" Type="int" />
+    <Property Name="RalNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorName" Type="nvarchar" MaxLength="64" />
+    <Property Name="Position" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubCategory" Type="int" />
+    <Property Name="UserForPaint" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_STOCK_ALERT_CONFIG">
+    <Key>
+      <PropertyRef Name="bStockAlertID" />
+    </Key>
+    <Property Name="bStockAlertID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bStockAlertQuantity" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'V3.dbo.WAMS_STOCK_APPROVAL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="WAMS_STOCK_APPROVAL">
+    <Key>
+      <PropertyRef Name="vStockID" />
+    </Key>
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="dDate" Type="datetime" />
+    <Property Name="bStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="WAMS_STOCK_LOG">
+    <Key>
+      <PropertyRef Name="bStockLogID" />
+    </Key>
+    <Property Name="bStockLogID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vUserName" Type="varchar" MaxLength="50" />
+    <Property Name="dActionDate" Type="datetime" />
+    <Property Name="vActionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FormName" Type="nvarchar" MaxLength="50" />
+    <Property Name="vStockID" Type="varchar" MaxLength="50" />
+    <Property Name="vStockName" Type="nvarchar" MaxLength="50" />
+    <Property Name="vStockType" Type="nvarchar" MaxLength="50" />
+    <Property Name="dDate" Type="datetime" />
+    <Property Name="bQuantity" Type="float" />
+    <Property Name="vProjectName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StockCondition" Type="nvarchar" MaxLength="50" />
+    <Property Name="vDescription" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="WAMS_STOCK_LOW">
+    <Key>
+      <PropertyRef Name="vStockID" />
+    </Key>
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vStockType" Type="nvarchar" MaxLength="64" />
+    <Property Name="bMiniQuantity" Type="bigint" />
+  </EntityType>
+  <EntityType Name="WAMS_STOCK_MANAGEMENT_QUANTITY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vStockID" Type="int" Nullable="false" />
+    <Property Name="dQuantityCurrent" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="dQuantityChange" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="dQuantityAfterChange" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="vStatus" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="vStatusID" Type="nvarchar" MaxLength="10" />
+    <Property Name="bUserID" Type="int" />
+    <Property Name="vProjectID" Type="int" />
+    <Property Name="vMRF" Type="int" />
+    <Property Name="vPOID" Type="int" />
+    <Property Name="bSupplierID" Type="int" />
+    <Property Name="dDate" Type="datetime" Nullable="false" />
+    <Property Name="FromStore" Type="int" />
+    <Property Name="ToStore" Type="int" />
+  </EntityType>
+  <EntityType Name="WAMS_STOCK_STATUS">
+    <Key>
+      <PropertyRef Name="vStockID" />
+    </Key>
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vProjectID" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="WAMS_STOCK_TYPE">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vTypeName" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_STOCKIN">
+    <Key>
+      <PropertyRef Name="vStockID" />
+      <PropertyRef Name="dStockInDate" />
+    </Key>
+    <Property Name="vStockID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="dStockInDate" Type="datetime" Nullable="false" />
+    <Property Name="QtyOpenBal" Type="float" />
+    <Property Name="Received" Type="float" />
+    <Property Name="Issued" Type="float" />
+  </EntityType>
+  <EntityType Name="WAMS_SUB_CATEGORY">
+    <Key>
+      <PropertyRef Name="bSubCategoryID" />
+    </Key>
+    <Property Name="bSubCategoryID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vSubCategoryName" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_SUPERVISOR">
+    <Key>
+      <PropertyRef Name="bSupervisorID" />
+    </Key>
+    <Property Name="bSupervisorID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vSupervisorName" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_SUPPLIER">
+    <Key>
+      <PropertyRef Name="bSupplierID" />
+    </Key>
+    <Property Name="bSupplierID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vSupplierName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vAddress" Type="nvarchar" MaxLength="256" />
+    <Property Name="vCity" Type="nvarchar" MaxLength="64" />
+    <Property Name="vPhone1" Type="nvarchar" MaxLength="32" />
+    <Property Name="vPhone2" Type="nvarchar" MaxLength="32" />
+    <Property Name="vMobile" Type="nvarchar" MaxLength="32" />
+    <Property Name="vFax" Type="nvarchar" MaxLength="32" />
+    <Property Name="vEmail" Type="nvarchar" MaxLength="64" />
+    <Property Name="vContactPerson" Type="nvarchar" MaxLength="256" />
+    <Property Name="fTotalMoney" Type="decimal" Scale="2" />
+    <Property Name="bSupplierTypeID" Type="int" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="iService" Type="int" />
+    <Property Name="dDateCreate" Type="datetime" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="iMarket" Type="bit" />
+    <Property Name="iStore" Type="int" />
+    <Property Name="iPayment" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_SUPPLIER_SERVICE">
+    <Key>
+      <PropertyRef Name="bSupplierServiceID" />
+    </Key>
+    <Property Name="bSupplierServiceID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bSupplierID" Type="int" />
+    <Property Name="vService" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="WAMS_SUPPLIER_TYPE">
+    <Key>
+      <PropertyRef Name="bSupplierTypeID" />
+    </Key>
+    <Property Name="bSupplierTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vSupplierTypeName" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_TYPE_FUEL">
+    <Key>
+      <PropertyRef Name="bTypeFuelID" />
+    </Key>
+    <Property Name="bTypeFuelID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vTypeFuelName" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_UNIT">
+    <Key>
+      <PropertyRef Name="bUnitID" />
+    </Key>
+    <Property Name="bUnitID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vUnitName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vUnitType" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="bSubQuantity" Type="float" />
+    <Property Name="vSubUnitName" Type="nvarchar" MaxLength="64" />
+    <Property Name="iType" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_USEFOR">
+    <Key>
+      <PropertyRef Name="bUseForID" />
+    </Key>
+    <Property Name="bUseForID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vUseForName" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="WAMS_USER">
+    <Key>
+      <PropertyRef Name="bUserId" />
+    </Key>
+    <Property Name="bUserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vUsername" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vPassword" Type="varchar" MaxLength="64" />
+    <Property Name="vFirstName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vLastName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vDepartment" Type="nvarchar" MaxLength="64" />
+    <Property Name="vPhone" Type="nvarchar" MaxLength="32" />
+    <Property Name="vMobile" Type="nvarchar" MaxLength="32" />
+    <Property Name="vEmail" Type="nvarchar" MaxLength="64" />
+    <Property Name="iEnable" Type="bit" />
+    <Property Name="vNewPassword" Type="nvarchar" MaxLength="500" />
+    <Property Name="storeId" Type="int" />
+    <Property Name="dCreated" Type="datetime" />
+    <Property Name="dModified" Type="datetime" />
+    <Property Name="iCreated" Type="int" />
+    <Property Name="iModified" Type="int" />
+    <Property Name="Timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WAMS_USERALERT">
+    <Key>
+      <PropertyRef Name="bUserId" />
+    </Key>
+    <Property Name="bUserId" Type="bigint" Nullable="false" />
+    <Property Name="iAlert" Type="varchar" MaxLength="200" />
+    <Property Name="iEnable" Type="smallint" />
+  </EntityType>
+  <EntityType Name="WAMS_WAREHOUSE">
+    <Key>
+      <PropertyRef Name="bWarehouseID" />
+    </Key>
+    <Property Name="bWarehouseID" Type="bigint" Nullable="false" />
+    <Property Name="vWarehouseName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vWarehouseAddr" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="WAMS_WARRANTY_EXPIRE_ALERT">
+    <Key>
+      <PropertyRef Name="bWarrantyExpire" />
+    </Key>
+    <Property Name="bWarrantyExpire" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bWarrantyDate" Type="bigint" />
+    <Property Name="bTimesNumberShow" Type="int" />
+    <Property Name="vStockID" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="WAMS_WORKER">
+    <Key>
+      <PropertyRef Name="vWorkerID" />
+    </Key>
+    <Property Name="vWorkerID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vFirstName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="vLastName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="dDateOfBirth" Type="datetime" />
+    <Property Name="vAddress" Type="nvarchar" MaxLength="256" />
+    <Property Name="vPhone" Type="nvarchar" MaxLength="16" />
+    <Property Name="vMobile" Type="nvarchar" MaxLength="16" />
+    <Property Name="bPositionID" Type="bigint" />
+    <Property Name="vDetail" Type="nvarchar" MaxLength="1024" />
+    <Property Name="vRemark" Type="nvarchar" MaxLength="1024" />
+    <Property Name="vPhotoPath" Type="nvarchar" MaxLength="100" />
+    <Property Name="iEnable" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WAMS_WORKER_STATUS">
+    <Key>
+      <PropertyRef Name="vWorkerID" />
+    </Key>
+    <Property Name="vWorkerID" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="vProjectID" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <Association Name="FK_WAMS_ASSIGN_WORKER_TOOLS_WAMS_WORKER">
+    <End Role="WAMS_WORKER" Type="V3Model.Store.WAMS_WORKER" Multiplicity="1" />
+    <End Role="WAMS_ASSIGNING_WORKER_TOOLS" Type="V3Model.Store.WAMS_ASSIGNING_WORKER_TOOLS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_WORKER">
+        <PropertyRef Name="vWorkerID" />
+      </Principal>
+      <Dependent Role="WAMS_ASSIGNING_WORKER_TOOLS">
+        <PropertyRef Name="vWorkerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_ASSIGNING_WORKER_WAMS_WORKER">
+    <End Role="WAMS_WORKER" Type="V3Model.Store.WAMS_WORKER" Multiplicity="1" />
+    <End Role="WAMS_ASSIGNING_WORKER" Type="V3Model.Store.WAMS_ASSIGNING_WORKER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_WORKER">
+        <PropertyRef Name="vWorkerID" />
+      </Principal>
+      <Dependent Role="WAMS_ASSIGNING_WORKER">
+        <PropertyRef Name="vWorkerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_ASSIGNNING_STOCKS_WAMS_PROJECT">
+    <End Role="WAMS_PROJECT" Type="V3Model.Store.WAMS_PROJECT" Multiplicity="0..1" />
+    <End Role="WAMS_ASSIGNNING_STOCKS" Type="V3Model.Store.WAMS_ASSIGNNING_STOCKS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_PROJECT">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WAMS_ASSIGNNING_STOCKS">
+        <PropertyRef Name="vProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_ASSIGNNING_STOCKS_WAMS_STOCK">
+    <End Role="WAMS_STOCK" Type="V3Model.Store.WAMS_STOCK" Multiplicity="1" />
+    <End Role="WAMS_ASSIGNNING_STOCKS" Type="V3Model.Store.WAMS_ASSIGNNING_STOCKS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_STOCK">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WAMS_ASSIGNNING_STOCKS">
+        <PropertyRef Name="vStockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_CAR_FUELOIL_DETAIL_WAMS_CAR">
+    <End Role="WAMS_CAR" Type="V3Model.Store.WAMS_CAR" Multiplicity="1" />
+    <End Role="WAMS_CAR_FUELOIL_DETAIL" Type="V3Model.Store.WAMS_CAR_FUELOIL_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_CAR">
+        <PropertyRef Name="bCarID" />
+      </Principal>
+      <Dependent Role="WAMS_CAR_FUELOIL_DETAIL">
+        <PropertyRef Name="bCarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_CAR_WAMS_POSITION">
+    <End Role="WAMS_POSITION" Type="V3Model.Store.WAMS_POSITION" Multiplicity="0..1" />
+    <End Role="WAMS_CAR" Type="V3Model.Store.WAMS_CAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_POSITION">
+        <PropertyRef Name="bPositionID" />
+      </Principal>
+      <Dependent Role="WAMS_CAR">
+        <PropertyRef Name="bPositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_EQUIPMENT_WAMS_POSITION">
+    <End Role="WAMS_POSITION" Type="V3Model.Store.WAMS_POSITION" Multiplicity="0..1" />
+    <End Role="WAMS_EQUIPMENT" Type="V3Model.Store.WAMS_EQUIPMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_POSITION">
+        <PropertyRef Name="bPositionID" />
+      </Principal>
+      <Dependent Role="WAMS_EQUIPMENT">
+        <PropertyRef Name="bPositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_FULFILLMENT_DETAIL_WAMS_STOCK">
+    <End Role="WAMS_STOCK" Type="V3Model.Store.WAMS_STOCK" Multiplicity="0..1" />
+    <End Role="WAMS_FULFILLMENT_DETAIL" Type="V3Model.Store.WAMS_FULFILLMENT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_STOCK">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WAMS_FULFILLMENT_DETAIL">
+        <PropertyRef Name="vStockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_FUNCTION_MANAGEMENT_WAMS_USER">
+    <End Role="WAMS_USER" Type="V3Model.Store.WAMS_USER" Multiplicity="0..1" />
+    <End Role="WAMS_FUNCTION_MANAGEMENT" Type="V3Model.Store.WAMS_FUNCTION_MANAGEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_USER">
+        <PropertyRef Name="bUserId" />
+      </Principal>
+      <Dependent Role="WAMS_FUNCTION_MANAGEMENT">
+        <PropertyRef Name="bUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_PAINT_WAMS_USEFOR">
+    <End Role="WAMS_USEFOR" Type="V3Model.Store.WAMS_USEFOR" Multiplicity="1" />
+    <End Role="WAMS_PAINT" Type="V3Model.Store.WAMS_PAINT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_USEFOR">
+        <PropertyRef Name="bUseForID" />
+      </Principal>
+      <Dependent Role="WAMS_PAINT">
+        <PropertyRef Name="bUseForID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_PROJECT_Country">
+    <End Role="Country" Type="V3Model.Store.Country" Multiplicity="0..1" />
+    <End Role="WAMS_PROJECT" Type="V3Model.Store.WAMS_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WAMS_PROJECT">
+        <PropertyRef Name="iCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_PROJECT_Project_Client">
+    <End Role="Project_Client" Type="V3Model.Store.Project_Client" Multiplicity="0..1" />
+    <End Role="WAMS_PROJECT" Type="V3Model.Store.WAMS_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project_Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WAMS_PROJECT">
+        <PropertyRef Name="iClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_PROJECT_WAMS_WORKER">
+    <End Role="WAMS_WORKER" Type="V3Model.Store.WAMS_WORKER" Multiplicity="0..1" />
+    <End Role="WAMS_PROJECT" Type="V3Model.Store.WAMS_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_WORKER">
+        <PropertyRef Name="vWorkerID" />
+      </Principal>
+      <Dependent Role="WAMS_PROJECT">
+        <PropertyRef Name="vSuppervisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_PURCHASE_ORDER_WAMS_CURRENCY_TYPE">
+    <End Role="WAMS_CURRENCY_TYPE" Type="V3Model.Store.WAMS_CURRENCY_TYPE" Multiplicity="0..1" />
+    <End Role="WAMS_PURCHASE_ORDER" Type="V3Model.Store.WAMS_PURCHASE_ORDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_CURRENCY_TYPE">
+        <PropertyRef Name="bCurrencyTypeID" />
+      </Principal>
+      <Dependent Role="WAMS_PURCHASE_ORDER">
+        <PropertyRef Name="bCurrencyTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_PURCHASE_ORDER_WAMS_PO_TYPE">
+    <End Role="WAMS_PO_TYPE" Type="V3Model.Store.WAMS_PO_TYPE" Multiplicity="0..1" />
+    <End Role="WAMS_PURCHASE_ORDER" Type="V3Model.Store.WAMS_PURCHASE_ORDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_PO_TYPE">
+        <PropertyRef Name="bPOTypeID" />
+      </Principal>
+      <Dependent Role="WAMS_PURCHASE_ORDER">
+        <PropertyRef Name="bPOTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_PURCHASE_ORDER_WAMS_SUPPLIER">
+    <End Role="WAMS_SUPPLIER" Type="V3Model.Store.WAMS_SUPPLIER" Multiplicity="1" />
+    <End Role="WAMS_PURCHASE_ORDER" Type="V3Model.Store.WAMS_PURCHASE_ORDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_SUPPLIER">
+        <PropertyRef Name="bSupplierID" />
+      </Principal>
+      <Dependent Role="WAMS_PURCHASE_ORDER">
+        <PropertyRef Name="bSupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_RETURN_LIST_WAMS_PROJECT">
+    <End Role="WAMS_PROJECT" Type="V3Model.Store.WAMS_PROJECT" Multiplicity="0..1" />
+    <End Role="WAMS_RETURN_LIST" Type="V3Model.Store.WAMS_RETURN_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_PROJECT">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WAMS_RETURN_LIST">
+        <PropertyRef Name="vProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_RETURN_LIST_WAMS_STOCK">
+    <End Role="WAMS_STOCK" Type="V3Model.Store.WAMS_STOCK" Multiplicity="1" />
+    <End Role="WAMS_RETURN_LIST" Type="V3Model.Store.WAMS_RETURN_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_STOCK">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WAMS_RETURN_LIST">
+        <PropertyRef Name="vStockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_RETURN_PRODUCT_TO_SUPPLIER_WAMS_SUPPLIER">
+    <End Role="WAMS_SUPPLIER" Type="V3Model.Store.WAMS_SUPPLIER" Multiplicity="0..1" />
+    <End Role="WAMS_RETURN_PRODUCT_TO_SUPPLIER" Type="V3Model.Store.WAMS_RETURN_PRODUCT_TO_SUPPLIER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_SUPPLIER">
+        <PropertyRef Name="bSupplierID" />
+      </Principal>
+      <Dependent Role="WAMS_RETURN_PRODUCT_TO_SUPPLIER">
+        <PropertyRef Name="bSupplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_RETURNING_WORKER_TOOLS_WAMS_WORKER">
+    <End Role="WAMS_WORKER" Type="V3Model.Store.WAMS_WORKER" Multiplicity="0..1" />
+    <End Role="WAMS_RETURNING_WORKER_TOOLS" Type="V3Model.Store.WAMS_RETURNING_WORKER_TOOLS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_WORKER">
+        <PropertyRef Name="vWorkerID" />
+      </Principal>
+      <Dependent Role="WAMS_RETURNING_WORKER_TOOLS">
+        <PropertyRef Name="vWorkerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_STOCK_WAMS_MEASUREMENT">
+    <End Role="WAMS_MEASUREMENT" Type="V3Model.Store.WAMS_MEASUREMENT" Multiplicity="0..1" />
+    <End Role="WAMS_STOCK" Type="V3Model.Store.WAMS_STOCK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_MEASUREMENT">
+        <PropertyRef Name="bMeasurementID" />
+      </Principal>
+      <Dependent Role="WAMS_STOCK">
+        <PropertyRef Name="bMeasurementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_SUPPLIER_WAMS_SUPPLIER_TYPE">
+    <End Role="WAMS_SUPPLIER_TYPE" Type="V3Model.Store.WAMS_SUPPLIER_TYPE" Multiplicity="0..1" />
+    <End Role="WAMS_SUPPLIER" Type="V3Model.Store.WAMS_SUPPLIER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_SUPPLIER_TYPE">
+        <PropertyRef Name="bSupplierTypeID" />
+      </Principal>
+      <Dependent Role="WAMS_SUPPLIER">
+        <PropertyRef Name="bSupplierTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_USER_Store">
+    <End Role="Store" Type="V3Model.Store.Store" Multiplicity="0..1" />
+    <End Role="WAMS_USER" Type="V3Model.Store.WAMS_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WAMS_USER">
+        <PropertyRef Name="storeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAMS_WORKER_WAMS_POSITION">
+    <End Role="WAMS_POSITION" Type="V3Model.Store.WAMS_POSITION" Multiplicity="0..1" />
+    <End Role="WAMS_WORKER" Type="V3Model.Store.WAMS_WORKER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAMS_POSITION">
+        <PropertyRef Name="bPositionID" />
+      </Principal>
+      <Dependent Role="WAMS_WORKER">
+        <PropertyRef Name="bPositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CIntToChar" ReturnType="nvarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="intVal" Type="bigint" Mode="In" />
+    <Parameter Name="intLen" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConvertAccCheck" ReturnType="nvarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="check" Type="int" Mode="In" />
+  </Function>
+  <Function Name="dt_addtosourcecontrol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vchSourceSafeINI" Type="varchar" Mode="In" />
+    <Parameter Name="vchProjectName" Type="varchar" Mode="In" />
+    <Parameter Name="vchComment" Type="varchar" Mode="In" />
+    <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="dt_addtosourcecontrol_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vchSourceSafeINI" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchProjectName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchComment" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="dt_adduserobject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="dt_adduserobject_vcs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vchProperty" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="dt_checkinobject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chObjectType" Type="char" Mode="In" />
+    <Parameter Name="vchObjectName" Type="varchar" Mode="In" />
+    <Parameter Name="vchComment" Type="varchar" Mode="In" />
+    <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+    <Parameter Name="iVCSFlags" Type="int" Mode="In" />
+    <Parameter Name="iActionFlag" Type="int" Mode="In" />
+    <Parameter Name="txStream1" Type="text" Mode="In" />
+    <Parameter Name="txStream2" Type="text" Mode="In" />
+    <Parameter Name="txStream3" Type="text" Mode="In" />
+  </Function>
+  <Function Name="dt_checkinobject_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chObjectType" Type="char" Mode="In" />
+    <Parameter Name="vchObjectName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchComment" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="iVCSFlags" Type="int" Mode="In" />
+    <Parameter Name="iActionFlag" Type="int" Mode="In" />
+    <Parameter Name="txStream1" Type="text" Mode="In" />
+    <Parameter Name="txStream2" Type="text" Mode="In" />
+    <Parameter Name="txStream3" Type="text" Mode="In" />
+  </Function>
+  <Function Name="dt_checkoutobject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chObjectType" Type="char" Mode="In" />
+    <Parameter Name="vchObjectName" Type="varchar" Mode="In" />
+    <Parameter Name="vchComment" Type="varchar" Mode="In" />
+    <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+    <Parameter Name="iVCSFlags" Type="int" Mode="In" />
+    <Parameter Name="iActionFlag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="dt_checkoutobject_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chObjectType" Type="char" Mode="In" />
+    <Parameter Name="vchObjectName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchComment" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="iVCSFlags" Type="int" Mode="In" />
+    <Parameter Name="iActionFlag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="dt_displayoaerror" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="iObject" Type="int" Mode="In" />
+    <Parameter Name="iresult" Type="int" Mode="In" />
+  </Function>
+  <Function Name="dt_displayoaerror_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="iObject" Type="int" Mode="In" />
+    <Parameter Name="iresult" Type="int" Mode="In" />
+  </Function>
+  <Function Name="dt_droppropertiesbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="property" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="dt_dropuserobjectbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="dt_generateansiname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="dt_getobjwithprop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="property" Type="varchar" Mode="In" />
+    <Parameter Name="value" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="dt_getobjwithprop_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="property" Type="varchar" Mode="In" />
+    <Parameter Name="uvalue" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="dt_getpropertiesbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="property" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="dt_getpropertiesbyid_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="property" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="dt_getpropertiesbyid_vcs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="property" Type="varchar" Mode="In" />
+    <Parameter Name="value" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="dt_getpropertiesbyid_vcs_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="property" Type="varchar" Mode="In" />
+    <Parameter Name="value" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="dt_isundersourcecontrol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+    <Parameter Name="iWhoToo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="dt_isundersourcecontrol_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="iWhoToo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="dt_removefromsourcecontrol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="dt_setpropertybyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="property" Type="varchar" Mode="In" />
+    <Parameter Name="value" Type="varchar" Mode="In" />
+    <Parameter Name="lvalue" Type="image" Mode="In" />
+  </Function>
+  <Function Name="dt_setpropertybyid_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="property" Type="varchar" Mode="In" />
+    <Parameter Name="uvalue" Type="nvarchar" Mode="In" />
+    <Parameter Name="lvalue" Type="image" Mode="In" />
+  </Function>
+  <Function Name="dt_validateloginparams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="dt_validateloginparams_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="dt_vcsenabled" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="dt_verstamp006" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="dt_verstamp007" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="dt_whocheckedout" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chObjectType" Type="char" Mode="In" />
+    <Parameter Name="vchObjectName" Type="varchar" Mode="In" />
+    <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="dt_whocheckedout_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chObjectType" Type="char" Mode="In" />
+    <Parameter Name="vchObjectName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+    <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="fnStringList2Table" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="List" Type="varchar(max)" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="item" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GetCategoryNameById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetCurrencyById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetLookUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LookUpType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetMRFById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MRFId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPaymentById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPendingQtyByPOandStock" ReturnType="decimal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PoId" Type="int" Mode="In" />
+    <Parameter Name="StockId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPOIdById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPOTypeById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetStoreNameById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSupplierNameById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetTypeNameById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetUnitNameById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UnitId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetUserNameById" ReturnType="varchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pr_GetSIVFollowProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_GetStockType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_LoadSIV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dFrom" Type="datetime" Mode="In" />
+    <Parameter Name="dTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_SRV_LoadReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="dFrom" Type="datetime" Mode="In" />
+    <Parameter Name="dTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_vv_WAMS_PURCHASE_ORDER_List_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="From" Type="datetime" Mode="In" />
+    <Parameter Name="To" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_vwWAMS_Report_SummaryQuantity_GetValueByStockID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ASSIGNNING_STOCKS_GetStockAssigned" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ASSIGNNING_STOCKS_GetSumQuantityAssign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ASSIGNNING_STOCKS_LoadAssignReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SIV" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ASSIGNNING_STOCKS_LoadReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SIV" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+    <Parameter Name="dFrom" Type="datetime" Mode="In" />
+    <Parameter Name="dTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ASSIGNNING_STOCKS_LoadStockAssign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SIV" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ASSIGNNING_STOCKS_NonMRF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ASSIGNNING_STOCKS_UpdateMRF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MRF" Type="nvarchar" Mode="In" />
+    <Parameter Name="AssignningStockID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_CATEGORY_GetValueByCategoryType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_CURRENCY_TYPE_GetCurrencyName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_FULFILLMENT_DETAIL_GetQtyPending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_FULFILLMENT_DETAIL_GetRemark" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_FULFILLMENT_DETAIL_GetValueByOPID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_FULFILLMENT_DETAIL_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Quantity" Type="decimal" Mode="In" />
+    <Parameter Name="ReceivedQuantity" Type="decimal" Mode="In" />
+    <Parameter Name="PendingQuantity" Type="decimal" Mode="In" />
+    <Parameter Name="DateDelivery" Type="datetime" Mode="In" />
+    <Parameter Name="ShipID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="text" Mode="In" />
+    <Parameter Name="MRF" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImportTax" Type="decimal" Mode="In" />
+    <Parameter Name="StockType" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="bigint" Mode="In" />
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="FormName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Object" Type="nvarchar" Mode="In" />
+    <Parameter Name="ActionName" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateLogin" Type="datetime" Mode="In" />
+    <Parameter Name="DescriptionHL" Type="nvarchar" Mode="In" />
+    <Parameter Name="DescriptionS" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_FULFILLMENT_DETAIL_LoadReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_FULFILLMENT_DETAIL_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImportTax" Type="decimal" Mode="In" />
+    <Parameter Name="Remark" Type="text" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_FULFILLMENT_DETAIL_UpdateByPOEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Quantity" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_FUNCTION_MANAGEMENT_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="bigint" Mode="In" />
+    <Parameter Name="FunctionManagement" Type="nvarchar" Mode="In" />
+    <Parameter Name="Price" Type="nvarchar" Mode="In" />
+    <Parameter Name="iReport" Type="int" Mode="In" />
+    <Parameter Name="Language" Type="nvarchar" Mode="In" />
+    <Parameter Name="Enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_FUNCTION_MANAGEMENT_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="bigint" Mode="In" />
+    <Parameter Name="FunctionManagement" Type="nvarchar" Mode="In" />
+    <Parameter Name="Price" Type="nvarchar" Mode="In" />
+    <Parameter Name="iReport" Type="int" Mode="In" />
+    <Parameter Name="Language" Type="nvarchar" Mode="In" />
+    <Parameter Name="Enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_GetQuantityStockService" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_HISTORY_ACTION_GetActionName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_HISTORY_FORM_GetFormname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_HISTORY_LOG_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="dTo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_HISTORY_LOG_Instert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="FormName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Object" Type="nvarchar" Mode="In" />
+    <Parameter Name="ActionName" Type="nvarchar" Mode="In" />
+    <Parameter Name="dLogin" Type="datetime" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_HISTORY_OBJECT_GetObjectName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_ITEM_SERVICE_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDServiceItem" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ITEM_SERVICE_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="StockName" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ITEM_SERVICE_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="ServiceItemName" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccountCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryID" Type="bigint" Mode="In" />
+    <Parameter Name="UnitID" Type="bigint" Mode="In" />
+    <Parameter Name="PositionID" Type="bigint" Mode="In" />
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+    <Parameter Name="ProductType" Type="bigint" Mode="In" />
+    <Parameter Name="Weight" Type="float" Mode="In" />
+    <Parameter Name="PhotoPath" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_ITEM_SERVICE_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDServiceItem" Type="nvarchar" Mode="In" />
+    <Parameter Name="ServiceItemName" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccountCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryID" Type="bigint" Mode="In" />
+    <Parameter Name="UnitID" Type="bigint" Mode="In" />
+    <Parameter Name="PositionID" Type="bigint" Mode="In" />
+    <Parameter Name="Quantity" Type="decimal" Mode="In" />
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+    <Parameter Name="ProductType" Type="bigint" Mode="In" />
+    <Parameter Name="PhotoPath" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PAINT_GetRalvColor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PO_DETAILS_GetAllByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PO_DETAILS_GetAllByPOID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PO_DETAILS_getPOIDForSIV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="MRF" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PO_DETAILS_GetQuantityvMRFForFulfill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PO_DETAILS_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Unit" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="MRF" Type="nvarchar" Mode="In" />
+    <Parameter Name="Discount" Type="int" Mode="In" />
+    <Parameter Name="ProductID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Quantity" Type="float" Mode="In" />
+    <Parameter Name="VAT" Type="bigint" Mode="In" />
+    <Parameter Name="ImportTax" Type="float" Mode="In" />
+    <Parameter Name="UnitPrice" Type="float" Mode="In" />
+    <Parameter Name="ItemTotal" Type="float" Mode="In" />
+    <Parameter Name="DeliveryDate" Type="datetime" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="PODetailStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateAssign" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PO_DETAILS_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProductID" Type="nvarchar" Mode="In" />
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Quantity" Type="float" Mode="In" />
+    <Parameter Name="UnitPrice" Type="float" Mode="In" />
+    <Parameter Name="DeliveryDate" Type="datetime" Mode="In" />
+    <Parameter Name="ItemTotal" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="int" Mode="In" />
+    <Parameter Name="VAT" Type="bigint" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="PODetailStatus" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PO_DETAILS_Updated" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProductID" Type="nvarchar" Mode="In" />
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Quantity" Type="float" Mode="In" />
+    <Parameter Name="UnitPrice" Type="float" Mode="In" />
+    <Parameter Name="DeliveryDate" Type="datetime" Mode="In" />
+    <Parameter Name="ItemTotal" Type="float" Mode="In" />
+    <Parameter Name="Discount" Type="int" Mode="In" />
+    <Parameter Name="VAT" Type="bigint" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="PODetailStatus" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PO_TYPE_GetvPOTypeName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PO_TYPE_GetvPOTypeNamebyXuan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_POSITION_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PROJECT_GetLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PROJECT_GetNameIDOrferID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PROJECT_GetProjectID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PROJECT_GetProjectName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PROJECT_GetValueForSIV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PURCHASE_ORDER_Data_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dFrom" Type="datetime" Mode="In" />
+    <Parameter Name="dTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetAllPOID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetEvaluationBySupplierID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetPOForFulfill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetPOFPOType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POType" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetPOFSupplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetPOTypeFSupplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetSupFPOType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POType" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetSupplierPOOpen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_PURCHASE_ORDER_GetSuppliervPOTypeFPO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+    <Parameter Name="POTypeID" Type="bigint" Mode="In" />
+    <Parameter Name="CurrencyTypeID" Type="bigint" Mode="In" />
+    <Parameter Name="PODate" Type="datetime" Mode="In" />
+    <Parameter Name="POTotal" Type="float" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="PriceEval" Type="nvarchar" Mode="In" />
+    <Parameter Name="QuanlityEval" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryEval" Type="nvarchar" Mode="In" />
+    <Parameter Name="ConformancyToV3Eval" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromCC" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromContact" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromTel" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromFax" Type="nvarchar" Mode="In" />
+    <Parameter Name="TermOfPayment" Type="nvarchar" Mode="In" />
+    <Parameter Name="Example" Type="int" Mode="In" />
+    <Parameter Name="POStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="Location" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliverDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+    <Parameter Name="POTypeID" Type="bigint" Mode="In" />
+    <Parameter Name="CurrencyTypeID" Type="bigint" Mode="In" />
+    <Parameter Name="PODate" Type="datetime" Mode="In" />
+    <Parameter Name="POTotal" Type="float" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="PriceEval" Type="nvarchar" Mode="In" />
+    <Parameter Name="QuanlityEval" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryEval" Type="nvarchar" Mode="In" />
+    <Parameter Name="ConformancyToV3Eval" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromCC" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromContact" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromTel" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromFax" Type="nvarchar" Mode="In" />
+    <Parameter Name="TermOfPayment" Type="nvarchar" Mode="In" />
+    <Parameter Name="Example" Type="int" Mode="In" />
+    <Parameter Name="POStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="Location" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliverDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_PURCHASE_ORDER_UpdateToPOComplete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="POStatus" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_REQUISITION_DETAILS_StockQuantityInMRF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="MRF" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_REQUISITION_DETAILS_UpdateToPurchased" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="MRF" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_REQUISITION_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dFrom" Type="datetime" Mode="In" />
+    <Parameter Name="dTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_REQUISITION_MASTER_GetMRF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_RequisitionList_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_RETURN_LIST_GetDamage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_RETURN_LIST_GetReturnedQty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_RETURN_LIST_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+    <Parameter Name="QuantityReturn" Type="decimal" Mode="In" />
+    <Parameter Name="DateReturn" Type="datetime" Mode="In" />
+    <Parameter Name="Condition" Type="nvarchar" Mode="In" />
+    <Parameter Name="ServiceFlag" Type="tinyint" Mode="In" />
+    <Parameter Name="StockType" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="bigint" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="FormName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Object" Type="nvarchar" Mode="In" />
+    <Parameter Name="ActionName" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateLogin" Type="datetime" Mode="In" />
+    <Parameter Name="DescriptionHL" Type="nvarchar" Mode="In" />
+    <Parameter Name="DescriptionS" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_RETURN_PRODUCT_TO_SUPPLIER_LoadReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bSupplierID" Type="bigint" Mode="In" />
+    <Parameter Name="vPOID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_SHIPMENT_GetShipID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_SRV_GetDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_SRV_GetSRV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+    <Parameter Name="dFrom" Type="datetime" Mode="In" />
+    <Parameter Name="dTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_SRV_GetSRVFulReturn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="dFrom" Type="datetime" Mode="In" />
+    <Parameter Name="dTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_STOCK_And_ITEMS_SERVICE_GetAllStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_STOCK_GetImg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_STOCK_GetInf" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_STOCK_GetInfFFulfill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_STOCK_GetStockAssign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_STOCK_LOG_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="dTo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_STOCK_MANAGEMENT_QUANTITY_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+    <Parameter Name="From" Type="datetime" Mode="In" />
+    <Parameter Name="To" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_SUPPLIER_GetAllValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_SUPPLIER_GetSupplierID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_SUPPLIER_GetSupplierNameByPOID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="POID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_SUPPLIER_GetSupplierNameByStockID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StockID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_SUPPLIER_GetTermOfPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_SUPPLIER_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_SUPPLIER_GetvSupplierName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_SUPPLIER_Service_Arroveped_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_UNIT_GetStockType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_UNIT_GetValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UnitType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_USER_GetUserById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_USER_GetUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr_WAMS_USER_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="InOut" />
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="char" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Department" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_USER_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="bigint" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Department" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_USERALERT_GetAlertByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_USERALERT_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="bigint" Mode="In" />
+    <Parameter Name="Alert" Type="nvarchar" Mode="In" />
+    <Parameter Name="Enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="pr_WAMS_USERALERT_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="bigint" Mode="In" />
+    <Parameter Name="Alert" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="udf_GetMRFById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Mrf" Type="nvarchar" MaxLength="16" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="udf_GetStoreNameById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="name" Type="nvarchar" MaxLength="64" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="udf_GetSupplierNameById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="64" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="udf_GetUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Created" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="NameUser" Type="nvarchar" MaxLength="130" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="V3_Accounting_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="StatusCheck" Type="int" Mode="In" />
+    <Parameter Name="SIRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="ToStore" Type="int" Mode="In" />
+    <Parameter Name="Project" Type="int" Mode="In" />
+    <Parameter Name="PO" Type="nvarchar" Mode="In" />
+    <Parameter Name="Supplier" Type="int" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Accounting_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="StatusCheck" Type="int" Mode="In" />
+    <Parameter Name="SIRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="ToStore" Type="int" Mode="In" />
+    <Parameter Name="Project" Type="int" Mode="In" />
+    <Parameter Name="PO" Type="nvarchar" Mode="In" />
+    <Parameter Name="Supplier" Type="int" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="V3_AssignStock_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="Pro" Type="int" Mode="In" />
+    <Parameter Name="Stype" Type="int" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="SIV" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccCheck" Type="varchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_AssignStock_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="Pro" Type="int" Mode="In" />
+    <Parameter Name="Stype" Type="int" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="SIV" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccCheck" Type="varchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="V3_ASSIGNSTOCK_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vStockID" Type="int" Mode="In" />
+    <Parameter Name="vProjectID" Type="int" Mode="In" />
+    <Parameter Name="bQuantity" Type="decimal" Mode="In" />
+    <Parameter Name="vWorkerID" Type="nvarchar" Mode="In" />
+    <Parameter Name="SIV" Type="nvarchar" Mode="In" />
+    <Parameter Name="vMRF" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="ToStore" Type="int" Mode="In" />
+    <Parameter Name="dCreated" Type="datetime" Mode="In" />
+    <Parameter Name="iCreated" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_GetAllProjectDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetAssignedStockBySIV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SIV" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_GetCountryDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetMRF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stock" Type="int" Mode="In" />
+    <Parameter Name="tore" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_GetPO_DETAILS_V" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_GetPoId_Lastest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="condition" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_GetPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stock" Type="int" Mode="In" />
+    <Parameter Name="tore" Type="int" Mode="In" />
+    <Parameter Name="curency" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_GetProjectClientDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetProjectDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetReturnedStockBySRV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_GetSIVLastest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetSRVLastest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_GetStockCategoryDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Type" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_GetStockInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="enable" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_GetStockLabelDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Type" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_GetStockPositionDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetStockTypeDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetStockUnitDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Type" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_GetStoreDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetSupplierDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetSupplierTypeDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_GetWorkerDDL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="V3_PO_GetInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_PO_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Store" Type="int" Mode="In" />
+    <Parameter Name="PoType" Type="int" Mode="In" />
+    <Parameter Name="Po" Type="nvarchar" Mode="In" />
+    <Parameter Name="Supplier" Type="int" Mode="In" />
+    <Parameter Name="Project" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_PO_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Store" Type="int" Mode="In" />
+    <Parameter Name="PoType" Type="int" Mode="In" />
+    <Parameter Name="Po" Type="nvarchar" Mode="In" />
+    <Parameter Name="Supplier" Type="int" Mode="In" />
+    <Parameter Name="Project" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="V3_Price_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="store" Type="int" Mode="In" />
+    <Parameter Name="sup" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Price_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="store" Type="int" Mode="In" />
+    <Parameter Name="sup" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_Project_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Project" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="Client" Type="int" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Project_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Project" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="Client" Type="int" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="V3_Requisition_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="store" Type="int" Mode="In" />
+    <Parameter Name="mrf" Type="nvarchar" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Requisition_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="store" Type="int" Mode="In" />
+    <Parameter Name="mrf" Type="nvarchar" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_RequisitionDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MRF" Type="nvarchar" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_ReturnStock_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="Pro" Type="int" Mode="In" />
+    <Parameter Name="Stype" Type="int" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccCheck" Type="varchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_ReturnStock_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="Pro" Type="int" Mode="In" />
+    <Parameter Name="Stype" Type="int" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccCheck" Type="varchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="V3_RETURNSTOCK_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vStockID" Type="int" Mode="In" />
+    <Parameter Name="vProjectID" Type="int" Mode="In" />
+    <Parameter Name="bQuantity" Type="decimal" Mode="In" />
+    <Parameter Name="vCondition" Type="nvarchar" Mode="In" />
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="ToStore" Type="int" Mode="In" />
+    <Parameter Name="dCreated" Type="datetime" Mode="In" />
+    <Parameter Name="iCreated" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_Service_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="Category" Type="int" Mode="In" />
+    <Parameter Name="Service" Type="nvarchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Service_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="FromStore" Type="int" Mode="In" />
+    <Parameter Name="Category" Type="int" Mode="In" />
+    <Parameter Name="Service" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_ServiceGetListCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="condition" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_ServiceGetListName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="condition" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_SIV_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SIV" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_SRV_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SRV" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_Stock_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="FromStore" Type="varchar" Mode="In" />
+    <Parameter Name="Stype" Type="int" Mode="In" />
+    <Parameter Name="Category" Type="int" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Stock_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="FromStore" Type="varchar" Mode="In" />
+    <Parameter Name="Stype" Type="int" Mode="In" />
+    <Parameter Name="Category" Type="int" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_Stock_Quantity_Management" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Stock_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="FromStore" Type="varchar" Mode="In" />
+    <Parameter Name="Stype" Type="int" Mode="In" />
+    <Parameter Name="Category" Type="int" Mode="In" />
+    <Parameter Name="Stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_StockFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="condition" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_StockGetListCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="condition" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_StockGetListName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="condition" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_StockIn_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="store" Type="int" Mode="In" />
+    <Parameter Name="poType" Type="int" Mode="In" />
+    <Parameter Name="po" Type="nvarchar" Mode="In" />
+    <Parameter Name="sup" Type="int" Mode="In" />
+    <Parameter Name="srv" Type="nvarchar" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_StockIn_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="store" Type="int" Mode="In" />
+    <Parameter Name="poType" Type="int" Mode="In" />
+    <Parameter Name="po" Type="nvarchar" Mode="In" />
+    <Parameter Name="sup" Type="int" Mode="In" />
+    <Parameter Name="srv" Type="nvarchar" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="fd" Type="varchar" Mode="In" />
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_StockPicture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="condition" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_Store_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="Store" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country" Type="int" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Store_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="Store" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_Supplier_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="supType" Type="int" Mode="In" />
+    <Parameter Name="sup" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="country" Type="int" Mode="In" />
+    <Parameter Name="market" Type="int" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_Supplier_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="supType" Type="int" Mode="In" />
+    <Parameter Name="sup" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="nvarchar" Mode="In" />
+    <Parameter Name="country" Type="int" Mode="In" />
+    <Parameter Name="market" Type="int" Mode="In" />
+    <Parameter Name="enable" Type="int" Mode="In" />
+  </Function>
+  <Function Name="V3_User_CheckLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_User_GetItemByCondition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_User_GetList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="Store" Type="int" Mode="In" />
+    <Parameter Name="Department" Type="nvarchar" Mode="In" />
+    <Parameter Name="User" Type="nvarchar" Mode="In" />
+    <Parameter Name="ItemCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="V3_User_GetListRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentPage" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Enable" Type="char" Mode="In" />
+    <Parameter Name="Store" Type="int" Mode="In" />
+    <Parameter Name="Department" Type="nvarchar" Mode="In" />
+    <Parameter Name="User" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="V3_UserGetListName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="condition" Type="nvarchar" Mode="In" />
+  </Function>
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'V3.dbo.WAMS_SETTING' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="WAMS_SETTING">
+        <Property Name="vSettingID" Type="varchar" MaxLength="50" />
+        <Property Name="vSettingType" Type="varchar" MaxLength="50" />
+        <Property Name="vSettingValue" Type="varchar" MaxLength="50" />
+      </EntityType>-->
+</Schema>

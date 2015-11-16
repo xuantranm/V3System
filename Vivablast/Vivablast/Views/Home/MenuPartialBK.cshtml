@@ -1,0 +1,108 @@
+﻿@using Vivablast.ViewModels
+@model HomeViewModel
+@{
+    var user = Model.UserLogin;
+    if (user != null)
+    {
+        <ul class="nav navbar-nav">
+            @if (user.User != 0)
+            {
+                <li id="userMenu">@Html.ActionLink("User", "Index", "User")</li>
+            }
+            @if (user.Project != 0)
+            {
+                <li id="projectMenu">@Html.ActionLink("Project", "Index", "Project")</li>
+            }
+            @if (user.Store != 0 || user.StockR != 0 || user.Requisition != 0 || user.StockInR != 0 || user.StockROut != 0 || user.StockRReturn != 0 || user.ReActiveStock != 0)
+            {
+                <li id="storeMenu" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Store<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        @if (user.Store != 0)
+                        {
+                            <li id="storeMenuSub">@Html.ActionLink("Store", "Index", "Store")</li>
+                            <li role="separator" class="divider"></li>
+                        }
+                        @if (user.StockR != 0)
+                        {
+                            <li id="stockMenuSub">@Html.ActionLink("Stock List", "Index", "Stock")</li>
+                            <li role="separator" class="divider"></li>
+                        }
+                        @if (user.Requisition != 0)
+                        {
+                            <li id="requisitionMenuSub">@Html.ActionLink("Requisition", "Index", "Requisition")</li>
+    <li role="separator" class="divider"></li>
+                        }
+                        @if (user.StockInR != 0)
+                        {
+                            <li id="stockinMenuSub">@Html.ActionLink("Stock In", "Index", "StockIn")</li>
+    <li role="separator" class="divider"></li>
+                        }
+                        @if (user.StockROut != 0)
+                        {
+                            <li id="stockoutMenuSub">@Html.ActionLink("Stock Out", "Index", "StockOut")</li>
+    <li role="separator" class="divider"></li>
+                        }
+                        @if (user.StockRReturn != 0)
+                        {
+                            <li id="stockreturnMenuSub">@Html.ActionLink("Stock Return", "Index", "StockReturn")</li>
+    <li role="separator" class="divider"></li>
+                        }
+                        @if (user.ReActiveStock != 0)
+                        {
+                            <li id="reactiveMenuSub">@Html.ActionLink("Re-active Stock", "Index", "ReActiveStock")</li>
+    <li role="separator" class="divider"></li>
+                        }
+                        @if (user.StockRType != 0)
+                        {
+                            <li id="reactiveMenuSub">@Html.ActionLink("Stock Type", "Index", "Stock")</li>
+    <li role="separator" class="divider"></li>
+                        }
+                        @if (user.Category != 0)
+                        {
+                            <li id="reactiveMenuSub">@Html.ActionLink("Category", "Index", "ReActiveStock")</li>
+    <li role="separator" class="divider"></li>
+                        }
+                    </ul>
+                </li>
+            }
+            @if (user.PE != 0 || user.Supplier !=0 || user.Price !=0 || user.StockServiceR !=0)
+            {
+                <li id="procurementMenu" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Procurement<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        @if (user.PE != 0)
+                        {
+                            <li id="peMenuSub">@Html.ActionLink("Purchase Order", "Index", "Pe")</li> 
+                            <li role="separator" class="divider"></li>
+                        }
+                        @if (user.Supplier != 0)
+                        {
+                            <li id="supplierMenuSub">@Html.ActionLink("Supplier", "Index", "Supplier")</li>
+                            <li role="separator" class="divider"></li>
+                        }
+                        @if (user.Price != 0)
+                        {
+                            <li id="priceMenuSub">@Html.ActionLink("Managment Price", "Index", "Price")</li>
+                            <li role="separator" class="divider"></li>
+                        }
+                        @if (user.StockServiceR != 0)
+                        {
+                            <li id="serviceMenuSub">@Html.ActionLink("Service", "Index", "Service")</li>
+                            <li role="separator" class="divider"></li>
+                        }
+                    </ul>
+                </li>
+            }
+            @*@if (user.AccountingR != 0)
+            {
+                <li id="accountingMenu">@Html.ActionLink("Accounting", "Index", "Accounting")</li>
+            }*@
+            <li class="disabled"><a id="maintenanceMenu" href="javascript:;">Maintenance</a></li>
+        </ul>
+    
+    <input type="hidden" id="systemLastName" value="@user.Last_Name"/>
+    <input type="hidden" id="systemFirstName" value="@user.First_Name"/>
+    <input type="hidden" id="systemUserName" value="@user.User_Name"/>
+    }
+}

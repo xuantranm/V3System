@@ -1,0 +1,693 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  /*padding-bottom: 20px;*/
+    font-size: 12px;
+}
+.content-wrapper {
+    margin: 0 auto;
+    min-height: 824px;
+    padding: 0 23px 20px;
+    display:table;
+    /* width: 980px; */
+    float: left;
+    width: 100%;
+}
+.navbar-fixed-top {
+    top: 0;
+    z-index: 0;
+}
+.content-inner {
+    float: left;
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+}
+.nopaddingleft {
+    padding-left: 0;
+}
+
+.footer-hzline {
+    border-bottom: 1px dotted #e1e1e1;
+    font-size: 0;
+    height: 1px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/*Loading*/
+#loading-indicator {
+    position:   fixed;
+    z-index:    1002;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: url('../../Images/img/ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/*Background*/
+/*mini page button*/
+.navbar-inverse .navbar-toggle {
+  border-color: red;
+  background-color: red;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: red;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: white;
+}
+/*End mini page button*/
+
+/* Fix UI when have scrollbar*/
+@media (min-width: 992px) {
+  .container {
+    margin-left: 60px;
+      max-width: none;
+    }
+}
+/*End*/
+.navbar-collapse
+{
+    float: right;
+}
+.navbar-inverse {
+  background-color: white;
+  border-color: red;
+}
+.navbar-inverse .container {
+    background: url('../../Images/img/logo-vb.png') no-repeat left;
+    max-width: 1280px;
+}
+@media (max-width: 768px) {
+  .navbar-inverse .container {
+    background: none;
+    }
+}
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+    background-color: #FF0000;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #FF0000;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #FFFFFF;
+    color: #FF0000;
+}
+.navbar-inver.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  background-color: #FFFFFF;
+  color: #FF0000;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #FFFFFF;
+    color: #FF0000;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    background-color: #FFFFFF;
+    color: #FF0000;
+}
+.navbar-inverse .navbar-nav > .current > a, .navbar-inverse .navbar-nav > .current > a:hover, .navbar-inverse .navbar-nav > .current > a:focus {
+    background-color: highlight;
+    color: white;
+}
+.navbar-inverse .navbar-nav > .dropdown .dropdown-menu .dropdownCurrent, .navbar-inverse .navbar-nav > .dropdown .dropdown-menu .dropdownCurrent a {
+    background-color: red;
+    color: white;
+}
+/*Tables V3*/
+.noresize {
+    table-layout: fixed;
+}
+.table-bordered {
+    margin-bottom: 0;
+}
+.table-bordered .vbhead {
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+.table-bordered .vbhead:hover >th {
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+.table-bordered .vbcolum:hover >td {
+    background-color: #d9edf7;
+}
+table.table .vbhead a {
+    color: #FFFFFF;
+    text-decoration: none;
+    line-height: 1;
+    cursor: pointer;
+}
+.table-bordered .vbheaddetail {
+    background-color: #008080;
+    color: #FFFFFF;
+}
+.table-bordered .vbheaddetail:hover >th {
+    background-color: #008080;
+    color: #FFFFFF;
+}
+table.table .vbheaddetail a {
+    color: #FFFFFF;
+    text-decoration: none;
+    line-height: 1;
+    cursor: pointer;
+}
+table div.arrow { background:transparent url(../../Images/img/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
+    table div.up { background-position:0px 0px;}
+    table .vbcolum:hover {
+        cursor: pointer;
+    }
+.arrow {
+	display: inline-block;
+    height: 16px;    
+    vertical-align: middle;
+    width: 13px;
+}
+.sorting_asc { background: url('../../Images/img/sort_asc.png') no-repeat center right;margin-top: 2px; }
+.sorting_desc { background: url('../../Images/img/sort_desc.png') no-repeat center right;margin-top: -7px; }
+/*Paging Custom*/
+.pagination {
+    margin: 5px 0;
+}
+.pagination .current
+{
+    background-color: #FFFF66;
+    border-radius: 5px;
+    color: blue;
+}
+.pagination a
+ {
+    background-color: #FFFFFF;
+    border: 1px solid #86B5EE;
+    border-radius: 5px;
+    padding: 3px 7px 4px;    
+    color: #61ACEA;
+    text-decoration: none;
+}
+.pagination a:hover 
+{
+	background-color:#FBEFBD;
+}
+/*Width*/
+.paddingtop20 {
+    padding-top: 20px;
+}
+.displaynone {
+    display: none;
+}
+.width10 {
+    width: 10px!important;
+}
+.width20 {
+    width: 20px!important;
+}
+.width30 {
+    width: 30px!important;
+}
+.width40 {
+    width: 40px!important;
+}
+.width44 {
+    width: 44px!important;
+}
+.width45 {
+    width: 45px!important;
+}
+.width50 {
+    width: 50px!important;
+}
+.width54 {
+    width: 54px;
+}
+.width60 {
+    width: 60px!important;
+}
+.width70 {
+    width: 70px!important;
+}
+.width80 {
+    width: 80px!important;
+}
+.width90 {
+    width: 90px!important;
+}
+.width95 {
+    width: 95px!important;
+}
+.width100 {
+    width: 100px!important;
+}
+.width106 {
+    width: 106px!important;
+}
+.width110 {
+    width: 110px!important;
+}
+.width120 {
+    width: 120px!important;
+}
+.width130 {
+    width: 130px!important;
+}
+.width140 {
+    width: 140px!important;
+}
+.width150 {
+    width: 150px!important;
+}
+.width160 {
+    width: 160px!important;
+}
+.width170 {
+    width: 170px!important;
+}
+.width180 {
+    width: 180px!important;
+}
+.width190 {
+    width: 190px;
+}
+.width200 {
+    width: 200px;
+}
+.width210 {
+    width: 210px;
+}
+.width220 {
+    width: 220px;
+}
+.width230 {
+    width: 230px;
+}
+.width240 {
+    width: 240px;
+}
+.width250 {
+    width: 250px!important;
+}
+.width270 {
+    width: 270px!important;
+}
+.width300 {
+    width: 300px!important;
+}
+.width310 {
+    width: 310px!important;
+}
+.width342 {
+    width: 342px!important;
+}
+.width350 {
+    width: 350px!important;
+}
+.width360 {
+    width: 360px!important;
+}
+.width380 {
+    width: 380px!important;
+}
+.width400 {
+    width: 400px!important;
+}
+.width520 {
+    width: 520px!important;
+}
+.width552 {
+    width: 552px!important;
+}
+.width600 {
+    width: 600px!important;
+}
+.width620 {
+    width: 620px!important;
+}
+.width100per {
+    width: 100%;
+}
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.clearboth {
+    clear: both;
+}
+.height10 {
+    height: 10px;
+}
+.height35 {
+    height: 35px;
+}
+.margintop-20 {
+    margin-top: -20px;
+}
+.margintop-4 {
+    margin-top: -4px;
+}
+.margintop-5 {
+    margin-top: -5px;
+}
+.margintop5 {
+    margin-top: 5px;
+}
+.marginright10 {
+    margin-right: 10px;
+}
+.marginright13 {
+    margin-right: 13px;
+}
+.marginleft5 {
+    margin-left: 5px;
+}
+.marginleft10 {
+    margin-left: 10px;
+}
+.marginleft20 {
+    margin-left: 20px;
+}
+.marginleft-10 {
+    margin-left: -10px;
+}
+.marginleft18 {
+    margin-left: 18px;
+}
+.marginleft20 {
+    margin-left: 20px;
+}
+.padding20 {
+    padding: 20px;
+}
+.red {
+    color: red;
+}
+.teal {
+    color: #008080;
+}
+.center 
+{
+	 text-align: center;
+}
+/* Display/Hide Custom */
+#overlay {
+  -moz-opacity: 0.9;
+  background: #000000;
+  display: none;
+  filter: alpha(opacity=50);
+  height: 100%;
+  left: 0;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.popup-box {
+    left: 5% !important; 
+    top: 40px;
+    background-color: #ffffff;
+    display: none;
+    max-width: 1280px;
+    width: 90%;
+    min-height: 200px;
+    position: fixed;
+    z-index: 1001;
+}
+
+.popupCustom {
+    left: 5% !important; 
+    width: 90%;
+    z-index: 1001;
+    top: 52px;
+    background-color: #ffffff;
+    position: fixed; 
+    display: block;
+}
+
+.modal-footer {
+    border-top: 1px solid #E5E5E5;
+    padding: 15px;
+    text-align: right;
+    margin-top: 0px;
+}
+/* DO LATER....*/
+/*@media screen and (min-width: 1024px) {
+   #divCreateStore,#divCreateStock,#divCreatePO, #divCreateRequisition, #divDetailStore, #divDetailStock, #divDetailRequisition { left: 5% !important; width: 90%; }
+}
+
+@media screen and (max-width: 1024px) {
+    #divCreateStore,#divCreateStock,#divCreatePO, #divCreateRequisition { left: 5% !important; width: 90%; }
+}
+
+@media screen and (max-width: 768px) {
+   #divCreateStore,#divCreateStock,#divCreatePO, #divCreateRequisition { left: 5% !important; width: 90%; }
+}
+
+@media screen and (max-width: 480px) {
+    #divCreateStore,#divCreateStock,#divCreatePO, #divCreateRequisition { left: 5% !important; width: 90%; }
+    #body { overflow: auto; }
+}*/
+.validate {
+    color: #FF0000;
+}
+/* End custom Hide/Show */
+
+.scroll
+{
+    height: 439px;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.scrollRequisition
+{
+    height: 380px;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.scrollWidth
+{
+    width: 500px;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.scrollPO
+{
+    height: 380px;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.scrollUser
+{
+    width: 980px;
+    overflow: auto;
+}
+.data label {
+    margin-top: 6px;
+}
+
+.labelnormal {
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+/* Menu layout*/
+
+/* Create Form */
+.label100 {
+    float: left;
+    width: 120px;
+} 
+
+/* Stock Management */
+#StockManagementHistoryQuantity {
+    display: none;
+}
+
+/* Autocomplete */
+.ui-autocomplete {
+max-height: 100px;
+overflow-y: auto;
+/* prevent horizontal scrollbar */
+overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
+*/
+* html .ui-autocomplete {
+height: 100px;
+}
+
+/* Footer */
+footer {
+    margin: -4px auto 0;
+}
+.footer-wave {
+    background-color: #4D87B4;
+    background-image: -moz-linear-gradient(0% 56% 90deg, #4D87B4, #396587);
+}
+.footer-wrap {
+    background-repeat: repeat;
+    font-family: Arial;
+    margin: 0 auto;
+    width: 1014px;
+}
+.footer-deviceline {
+    border-top: 1px dotted #A7CDE4;
+    clear: left;
+    height: 1px;
+    /*width: 1014px;*/
+}
+.fallright {
+    color: #FFFFFF;
+    font-size: 12px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* Hidden Field*/
+#divDetailStore .form-control {
+    display: none;
+}
+.bold {
+    font-weight: bold;
+}
+a {
+    cursor: pointer;
+}
+.vbcolum td a {
+    text-decoration: none;
+}
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+legend.scheduler-border {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width:auto;
+        padding:0 10px;
+        border-bottom:none;
+    }
+.bold20 {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.linered {
+    border: 1px solid red;
+}
+.form-control {
+    height: 31px !important;
+}
+.chosen-container-single .chosen-single {
+    height: 30px!important;
+    z-index: -1;
+}
+.chosen-container .chosen-drop {
+    z-index: 1!important;
+}
+
+#RequisitionMaster
+    {
+        border: 1px solid #A1A1A1;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    #RequisitionStockDetail, #RequisitionStockList
+    {
+        border: 1px solid #A1A1A1;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+.modal-header .closesecond {
+    margin-top: -2px;
+}
+button.closesecond {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    cursor: pointer;
+    padding: 0;
+}
+.closesecond {
+    color: #000000;
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0.2;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+.lblredbol {
+    font-weight: bold;
+    color: red
+}
+.lblbluebol {
+    font-weight: bold;
+    color: blue
+}
+.input-group {
+    position: static;
+}
+.glyphicon {
+    position: static;
+}
+.btnEdit {}
+.btnDelete{}
+.btnEditCreateForm{}
+.DetailId{}
+.btnEditMain{}
+.DetailList{}
+.AccCheck{}
+.ItemKey{}
+.btnDetail{}
+.chosen-select{}
+.btnReActive{}
+.StockId{}
+.StockCode{}
+.StockName{}
+.dCreated{}
+.iCreated{}
+.PriceId{}
+.Quantity{}
+.UnitPrice{}
+.Discount{}
+.VAT{}
+.TotalPrice{}
+.Unit{}
+.StockType{}
+.Remark {}
+.MRF{}
+.PODetailStatus {}
+.DeliveryDate{}
+.divTotalAmount{}
+.lblTotalAmount{}
+.lblCurrency{}
+.moreright{}
+
+.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }

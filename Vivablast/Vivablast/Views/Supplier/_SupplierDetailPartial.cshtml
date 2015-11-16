@@ -1,0 +1,36 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model SupplierViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div style="color: red;font-weight: bold">
+        @Constants.EmptyData
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="DetailLst table table-bordered table-hover">
+            <thead>
+                <tr class="vbheaddetail">
+                    <th class="center">Stock Code</th>
+                    <th class="center">Stock Name</th>
+                    <th class="center hidden-xs">Stock Type</th>
+                    <th class="center hidden-xs">Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.GetProductDetails)
+            {
+            <tr class="vbcolum">
+                <td class="center">@item.Stock_Code</td>
+                <td class="center">@item.Stock_Name</td>
+                <td class="center hidden-xs">@item.Type</td>
+                <td class="center hidden-xs">@item.Unit</td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

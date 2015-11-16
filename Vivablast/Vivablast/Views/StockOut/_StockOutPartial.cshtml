@@ -1,0 +1,59 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model AssignViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    <div>
+        @Model.TotalRecords @Constants.DisplayResult
+    </div>
+    <div class="table-responsive">
+        <table id="MasterList" class="table table-bordered table-hover">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.StockOutR > 2)
+                    {
+                        <th class="center"></th>
+                    }
+                    <th class="center">SIV</th>
+                    <th class="center">Project Code</th>
+                    <th class="center hidden-xs">Project Name</th>
+                    <th class="center">Location</th>
+                    <th class="center">Main Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AssignStockList)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.StockOutR > 2)
+                        {
+                            @*<td class="center">
+                                <button type="button" class="btnEdit btn-link">Edit</button>
+                            </td>*@
+                            <input type="hidden" value="@item.SIV" class="ItemKey" />
+                        }
+                        <td class="center">@item.SIV</td>
+                        <td class="center">@item.Project_Code</td>
+                        <td class="center hidden-xs">@item.Project_Name</td>
+                        <td class="center">@item.Location</td>
+                        <td class="center">@item.Main_Contact</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="clearboth"></div>
+    if (Model.TotalPages > 1)
+    {
+        <div class="float-left">
+            @Html.Partial("Partials/_PreparePagingPartial")
+        </div>
+    }
+}

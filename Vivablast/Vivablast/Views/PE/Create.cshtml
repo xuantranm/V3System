@@ -1,0 +1,375 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model POViewModel
+
+@{
+    ViewBag.Title = "PE";
+}
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "pe-create-form", @class = "form-horizontal" }))
+        {
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.vPOID, new { @id = "hidCheckCode" })
+            @Html.HiddenFor(x => x.Timestamp)
+            @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
+            @Html.HiddenFor(m => m.Mode)
+            <input type="hidden" value="@Url.Action("Create", "Pe")" id="hidSaveUrl" />
+            <input type="hidden" value="" id="hidDeleteItemDetail" />
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-12 bold20 linered">PE Information</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">PE Code</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vPOID, new { disabled = "disabled", @class = "form-control" })
+                    </div>
+                </div>
+                @if (Model.Id > 0)
+                {
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Status</label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(model => model.vPOStatus, new { disabled = "disabled", @class = "form-control" })
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Store <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.iStore, Model.Stores, Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Supplier <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        @(Model.Id != 0 ? Html.DropDownListFor(model => model.bSupplierID, Model.Suppliers, Constants.SelectDDL, new { @class = "form-control", disabled = "disabled" }) : Html.DropDownListFor(model => model.bSupplierID, Model.Suppliers, @Constants.SelectDDL, new { @class = "form-control" }))
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Currency <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        @*@(Model.Id != 0 ? Html.DropDownListFor(model => model.bCurrencyTypeID, Model.Currencies, Constants.SelectDDL, new { @class = "form-control", disabled = "disabled" }) : Html.DropDownListFor(model => model.bCurrencyTypeID, Model.Currencies, @Constants.SelectDDL, new { @class = "form-control" }))*@
+                        @Html.DropDownListFor(model => model.bCurrencyTypeID, Model.Currencies, Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Payment Term <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.iPayment, Model.Payments, Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">PE Date</label>
+                    <div class="col-sm-9">
+                        <input id="dPODate" name="dPODate" value="@Model.sPODate" type="text" class="form-control datepicker" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">PE Type</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.bPOTypeID, Model.PoTypes, Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Delivery Date</label>
+                    <div class="col-sm-9">
+                        <input id="dDeliverDate" name="dDeliverDate" value="@Model.sDeliveryDate" type="text" class="form-control datepicker" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Delivery Place</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vLocation, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Project Code</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.vProjectID, Model.Projects, @Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Project Name</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.ProjectName, Model.ProjectNames, @Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Sample PE</label>
+                    <div class="col-sm-9">
+                        <input type="checkbox" id="samplePE" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Remark</label>
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(
+                            model => model.vRemark,
+                            new { @placeholder = "Remark", @class = "auto-size" }
+                            )
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-12 bold20 linered">PE Item Detail</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Stock Code</label>
+                    <div class="col-sm-4 col-xs-10">
+                        @Html.HiddenFor(x => x.StockId)
+                        @Html.TextBoxFor(model => model.StockCode, new { @placeholder = "Stock Code", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <button type="button" id="btnSearchStock">...</button>
+                    </div>
+                    <div class="col-sm-3 hidden-xs">
+                        <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-xs-12 picture-effect">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Price</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.fUnitPrice, new { @placeholder = "Price", @class = "form-control quantity-input" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Quantity</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Quantity, new { @placeholder = "Quantity", @class = "form-control quantity-input" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Discount</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Discount, new { @class = "form-control quantity-input" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">VAT</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.VAT, new { @class = "form-control quantity-input" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Amount</label>
+                            <div class="col-sm-9">
+                                <label id="lblAmountPrice" class="teal lblbluebol">@Constants.NA</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">MRF</label>
+                            <div class="col-sm-9 mrf-area">
+                                @Html.TextBoxFor(model => model.Mrf, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Remark</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(
+                            model => model.RemarkDetail,
+                            new { @placeholder = "Remark", @class = "auto-size" }
+                            )
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group visible-xs-block">
+                    <div class="col-xs-12 visible-xs-block">
+                        <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <div class="row">
+                        <div class="gallery-stock">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="clear: both"></div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Stock Name</label>
+                    <div class="col-sm-9">
+                        <label id="lblStockName" class="lblredbol">@Constants.NA</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Stock Type</label>
+                    <div class="col-sm-9">
+                        <label id="lblStockType" class="lblredbol">@Constants.NA</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Category</label>
+                    <div class="col-sm-9">
+                        <label id="lblStockCategory" class="lblredbol">@Constants.NA</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Unit</label>
+                    <div class="col-sm-9 pull-left">
+                        <label id="lblStockUnit" class="lblredbol">@Constants.NA</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Part No</label>
+                    <div class="col-sm-9">
+                        <label id="lblPartNo" class="lblredbol">@Constants.NA</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Ral No</label>
+                    <div class="col-sm-9">
+                        <label id="lblRalNo" class="lblredbol">@Constants.NA</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Color</label>
+                    <div class="col-sm-9">
+                        <label id="lblColor" class="lblredbol">@Constants.NA</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-12 bold20 linered">PE Item List</label>
+                </div>
+                <div class="table-responsive">
+                    <table id="LstItem" class="table table-bordered table-hover noresize">
+                        <thead>
+                            <tr class="vbheaddetail">
+                                <th></th>
+                                <th class="center">Stock Code</th>
+                                <th class="center">Stock Name</th>
+                                <th class="center">Qty</th>
+                                <th class="center">Price</th>
+                                <th class="center">Discount</th>
+                                <th class="center">VAT</th>
+                                <th class="center">Total Amount</th>
+                                <th class="center">MRF</th>
+                                <th class="center width120">Remark</th>
+                                <th class="center width80">Status</th>
+                                <th class="center width100">Type</th>
+                                <th class="center width50">Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TotalRecords > 0)
+                            {
+                                foreach (var item in Model.PoDetailsVResults)
+                                {
+                                    <tr class="vbcolum">
+                                        <td class="center">
+                                            <button type="button" class="btnEdit btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>Edit</button>
+                                            <button type="button" class="btnDelete btn btn-xs btn-danger marginleft2"><span class="glyphicon glyphicon-remove"></span>Delete</button>
+                                            <input type="hidden" value="@item.Id" class="DetailId" />
+                                            <input type="hidden" value="@item.Stock_Id" class="StockId" />
+                                            @*<input type="hidden" value="@item.Price_Id" class="PriceId" />
+                                                <input type="hidden" value="@item.MRF_Id" class="MRFId" />*@
+                                        </td>
+                                        <td class="center StockCode">@item.Stock_Code</td>
+                                        <td class="center StockName">@item.Stock_Name</td>
+                                        <td class="center Quantity">
+                                            @if (@item.Quantity != null)
+                                            {
+                                                @(((decimal)@item.Quantity).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                            }
+                                        </td>
+                                        <td class="center UnitPrice">
+                                            @if (@item.Price != null)
+                                            {
+                                                @(((decimal)@item.Price).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                            }
+                                        </td>
+                                        <td class="center Discount">
+                                            @if (@item.Discount != null)
+                                            {
+                                                @(((decimal)@item.Discount).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                            }
+                                        </td>
+                                        <td class="center VAT">
+                                            @if (@item.VAT != null)
+                                            {
+                                                @(((decimal)@item.VAT).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                            }
+                                        </td>
+                                        <td class="center TotalPrice">
+                                            @if (@item.Item_Total != null)
+                                            {
+                                                @(((decimal)@item.Item_Total).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                            }
+                                        </td>
+                                        <td class="center MRF">@item.MRF</td>
+                                        <td class="center Remark">@item.Remark</td>
+                                        <td class="center PODetailStatus">@item.Status</td>
+                                        <td class="center StockType">@item.Type</td>
+                                        <td class="center Unit">@item.Unit</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.PoGetInformation.PE))
+                {
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Total Amount</label>
+                        <div class="col-sm-9">
+                            <label class="lblTotalAmount">
+                                @if (@Model.PoGetInformation.Total != null)
+                                {
+                                    @(((decimal)@Model.PoGetInformation.Total).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                }
+                            </label>
+                            <label class="lblCurrency">@Model.PoGetInformation.Currency</label>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group displaynone divTotalAmount">
+                        <label class="col-sm-3 control-label">Total Amount</label>
+                        <div class="col-sm-9">
+                            <label class="lblTotalAmount">
+                                @if (@Model.PoGetInformation.Total != null)
+                                {
+                                    @(((decimal)@Model.PoGetInformation.Total).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                }
+                            </label>
+                            <label class="lblCurrency">@Model.PoGetInformation.Currency</label>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="alert alert-danger col-xs-12" style="display: none">
+                <strong>Error!</strong> No item in list.
+            </div>
+            <div class="modal-footer center">
+                <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
+                    <span class="glyphicon glyphicon-save"></span> Save
+                </button>
+                <a href="@Url.Action("Create", "Pe")" class="btn btn-primary btnAdd displaynone">
+                    <span class="glyphicon glyphicon-plus"></span> New
+                </a>
+                @Html.ActionLink("Back To List", "Index", "Pe", new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>
+
+<script src="/Scripts/tmx.peact.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

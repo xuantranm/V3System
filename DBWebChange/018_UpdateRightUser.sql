@@ -1,0 +1,40 @@
+UPDATE XUser SET ProjectR =4 ,StockR =4 ,RequisitionR = 4,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =4 ,SupplierR = 4,StockServiceR = 4 WHERE Id=1
+UPDATE XUser SET ProjectR = 0,StockR = 0,RequisitionR = 0,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 0 WHERE Id=2
+UPDATE XUser SET ProjectR =4 ,StockR =3 ,RequisitionR = 1,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=34
+UPDATE XUser SET ProjectR =1 ,StockR =2 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 3 WHERE Id=41
+UPDATE XUser SET ProjectR =1 ,StockR =2 ,RequisitionR = 3,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 2 WHERE Id=47
+UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=49
+UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = 0,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 0 WHERE Id=50
+UPDATE XUser SET ProjectR =3 ,StockR =1 ,RequisitionR = 0,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 0 WHERE Id=51
+UPDATE XUser SET ProjectR =4 ,StockR = 0,RequisitionR = 0,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 0 WHERE Id=52
+UPDATE XUser SET ProjectR =1 ,StockR =4 ,RequisitionR = 4,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 4 WHERE Id=53
+UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = 0,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 0 WHERE Id=63
+UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = 0,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 0 WHERE Id=64
+UPDATE XUser SET ProjectR =1 ,StockR =2 ,RequisitionR = 3,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 2 WHERE Id=65
+UPDATE XUser SET ProjectR =1 ,StockR =3 ,RequisitionR = 1,StockOutR =3 ,StockReturnR =3 ,StockInR = 3,PER =1 ,SupplierR = 1,StockServiceR = 0 WHERE Id=66
+UPDATE XUser SET ProjectR =1 ,StockR =4 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 4 WHERE Id=67
+UPDATE XUser SET ProjectR =4 ,StockR =4 ,RequisitionR = 4,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =4 ,SupplierR = 4,StockServiceR = 4 WHERE Id=69
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=71
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=72
+UPDATE XUser SET ProjectR = 0,StockR =2 ,RequisitionR = 3,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 2 WHERE Id=74
+UPDATE XUser SET ProjectR = 0,StockR = 0,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =1 ,SupplierR = 1,StockServiceR = 0 WHERE Id=75
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=76
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 0 WHERE Id=77
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=78
+UPDATE XUser SET ProjectR =4 ,StockR =3 ,RequisitionR = 0,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=79
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=80
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=81
+UPDATE XUser SET ProjectR =4 ,StockR =3 ,RequisitionR = 0,StockOutR =4 ,StockReturnR =4 ,StockInR = 4,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=82
+UPDATE XUser SET ProjectR = 0,StockR = 0,RequisitionR = 0,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =1 ,SupplierR = 0,StockServiceR = 0 WHERE Id=83
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=84
+UPDATE XUser SET ProjectR =1 ,StockR =2 ,RequisitionR = 3,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 2 WHERE Id=85
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 1 WHERE Id=86
+UPDATE XUser SET ProjectR =1 ,StockR =4 ,RequisitionR = 4,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 4 WHERE Id=87
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER = 0,SupplierR = 0,StockServiceR = 1 WHERE Id=88
+UPDATE XUser SET ProjectR = 0,StockR = 0,RequisitionR = 0,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =1 ,SupplierR = 0,StockServiceR = 0 WHERE Id=89
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=90
+UPDATE XUser SET ProjectR =1 ,StockR =1 ,RequisitionR = 1,StockOutR =1 ,StockReturnR =1 ,StockInR = 1,PER =1 ,SupplierR = 1,StockServiceR = 1 WHERE Id=91
+UPDATE XUser SET ProjectR = 0,StockR =1 ,RequisitionR = 1,StockOutR = 0,StockReturnR = 0,StockInR = 0,PER =3 ,SupplierR = 3,StockServiceR = 3 WHERE Id=92
+
+GO
+UPDATE XUser SET UserR = 4 WHERE Id=1

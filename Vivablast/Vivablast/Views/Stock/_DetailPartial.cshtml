@@ -1,0 +1,79 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model StockViewModel
+
+@*@if (Model.StockManagementQuantityVs.Count() < 9)
+{
+    @Styles.Render("~/Content/fixdata")
+}*@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Stock Quantity Management</h4>
+</div>
+<div class="modal-body scroll" id="MngQtyStock">
+    <input type="hidden" value="@Model.StockInformation.Stock_Code" id="hidStock_Code" />
+    <div class="float-left">
+        <div class="float-left">
+            <label>Stock Code</label>
+        </div>
+        <div class="float-left marginleft10">@Model.StockInformation.Stock_Code</div>
+        <div class="float-left marginleft10">
+            <label>Stock Name</label>
+        </div>
+        <div class="float-left marginleft10">@Model.StockInformation.Stock_Name</div>
+        <div class="float-left marginleft10">
+            <label>Type</label>
+        </div>
+        <div class="float-left marginleft10">@Model.StockInformation.Type</div>
+        <div class="float-left marginleft10">
+            <label>Unit</label>
+        </div>
+        <div class="float-left marginleft10">@Model.StockInformation.Unit</div>
+        <div class="float-left marginleft10">
+            <label>Category</label>
+        </div>
+        <div class="float-left marginleft10">@Model.StockInformation.Category</div>
+
+        <div class="clearboth"></div>
+        
+        <div class="float-left">
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Search</legend>
+                <div class="float-left">
+                    <label>From Date</label>
+                </div>
+                <div class="float-left marginleft10">
+                    <input id="fromDate" value="@Constants.FromDate" type="text" class="form-control" />
+                </div>
+                <div class="float-left marginleft10">
+                    <label>To Date</label>
+                </div>
+                <div class="float-left marginleft10">
+                    <input id="toDate" value="@Constants.ToDate" type="text" class="form-control" />
+                </div>
+                <div class="float-left marginleft10"><label>@Constants.Rows</label></div>
+                <div class="float-left marginleft10 marginright10">
+                    <select id="pageSize" class="form-control width90">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                    </select>
+                </div>
+                <button type="button" id="btnFilterQty" class="btn btn-default">Filter</button>
+            </fieldset>
+        </div>
+        
+        <div class="clearboth"></div>
+        <div class="float-left" id="DivStockQtyManageLst">
+        </div>
+    </div>
+
+    <div class="float-right">
+    </div>
+</div>
+<div class="clearboth"></div>
+<div class="modal-footer">
+    <button id="btnClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>

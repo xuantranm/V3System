@@ -1,0 +1,84 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model SupplierViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="bs-docs-header">
+    <div class="container" role="search">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>Type</label>
+                        @Html.DropDownListFor(model => model.bSupplierTypeID, Model.Types, @Constants.AllDLL, new { @id = "searchType", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Supplier</label>
+                        @Html.DropDownListFor(model => model.Id, Model.Suppliers, @Constants.AllDLL, new { @id = "searchSupplier", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Code</label>
+                        <input type="text" name="StockCode" class="form-control" id="StockCode" placeholder="Stock Code" />
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Name</label>
+                        <input type="text" name="StockName" class="form-control" id="StockName" placeholder="Stock Name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        @Html.DropDownListFor(model => model.CountryId, Model.Countries, @Constants.AllDLL, new { @id = "searchCountry", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Market</label>
+                        <select id="searchMarket" class="form-control">
+                            <option value="">All</option>
+                            <option value="1">Market</option>
+                            <option value="0">Un Market</option>
+                        </select>
+                    </div>
+                   <div class="form-group">
+                        <label>@Constants.Rows</label>
+                        <select id="pageSize" class="form-control">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="0">All</option>
+                        </select>
+                    </div>
+                    <div class="form-group button-control">
+                        <button type="button" id="btnSearch" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-search"></span> Search
+                        </button>
+                        @if (Model.UserLogin.SupplierR > 1)
+                        {
+                        <a href="@Url.Action("Create", "Supplier")" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-plus"></span> New
+                        </a>
+                        }
+
+                        <button type="button" id="btnExport" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-export"></span> Export
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" role="list">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="list-session">
+                <div class="alert alert-info bold" role="alert">LOADING...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="@Url.Action("Delete", "Supplier")" id="hidDeleteUrl" />
+
+<script src="/Scripts/tmx.supmanager.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

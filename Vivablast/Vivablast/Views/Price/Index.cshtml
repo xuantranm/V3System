@@ -1,0 +1,78 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model PriceViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="float-left">
+    <label>Store</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.StoreId, Model.Stores, @Constants.AllDLL, new { @id = "searchStore", @class = "form-control  width150" })
+</div>
+<div class="float-left marginleft10">
+    <label>Supplier</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.ProductPrice.SupplierId, Model.Suppliers, Constants.AllDLL, new { @id = "searchSupplier", @class = "form-control width150" })
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Stock Code</label>
+</div>
+<div class="float-left marginleft10">
+    <input type="text" name="StockCode" class="form-control" id="StockCode" placeholder="Stock Code">
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Stock Name</label>
+</div>
+<div class="float-left marginleft10">
+    <input type="text" name="StockName" class="form-control" id="StockName" placeholder="Stock Name">
+</div>
+<div class="float-left marginleft10">
+    <label>Status</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.Status, Model.StatusPrice, Constants.AllDLL, new { @id = "searchStatus", @class = "form-control width120" })
+</div>
+<div class="clearboth height10"></div>
+<div class="float-left width54 margintop5">
+    <label>From</label>
+</div>
+<div class="input-group date float-left width220">
+    <input id="fromDate" value="@Constants.FromDate" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+</div>
+<div class="float-left width30 marginleft10 margintop5"><label>To</label></div>
+<div class="input-group date float-left width220 marginright10">
+    <input id="toDate" value="@Constants.ToDate" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+</div>
+<div class="float-left marginleft10"><label>@Constants.Rows</label></div>
+<div class="float-left marginleft10 marginright10">
+    <select id="pageSize" class="form-control width70">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="1000">1000</option>
+    </select>
+</div>
+<button type="button" id="btnSearch" class="btn btn-primary">
+    <span class="glyphicon glyphicon-search"></span> Search
+</button>
+@if (Model.UserLogin.Price > 1)
+{
+    <a href="@Url.Action("Create", "Price")" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span> New
+    </a>
+}
+<button type="button" id="btnExport" class="btn btn-primary">
+    <span class="glyphicon glyphicon-export"></span> Export
+</button>
+<div class="clearboth height10"></div>
+
+<div id="list-session">
+    <div class="alert alert-info bold" role="alert">LOADING...</div>
+</div>
+<input type="hidden" value="@Url.Action("Delete", "Price")" id="hidDeleteUrl" />
+<script src="/Scripts/tmx.pricemanager.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

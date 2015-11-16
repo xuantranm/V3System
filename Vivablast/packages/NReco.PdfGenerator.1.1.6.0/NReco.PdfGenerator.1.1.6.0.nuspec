@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>NReco.PdfGenerator</id>
+    <version>1.1.6.0</version>
+    <title>NReco.PdfGenerator</title>
+    <authors>Vitalii Fedorchenko</authors>
+    <owners>Vitalii Fedorchenko</owners>
+    <licenseUrl>http://www.nrecosite.com/pdf_generator_net.aspx</licenseUrl>
+    <projectUrl>http://www.nrecosite.com/pdf_generator_net.aspx</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>HTML-to-PDF converter component for C# (.NET) based on WkHtmlToPdf utility. Generates pretty-looking PDF documents from .NET application by HTML-layout.</description>
+    <releaseNotes>v.1.1.6 changes: 
+- fixed header/footer issue (ignored) when TOC/Cover options are enabled
+- embedded WkHtmlToPdf tool upgraded to version 0.12.2.1 (released January 19, 2015). NOTE: this version of wkhtmltopdf requires Visual C++ Redistributable package for VS 2013 (x86).</releaseNotes>
+    <copyright>Copyright 2013-2014 Vitalii Fedorchenko</copyright>
+    <tags>PDF Html WkHtmlToPdf html-to-pdf html2pdf Converter</tags>
+  </metadata>
+</package>

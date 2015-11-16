@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7746763-1CE2-4E25-B3F5-9C9E97F65E94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ap.Business</RootNamespace>
+    <AssemblyName>Ap.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domains\Change_Code.cs" />
+    <Compile Include="Domains\Country.cs" />
+    <Compile Include="Domains\Function.cs" />
+    <Compile Include="Domains\LookUp.cs" />
+    <Compile Include="Domains\XUser.cs" />
+    <Compile Include="Dto\ProjectCustom.cs" />
+    <Compile Include="Dto\PeRequisitionUpdate.cs" />
+    <Compile Include="Dto\V3_Ddl.cs" />
+    <Compile Include="Dto\StockInQuantity.cs" />
+    <Compile Include="Dto\V3_StockCodeName.cs" />
+    <Compile Include="Dto\V3_List_Category.cs" />
+    <Compile Include="Dto\V3_List_StockType.cs" />
+    <Compile Include="Dto\V3_SRV_Max.cs" />
+    <Compile Include="Dto\V3_DDL_PE.cs" />
+    <Compile Include="Dto\V3_GetPriceDDL.cs" />
+    <Compile Include="Dto\V3_PE_PDF.cs" />
+    <Compile Include="Dto\V3_Pe_Detail_Data.cs" />
+    <Compile Include="Dto\V3_Price_By_Id.cs" />
+    <Compile Include="Dto\V3_List_StockReturn_Detail.cs" />
+    <Compile Include="Dto\V3_List_StockAssign_Detail.cs" />
+    <Compile Include="Dto\V3_List_StockIn_Detail.cs" />
+    <Compile Include="Dto\V3_List_Supplier_Product.cs" />
+    <Compile Include="Dto\V3_GetPaymentDDL.cs" />
+    <Compile Include="Dto\V3_GetCurrencyDDL.cs" />
+    <Compile Include="Dto\V3_List_PoType_Ddl.cs" />
+    <Compile Include="Dto\V3_List_Accounting.cs" />
+    <Compile Include="Dto\V3_List_StockAssign.cs" />
+    <Compile Include="Dto\V3_GetAllProjectDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetAssignedStockBySIV_Result.cs" />
+    <Compile Include="Dto\V3_GetCountryDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetRequisitionDDL.cs" />
+    <Compile Include="Dto\V3_GetPoId_Lastest.cs" />
+    <Compile Include="Dto\V3_Pe_Detail.cs" />
+    <Compile Include="Dto\V3_GetProjectClientDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetProjectDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetReturnedStockBySRV_Result.cs" />
+    <Compile Include="Dto\V3_SIV_Max.cs" />
+    <Compile Include="Dto\V3_GetStockCategoryDDL_Result.cs" />
+    <Compile Include="Dto\V3_Information_Stock.cs" />
+    <Compile Include="Dto\V3_GetStockLabelDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetStockPositionDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetStockTypeDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetStockUnitDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetStoreDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetSupplierDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetSupplierTypeDDL_Result.cs" />
+    <Compile Include="Dto\V3_GetWorkerDDL_Result.cs" />
+    <Compile Include="Dto\V3_PE_Information.cs" />
+    <Compile Include="Dto\V3_List_PO.cs" />
+    <Compile Include="Dto\V3_List_Price.cs" />
+    <Compile Include="Dto\V3_List_Project.cs" />
+    <Compile Include="Dto\V3_Requisition_Master.cs" />
+    <Compile Include="Dto\V3_RequisitionDetail_Result.cs" />
+    <Compile Include="Dto\V3_List_Requisition.cs" />
+    <Compile Include="Dto\V3_List_StockReturn.cs" />
+    <Compile Include="Dto\V3_List_Service.cs" />
+    <Compile Include="Dto\V3_List_StockIn.cs" />
+    <Compile Include="Dto\V3_List_Stock.cs" />
+    <Compile Include="Dto\V3_Stock_Quantity_Management_Result.cs" />
+    <Compile Include="Dto\V3_Stock_Search_Result.cs" />
+    <Compile Include="Dto\V3_List_Store.cs" />
+    <Compile Include="Dto\V3_List_Supplier.cs" />
+    <Compile Include="Dto\V3_Check_Login.cs" />
+    <Compile Include="Dto\XUser.cs" />
+    <Compile Include="Repositories\AccountingRepository.cs" />
+    <Compile Include="Repositories\StockOutRepository.cs" />
+    <Compile Include="Repositories\StockReturnRepository.cs" />
+    <Compile Include="Repositories\StockInRepository.cs" />
+    <Compile Include="Repositories\PeRepository.cs" />
+    <Compile Include="Repositories\RequisitionRepository.cs" />
+    <Compile Include="Repositories\PriceRepository.cs" />
+    <Compile Include="Repositories\StockServiceRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\StockTypeRepository.cs" />
+    <Compile Include="Repositories\SupplierRepository.cs" />
+    <Compile Include="Repositories\StockRepository.cs" />
+    <Compile Include="Repositories\SystemRepository.cs" />
+    <Compile Include="Repositories\StoreRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\ProjectRepository.cs" />
+    <Compile Include="Repositories\ApContext.cs" />
+    <Compile Include="Domains\PaymentTerm.cs" />
+    <Compile Include="Domains\Product_Price.cs" />
+    <Compile Include="Domains\Project_Client.cs" />
+    <Compile Include="Domains\SIV.cs" />
+    <Compile Include="Domains\SRV.cs" />
+    <Compile Include="Domains\Document.cs" />
+    <Compile Include="Domains\Store.cs" />
+    <Compile Include="Domains\Store_Stock.cs" />
+    <Compile Include="Domains\WAMS_ASSIGNING_WORKER.cs" />
+    <Compile Include="Domains\WAMS_ASSIGNING_WORKER_TOOLS.cs" />
+    <Compile Include="Domains\WAMS_ASSIGNNING_STOCKS.cs" />
+    <Compile Include="Domains\WAMS_ATTACHMENT.cs" />
+    <Compile Include="Domains\WAMS_AUDIT.cs" />
+    <Compile Include="Domains\WAMS_AUDIT_TRAILS.cs" />
+    <Compile Include="Domains\WAMS_BRAND_FUEL.cs" />
+    <Compile Include="Domains\WAMS_CAR.cs" />
+    <Compile Include="Domains\WAMS_CAR_FUELOIL_DETAIL.cs" />
+    <Compile Include="Domains\WAMS_CATALOGUE_CONFIGURATION.cs" />
+    <Compile Include="Domains\WAMS_CATEGORY.cs" />
+    <Compile Include="Domains\WAMS_COMPANY_DETAILS.cs" />
+    <Compile Include="Domains\WAMS_CONSUMABLE_LIST.cs" />
+    <Compile Include="Domains\WAMS_COUNTRY.cs" />
+    <Compile Include="Domains\WAMS_CURRENCY_TYPE.cs" />
+    <Compile Include="Domains\WAMS_CURRENT_SUPERVISOR.cs" />
+    <Compile Include="Domains\WAMS_DESCRIPTION.cs" />
+    <Compile Include="Domains\WAMS_EQUIPMENT.cs" />
+    <Compile Include="Domains\WAMS_EQUIPMENT_FUELOIL_DETAIL.cs" />
+    <Compile Include="Domains\WAMS_ERROR_MESSAGE.cs" />
+    <Compile Include="Domains\WAMS_FUEL_OIL.cs" />
+    <Compile Include="Domains\WAMS_FULFILLMENT_DETAIL.cs" />
+    <Compile Include="Domains\WAMS_FUNCTION_MANAGEMENT.cs" />
+    <Compile Include="Domains\WAMS_HISTORY_ACTION.cs" />
+    <Compile Include="Domains\WAMS_HISTORY_FORM.cs" />
+    <Compile Include="Domains\WAMS_HISTORY_LOG.cs" />
+    <Compile Include="Domains\WAMS_HISTORY_OBJECT.cs" />
+    <Compile Include="Domains\WAMS_IMAGES.cs" />
+    <Compile Include="Domains\WAMS_ITEMS_SERVICE.cs" />
+    <Compile Include="Domains\WAMS_LABELS.cs" />
+    <Compile Include="Domains\WAMS_MEASUREMENT.cs" />
+    <Compile Include="Domains\WAMS_PAINT.cs" />
+    <Compile Include="Domains\WAMS_POSITION.cs" />
+    <Compile Include="Domains\WAMS_PO_DETAILS.cs" />
+    <Compile Include="Domains\WAMS_PO_EVALUATION.cs" />
+    <Compile Include="Domains\WAMS_PO_Info.cs" />
+    <Compile Include="Domains\WAMS_PO_TYPE.cs" />
+    <Compile Include="Domains\WAMS_PRODUCT.cs" />
+    <Compile Include="Domains\WAMS_PROJECT.cs" />
+    <Compile Include="Domains\WAMS_PROJECT_SUPERVISOR.cs" />
+    <Compile Include="Domains\WAMS_PURCHASE_ORDER.cs" />
+    <Compile Include="Domains\WAMS_REPORT.cs" />
+    <Compile Include="Domains\WAMS_REPORT_DETAILS.cs" />
+    <Compile Include="Domains\WAMS_REQUISITION_DETAILS.cs" />
+    <Compile Include="Domains\WAMS_REQUISITION_MASTER.cs" />
+    <Compile Include="Domains\WAMS_RETURNING_WORKER_TOOLS.cs" />
+    <Compile Include="Domains\WAMS_RETURN_LIST.cs" />
+    <Compile Include="Domains\WAMS_RETURN_PRODUCT_TO_SUPPLIER.cs" />
+    <Compile Include="Domains\WAMS_SCAFOLDING.cs" />
+    <Compile Include="Domains\WAMS_SERVICE.cs" />
+    <Compile Include="Domains\WAMS_SERVICE_ALERT_CONFIG.cs" />
+    <Compile Include="Domains\WAMS_SERVICE_HISTORY.cs" />
+    <Compile Include="Domains\WAMS_SHIPMENT.cs" />
+    <Compile Include="Domains\WAMS_SHIPMENT_DETAIL.cs" />
+    <Compile Include="Domains\WAMS_SPAREPART.cs" />
+    <Compile Include="Domains\WAMS_STOCK.cs" />
+    <Compile Include="Domains\WAMS_STOCKIN.cs" />
+    <Compile Include="Domains\WAMS_STOCK_ALERT_CONFIG.cs" />
+    <Compile Include="Domains\WAMS_STOCK_APPROVAL.cs" />
+    <Compile Include="Domains\WAMS_STOCK_LOG.cs" />
+    <Compile Include="Domains\WAMS_STOCK_LOW.cs" />
+    <Compile Include="Domains\WAMS_STOCK_MANAGEMENT_QUANTITY.cs" />
+    <Compile Include="Domains\WAMS_STOCK_STATUS.cs" />
+    <Compile Include="Domains\WAMS_STOCK_TYPE.cs" />
+    <Compile Include="Domains\WAMS_SUB_CATEGORY.cs" />
+    <Compile Include="Domains\WAMS_SUPERVISOR.cs" />
+    <Compile Include="Domains\WAMS_SUPPLIER.cs" />
+    <Compile Include="Domains\WAMS_SUPPLIER_SERVICE.cs" />
+    <Compile Include="Domains\WAMS_SUPPLIER_TYPE.cs" />
+    <Compile Include="Domains\WAMS_TYPE_FUEL.cs" />
+    <Compile Include="Domains\WAMS_UNIT.cs" />
+    <Compile Include="Domains\WAMS_USEFOR.cs" />
+    <Compile Include="Domains\WAMS_USER.cs" />
+    <Compile Include="Domains\WAMS_USERALERT.cs" />
+    <Compile Include="Domains\WAMS_WAREHOUSE.cs" />
+    <Compile Include="Domains\WAMS_WARRANTY_EXPIRE_ALERT.cs" />
+    <Compile Include="Domains\WAMS_WORKER.cs" />
+    <Compile Include="Domains\WAMS_WORKER_STATUS.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seedworks\IStockOutRepository.cs" />
+    <Compile Include="Seedworks\IStockReturnRepository.cs" />
+    <Compile Include="Seedworks\IStockInRepository.cs" />
+    <Compile Include="Seedworks\IPriceRepository.cs" />
+    <Compile Include="Seedworks\IStockServiceRepository.cs" />
+    <Compile Include="Seedworks\IAccountingRepository.cs" />
+    <Compile Include="Seedworks\IPeRepository.cs" />
+    <Compile Include="Seedworks\IRequisitionRepository.cs" />
+    <Compile Include="Seedworks\IStockTypeRepository.cs" />
+    <Compile Include="Seedworks\ICategoryRepository.cs" />
+    <Compile Include="Seedworks\ISupplierRepository.cs" />
+    <Compile Include="Seedworks\IStockRepository.cs" />
+    <Compile Include="Seedworks\ISystemRepository.cs" />
+    <Compile Include="Seedworks\IStoreRepository.cs" />
+    <Compile Include="Seedworks\IUserRepository.cs" />
+    <Compile Include="Seedworks\IProjectRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ap.Data\Ap.Data.csproj">
+      <Project>{84654d38-7e62-4308-8f86-a8e2eae3712c}</Project>
+      <Name>Ap.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

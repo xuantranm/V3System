@@ -1,0 +1,85 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model ServiceViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    <div>
+        @Model.TotalRecords @Constants.DisplayResult
+    </div>
+    <div class="table-responsive">
+        <table id="ServiceLst" class="table table-bordered table-hover noresize" style="width: 2000px">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.StockServiceR > 2)
+                    {
+                        <th class="center" style="width: 150px !important">Action</th>
+                    }
+                    <th class="center">No</th>
+                    <th class="center">Service Code</th>
+                    <th class="center">Service Name</th>
+                    <th class="center">Unit</th>
+                    <th class="center">Category</th>
+                    <th class="center">Weight</th>
+                    <th class="center">Acc. Code</th>
+                    <th class="center">Remark</th>
+                    <th class="center">Created Date</th>
+                    <th class="center width90">By</th>
+                    <th class="center">Modified Date</th>
+                    <th class="center width90">By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ServiceList)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.StockServiceR > 2)
+                        {
+                            <td class="center">
+                                <a href="@Url.Action("Create", "Service", new {id = @item.Id}, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration: none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Edit
+                                </a>
+                                @if (Model.UserLogin.StockServiceR > 3)
+                                {
+                                    <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration: none;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Delete
+                                    </a>
+                                }
+                            </td>
+                        }
+                        <td class="center">@item.No</td>
+                        <td class="center StockCode">@item.Service_Code</td>
+                        <td>@item.Service_Name</td>
+                        <td class="center">@item.Unit</td>
+                        <td class="center">@item.Category</td>
+                        <td class="center">@item.Weight</td>
+                        <td class="center">@item.Account_Code</td>
+                        <td class="center">@item.Description</td>
+                        <td class="center">@Constants.ConvertDate(item.Created_Date.ToString())</td>
+                        <td class="center">@item.Created_By</td>
+                        <td class="center">@Constants.ConvertDate(item.Modified_Date.ToString())</td>
+                        <td class="center">
+                            @item.Modified_By
+                            <input type="hidden" class="ItemKey" value="@item.Id" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    if (Model.TotalPages > 1)
+    {
+        <div style="float: left;">
+            @Html.Partial("Partials/_PreparePagingPartial")
+        </div>
+    }
+}
+

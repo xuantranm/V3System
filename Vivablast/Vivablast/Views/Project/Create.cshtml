@@ -1,0 +1,162 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model ProjectViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "project-create-form", @class = "form-horizontal" }))
+        {
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.vProjectID, new { @id = "hidCheckCode" })
+            @Html.HiddenFor(x => x.vProjectName, new { @id = "hidCheckName" })
+            @Html.HiddenFor(x => x.Timestamp)
+            @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
+            <input type="hidden" value="@Url.Action("Create", "Project")" id="hidSaveUrl" />
+            <div class="col-xs-12 height10"></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Project Code <span class="red">*</span>
+                    </label>
+                    @if (Model.Id > 0)
+                    {
+                        <div class="col-xs-9">
+                            @Html.TextBoxFor(m => m.vProjectID, new { @class = "form-control", disabled = "true" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-xs-9">
+                            @Html.TextBoxFor(m => m.vProjectID, new { @class = "form-control", @maxlength = "16" })
+                            @Html.ValidationMessageFor(model => model.vProjectID)
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Project Name <span class="red">*</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(m => m.vProjectName, new { @class = "form-control", @maxlength = "64" })
+                        @Html.ValidationMessageFor(model => model.vProjectName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Location <span class="red">*</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(m => m.vLocation, new { @class = "form-control", @maxlength = "300" })
+                        @Html.ValidationMessageFor(model => model.vLocation)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Country
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.DropDownListFor(model => model.CountryId, Model.Countries, Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Company <span class="red">*</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(m => m.vCompanyName, new { @class = "form-control", @maxlength = "300" })
+                        @Html.ValidationMessageFor(model => model.vCompanyName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Contact <span class="red">*</span>
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextBoxFor(m => m.vMainContact, new { @class = "form-control", @maxlength = "300" })
+                        @Html.ValidationMessageFor(model => model.vMainContact)
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Client
+                    </label>
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                @Html.DropDownListFor(model => model.ClientId, Model.Client, Constants.SelectDDL, new { @class = "form-control" })
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="javascript:;" class="btn btn-primary" id="btnNewClient"><span class="glyphicon glyphicon-plus"></span></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Begin <span class="red">*</span>
+                    </label>
+                    <div class="col-xs-9">
+                        <div class="float-left input-group date width140">
+                            <input id="dBeginDate" name="dBeginDate" value="@Model.dBeginDate" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.dBeginDate)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        End
+                    </label>
+                    <div class="col-xs-9">
+                        <div class="float-left input-group date width140">
+                            <input id="dEnd" name="dEnd" value="@Model.dEnd" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Status
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.DropDownListFor(model => model.StatusId, Model.StatusProject, new { @class = "form-control width140" })
+                        @Html.ValidationMessageFor(model => model.StatusId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">
+                        Description
+                    </label>
+                    <div class="col-xs-9">
+                        @Html.TextAreaFor(m => m.vDescription, new { @placeholder = "Description", @class = "auto-size" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 modal-footer center">
+                <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
+                    <span class="glyphicon glyphicon-save"></span> Save
+                </button>
+                <a href="@Url.Action("Create","Project")" class="btn btn-primary btnAdd displaynone">
+                    <span class="glyphicon glyphicon-plus"></span> New
+                </a>
+                @Html.ActionLink("Back To List Project", "Index", "Project", new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>
+
+
+<script src="/Scripts/tmx.projectact.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
+
+
+

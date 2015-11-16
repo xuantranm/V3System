@@ -1,0 +1,14 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model POViewModel
+
+@Html.DropDownList("MrfsChose",
+                        new MultiSelectList(Model.AvailableMrfs,
+                    "Id", "Code",
+                        Model.DefaultMrfs.Select(m => m.Id)),
+                    new
+                    {
+                        multiple = "multiple",
+                        @class = "multiselect"
+                    })    
