@@ -59,7 +59,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Payment Term <span class="red">*</span></label>
                     <div class="col-sm-9">
-                        @Html.DropDownListFor(model => model.iPayment, Model.Payments, Constants.SelectDDL, new { @class = "form-control" })
+                        @*@Html.DropDownListFor(model => model.iPayment, Model.Payments, Constants.SelectDDL, new { @class = "form-control" })*@
+                        @Html.TextBoxFor(model => model.iPayment, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group">

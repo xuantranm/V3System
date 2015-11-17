@@ -66,6 +66,18 @@ namespace Vivablast.Controllers
             var obgType = new SelectList(objType, "Id", "Code", 0);
             return Json(obgType);
         }
+
+        public JsonResult LoadPayment(int supplier)
+        {
+            var objType = _systemService.GetPayment(supplier);
+            var obgType = new SelectList(objType, "Id", "Code", 0);
+            return Json(obgType);
+        }
+
+        public ActionResult ListPayment(string term)
+        {
+            return Json(_systemService.ListPayment(term), JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         public ActionResult LoadPo(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)

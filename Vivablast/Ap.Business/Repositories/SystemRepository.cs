@@ -485,5 +485,40 @@ namespace Ap.Business.Repositories
             sql.Close();
             return result;
         }
+
+        public IList<string> ListPayment(string condition)
+        {
+            if (string.IsNullOrEmpty(condition))
+            {
+                return null;
+            }
+
+            var sql = GetSqlConnection();
+            var result = sql.Query<string>("V3_ListPayment", new
+            {
+                condition
+            },
+                                           commandType: CommandType.StoredProcedure).ToList();
+
+            sql.Close();
+
+            if (result.Any()) return result;
+            var a = new List<string> { string.Empty };
+            return a;
+        }
+
+        public string GetPayment(int supplier)
+        {
+            var sql = GetSqlConnection();
+            var result = sql.Query<string>("dbo.V3_Payment", new
+            {
+                supplier
+            },
+                                         commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+            sql.Close();
+
+            return result;
+        }
     }
 }

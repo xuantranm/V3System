@@ -74,7 +74,14 @@
             });
 
             $('#bSupplierID').on('change', function () {
+                if ($(this).val != "") {
+                    tmx.vivablast.peact.loadPayment($(this).val());
+                }
                 clearVal();
+            });
+
+            $("#iPayment").autocomplete({
+                source: "/PE/ListPayment?term" + $("#sCode").val()
             });
 
             $('#priceCreateFormPO').on('change', function (e) {
@@ -439,6 +446,27 @@
                         }
                         $('.mrf-suggestion').empty();
                         $(".mrf-area", form).after('<div class="mrf-suggestion"><label class="sr-only col-xs-3 control-label"></label><div class="col-sm-9">10 lastest MRF code: <b>'+markup+'</b></div></div>');
+                    },
+                    error: function () {
+                        errorSystem();
+                    }
+                });
+            }
+        },
+
+        loadPayment: function (supplier) {
+            if (supplier != 0) {
+                var url = "/PE/LoadPayment";
+                $.ajax({
+                    url: url,
+                    data: {
+                        supplier: supplier
+                    },
+                    cache: false,
+                    asysn: false,
+                    type: "POST",
+                    success: function (data) {
+                        $('#iPayment').val(data);
                     },
                     error: function () {
                         errorSystem();

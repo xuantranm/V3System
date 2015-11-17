@@ -362,3 +362,39 @@ END
 exec dbo.V3_StockGetListCode 'A'
 */
 GO
+
+-- V3_ListPayment
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_ListPayment]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[V3_ListPayment]
+GO
+CREATE PROCEDURE [dbo].[V3_ListPayment]
+@condition nvarchar(100)
+AS
+BEGIN
+	SELECT TOP 10 PaymentName
+		FROM [dbo].PaymentTerm (NOLOCK)
+		WHERE PaymentName like '%' + @condition +'%' and iEnable=1
+		ORDER BY PaymentName ASC
+END
+/*
+exec dbo.V3_ListPayment 'A'
+*/
+GO
+
+-- V3_Payment
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_Payment]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[V3_Payment]
+GO
+CREATE PROCEDURE [dbo].[V3_Payment]
+@supplier int
+AS
+BEGIN
+	SELECT TOP 10 PaymentName
+		FROM [dbo].PaymentTerm (NOLOCK)
+		WHERE PaymentName like '%' + @condition +'%' and iEnable=1
+		ORDER BY PaymentName ASC
+END
+/*
+exec dbo.V3_ListPayment 'A'
+*/
+GO
