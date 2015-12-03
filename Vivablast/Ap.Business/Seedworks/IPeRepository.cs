@@ -20,6 +20,8 @@ namespace Ap.Business.Seedworks
 
         IList<string> ListCode(string condition);
 
+        IList<string> ListPayment(string condition);
+
         V3_GetPoId_Lastest PoLastest(string condition);
 
         int CheckDelete(int id);

@@ -209,6 +209,10 @@ namespace Ap.Service.Services
             return _customSystemRepository.RequisitionByStockList(stock, store);
         }
 
+        public string PaymentTypeBySupplier(int supplier)
+        {
+            return _customSystemRepository.PaymentTypeBySupplier(supplier);
+        }
         public IList<V3_DDL_PE> Ddlpe(int supplier, int store, string status)
         {
             return _customSystemRepository.Ddlpe(supplier, store, status);
@@ -380,15 +384,5 @@ namespace Ap.Service.Services
             return _customSystemRepository.CountListTransactionStockByProject(page, size, project,type, fd, td);
         }
         #endregion
-
-        public IList<string> ListPayment(string condition)
-        {
-            return _customSystemRepository.ListPayment(condition);
-        }
-
-        public string GetPayment(int supplier)
-        {
-            return _customSystemRepository.GetPayment(supplier);
-        }
     }
 }

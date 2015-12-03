@@ -10,3 +10,8 @@ C:\Projects\vivablastweb\Vivablast\Ap.Common\bin\Debug\Ap.Common.dll
 C:\Projects\vivablastweb\Vivablast\Ap.Common\bin\Debug\Ap.Common.pdb
 C:\Projects\vivablastweb\Vivablast\Ap.Common\obj\Debug\Ap.Common.dll
 C:\Projects\vivablastweb\Vivablast\Ap.Common\obj\Debug\Ap.Common.pdb
+D:\PRACTISE\WAMSWEB\Vivablast\Ap.Common\bin\Debug\Ap.Common.dll
+D:\PRACTISE\WAMSWEB\Vivablast\Ap.Common\bin\Debug\Ap.Common.pdb
+D:\PRACTISE\WAMSWEB\Vivablast\Ap.Common\obj\Debug\Ap.Common.csprojResolveAssemblyReference.cache
+D:\PRACTISE\WAMSWEB\Vivablast\Ap.Common\obj\Debug\Ap.Common.dll
+D:\PRACTISE\WAMSWEB\Vivablast\Ap.Common\obj\Debug\Ap.Common.pdb

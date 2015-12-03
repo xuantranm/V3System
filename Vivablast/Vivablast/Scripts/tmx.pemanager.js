@@ -48,6 +48,16 @@
             $("#MRFSearch").autocomplete({
                 source: "/Requisition/ListCode?term" + $("#MRFSearch").val()
             });
+
+            $("#ckDate").change(function () {
+                if (!this.checked) {
+                    $('#fromDate').val('');
+                    $('#toDate').val('');
+                } else {
+                    $('#fromDate').val($('#hidFromDate').val());
+                    $('#toDate').val($('#hidToDate').val());
+                }
+            });
         },
 
         loadPe: function () {

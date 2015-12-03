@@ -43,8 +43,6 @@ namespace Ap.Business.Domains
         public Nullable<bool> iMarket { get; set; }
         public Nullable<int> iStore { get; set; }
         public Nullable<int> iPayment { get; set; }
-
-        public string vTermOfPayment { get; set; }
         public Nullable<System.DateTime> dCreated { get; set; }
         public Nullable<System.DateTime> dModified { get; set; }
         public Nullable<int> iCreated { get; set; }

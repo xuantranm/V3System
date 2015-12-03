@@ -157,6 +157,27 @@ namespace Ap.Business.Repositories
             return a;
         }
 
+        public IList<string> ListPayment(string condition)
+        {
+            if (string.IsNullOrEmpty(condition))
+            {
+                return null;
+            }
+
+            var sql = GetSqlConnection();
+            var result = sql.Query<string>("V3_ListPayment", new
+            {
+                condition
+            },
+                                           commandType: CommandType.StoredProcedure).ToList();
+
+            sql.Close();
+
+            if (result.Any()) return result;
+            var a = new List<string> { "" };
+            return a;
+        }
+
         public V3_GetPoId_Lastest PoLastest(string condition)
         {
             var sql = GetSqlConnection();

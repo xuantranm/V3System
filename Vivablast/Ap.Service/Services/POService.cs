@@ -77,6 +77,11 @@ namespace Ap.Service.Services
             return _customRepository.ListCode(condition);
         }
 
+        public IList<string> ListPayment(string condition)
+        {
+            return _customRepository.ListPayment(condition);
+        }
+
         public bool ExistedCode(string condition)
         {
             return _repository.Count(m => m.vPOID == condition) > 0;

@@ -53,6 +53,11 @@ namespace Vivablast.Controllers
             return Json(_service.ListCode(term), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ListPayment(string term)
+        {
+            return Json(_service.ListPayment(term), JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult LoadPrice(int stock, int store, int currency)
         {
             var objType = _systemService.PriceList(stock, store, currency);
@@ -67,16 +72,10 @@ namespace Vivablast.Controllers
             return Json(obgType);
         }
 
-        public JsonResult LoadPayment(int supplier)
+        public JsonResult LoadPaymentTypeBySupplier(int supplier)
         {
-            var objType = _systemService.GetPayment(supplier);
-            var obgType = new SelectList(objType, "Id", "Code", 0);
-            return Json(obgType);
-        }
-
-        public ActionResult ListPayment(string term)
-        {
-            return Json(_systemService.ListPayment(term), JsonRequestBehavior.AllowGet);
+            var objType = _systemService.PaymentTypeBySupplier(supplier);
+            return Json(objType);
         }
         #endregion
 
@@ -566,7 +565,7 @@ namespace Vivablast.Controllers
                 bCurrencyTypeID = item.bCurrencyTypeID,
                 Currencies = new SelectList(this._systemService.CurrencyList(), "Id", "Name"),
                 Payments = new SelectList(this._systemService.PaymentList(), "Id", "Name"),
-                iPayment = item.iPayment,
+                Payment = item.vTermOfPayment,
                 TotalRecords = totalDetailRecords,
                 PoDetailsVResults = listDetail,
                 PoGetInformation = poGetInformation

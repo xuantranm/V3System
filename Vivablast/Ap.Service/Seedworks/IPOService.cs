@@ -24,6 +24,8 @@ namespace Ap.Service.Seedworks
 
         IList<string> ListCode(string condition);
 
+        IList<string> ListPayment(string condition);
+
         bool ExistedCode(string condition);
 
         string GetAutoPoCode();

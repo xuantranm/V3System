@@ -60,6 +60,8 @@ namespace Ap.Service.Seedworks
 
         IList<V3_GetRequisitionDDL> RequisitionByStockList(int stock, int store);
 
+        string PaymentTypeBySupplier(int supplier);
+
         IList<V3_DDL_PE> Ddlpe(int supplier, int store, string status);
 
         V3_Ddl SuppliersFromPe(int pe);
@@ -91,8 +93,5 @@ namespace Ap.Service.Seedworks
         IList<V3_Stock_Quantity_Management_Result> ListTransactionStockByProject(int page, int size, int project, string type, string fd, string td);
         int CountListTransactionStockByProject(int page, int size, int project, string type, string fd, string td);
         #endregion
-
-        IList<string> ListPayment(string condition);
-        string GetPayment(int supplier);
     }
 }

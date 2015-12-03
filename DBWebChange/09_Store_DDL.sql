@@ -1,3 +1,19 @@
+-- V3_PaymentTypeBySupplier
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_PaymentTypeBySupplier]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[V3_PaymentTypeBySupplier]
+GO
+
+CREATE PROCEDURE [dbo].[V3_PaymentTypeBySupplier]
+@supplier int
+AS
+BEGIN
+	SELECT vTermOfPayment FROM [dbo].WAMS_SUPPLIER (NOLOCK)
+	WHERE bSupplierID = @supplier
+END
+GO
+-- exec [dbo].[V3_PaymentTypeBySupplier] 1
+GO
+
 -- V3_Check_Client
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_Check_Client]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[V3_Check_Client]

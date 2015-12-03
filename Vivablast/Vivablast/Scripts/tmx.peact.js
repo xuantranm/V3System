@@ -30,6 +30,10 @@
                 $('#vProjectID').val($('#ProjectName').val());
             });
 
+            $("#Payment").autocomplete({
+                source: "/PE/ListPayment?term" + $("#Payment").val()
+            });
+
             $('#StockCode', form).keydown(function () {
                 clearVal();
             });
@@ -58,15 +62,6 @@
                 }
             });
 
-            //$('#bCurrencyTypeID', form).on('change', function (e) {
-            //    tmx.vivablast.peact.loadPrice(form, '');
-            //});
-
-            //$(".integer").numeric(false, function () {
-            //    this.value = "";
-            //    this.focus();
-            //});
-
             $('#iStore').on('change', function () {
                 clearVal();
                 //tmx.vivablast.peact.loadPrice(form);
@@ -74,14 +69,8 @@
             });
 
             $('#bSupplierID').on('change', function () {
-                if ($(this).val != "") {
-                    tmx.vivablast.peact.loadPayment($(this).val());
-                }
+                tmx.vivablast.peact.loadPaymentType(form,$('#bSupplierID').val());
                 clearVal();
-            });
-
-            $("#iPayment").autocomplete({
-                source: "/PE/ListPayment?term" + $("#sCode").val()
             });
 
             $('#priceCreateFormPO').on('change', function (e) {
@@ -354,43 +343,6 @@
             }
         },
 
-        //loadPrice: function (form, valPrice) {
-        //    if ($('#bCurrencyTypeID', form).val() != '' && $('#StockCode', form).val() != '' && $('#StockCode', form).val().length > 5 && $('#iStore', form).val() != '') {
-        //        var url = "/PE/LoadPrice";
-        //        $.ajax({
-        //            url: url,
-        //            data: {
-        //                stock: $('#StockId', form).val(),
-        //                store: $('#iStore', form).val(),
-        //                currency: $('#bCurrencyTypeID', form).val()
-        //            },
-        //            cache: false,
-        //            type: "POST",
-        //            success: function(data) {
-        //                if (data.length == 0) {
-        //                    clearVal();
-        //                    var price = "<option value=''>Select</option>";
-        //                    $("#priceCreateFormPO").html(price);
-        //                    $('#priceCreateFormPO', form).after('<label id="validate" class="red">No price!</label>');
-        //                } else {
-        //                    clearVal();
-        //                    var markup = "<option value=''>Select</option>";
-        //                    for (var x = 0; x < data.length; x++) {
-        //                        markup += "<option value=" + data[x].Value + ">" + parseFloat(data[x].Text) + "</option>";
-        //                    }
-        //                    $('#priceCreateFormPO', form).html(markup);
-        //                    if (valPrice != '') {
-        //                        $("#priceCreateFormPO option[value='" + valPrice + "']", form).attr("selected", "selected");
-        //                    }
-        //                }
-        //            },
-        //            error: function() {
-        //                errorSystem();
-        //            }
-        //        });
-        //    }
-        //},
-
         calculatorAmountPrice: function (form) {
             var amountPrice;
             //amountPrice = Math.round((checkNumeric($("#priceCreateFormPO option:selected", form).text()) * $("#Quantity", form).val()) * 100) / 100;
@@ -454,9 +406,10 @@
             }
         },
 
-        loadPayment: function (supplier) {
-            if (supplier != 0) {
-                var url = "/PE/LoadPayment";
+        loadPaymentType: function (form, supplier) {
+            console.log(supplier);
+            if (supplier != '') {
+                var url = "/PE/LoadPaymentTypeBySupplier";
                 $.ajax({
                     url: url,
                     data: {
@@ -466,7 +419,7 @@
                     asysn: false,
                     type: "POST",
                     success: function (data) {
-                        $('#iPayment').val(data);
+                        $("#Payment", form).val(data);
                     },
                     error: function () {
                         errorSystem();

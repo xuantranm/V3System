@@ -57,7 +57,7 @@ namespace Vivablast.ViewModels
         public string vLocation { get; set; }
         public DateTime? dDeliverDate { get; set; }
         public int? iStore { get; set; }
-        public int? iPayment { get; set; }
+        public string Payment { get; set; }
         public byte[] Timestamp { get; set; }
         #endregion
 
