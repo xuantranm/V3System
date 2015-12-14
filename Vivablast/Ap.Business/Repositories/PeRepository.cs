@@ -260,5 +260,18 @@ namespace Ap.Business.Repositories
             sql.Close();
             return result;
         }
+
+        public int UpdatePaymentType(string payment)
+        {
+            var sql = GetSqlConnection();
+            var result = sql.Query<int>("V3_DataPaymentType", new
+            {
+                payment
+            },
+                                           commandType: CommandType.StoredProcedure).SingleOrDefault();
+
+            sql.Close();
+            return result;
+        }
     }
 }

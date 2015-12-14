@@ -407,7 +407,6 @@
         },
 
         loadPaymentType: function (form, supplier) {
-            console.log(supplier);
             if (supplier != '') {
                 var url = "/PE/LoadPaymentTypeBySupplier";
                 $.ajax({

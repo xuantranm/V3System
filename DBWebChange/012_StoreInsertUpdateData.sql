@@ -1,3 +1,25 @@
+-- V3_DataPaymentType
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_DataPaymentType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[V3_DataPaymentType]
+GO
+CREATE PROCEDURE [dbo].[V3_DataPaymentType]
+@payment nvarchar(max)
+AS
+BEGIN
+	IF EXISTS (SELECT * FROM PaymentTerm WHERE lower(PaymentName) = lower(@payment))
+	BEGIN
+		SELECT 0
+	END
+	ELSE
+	BEGIN
+	 SET NOCOUNT ON;
+		INSERT INTO dbo.PaymentTerm (PaymentName,iEnable,iCreated,dCreated) VALUES (@payment, 1, 1, GETDATE())
+		SELECT 1
+	END
+END
+GO
+-- exec [dbo].[V3_DataPaymentType] '03 DAYs'
+
 --V3_Insert_Client
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_Insert_Client]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[V3_Insert_Client]

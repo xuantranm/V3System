@@ -200,7 +200,8 @@ namespace Ap.Service.Services
             {
                 _customRepository.UpdateRequisition(requistionUpdate.Mrf, requistionUpdate.Stock, requistionUpdate.Quantity);
             }
-            
+            // Insert New Payment Type
+            _customRepository.UpdatePaymentType(entity.vTermOfPayment);
             return true;
         }
 
@@ -259,6 +260,9 @@ namespace Ap.Service.Services
             _unitOfWork.CommitChanges();
             // Update Total PE
             _customRepository.UpdatePeTotal(entity.Id);
+
+            // Insert New Payment Type
+            _customRepository.UpdatePaymentType(entity.vTermOfPayment);
             return true;
         }
 

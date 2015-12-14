@@ -33,5 +33,7 @@ namespace Ap.Business.Seedworks
         int UpdateRequisition(int mrf, int stock, decimal quantity);
 
         int UpdatePeTotal(int id);
+
+        int UpdatePaymentType(string payment);
     }
 }

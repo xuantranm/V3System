@@ -74,7 +74,7 @@ namespace Vivablast.Controllers
 
         public JsonResult LoadPaymentTypeBySupplier(int supplier)
         {
-            var objType = _systemService.PaymentTypeBySupplier(supplier);
+            var objType = _systemService.PaymentTypeBySupplier(supplier) ?? string.Empty;
             return Json(objType);
         }
         #endregion
@@ -601,6 +601,7 @@ namespace Vivablast.Controllers
                 model.PurchaseOrder.iCreated = model.LoginId;
                 model.PurchaseOrder.dCreated = DateTime.Now;
                 _service.Insert(model.PurchaseOrder, model.ListPoDetailData);
+                
                 return Json(new { result = Constants.Success });
             }
             catch (Exception e)
