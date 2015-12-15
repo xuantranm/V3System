@@ -66,6 +66,8 @@ namespace Ap.Service.Seedworks
 
         V3_Ddl SuppliersFromPe(int pe);
 
+        bool InsertLookUp(LookUp entity);
+
         #region DOCUMENT
         List<Document> GetDocumentList(int key, int type);
 

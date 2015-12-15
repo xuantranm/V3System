@@ -7,7 +7,7 @@
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-1.10.2.js", "~/Scripts/jquery.numeric.js"));
+                        "~/Scripts/jquery-1.10.2.js", "~/Scripts/jquery.numeric.js", "~/Scripts/jquery.tmpl.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-1.10.3.js"));

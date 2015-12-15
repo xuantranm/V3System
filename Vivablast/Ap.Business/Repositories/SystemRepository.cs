@@ -498,5 +498,9 @@ namespace Ap.Business.Repositories
             sql.Close();
             return result;
         }
+
+        #region INSERT COMMON
+
+        #endregion
     }
 }

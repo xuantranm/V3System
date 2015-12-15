@@ -46,3 +46,15 @@ D:\PRACTISE\WAMSWEB\Vivablast\Ap.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\PRACTISE\WAMSWEB\Vivablast\Ap.Data\obj\Debug\Ap.Data.csprojResolveAssemblyReference.cache
 D:\PRACTISE\WAMSWEB\Vivablast\Ap.Data\obj\Debug\Ap.Data.dll
 D:\PRACTISE\WAMSWEB\Vivablast\Ap.Data\obj\Debug\Ap.Data.pdb
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\Ap.Data.dll.config
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\Ap.Data.dll
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\Ap.Data.pdb
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\Ap.Common.dll
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\EntityFramework.dll
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\Ap.Common.pdb
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\EntityFramework.xml
+D:\PRACTISE\V3\Vivablast\Ap.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\PRACTISE\V3\Vivablast\Ap.Data\obj\Debug\Ap.Data.csprojResolveAssemblyReference.cache
+D:\PRACTISE\V3\Vivablast\Ap.Data\obj\Debug\Ap.Data.dll
+D:\PRACTISE\V3\Vivablast\Ap.Data\obj\Debug\Ap.Data.pdb

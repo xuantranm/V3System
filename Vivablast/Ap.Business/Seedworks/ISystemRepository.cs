@@ -78,5 +78,9 @@ namespace Ap.Business.Seedworks
         IList<V3_DDL_PE> Ddlpe(int supplier, int store, string status);
 
         V3_Ddl SuppliersFromPe(int pe);
+
+        #region INSERT COMMON
+
+        #endregion
     }
 }

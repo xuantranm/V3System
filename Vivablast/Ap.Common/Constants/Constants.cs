@@ -188,5 +188,19 @@
         public static string Delete = "Delete";
         public static string StatusOpen = "Open";
         public static string StatusComplete = "Complete";
+
+        #region LookUp
+        public static string LuVat = "vat";
+        public static string LuRight = "right";
+        public static string LuDepartment = "department";
+        public static string LuPriceStatus = "pricestatus";
+        public static string LuProjectStatus = "projectstatus";
+
+
+        public static string LookUpType = "LookUpType";
+        public static string LookUpKey = "LookUpKey";
+        public static string LookUpValue = "LookUpValue";
+
+        #endregion
     }
 }

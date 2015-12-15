@@ -565,6 +565,7 @@ namespace Vivablast.Controllers
                 bCurrencyTypeID = item.bCurrencyTypeID,
                 Currencies = new SelectList(this._systemService.CurrencyList(), "Id", "Name"),
                 Payments = new SelectList(this._systemService.PaymentList(), "Id", "Name"),
+                VatList = new SelectList(this._systemService.GetLookUp(Constants.LuVat), Constants.LookUpKey, Constants.LookUpValue),
                 Payment = item.vTermOfPayment,
                 TotalRecords = totalDetailRecords,
                 PoDetailsVResults = listDetail,

@@ -12,7 +12,9 @@
         todayHighlight: true
     });
 
-    $(".multiselect").multiselect();
+    $(".multiselect").multiselect({
+        enableClickableOptGroups: true
+    });
 
     $('.quantity-input').on('keyup blur change', function (event) {
         if (event.which == 13 || (event.which >= 16 && event.which <= 18) || (event.which >= 37 && event.which <= 40)) return;

@@ -56,6 +56,7 @@
     <Compile Include="Dto\PeRequisitionUpdate.cs" />
     <Compile Include="Dto\V3_Ddl.cs" />
     <Compile Include="Dto\StockInQuantity.cs" />
+    <Compile Include="Dto\V3_GetVatDDL.cs" />
     <Compile Include="Dto\V3_StockCodeName.cs" />
     <Compile Include="Dto\V3_List_Category.cs" />
     <Compile Include="Dto\V3_List_StockType.cs" />

@@ -39,7 +39,7 @@ namespace Vivablast.Controllers
                 Countries = new SelectList(this._systemService.CountryList(), "Id", "Name"),
                 Client = new SelectList(this._systemService.ClientProjectList(), "Id", "Name"),
                 Suppervisor = new SelectList(this._systemService.SuppervisorList(), "Id", "Name"),
-                StatusProject = new SelectList(this._systemService.GetLookUp("projectstatus"), "LookUpKey", "LookUpValue"),
+                StatusProject = new SelectList(this._systemService.GetLookUp(Constants.LuProjectStatus), Constants.LookUpKey, Constants.LookUpValue),
                 Projects = new SelectList(this._systemService.ProjectList(), "Id", "vProjectID")
             };
             return View(viewModel);
@@ -515,7 +515,7 @@ namespace Vivablast.Controllers
                 Countries = new SelectList(this._systemService.CountryList(), "Id", "Name"),
                 Client = new SelectList(this._systemService.ClientProjectList(), "Id", "Name"),
                 Suppervisor = new SelectList(this._systemService.SuppervisorList(), "vWorkerID", "Suppervisor"),
-                StatusProject = new SelectList(this._systemService.GetLookUp("projectstatus"), "LookUpKey", "LookUpValue"),
+                StatusProject = new SelectList(this._systemService.GetLookUp(Constants.LuProjectStatus), Constants.LookUpKey, Constants.LookUpValue),
                 UserLogin = user
             };
 

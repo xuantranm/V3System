@@ -40,7 +40,7 @@ namespace Vivablast.Controllers
                 UserLogin = user,
                 Stores = new SelectList(_systemService.StoreList(), "Id", "Name"),
                 Suppliers = new SelectList(_systemService.SupplierList(), "Id", "Name"),
-                StatusPrice = new SelectList(this._systemService.GetLookUp("pricestatus"), "LookUpKey", "LookUpValue"),
+                StatusPrice = new SelectList(this._systemService.GetLookUp(Constants.LuPriceStatus), Constants.LookUpKey, Constants.LookUpValue),
             };
             return View(model);
         }

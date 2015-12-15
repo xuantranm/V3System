@@ -75,4 +75,36 @@ GO
 INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
      VALUES ('right','4','Delete',1)
 GO
+/* VAT */
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','10','10',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','20','20',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','30','30',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','40','40',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','50','50',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','60','60',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','70','70',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','80','80',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','90','90',1)
+GO
+INSERT INTO [dbo].[LookUp]([LookUpType],[LookUpKey],[LookUpValue],[Enable])
+     VALUES ('vat','100','100',1)
+GO
+GO
 SELECT * FROM dbo.[LookUp]

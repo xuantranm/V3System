@@ -273,6 +273,7 @@
     <Content Include="bin\WebGrease.dll" />
     <Content Include="bin\WebMatrix.Data.dll" />
     <Content Include="bin\WebMatrix.WebData.dll" />
+    <Content Include="Content\bootstrap-multiselect.css" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\css\bootstrap.css" />
@@ -404,6 +405,7 @@
     <Content Include="Images\No-Image-Available.gif" />
     <Content Include="log4net.config" />
     <Content Include="Scripts\autosize.js" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chosen.jquery.js" />
@@ -412,6 +414,7 @@
     <Content Include="Scripts\ExportToPDF.js" />
     <Content Include="Scripts\jquery.multiselect.js" />
     <Content Include="Scripts\jquery.multiselect.min.js" />
+    <Content Include="Scripts\jquery.tmpl.js" />
     <Content Include="Scripts\tmx.projectdetail.js" />
     <Content Include="Scripts\tmx.stocktypeaction.js" />
     <Content Include="Scripts\tmx.priceact.js" />

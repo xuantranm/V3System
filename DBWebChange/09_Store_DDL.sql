@@ -1,3 +1,19 @@
+GO
+-- V3_GetVatDDL
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_GetVatDDL]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[V3_GetVatDDL]
+GO
+CREATE PROCEDURE [dbo].[V3_GetVatDDL]
+AS
+BEGIN
+	SELECT [Id], vPOID AS [Name] FROM [dbo].[WAMS_PURCHASE_ORDER] (NOLOCK)
+	WHERE iEnable=1
+	ORDER BY vPOID DESC
+END
+GO
+-- exec [dbo].[V3_GetVatDDL]
+
+GO
 -- V3_PaymentTypeBySupplier
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_PaymentTypeBySupplier]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[V3_PaymentTypeBySupplier]

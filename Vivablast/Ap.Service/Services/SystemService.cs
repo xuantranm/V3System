@@ -17,6 +17,7 @@ namespace Ap.Service.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Document> _documentRepository;
+        private readonly IRepository<LookUp> _lookUpRepository;
         private readonly IRepository<XUser> _userepository;
         private readonly ISystemRepository _customSystemRepository;
         private readonly IUserRepository _customUserRepository;
@@ -24,6 +25,7 @@ namespace Ap.Service.Services
         public SystemService(
             IUnitOfWork unitOfWork,
             IRepository<Document> documentRepository,
+            IRepository<LookUp> lookUpRepository,
             IRepository<XUser> userepository,
             ISystemRepository customSystemRepository,
             IUserRepository customUserRepository,
@@ -33,6 +35,7 @@ namespace Ap.Service.Services
             _customSystemRepository = customSystemRepository;
             _customUserRepository = customUserRepository;
             _documentRepository = documentRepository;
+            _lookUpRepository = lookUpRepository;
             _userepository = userepository;
         }
 
@@ -382,6 +385,20 @@ namespace Ap.Service.Services
         public int CountListTransactionStockByProject(int page, int size, int project, string type, string fd, string td)
         {
             return _customSystemRepository.CountListTransactionStockByProject(page, size, project,type, fd, td);
+        }
+        #endregion
+
+        #region INSERT COMMON
+
+        public bool InsertLookUp(LookUp entity)
+        {
+            if (_lookUpRepository.Count(
+                m => m.LookUpType.Equals(entity.LookUpType) && m.LookUpValue.Equals(entity.LookUpValue)) != 0)
+                return false;
+            _lookUpRepository.Add(entity);
+            _unitOfWork.CommitChanges();
+
+            return true;
         }
         #endregion
     }

@@ -37,7 +37,7 @@ namespace Vivablast.Controllers
             var model = new UserViewModel
             {
                 Stores = new SelectList(_systemService.StoreList(), "Id", "Name"), 
-                Deparments = new SelectList(_systemService.GetLookUp("department"), "LookUpValue", "LookUpValue"), 
+                Deparments = new SelectList(_systemService.GetLookUp(Constants.LuDepartment), "LookUpValue", "LookUpValue"), 
                 UserLogin = user
             };
 
@@ -354,8 +354,8 @@ namespace Vivablast.Controllers
                 Timestamp = userItem.Timestamp,
                 UserLogin = user,
                 Stores = new SelectList(_systemService.StoreList(), "Id", "Name"),
-                Deparments = new SelectList(_systemService.GetLookUp("department"), "LookUpKey", "LookUpValue"),
-                Rights = new SelectList(_systemService.GetLookUp("right"), "LookUpKey", "LookUpValue")
+                Deparments = new SelectList(_systemService.GetLookUp(Constants.LuDepartment), Constants.LookUpKey, Constants.LookUpValue),
+                Rights = new SelectList(_systemService.GetLookUp(Constants.LuRight), Constants.LookUpKey, Constants.LookUpValue)
             };
 
             // FUNCTION
@@ -412,8 +412,8 @@ namespace Vivablast.Controllers
                 Timestamp = userItem.Timestamp,
                 UserLogin = user,
                 Stores = new SelectList(_systemService.StoreList(), "Id", "Name"),
-                Deparments = new SelectList(_systemService.GetLookUp("department"), "LookUpKey", "LookUpValue"),
-                Rights = new SelectList(_systemService.GetLookUp("right"), "LookUpKey", "LookUpValue")
+                Deparments = new SelectList(_systemService.GetLookUp(Constants.LuDepartment), Constants.LookUpKey, Constants.LookUpValue),
+                Rights = new SelectList(_systemService.GetLookUp(Constants.LuRight), Constants.LookUpKey, Constants.LookUpValue)
             };
 
             // FUNCTION

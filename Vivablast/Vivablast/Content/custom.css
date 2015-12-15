@@ -814,3 +814,7 @@ button.closesecond {
 .gallery-stock .carousel-indicators {
     bottom: -10px;
 }
+.big-checkbox {
+    width:30px!important; 
+    height:30px!important;
+}

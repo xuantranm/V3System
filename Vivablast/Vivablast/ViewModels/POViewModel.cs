@@ -24,6 +24,7 @@ namespace Vivablast.ViewModels
         public SelectList POs { get; set; }
         public SelectList Currencies { get; set; }
         public SelectList Payments { get; set; }
+        public SelectList VatList { get; set; }
         public string LstDeleteDetailItem { get; set; }
 
         #region New
