@@ -269,7 +269,7 @@
                             bSupplierID: $('#bSupplierID').val(),
                             bPOTypeID: $('#bPOTypeID').val(),
                             bCurrencyTypeID: $('#bCurrencyTypeID').val(),
-                            dPODate: $('#dPODate').val(),
+                            //dPODate: $('#dPODate').val(),
                             fPOTotal: checkNumeric($('.lblTotalAmount').text()),
                             vRemark: $('#vRemark').val(),
                             iPayment: $('#iPayment').val(),

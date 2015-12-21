@@ -582,10 +582,10 @@ namespace Vivablast.Controllers
             {
                 return Json(new { result = Constants.UnSuccess });
             }
-            if (!string.IsNullOrEmpty(model.sPODate))
-            {
-                model.PurchaseOrder.dPODate = DateTime.ParseExact(model.sPODate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            }
+            //if (!string.IsNullOrEmpty(model.sPODate))
+            //{
+            //    model.PurchaseOrder.dPODate = DateTime.ParseExact(model.sPODate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //}
             return model.PurchaseOrder.Id == 0 ? CreateData(model) : EditData(model);
         }
 
@@ -597,10 +597,12 @@ namespace Vivablast.Controllers
             }
             try
             {
+                var now = DateTime.Now;
                 model.PurchaseOrder.vPOStatus = "Open";
                 model.PurchaseOrder.iEnable = true;
                 model.PurchaseOrder.iCreated = model.LoginId;
-                model.PurchaseOrder.dCreated = DateTime.Now;
+                model.PurchaseOrder.dPODate = now;
+                model.PurchaseOrder.dCreated = now;
                 _service.Insert(model.PurchaseOrder, model.ListPoDetailData);
                 
                 return Json(new { result = Constants.Success });
@@ -630,11 +632,12 @@ namespace Vivablast.Controllers
 
             try
             {
+                var now = DateTime.Now;
                 entity.vProjectID = model.PurchaseOrder.vProjectID;
                 //entity.bSupplierID = model.PurchaseOrder.bSupplierID;
                 entity.bPOTypeID = model.PurchaseOrder.bPOTypeID;
                 //entity.bCurrencyTypeID = model.PurchaseOrder.bCurrencyTypeID;
-                entity.dPODate = model.PurchaseOrder.dPODate;
+                //entity.dPODate = model.PurchaseOrder.dPODate;
                 //entity.fPOTotal = model.PurchaseOrder.fPOTotal;
                 entity.vRemark = model.PurchaseOrder.vRemark;
                 entity.vPriceEval = model.PurchaseOrder.vPriceEval;
@@ -653,7 +656,7 @@ namespace Vivablast.Controllers
                 //entity.iStore = model.PurchaseOrder.iStore;
                 entity.iPayment = model.PurchaseOrder.iPayment;
                 entity.iModified = model.LoginId;
-                entity.dModified = DateTime.Now;
+                entity.dModified = now;
                 _service.Update(entity, model.ListPoDetailData, model.LstDeleteDetailItem);
 
                 return Json(new { result = Constants.Success });

@@ -32,13 +32,13 @@ else
                 @foreach (var item in Model.AssignStockList)
                 {
                     <tr class="vbcolum">
-                        @if (Model.UserLogin.StockOutR > 2)
-                        {
-                            @*<td class="center">
-                                <button type="button" class="btnEdit btn-link">Edit</button>
-                            </td>*@
-                            <input type="hidden" value="@item.SIV" class="ItemKey" />
-                        }
+                        <td class="center">
+                            @if (Model.UserLogin.StockOutR > 2)
+                            {
+                                @*<button type="button" class="btnEdit btn-link">Edit</button>*@
+                                <input type="hidden" value="@item.SIV" class="ItemKey" />
+                            }
+                        </td>
                         <td class="center">@item.SIV</td>
                         <td class="center">@item.Project_Code</td>
                         <td class="center hidden-xs">@item.Project_Name</td>
