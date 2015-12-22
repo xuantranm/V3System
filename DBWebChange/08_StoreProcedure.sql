@@ -2249,6 +2249,7 @@ CREATE PROCEDURE [dbo].[V3_List_Supplier]
 ,@size int
 ,@supplierType int
 ,@supplierId int
+,@supplierName nvarchar(64)
 ,@stockCode nvarchar(200)
 ,@stockName nvarchar(200)
 ,@country int
@@ -2293,6 +2294,7 @@ BEGIN
 	WHERE
 	1 = CASE WHEN @supplierType=0 THEN 1 WHEN sup.bSupplierTypeID = @supplierType THEN 1 END
 	AND 1 = CASE WHEN @supplierId = 0 THEN 1 WHEN sup.bSupplierID = @supplierId THEN 1 END
+	AND 1 = CASE WHEN @supplierName = '' THEN 1 WHEN sup.vSupplierName like '%' + @supplierName + '%' THEN 1 END
 	AND 1 = CASE WHEN @stockCode = '' THEN 1 
 	WHEN sup.bSupplierID IN (SELECT DISTINCT bSupplierID FROM [dbo].[WAMS_PRODUCT] red
 					INNER JOIN [dbo].[WAMS_STOCK] stock ON stock.Id = red.vProductID
@@ -2322,6 +2324,7 @@ CREATE PROCEDURE [dbo].[V3_List_Supplier_Count]
 ,@size int
 ,@supplierType int
 ,@supplierId int
+,@supplierName nvarchar(64)
 ,@stockCode nvarchar(200)
 ,@stockName nvarchar(200)
 ,@country int
@@ -2334,6 +2337,7 @@ BEGIN
 	WHERE
 	1 = CASE WHEN @supplierType=0 THEN 1 WHEN sup.bSupplierTypeID = @supplierType THEN 1 END
 	AND 1 = CASE WHEN @supplierId = 0 THEN 1 WHEN sup.bSupplierID = @supplierId THEN 1 END
+	AND 1 = CASE WHEN @supplierName = '' THEN 1 WHEN sup.vSupplierName like '%' + @supplierName + '%' THEN 1 END
 	AND 1 = CASE WHEN @stockCode = '' THEN 1 
 	WHEN sup.bSupplierID IN (SELECT DISTINCT bSupplierID FROM [dbo].[WAMS_PRODUCT] red
 					INNER JOIN [dbo].[WAMS_STOCK] stock ON stock.Id = red.vProductID
@@ -2397,6 +2401,7 @@ CREATE PROCEDURE [dbo].[V3_List_Supplier_Product]
 ,@size int
 ,@supplierType int
 ,@supplierId int
+,@supplierName nvarchar(64)
 ,@stockCode nvarchar(200)
 ,@stockName nvarchar(200)
 ,@country int
@@ -2430,6 +2435,7 @@ BEGIN
 	(SELECT bSupplierID, vSupplierName FROM WAMS_SUPPLIER sup (NOLOCK)
 		WHERE
 		1 = CASE WHEN @supplierType=0 THEN 1 WHEN sup.bSupplierTypeID = @supplierType THEN 1 END
+		AND 1 = CASE WHEN @supplierName = '' THEN 1 WHEN sup.vSupplierName like '%' + @supplierName + '%' THEN 1 END
 		AND 1 = CASE WHEN @supplierId = 0 THEN 1 WHEN sup.bSupplierID = @supplierId THEN 1 END
 		AND 1 = CASE WHEN @stockCode = '' THEN 1 
 		WHEN sup.bSupplierID IN (SELECT DISTINCT bSupplierID FROM [dbo].[WAMS_PRODUCT] red
