@@ -23,11 +23,13 @@ namespace Vivablast.Controllers
 
         private readonly ISystemService _systemService;
         private readonly IPOService _service;
+        private readonly ISupplierService _supplierService;
 
-        public PeController(ISystemService systemService, IPOService service)
+        public PeController(ISystemService systemService, IPOService service, ISupplierService supplierService)
         {
             _systemService = systemService;
             _service = service;
+            _supplierService = supplierService;
         }
 
         public ActionResult Index()
@@ -678,5 +680,32 @@ namespace Vivablast.Controllers
             var fag = _service.Delete(id);
             return Json(fag == 0 ? new { result = true } : new { result = false });
         }
+
+        //public ActionResult MoreProduct(int supplierId)
+        //{
+        //    var model = new SupplierViewModel();
+        //    var temp = _supplierService.ListConditionDetail(supplierId, "1");
+        //    model.GetProductDetails = temp;
+        //    model.TotalRecords = temp.Count;
+
+        //    return PartialView("_ProductPartial", model);
+        //}
+
+        //[HttpPost]
+        //public ActionResult MoreProduct(SupplierViewModel model)
+        //{
+        //    try
+        //    {
+        //        var entity = _supplierService.GetByKey(model.Supplier.bSupplierID);
+        //        _supplierService.Update(entity, model.ListProducts, model.LstDeleteDetailItem);
+
+        //        return Json(new { result = Constants.Success });
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Log.Error("Create New Client!", e);
+        //        return Json(new { result = Constants.UnSuccess });
+        //    }
+        //}
     }
 }

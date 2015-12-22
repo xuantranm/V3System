@@ -51,7 +51,7 @@
                                 @(Model.Id != 0 ? Html.DropDownListFor(model => model.bSupplierID, Model.Suppliers, Constants.SelectDDL, new { @class = "form-control", disabled = "disabled" }) : Html.DropDownListFor(model => model.bSupplierID, Model.Suppliers, @Constants.SelectDDL, new { @class = "form-control" }))
                             </div>
                             <div class="col-xs-2">
-                                <a href="javascript:;" class="btn btn-primary" id="btnMoreProduct"><span class="glyphicon glyphicon-plus"></span></a>
+                                <a href="@Url.Action("Create", "Supplier", new { id = Model.bSupplierID }, null)" class="btn btn-primary" id="btnMoreProduct" target="_blank"><span class="glyphicon glyphicon-plus"></span></a>
                             </div>
                         </div>
                     </div>

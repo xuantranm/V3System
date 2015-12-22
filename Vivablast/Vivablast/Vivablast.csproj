@@ -625,6 +625,7 @@
     <Content Include="Views\Shared\Partials\_SearchStockStockReturnPartial.cshtml" />
     <Content Include="Views\Shared\Partials\LoadPictureStock.cshtml" />
     <Content Include="Views\Project\_ClientPartial.cshtml" />
+    <Content Include="Views\PE\_ProductPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
