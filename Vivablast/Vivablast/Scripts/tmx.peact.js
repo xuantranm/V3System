@@ -69,7 +69,13 @@
             });
 
             $('#bSupplierID').on('change', function () {
-                tmx.vivablast.peact.loadPaymentType(form,$('#bSupplierID').val());
+                tmx.vivablast.peact.loadPaymentType(form, $('#bSupplierID').val());
+                if ($('#bSupplierID').val() > 0) {
+                    $('.more-product').removeClass('hidden');
+                    $('.more-product a').attr('href', '/Supplier/Create/' + $('#bSupplierID').val());
+                } else {
+                    $('.more-product').addClass('hidden');
+                }
                 clearVal();
             });
 

@@ -50,8 +50,8 @@
                             <div class="col-xs-10">
                                 @(Model.Id != 0 ? Html.DropDownListFor(model => model.bSupplierID, Model.Suppliers, Constants.SelectDDL, new { @class = "form-control", disabled = "disabled" }) : Html.DropDownListFor(model => model.bSupplierID, Model.Suppliers, @Constants.SelectDDL, new { @class = "form-control" }))
                             </div>
-                            <div class="col-xs-2">
-                                <a href="@Url.Action("Create", "Supplier", new { id = Model.bSupplierID }, null)" class="btn btn-primary" id="btnMoreProduct" target="_blank"><span class="glyphicon glyphicon-plus"></span></a>
+                            <div class="col-xs-2 more-product hidden">
+                                <a href="@Url.Action("Create", "Supplier", new { id = Model.bSupplierID }, null)" class="btn btn-primary" target="_blank"><span class="glyphicon glyphicon-plus"></span></a>
                             </div>
                         </div>
                     </div>
