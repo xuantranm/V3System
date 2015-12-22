@@ -14,6 +14,78 @@
             $('#Mrf').tooltip({ 'trigger': 'focus', 'title': "Mrf can multible, divide by ' ; '" });
             $('#Mrf').val(0);
             tmx.vivablast.peact.registerEventCreateForm();
+
+            $('#btnMoreProduct').on('click', function () {
+                var html = '<div class="modal fade" id="dynamic-model-box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
+                html = html + '<div class="modal-dialog modal-md"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">New Client</h4></div>';
+                html = html + '<div class="modal-body"></div>';
+                html = html + '<div class="modal-footer" style="text-align:center">';
+                html = html + '<button type="button" id="btnYes" class="btn btn-primary enable-for-officer">Save</button>';
+                html = html + '<button type="button" id="btnNo" class="btn btn-warning enable-for-officer">Close</button>';
+                html = html + '</div></div> </div></div>';
+                $('body').append(html);
+                var modelBox = $('#dynamic-model-box');
+
+                $.ajax({
+                    url: '/Project/NewClient',
+                    type: 'GET',
+                    datatype: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        $('.modal-body').empty().append(data);
+                        $("#Name", modelBox).autocomplete({
+                            source: "/Project/ListNameClient?term" + $("#Name").val()
+                        });
+                    }
+                });
+
+                var name;
+                modelBox.find('#btnYes').on('click', function () {
+                    $.ajax({
+                        url: '/Project/NewClient',
+                        dataType: 'json',
+                        async: false,
+                        contentType: 'application/json',
+                        type: 'POST',
+                        data: ko.toJSON({
+                            Name: $('#Name', modelBox).val(),
+                            iCreated: $('#iLogin').val()
+                        }),
+                        success: function (response) {
+                            name = $('#Name', modelBox).val().trim();
+                            $.ajax({
+                                url: '/Project/LoadClient',
+                                cache: false,
+                                type: "POST",
+                                success: function (data) {
+                                    var markup = "<option value=''>All</option>";
+                                    for (var x = 0; x < data.length; x++) {
+                                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                                    }
+                                    $("#ClientId").html(markup);
+                                    $("#ClientId option").filter(function () {
+                                        //may want to use $.trim in here
+                                        return $(this).text() == name;
+                                    }).prop('selected', true);
+                                },
+                                error: function () {
+                                    openErrorDialog({
+                                        title: "Can't load Client Data",
+                                        data: "Please contact Administrator support."
+                                    });
+                                }
+                            });
+                        }
+                    });
+                    closeDialog();
+                });
+                modelBox.find('#btnNo').on('click', function () {
+                    closeDialog();
+                });
+
+                $('#dynamic-model-box').modal({ show: true, backdrop: 'static' });
+            });
+
         },
 
         registerEventCreateForm: function () {
