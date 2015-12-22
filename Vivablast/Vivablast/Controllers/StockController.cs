@@ -328,7 +328,7 @@ namespace Vivablast.Controllers
                 vBrand = item.vBrand,
                 bCategoryID = item.bCategoryID,
                 bPositionID = item.bPositionID,
-                bLabelID = item.bLabelID,
+                //bLabelID = item.bLabelID,
                 bWeight = item.bWeight,
                 vAccountCode = item.vAccountCode,
                 iType = item.iType,
@@ -345,8 +345,8 @@ namespace Vivablast.Controllers
                 Types = new SelectList(_systemService.TypeStockList(), "Id", "Name"),
                 Categories = new SelectList(_systemService.CategoryStockList(0), "Id", "Name"),
                 Units = new SelectList(_systemService.UnitStockList(0), "Id", "Name"),
-                Positions = new SelectList(_systemService.PositionStockList(), "Id", "Name"),
-                Labels = new SelectList(_systemService.LabelStockList(0), "Id", "Name")
+                Positions = new SelectList(_systemService.PositionStockList(), "Id", "Name")
+                //Labels = new SelectList(_systemService.LabelStockList(0), "Id", "Name")
             };
 
             return View(model);
@@ -424,7 +424,7 @@ namespace Vivablast.Controllers
                 entity.vBrand = model.Stock.vBrand;
                 entity.bCategoryID = model.Stock.bCategoryID;
                 entity.bPositionID = model.Stock.bPositionID;
-                entity.bLabelID = model.Stock.bLabelID;
+                //entity.bLabelID = model.Stock.bLabelID;
                 entity.bWeight = model.Stock.bWeight;
                 entity.vAccountCode = model.Stock.vAccountCode;
                 entity.iType = model.Stock.iType;
@@ -469,7 +469,7 @@ namespace Vivablast.Controllers
                 Categories = new SelectList(_systemService.CategoryStockList(0), "Id", "Name"),
                 Units = new SelectList(_systemService.UnitStockList(0), "Id", "Name"),
                 Positions = new SelectList(_systemService.PositionStockList(), "Id", "Name"),
-                Labels = new SelectList(_systemService.LabelStockList(0), "Id", "Name")
+                //Labels = new SelectList(_systemService.LabelStockList(0), "Id", "Name")
             };
             return View(model);
         }

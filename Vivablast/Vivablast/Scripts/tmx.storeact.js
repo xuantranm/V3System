@@ -41,9 +41,9 @@
                             Name: $('#Name').val(),
                             Code: $('#Code').val(),
                             Address: $('#Address').val(),
-                            Tel: $('#Tel').val(),
-                            Phone: $('#Phone').val(),
-                            Description: $('#Description').val(),
+                            //Tel: $('#Tel').val(),
+                            //Phone: $('#Phone').val(),
+                            //Description: $('#Description').val(),
                             Timestamp: $('#Timestamp').val()
                         }
                     };

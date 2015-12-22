@@ -33,14 +33,16 @@ else
                 @foreach (var item in Model.ReturnStockList)
                 {
                     <tr class="vbcolum">
-                        @if (Model.UserLogin.StockOutR > 2)
-                        {
-                            @*<td class="center">
-                                <button type="button" class="btnEdit btn-link">Edit</button>
-                            </td>*@
-                            <input type="hidden" value="@item.SRV" class="ItemKey" />
-                        }
-                        <td class="center">@item.SRV</td>
+                        <td class="center">
+                            @if (Model.UserLogin.StockOutR > 2)
+                            {
+                                @*<td class="center">
+                    <button type="button" class="btnEdit btn-link">Edit</button>
+                </td>*@
+                                <input type="hidden" value="@item.SRV" class="ItemKey" />
+                            }
+                        </td>
+<td class="center">@item.SRV</td>
                         <td class="center">@item.Project_Code</td>
                         <td class="center hidden-xs">@item.Project_Name</td>
                         <td class="center">@item.Location</td>

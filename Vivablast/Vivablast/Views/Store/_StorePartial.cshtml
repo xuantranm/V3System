@@ -27,9 +27,9 @@ else
                     <th class="center">Code</th>
                     <th class="center hidden-xs">Country</th>
                     <th class="center hidden-xs">Address</th>
-                    <th class="center hidden-xs">Tel</th>
+                    @*<th class="center hidden-xs">Tel</th>
                     <th class="center hidden-xs">Phone</th>
-                    <th class="center hidden-xs">Description</th>
+                    <th class="center hidden-xs">Description</th>*@
                     <th class="center hidden-xs">Created Date</th>
                     <th class="center hidden-xs">By</th>
                     <th class="center hidden-xs">Modified Date</th>
@@ -68,14 +68,14 @@ else
                         <td>@item.Code</td>
                         <td class="center hidden-xs">@item.Country</td>
                         <td class="center hidden-xs">@item.Address</td>
-                        <td class="center hidden-xs">@item.Tel</td>
+                        @*<td class="center hidden-xs">@item.Tel</td>
                         <td class="center hidden-xs">@item.Mobile</td>
                         <td class="hidden-xs">
                             @if (!string.IsNullOrEmpty(item.Description))
                             {
                                 @item.Description.Truncate(10)
                             }
-                        </td>
+                        </td>*@
                         <td class="center hidden-xs">@Constants.ConvertDate(item.Created_Date.ToString())</td>
                         <td class="center hidden-xs">@item.Created_By</td>
                         <td class="center hidden-xs">@Constants.ConvertDate(item.Modified_Date.ToString())</td>

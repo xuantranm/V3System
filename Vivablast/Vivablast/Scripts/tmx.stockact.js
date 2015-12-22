@@ -28,7 +28,7 @@
                 tmx.vivablast.stockact.loadStock(typeId,0);
                 tmx.vivablast.stockact.loadCategory(typeId);
                 tmx.vivablast.stockact.loadUnit(typeId);
-                tmx.vivablast.stockact.loadLabel(typeId);
+                //tmx.vivablast.stockact.loadLabel(typeId);
             });
         },
 
@@ -91,26 +91,26 @@
             });
         },
         
-        loadLabel: function (typeId) {
-            var url = "/Stock/LoadLabelByType";
-            $.ajax({
-                url: url,
-                data: { type: typeId },
-                cache: false,
-                type: "POST",
-                success: function (data) {
-                    var markup = "<option value=''>Select</option>";
-                    for (var x = 0; x < data.length; x++) {
-                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                    }
-                    $("#bLabelID").html(markup);
-                    $("#bLabelID").trigger("chosen:updated");
-                },
-                error: function () {
-                    alert("Error: Can't load Category Data.Please contact Administrator support.");
-                }
-            });
-        },
+        //loadLabel: function (typeId) {
+        //    var url = "/Stock/LoadLabelByType";
+        //    $.ajax({
+        //        url: url,
+        //        data: { type: typeId },
+        //        cache: false,
+        //        type: "POST",
+        //        success: function (data) {
+        //            var markup = "<option value=''>Select</option>";
+        //            for (var x = 0; x < data.length; x++) {
+        //                markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+        //            }
+        //            $("#bLabelID").html(markup);
+        //            $("#bLabelID").trigger("chosen:updated");
+        //        },
+        //        error: function () {
+        //            alert("Error: Can't load Category Data.Please contact Administrator support.");
+        //        }
+        //    });
+        //},
         
         registerEventCreateForm: function() {
            $('#btnSave').off('click').on('click', function() {
@@ -136,7 +136,7 @@
                             vAccountCode: $('#vAccountCode').val(),
                             bUnitID: $('#bUnitID').val(),
                             bPositionID: $('#bPositionID').val(),
-                            bLabelID: $('#bLabelID').val(),
+                            //bLabelID: $('#bLabelID').val(),
                             bWeight: $('#bWeight').val(),
                             vRemark: $('#vRemark').val(),
                             RalNo: $('#RalNo').val(),

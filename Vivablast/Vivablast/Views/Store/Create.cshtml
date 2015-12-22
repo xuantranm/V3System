@@ -18,7 +18,7 @@
             @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
             <input type="hidden" value="@Url.Action("Create", "Store")" id="hidSaveUrl" />
             <div class="col-xs-12 height10"></div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-xs-12">
                 <div class="form-group">
                     <label class="col-sm-4">Country <span class="red">*</span></label>
                     <div class="col-sm-8">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            @*<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="col-sm-4">Telephone</label>
                     <div class="col-sm-8">
@@ -69,7 +69,7 @@
                             )
                     </div>
                 </div>
-            </div>
+            </div>*@
 
                 <div class="col-xs-12 modal-footer center">
                     <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">

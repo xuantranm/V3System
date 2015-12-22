@@ -25,6 +25,8 @@ else
                     <th class="center">Stock Type</th>
                     <th class="center hidden-xs">Unit</th>
                     <th class="center hidden-xs">Category</th>
+                    <th class="center hidden-xs">Ral No</th>
+                    <th class="center hidden-xs">Color</th>
                     <th class="center hidden-xs">Weight</th>
                     @foreach (var store in Model.StoreVs)
                     {
@@ -70,6 +72,8 @@ else
                     <td class="center">@item.Type</td>
                     <td class="center hidden-xs">@item.Unit</td>
                     <td class="center hidden-xs">@item.Category</td>
+                    <td class="center hidden-xs">@item.RalNo</td>
+                    <td class="center hidden-xs">@item.Color</td>
                     <td class="center hidden-xs">@item.Weight</td>
                     @{
                     if (!string.IsNullOrEmpty(item.Quantity))
