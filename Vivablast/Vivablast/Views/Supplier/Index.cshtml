@@ -15,8 +15,12 @@
                         @Html.DropDownListFor(model => model.bSupplierTypeID, Model.Types, @Constants.AllDLL, new { @id = "searchType", @class = "form-control" })
                     </div>
                     <div class="form-group">
+                        <label>Supplier Id</label>
+                        <input type="text" name="Id" class="form-control" id="Id" placeholder="Id" />
+                    </div>
+                    <div class="form-group">
                         <label>Supplier</label>
-                        @Html.DropDownListFor(model => model.Id, Model.Suppliers, @Constants.AllDLL, new { @id = "searchSupplier", @class = "form-control" })
+                        <input type="text" name="vSupplierName" class="form-control" id="vSupplierName" placeholder="Name" />
                     </div>
                     <div class="form-group">
                         <label>Stock Code</label>

@@ -61,16 +61,16 @@ namespace Vivablast.Controllers
         }
         #endregion
 
-        public ActionResult LoadSupplier(int page, int size, int supplierType, int supplier, string stockCode, string stockName, int country, int market, string enable)
+        public ActionResult LoadSupplier(int page, int size, int supplierType, int supplierId, string supplierName, string stockCode, string stockName, int country, int market, string enable)
         {
             var userName = System.Web.HttpContext.Current.User.Identity.Name;
-            var totalRecord = _service.ListConditionCount(page, size, supplierType, supplier, stockCode, stockName, country, market, enable);
+            var totalRecord = _service.ListConditionCount(page, size, supplierType, supplierId, supplierName, stockCode, stockName, country, market, enable);
             var totalTemp = Convert.ToDecimal(totalRecord) / Convert.ToDecimal(size);
             var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
             var model = new SupplierViewModel
             {
                 UserLogin = _systemService.GetUserAndRole(0, userName),
-                SupplierGetListResults = _service.ListCondition(page, size, supplierType, supplier, stockCode, stockName, country, market, enable),
+                SupplierGetListResults = _service.ListCondition(page, size, supplierType, supplierId, supplierName, stockCode, stockName, country, market, enable),
                 TotalRecords = Convert.ToInt32(totalRecord),
                 TotalPages = totalPages,
                 CurrentPage = page,
@@ -79,11 +79,11 @@ namespace Vivablast.Controllers
             return PartialView("_SupplierPartial", model);
         }
 
-        public void ExportToExcel(int page, int size, int supplierType, int supplier, string stockCode, string stockName, int country, int market, string enable)
+        public void ExportToExcel(int page, int size, int supplierType, int supplierId, string supplierName, string stockCode, string stockName, int country, int market, string enable)
         {
             // Get the data to report on
-            var masters = _service.ListCondition(page, size, supplierType, supplier, stockCode, stockName, country, market, enable);
-            var details = _service.ListConditionDetailExcel(page, size, supplierType, supplier, stockCode, stockName, country, market, enable);
+            var masters = _service.ListCondition(page, size, supplierType, supplierId, supplierName, stockCode, stockName, country, market, enable);
+            var details = _service.ListConditionDetailExcel(page, size, supplierType, supplierId, supplierName, stockCode, stockName, country, market, enable);
             // Create a new workbook
             var workbook = new HSSFWorkbook();
 

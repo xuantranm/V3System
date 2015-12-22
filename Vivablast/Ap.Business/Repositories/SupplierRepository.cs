@@ -18,7 +18,7 @@ namespace Ap.Business.Repositories
 
         }
 
-        public IList<V3_List_Supplier> ListCondition(int page, int size, int supplierType, int supplierId, string stockCode, string stockName, int country, int market, string enable)
+        public IList<V3_List_Supplier> ListCondition(int page, int size, int supplierType, int supplierId, string supplierName, string stockCode, string stockName, int country, int market, string enable)
         {
             var sql = GetSqlConnection();
             var result = sql.Query<V3_List_Supplier>("dbo.V3_List_Supplier", new
@@ -27,6 +27,7 @@ namespace Ap.Business.Repositories
                 size,
                 supplierType,
                 supplierId,
+                supplierName,
                 stockCode,
                 stockName,
                 country,
@@ -39,7 +40,7 @@ namespace Ap.Business.Repositories
             return result.Any() ? result : new List<V3_List_Supplier>();
         }
 
-        public int ListConditionCount(int page, int size, int supplierType, int supplierId, string stockCode, string stockName, int country, int market, string enable)
+        public int ListConditionCount(int page, int size, int supplierType, int supplierId, string supplierName, string stockCode, string stockName, int country, int market, string enable)
         {
             var sql = GetSqlConnection();
             var result = sql.Query<int>("dbo.V3_List_Supplier_Count", new
@@ -48,6 +49,7 @@ namespace Ap.Business.Repositories
                 size,
                 supplierType,
                 supplierId,
+                supplierName,
                 stockCode,
                 stockName,
                 country,
@@ -74,7 +76,7 @@ namespace Ap.Business.Repositories
             return result.Any() ? result : new List<V3_List_Supplier_Product>();
         }
 
-        public IList<V3_List_Supplier_Product> ListConditionDetailExcel(int page, int size, int supplierType, int supplierId, string stockCode, string stockName, int country, int market, string enable)
+        public IList<V3_List_Supplier_Product> ListConditionDetailExcel(int page, int size, int supplierType, int supplierId, string supplierName, string stockCode, string stockName, int country, int market, string enable)
         {
             var sql = GetSqlConnection();
             var result = sql.Query<V3_List_Supplier_Product>("dbo.V3_List_Supplier_Product", new
@@ -83,6 +85,7 @@ namespace Ap.Business.Repositories
                 size,
                 supplierType,
                 supplierId,
+                supplierName,
                 stockCode,
                 stockName,
                 country,

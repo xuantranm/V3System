@@ -39,6 +39,10 @@
             $("#StockName").autocomplete({
                 source: "/Stock/ListName?term" + $("#StockName").val()
             });
+
+            $("#vSupplierName").autocomplete({
+                source: "/Supplier/ListName?term" + $("#vSupplierName").val()
+            });
         },
 
         loadSupplier: function () {
@@ -49,7 +53,8 @@
                     page: tmx.vivablast.supManager.page,
                     size: tmx.vivablast.supManager.pageSize,
                     supplierType: tmx.vivablast.supManager.getSupType(),
-                    supplier: tmx.vivablast.supManager.getSupId(),
+                    supplierId: tmx.vivablast.supManager.getSupplierId(),
+                    supplierName: tmx.vivablast.supManager.getSupplierName(),
                     stockCode: tmx.vivablast.supManager.getStockCode(),
                     stockName: tmx.vivablast.supManager.getStockName(),
                     country: tmx.vivablast.supManager.getCountry(),
@@ -73,7 +78,8 @@
             var search = "page=" + tmx.vivablast.supManager.page();
             search += "&size=" + tmx.vivablast.supManager.pageSize();
             search += "&supplierType=" + tmx.vivablast.supManager.getSupType();
-            search += "&supplier=" + tmx.vivablast.supManager.getSupId();
+            search += "&supplierId=" + tmx.vivablast.supManager.getSupplierId();
+            search += "&supplierName=" + tmx.vivablast.supManager.getSupplierName();
             search += "&stockCode=" + tmx.vivablast.supManager.getStockCode();
             search += "&stockName=" + tmx.vivablast.supManager.getStockName();
             search += "&country=" + tmx.vivablast.supManager.getCountry();
@@ -88,12 +94,18 @@
             return result;
         },
         
-        getSupId: function () {
-            var result = $('#searchSupplier').val();
+        getSupplierId: function () {
+            var result = $('#Id').val();
             result = result === "" ? 0 : result;
             return result;
         },
         
+        getSupplierName: function () {
+            var result = $('#vSupplierName').val();
+            result = result === "" ? 0 : result;
+            return result;
+        },
+
         getStockCode: function () {
             return $('#StockCode').val();
         },

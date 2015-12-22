@@ -38,14 +38,14 @@ namespace Ap.Service.Services
             return _repositoryDetail.GetByKey(id);
         }
 
-        public IList<V3_List_Supplier> ListCondition(int page, int size, int supplierType, int supplierId, string stockCode, string stockName, int country, int market, string enable)
+        public IList<V3_List_Supplier> ListCondition(int page, int size, int supplierType, int supplierId, string supplierName, string stockCode, string stockName, int country, int market, string enable)
         {
-            return _customRepository.ListCondition(page, size, supplierType, supplierId, stockCode, stockName, country, market, enable);
+            return _customRepository.ListCondition(page, size, supplierType, supplierId, supplierName, stockCode, stockName, country, market, enable);
         }
 
-        public int ListConditionCount(int page, int size, int supplierType, int supplierId, string stockCode, string stockName, int country, int market, string enable)
+        public int ListConditionCount(int page, int size, int supplierType, int supplierId, string supplierName, string stockCode, string stockName, int country, int market, string enable)
         {
-            return _customRepository.ListConditionCount(page, size, supplierType, supplierId, stockCode, stockName, country, market, enable);
+            return _customRepository.ListConditionCount(page, size, supplierType, supplierId, supplierName, stockCode, stockName, country, market, enable);
         }
 
         public IList<V3_List_Supplier_Product> ListConditionDetail(int id, string enable)
@@ -53,9 +53,9 @@ namespace Ap.Service.Services
             return _customRepository.ListConditionDetail(id, enable);
         }
 
-        public IList<V3_List_Supplier_Product> ListConditionDetailExcel(int page, int size, int supplierType, int supplierId, string stockCode, string stockName, int country, int market, string enable)
+        public IList<V3_List_Supplier_Product> ListConditionDetailExcel(int page, int size, int supplierType, int supplierId, string supplierName, string stockCode, string stockName, int country, int market, string enable)
         {
-            return _customRepository.ListConditionDetailExcel(page, size, supplierType, supplierId, stockCode, stockName, country, market, enable);
+            return _customRepository.ListConditionDetailExcel(page, size, supplierType, supplierId, supplierName, stockCode, stockName, country, market, enable);
         }
 
         public IList<string> ListName(string condition)
