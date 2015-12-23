@@ -110,3 +110,9 @@ D:\PRACTISE\V3\Vivablast\Vivablast\bin\NReco.PdfGenerator.xml
 D:\PRACTISE\V3\Vivablast\Vivablast\obj\Debug\Vivablast.csprojResolveAssemblyReference.cache
 D:\PRACTISE\V3\Vivablast\Vivablast\obj\Debug\Vivablast.dll
 D:\PRACTISE\V3\Vivablast\Vivablast\obj\Debug\Vivablast.pdb
+D:\PRACTISE\V3\Vivablast\Vivablast\bin\System.Net.Http.Formatting.dll
+D:\PRACTISE\V3\Vivablast\Vivablast\bin\System.Web.Http.dll
+D:\PRACTISE\V3\Vivablast\Vivablast\bin\System.Web.Http.WebHost.dll
+D:\PRACTISE\V3\Vivablast\Vivablast\bin\System.Net.Http.Formatting.xml
+D:\PRACTISE\V3\Vivablast\Vivablast\bin\System.Web.Http.xml
+D:\PRACTISE\V3\Vivablast\Vivablast\bin\System.Web.Http.WebHost.xml

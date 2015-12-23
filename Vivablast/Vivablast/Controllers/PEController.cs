@@ -707,5 +707,46 @@ namespace Vivablast.Controllers
         //        return Json(new { result = Constants.UnSuccess });
         //    }
         //}
+
+
+        public ActionResult NewVAT()
+        {
+            return PartialView("_VATPartial");
+        }
+
+        [HttpPost]
+        public ActionResult NewVAT(string vat)
+        {
+            if (_systemService.GetLookUp(Constants.LuVat).Count(m => m.LookUpValue.Equals(vat)) > 0)
+            {
+                return Json(new { result = Constants.Duplicate });
+            }
+
+            try
+            {
+                var model = new LookUp
+                {
+                    LookUpType = Constants.LuVat,
+                    LookUpKey = vat,
+                    LookUpValue = vat,
+                    Enable = true
+                };
+                _systemService.InsertLookUp(model);
+
+                return Json(new { result = Constants.Success });
+            }
+            catch (Exception e)
+            {
+                Log.Error("Create New Client!", e);
+                return Json(new { result = Constants.UnSuccess });
+            }
+        }
+
+        public JsonResult LoadVAT()
+        {
+            var objType = _systemService.GetLookUp(Constants.LuVat);
+            var obgType = new SelectList(objType, Constants.LookUpKey, Constants.LookUpValue);
+            return Json(obgType);
+        }
     }
 }
