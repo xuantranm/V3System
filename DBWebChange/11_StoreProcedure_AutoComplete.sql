@@ -391,7 +391,7 @@ AS
 BEGIN
 	SELECT TOP 10 PaymentName
 		FROM [dbo].PaymentTerm (NOLOCK)
-		WHERE PaymentName like '%' + @condition +'%' and iEnable=1
+		WHERE PaymentName like '%' + @supplier +'%' and iEnable=1
 		ORDER BY PaymentName ASC
 END
 /*

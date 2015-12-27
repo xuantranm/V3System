@@ -63,6 +63,7 @@
                                         //may want to use $.trim in here
                                         return $(this).text() == name;
                                     }).prop('selected', true);
+                                    tmx.vivablast.peact.calculatorAmountPrice();
                                 },
                                 error: function () {
                                     openErrorDialog({
@@ -162,7 +163,11 @@
                 tmx.vivablast.peact.calculatorAmountPrice();
             });
 
-            $('#VAT').blur(function () {
+            //$('#VAT').blur(function () {
+            //    tmx.vivablast.peact.calculatorAmountPrice();
+            //});
+
+            $('#VAT').change(function () {
                 tmx.vivablast.peact.calculatorAmountPrice();
             });
 
@@ -346,6 +351,7 @@
                             fPOTotal: checkNumeric($('.lblTotalAmount').text()),
                             vRemark: $('#vRemark').val(),
                             iPayment: $('#iPayment').val(),
+                            vTermOfPayment: $('#Payment').val(),
                             vLocation: $('#vLocation').val(),
                             dDeliverDate: $('#dDeliverDate').val(),
                             iStore: $('#iStore').val(),
@@ -423,6 +429,9 @@
             if ($('#Discount', form).val() != '' || $('#Discount', form).val() != 0) {
                 amountPrice = Math.round((amountPrice - (amountPrice * $('#Discount', form).val() / 100)) * 100) / 100;
             }
+            //if ($('#VAT', form).val() != '' || $('#VAT', form).val() != 0) {
+            //    amountPrice = Math.round((amountPrice + (amountPrice * $('#VAT', form).val() / 100)) * 100) / 100;
+            //}
             if ($('#VAT', form).val() != '' || $('#VAT', form).val() != 0) {
                 amountPrice = Math.round((amountPrice + (amountPrice * $('#VAT', form).val() / 100)) * 100) / 100;
             }

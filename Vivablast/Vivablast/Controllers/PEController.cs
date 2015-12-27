@@ -650,7 +650,7 @@ namespace Vivablast.Controllers
                 entity.vFromContact = model.PurchaseOrder.vFromContact;
                 entity.vFromTel = model.PurchaseOrder.vFromTel;
                 entity.vFromFax = model.PurchaseOrder.vFromFax;
-                //entity.vTermOfPayment = model.PurchaseOrder.vTermOfPayment;
+                entity.vTermOfPayment = model.PurchaseOrder.vTermOfPayment;
                 entity.iExample = model.PurchaseOrder.iExample;
                 //entity.vPOStatus = model.PurchaseOrder.vPOStatus;
                 entity.vLocation = model.PurchaseOrder.vLocation;

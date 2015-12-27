@@ -102,7 +102,6 @@
         
         getSupplierName: function () {
             var result = $('#vSupplierName').val();
-            result = result === "" ? 0 : result;
             return result;
         },
 

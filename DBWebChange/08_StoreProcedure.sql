@@ -3867,7 +3867,7 @@ BEGIN
       ,supp.vSupplierName AS Supplier
       ,curr.vCurrencyName AS Currency
       ,store.Name Store
-      ,pay.PaymentName AS Payment_Term
+      ,po.vTermOfPayment AS Payment_Term
       ,po.dCreated AS Created_Date
 	  ,usc.NameUser AS Created_By
 	  ,po.dModified AS Modified_Date
@@ -3875,7 +3875,7 @@ BEGIN
 	FROM [dbo].[WAMS_PURCHASE_ORDER] po (NOLOCK) 
 	LEFT JOIN [dbo].[WAMS_PROJECT] project (NOLOCK) ON po.vProjectID = project.Id
 	LEFT JOIN [dbo].[WAMS_PO_TYPE] potype (NOLOCK) ON potype.bPOTypeID = po.bPOTypeID
-	LEFT JOIN [dbo].[PaymentTerm] pay (NOLOCK) ON pay.Id = po.iPayment
+	--LEFT JOIN [dbo].[PaymentTerm] pay (NOLOCK) ON pay.Id = po.iPayment
 	LEFT JOIN [dbo].[WAMS_CURRENCY_TYPE] curr (NOLOCK) ON curr.bCurrencyTypeID = po.bCurrencyTypeID
 	LEFT JOIN [dbo].[WAMS_SUPPLIER] supp (NOLOCK) ON supp.bSupplierID = po.bSupplierID
 	LEFT JOIN [dbo].[Store] store (NOLOCK) ON store.Id = po.iStore
@@ -4019,7 +4019,7 @@ BEGIN
 	,stock.vStockName AS Stock_Name
 	,unit.vUnitName AS Unit
 	,stype.TypeName AS [Type]
-	,poDetail.vMRF AS MRF
+	,CAST (poDetail.vMRF AS NVARCHAR(256)) AS MRF
 	,poDetail.fUnitPrice [Price]
 	,poDetail.dCreated AS Created_Date
   ,usc.NameUser AS Created_By
@@ -4039,7 +4039,7 @@ BEGIN
 	AND 1 = CASE WHEN @id = 0 THEN 1 WHEN po.Id = @id THEN 1 END
 END
 GO
---exec [dbo].[V3_PeDetail] 22292,''
+--exec [dbo].[V3_PeDetail] 32733,''
 
 -- V3_List_Pe_Detail
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_List_Pe_Detail]') AND type in (N'P', N'PC'))
