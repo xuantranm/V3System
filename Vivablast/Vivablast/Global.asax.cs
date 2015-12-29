@@ -36,6 +36,8 @@ namespace Vivablast
             // Log 4 net
             var log4NetPath = Server.MapPath("~/log4net.config");
             log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo(log4NetPath));
+            // Initialize log4net.
+            //log4net.Config.XmlConfigurator.Configure();
 
             AreaRegistration.RegisterAllAreas();
 

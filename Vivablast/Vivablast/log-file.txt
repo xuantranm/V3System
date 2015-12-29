@@ -1,0 +1,5 @@
+2015-12-29 09:03:44,731 [27] ERROR SampleKnowledge.Controllers.HelperController [(null)] - Export PDF!
+2015-12-29 09:15:23,649 [16] ERROR SampleKnowledge.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2015-12-29 09:16:51,963 [8] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
