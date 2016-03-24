@@ -35,6 +35,15 @@ else
                             @if (Model.UserLogin.StockOutR > 2)
                             {
                                 @*<button type="button" class="btnEdit btn-link">Edit</button>*@
+                                
+                                if (Model.UserLogin.StockOutR > 1)
+                                {
+                                    <a href="@Url.Action("PDF", "Requisition", new { id = @item.Id }, null)" target="_blank" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-print"></span>
+                                        PDF
+                                    </a>
+                                }
+                                
                                 <input type="hidden" value="@item.SIV" class="ItemKey" />
                             }
                         </td>

@@ -425,5 +425,57 @@ namespace Vivablast.Controllers
             var fag = _service.Delete(id);
             return Json(fag == 0 ? new { result = true } : new { result = false });
         }
+
+        public ActionResult PDF(int? id)
+        {
+            var userName = System.Web.HttpContext.Current.User.Identity.Name;
+            var user = _systemService.GetUserAndRole(0, userName);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            if (user.StockOutR == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var item = new V3_Requisition_Master();
+            if (id.HasValue)
+            {
+                item = _service.GetRequisitionMasterByKey(id.Value);
+            }
+            else
+            {
+                item.vMRF =
+                    (Convert.ToInt32(_service.GetCodeLastest()) + 1).ToString(CultureInfo.InvariantCulture);
+            }
+
+            var model = new RequisitionViewModel
+            {
+                Id = item.Id,
+                vMRF = item.vMRF,
+                vFrom = item.vFrom,
+                iStore = item.iStore,
+                vDeliverLocation = item.vDeliverLocation,
+                vProjectID = item.vProjectID,
+                ProjectCode = item.Project_Code,
+                ProjectName = item.Project_Name,
+                UserLogin = user
+            };
+
+            if (id.HasValue)
+            {
+                var temp = _service.ListConditionDetail(id.Value, "1");
+                model.GetRequisitionDetailsVResults = temp;
+                model.TotalRecords = temp.Count;
+            }
+            if (item.dDeliverDate.HasValue)
+            {
+                model.DeliverDateTemp = item.dDeliverDate.Value.ToString("dd/MM/yyyy");
+            }
+
+            return View(model);
+        }
     }
 }
