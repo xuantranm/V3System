@@ -5,3 +5,49 @@ System.Exception: Test
 System.Exception: Test
 2016-03-24 16:51:41,210 [66] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
 System.Exception: Test
+2016-03-24 17:11:53,617 [57] ERROR Vivablast.Controllers.LoginController [(null)] - Check User!
+System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Ap.Data.Repositories.BaseRepository.GetSqlConnection() in d:\PRACTISE\V3\Vivablast\Ap.Data\Repositories\BaseRepository.cs:line 26
+   at Ap.Business.Repositories.UserRepository.CheckUser(String user) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\UserRepository.cs:line 41
+   at Ap.Service.Services.SystemService.CheckUser(String user, String password) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\SystemService.cs:line 44
+   at Vivablast.Controllers.LoginController.CheckUser(String test1, String test2, Boolean test3) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\LoginController.cs:line 39
+2016-03-24 17:11:59,076 [66] ERROR Vivablast.Controllers.LoginController [(null)] - Check User!
+System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Ap.Data.Repositories.BaseRepository.GetSqlConnection() in d:\PRACTISE\V3\Vivablast\Ap.Data\Repositories\BaseRepository.cs:line 26
+   at Ap.Business.Repositories.UserRepository.CheckUser(String user) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\UserRepository.cs:line 41
+   at Ap.Service.Services.SystemService.CheckUser(String user, String password) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\SystemService.cs:line 44
+   at Vivablast.Controllers.LoginController.CheckUser(String test1, String test2, Boolean test3) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\LoginController.cs:line 39
+2016-03-24 17:12:06,171 [57] ERROR Vivablast.Controllers.LoginController [(null)] - Check User!
+System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Ap.Data.Repositories.BaseRepository.GetSqlConnection() in d:\PRACTISE\V3\Vivablast\Ap.Data\Repositories\BaseRepository.cs:line 26
+   at Ap.Business.Repositories.UserRepository.CheckUser(String user) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\UserRepository.cs:line 41
+   at Ap.Service.Services.SystemService.CheckUser(String user, String password) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\SystemService.cs:line 44
+   at Vivablast.Controllers.LoginController.CheckUser(String test1, String test2, Boolean test3) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\LoginController.cs:line 39
+2016-03-24 17:13:37,746 [12] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-03-24 17:15:00,117 [21] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
