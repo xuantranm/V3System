@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Ap.Business.Models;
 using NPOI.HSSF.UserModel;
 using Vivablast.Models;
 
@@ -426,7 +427,9 @@ namespace Vivablast.Controllers
             return Json(fag == 0 ? new { result = true } : new { result = false });
         }
 
-        public ActionResult PDF(int? id)
+
+        #region X-media
+        public ActionResult Pdf(string id)
         {
             var userName = System.Web.HttpContext.Current.User.Identity.Name;
             var user = _systemService.GetUserAndRole(0, userName);
@@ -440,42 +443,32 @@ namespace Vivablast.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var item = new V3_Requisition_Master();
-            if (id.HasValue)
+            var item = new XStockOutParent();
+            if (!string.IsNullOrEmpty(id))
             {
-                item = _service.GetRequisitionMasterByKey(id.Value);
+                item = _service.XStockOutParent(id);
             }
             else
             {
-                item.vMRF =
-                    (Convert.ToInt32(_service.GetCodeLastest()) + 1).ToString(CultureInfo.InvariantCulture);
+                item.Siv = _service.SIVLastest("");
             }
 
-            var model = new RequisitionViewModel
+            var model = new XAssignPdfViewModel
             {
-                Id = item.Id,
-                vMRF = item.vMRF,
-                vFrom = item.vFrom,
-                iStore = item.iStore,
-                vDeliverLocation = item.vDeliverLocation,
-                vProjectID = item.vProjectID,
-                ProjectCode = item.Project_Code,
-                ProjectName = item.Project_Name,
+                Mrf = item.Mrf,
+                ProjectCode = item.ProjectCode,
+                Siv = item.Siv,
+                Date = item.Date,
                 UserLogin = user
             };
 
-            if (id.HasValue)
-            {
-                var temp = _service.ListConditionDetail(id.Value, "1");
-                model.GetRequisitionDetailsVResults = temp;
-                model.TotalRecords = temp.Count;
-            }
-            if (item.dDeliverDate.HasValue)
-            {
-                model.DeliverDateTemp = item.dDeliverDate.Value.ToString("dd/MM/yyyy");
-            }
+            if (string.IsNullOrEmpty(id)) return View(model);
+            var temp = _service.XStockOuts(id);
+            model.StockOuts = temp;
 
             return View(model);
         }
+        #endregion
+        
     }
 }

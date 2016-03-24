@@ -38,7 +38,7 @@ else
                                 
                                 if (Model.UserLogin.StockOutR > 1)
                                 {
-                                    <a href="@Url.Action("PDF", "Requisition", new { id = @item.Id }, null)" target="_blank" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                    <a href="@Url.Action("PDF", "StockOut", new { id = @item.SIV }, null)" target="_blank" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
                                         <span class="glyphicon glyphicon-print"></span>
                                         PDF
                                     </a>

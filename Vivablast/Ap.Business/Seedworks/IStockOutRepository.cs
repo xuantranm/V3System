@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.Models;
 using Vivablast.Models;
 
 namespace Ap.Business.Seedworks
@@ -25,5 +26,12 @@ namespace Ap.Business.Seedworks
         int Add(WAMS_ASSIGNNING_STOCKS model);
 
         int Update(WAMS_ASSIGNNING_STOCKS model);
+
+        #region X-Media
+        XStockOutParent XStockOutParent(string siv);
+
+        IList<XStockOut> XStockOuts(string siv);
+
+        #endregion
     }
 }

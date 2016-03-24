@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.Models;
 using Vivablast.Models;
 
 namespace Ap.Service.Seedworks
@@ -27,5 +28,13 @@ namespace Ap.Service.Seedworks
         int Delete(int id);
 
         string SIVLastest(string type);
+
+
+        #region X-Media
+        XStockOutParent XStockOutParent(string siv);
+
+        IList<XStockOut> XStockOuts(string siv);
+
+        #endregion
     }
 }

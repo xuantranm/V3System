@@ -1,4 +1,5 @@
 ﻿using System.Web.UI.WebControls;
+using Ap.Business.Models;
 
 namespace Vivablast.Controllers
 {
@@ -422,5 +423,50 @@ namespace Vivablast.Controllers
             var fag = _service.Delete(id);
             return Json(fag == 0 ? new { result = true } : new { result = false });
         }
+
+        #region X-media
+        public ActionResult Pdf(string id)
+        {
+            var userName = System.Web.HttpContext.Current.User.Identity.Name;
+            var user = _systemService.GetUserAndRole(0, userName);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            if (user.StockOutR == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var item = new XStockReturnParent();
+            if (!string.IsNullOrEmpty(id))
+            {
+                item = _service.XStockReturnParent(id);
+            }
+            else
+            {
+                item.Srv = _service.SRVLastest("");
+            }
+
+            var model = new XReturnPdfViewModel
+            {
+                From = item.From,
+                To = item.To,
+                ProjectCode = item.ProjectCode,
+                ProjectName = item.ProjectName,
+                Srv = item.Srv,
+                Date = item.Date,
+                UserLogin = user
+            };
+
+            if (string.IsNullOrEmpty(id)) return View(model);
+            var temp = _service.XStockReturns(id);
+            model.StockReturns = temp;
+
+            return View(model);
+        }
+        #endregion
+
     }
 }

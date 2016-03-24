@@ -72,5 +72,7 @@ namespace Vivablast.ViewModels
         #endregion
 
         public string ProjectName { get; set; }
+
+        public string ProjectCode { get; set; }
     }
 }

@@ -223,6 +223,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AccountingViewModel.cs" />
     <Compile Include="ViewModels\AssignAddViewModel.cs" />
+    <Compile Include="ViewModels\XReturnPdfViewModel.cs" />
+    <Compile Include="ViewModels\XAssignPdfViewModel.cs" />
     <Compile Include="ViewModels\AssignViewModel.cs" />
     <Compile Include="ViewModels\FileViewModel.cs" />
     <Compile Include="ViewModels\FulfillmentViewModel.cs" />
@@ -625,6 +627,8 @@
     <Content Include="Views\Project\_ClientPartial.cshtml" />
     <Content Include="Views\PE\_ProductPartial.cshtml" />
     <Content Include="Views\PE\_VATPartial.cshtml" />
+    <Content Include="Views\StockOut\PDF.cshtml" />
+    <Content Include="Views\StockReturn\PDF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

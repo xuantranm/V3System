@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Ap.Business.Models;
 using Ap.Business.Seedworks;
 using Vivablast.Models;
 
@@ -177,5 +178,19 @@ namespace Ap.Service.Services
 
             return codeTemp;
         }
+
+        #region X-Media
+
+        public XStockReturnParent XStockReturnParent(string siv)
+        {
+            return _customRepository.XStockReturnParent(siv);
+        }
+
+        public IList<XStockReturn> XStockReturns(string siv)
+        {
+            return _customRepository.XStockReturns(siv);
+        }
+
+        #endregion
     }
 }
