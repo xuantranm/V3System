@@ -50,8 +50,10 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-	SELECT sout.FromStore [From], sout.ToStore [To], project.vProjectID [ProjectCode], project.vProjectName [ProjectName], sout.SRV [Srv], sout.dCreated [Date] FROM dbo.WAMS_RETURN_LIST sout (NOLOCK)
+	SELECT DISTINCT store1.Name [From], store2.Name [To], project.vProjectID [ProjectCode], project.vProjectName [ProjectName], sout.SRV [Srv], sout.dCreated [Date] FROM dbo.WAMS_RETURN_LIST sout (NOLOCK)
 	INNER JOIN dbo.WAMS_PROJECT project (NOLOCK) ON project.Id = sout.vProjectID
+	LEFT JOIN dbo.Store store1 (NOLOCK) ON store1.Id = sout.FromStore
+	LEFT JOIN dbo.Store store2 (NOLOCK) ON store2.Id = sout.ToStore
 	WHERE sout.SRV = @siv 
 END
 GO

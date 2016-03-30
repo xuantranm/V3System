@@ -22,7 +22,7 @@
     <script src="/Scripts/common.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container padding20">
         <div id="PrintLocation">
             <style type="text/css">
                 table {
@@ -54,6 +54,20 @@
                     font-weight: bold;
                 }
             </style>
+            <div>
+                <table>
+                    <tr>
+                        <td style="width: 150px; text-align: center; padding: 0">
+                            <img src="~/Images/v3pdf.png" />
+                        </td>
+                        <td>
+                            <span style="font-weight: bold; margin-right: 10px;">STORE RETURN VOUCHER</span>
+                            <br />
+                            <span style="font-weight: bold; margin-right: 10px;">PHIẾU TRẢ XUẤT HÀNG</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <div>
                 <div style="float: left; width: 300px">
                     <span style="font-weight: bold; margin-right: 10px;">From - Từ:</span> @Model.From

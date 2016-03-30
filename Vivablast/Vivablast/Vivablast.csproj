@@ -403,6 +403,7 @@
     <Content Include="Images\img\sort_desc_disabled.png" />
     <Content Include="Images\img\text-loading.gif" />
     <Content Include="Images\No-Image-Available.gif" />
+    <Content Include="Images\v3pdf.png" />
     <Content Include="log4net.config" />
     <Content Include="Scripts\autosize.js" />
     <Content Include="Scripts\bootstrap-multiselect.js" />
