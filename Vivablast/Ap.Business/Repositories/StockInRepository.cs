@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.Models;
 using Ap.Business.Seedworks;
 using Ap.Data.Repositories;
 using Ap.Data.Seedworks;
@@ -229,5 +230,33 @@ namespace Ap.Business.Repositories
 
             return result;
         }
+
+        #region X-media
+        public XStockInParent XStockInParent(string siv)
+        {
+            var sql = GetSqlConnection();
+            var result = sql.Query<XStockInParent>("dbo.XStockInParent", new
+            {
+                siv
+            },
+            commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+            sql.Close();
+            return result;
+        }
+
+        public IList<XStockIn> XStockIns(string siv)
+        {
+            var sql = GetSqlConnection();
+            var result = sql.Query<XStockIn>("dbo.XStockIn", new
+            {
+                siv
+            },
+            commandType: CommandType.StoredProcedure).ToList();
+
+            sql.Close();
+            return result;
+        }
+        #endregion
     }
 }

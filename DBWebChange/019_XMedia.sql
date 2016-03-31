@@ -1,3 +1,46 @@
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XStockInParent]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XStockInParent]
+GO
+CREATE PROCEDURE XStockInParent
+	@siv varchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SELECT DISTINCT store1.Name [From], '' [To], '' [ProjectCode], '' [ProjectName], sout.SRV [Srv], sout.dCreated [Date] 
+	FROM dbo.WAMS_FULFILLMENT_DETAIL sout (NOLOCK)
+	--INNER JOIN dbo.WAMS_PROJECT project (NOLOCK) ON project.Id = sout.vProjectID
+	LEFT JOIN dbo.Store store1 (NOLOCK) ON store1.Id = sout.iStore
+	--LEFT JOIN dbo.Store store2 (NOLOCK) ON store2.Id = sout.ToStore
+	WHERE sout.SRV = @siv 
+END
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XStockIn]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XStockIn]
+GO
+CREATE PROCEDURE XStockIn
+	@siv varchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SELECT sout.ID [Id] 
+	,stock.vStockID [StockCode]
+	,stock.vStockName [StockName]
+	,unit.vUnitName [Unit]
+	,sout.dQuantity [Quantity]
+	,stock.RalNo [RalNo]
+	,stock.ColorName [Color]
+	,sout.tDescription [Note]
+	FROM dbo.WAMS_FULFILLMENT_DETAIL sout (NOLOCK)
+	INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = sout.vStockID
+	LEFT JOIN dbo.WAMS_UNIT unit (NOLOCK) ON unit.bUnitID = stock.bUnitID
+	WHERE sout.SRV = @siv 
+END
+GO
 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XStockOutParent]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[XStockOutParent]
