@@ -112,6 +112,8 @@
     <Compile Include="Dto\V3_List_Supplier.cs" />
     <Compile Include="Dto\V3_Check_Login.cs" />
     <Compile Include="Dto\XUser.cs" />
+    <Compile Include="Models\XStockIn.cs" />
+    <Compile Include="Models\XStockInParent.cs" />
     <Compile Include="Models\XStockReturn.cs" />
     <Compile Include="Models\XStockReturnParent.cs" />
     <Compile Include="Models\XStockOutParent.cs" />

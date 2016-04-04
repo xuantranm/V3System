@@ -16,7 +16,7 @@ namespace Vivablast.ViewModels
         public DateTime Date { get; set; }
 
         public XUser UserLogin { get; set; }
-        public IList<XStockReturn> StockReturns { get; set; }
+        public IList<XStockIn> StockIns { get; set; }
 
         public decimal TotalQuantity { get; set; }
         public string DateFormat

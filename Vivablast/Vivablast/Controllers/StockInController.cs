@@ -523,7 +523,7 @@ namespace Vivablast.Controllers
 
             if (string.IsNullOrEmpty(id)) return View(model);
             var temp = _service.XStockIns(id);
-            model.StockReturns = temp;
+            model.StockIns = temp;
 
             return View(model);
         }
