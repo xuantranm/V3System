@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Configuration;
 using Ap.Business.Domains;
 using Ap.Business.Models;
 
@@ -19,6 +20,11 @@ namespace Vivablast.ViewModels
         public string DateFormat
         {
             get { return Date.ToString("dd/MM/yyyy"); }
+        }
+
+        public string Domain
+        {
+            get { return WebConfigurationManager.AppSettings["domain"]; }
         }
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="Seedworks\IPriceService.cs" />
     <Compile Include="Seedworks\IStockService.cs" />
     <Compile Include="Seedworks\IStoreService.cs" />
+    <Compile Include="Seedworks\IReportService.cs" />
     <Compile Include="Seedworks\IUserService.cs" />
     <Compile Include="Seedworks\IProjectService.cs" />
     <Compile Include="Seedworks\ISystemService.cs" />
