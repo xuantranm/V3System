@@ -374,6 +374,7 @@
     <Content Include="Content\bootstrap-datepicker\tests\tests.html" />
     <Content Include="Content\bootstrap-datepicker\tests\_coverage.html" />
     <Content Include="Content\jquery.multiselect.css" />
+    <Content Include="Content\print.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

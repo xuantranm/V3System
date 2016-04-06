@@ -48,10 +48,13 @@ else
                                         Delete
                                     </a>*@
                                 }
-                                @*<a href="javascript:;" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                @if (Model.UserLogin.StockInR > 1)
+                                {
+                                <a href="@Url.Action("PDF", "StockIn", new { id = @item.SRV }, null)" target="_blank" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
                                     <span class="glyphicon glyphicon-print"></span>
-                                    Print
-                                </a>*@
+                                    PDF
+                                </a>
+                                }
                                 <input type="hidden" value="@item.PE_Id" class="ItemKey" />
                             </td>
                         }

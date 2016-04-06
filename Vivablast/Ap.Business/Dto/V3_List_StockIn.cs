@@ -24,6 +24,6 @@ namespace Vivablast.Models
         public string PE_Status { get; set; }
         public string Supplier { get; set; }
         public string Store { get; set; }
-        
+        public string SRV { get; set; }
     }
 }
