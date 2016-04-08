@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Ap.Business.Domains;
 using Ap.Business.Seedworks;
+using Ap.Business.ViewModels;
 using Ap.Common.Constants;
 using Ap.Common.Security;
 using Ap.Data.Seedworks;
@@ -400,6 +401,17 @@ namespace Ap.Service.Services
 
             return true;
         }
+        #endregion
+
+        #region X-media
+
+        public DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType,
+            int category, string stockCode, string stockName)
+        {
+            return _customSystemRepository.GetDynamicReport(page, size, poType, po, stockType, category, stockCode,
+                stockName);
+        }
+
         #endregion
     }
 }

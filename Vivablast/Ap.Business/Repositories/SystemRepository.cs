@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.Models;
 using Ap.Business.Seedworks;
+using Ap.Business.ViewModels;
 using Ap.Data.Repositories;
 using Ap.Data.Seedworks;
 using Dapper;
@@ -500,6 +502,36 @@ namespace Ap.Business.Repositories
         }
 
         #region INSERT COMMON
+
+        #endregion
+
+        #region X-media
+
+        public DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType,
+            int category, string stockCode, string stockName)
+        {
+            var model = new DynamicReportViewModel();
+            var paramss = new DynamicParameters();
+            paramss.Add("page", page);
+            paramss.Add("size", size);
+            paramss.Add("poType", poType);
+            paramss.Add("po", po);
+            paramss.Add("stockType", stockType);
+            paramss.Add("category", category);
+            paramss.Add("stockCode", stockCode);
+            paramss.Add("stockName", stockName);
+            paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (var sql = GetSqlConnection())
+            {
+                var data = sql.Query<XDynamicReport>("XGetDynamicReport", paramss, commandType: CommandType.StoredProcedure);
+                sql.Close();
+                model.DynamicReports = data.ToList();
+                var total = paramss.Get<int>("out");
+                model.TotalRecords = total;
+            }
+            return model;
+        }
 
         #endregion
     }

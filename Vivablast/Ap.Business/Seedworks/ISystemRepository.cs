@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.ViewModels;
 using Vivablast.Models;
 
 namespace Ap.Business.Seedworks
@@ -80,6 +81,12 @@ namespace Ap.Business.Seedworks
         V3_Ddl SuppliersFromPe(int pe);
 
         #region INSERT COMMON
+
+        #endregion
+
+        #region X-media
+
+        DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName);
 
         #endregion
     }

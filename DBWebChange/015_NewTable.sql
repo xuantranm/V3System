@@ -47,4 +47,42 @@ CREATE TABLE [dbo].[XUser](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XUser]') AND type in (N'U'))
+DROP TABLE [dbo].[XDynamicReport]
+GO
+CREATE TABLE [dbo].[XDynamicReport](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Action] [nvarchar](20) NULL,
+	[PODate] [datetime] NULL,
+	[POCode] [nvarchar](16) NOT NULL,
+	[POType] [varchar](50) NULL,
+	[ProjectCode] [nvarchar](20) NULL,
+	[ProjectName] [nvarchar](64) NULL,
+	[StockCode] [nvarchar](16) NULL,
+	[StockName] [nvarchar](2000) NULL,
+	[StockType] [nvarchar](250) NULL,
+	[MRF] [nvarchar](200) NULL,
+	[Category] [nvarchar](64) NULL,
+	[Supplier] [nvarchar](64) NULL,
+	[Unit] [nvarchar](64) NULL,
+	[Quantity] [decimal](18, 2) NULL,
+	[QuantityReceived] [decimal](18, 2) NULL,
+	[QuantityPending] [decimal](18, 2) NULL,
+	[RalNo] [nvarchar](50) NULL,
+	[Color] [nvarchar](64) NULL,
+    [Weight] [nvarchar](20) NULL,
+    [Note] [nvarchar](max) NULL,
+	[Created] [datetime] NULL,
+	[Modified] [datetime] NULL,
+	[CreatedBy] [nvarchar](500) NULL,
+	[ModifiedBy] [nvarchar](500) NULL
+ CONSTRAINT [PK_XDynamicReport] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+
 

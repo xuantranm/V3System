@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.ViewModels;
 using Vivablast.Models;
 
 namespace Ap.Service.Seedworks
@@ -94,6 +95,12 @@ namespace Ap.Service.Seedworks
         #region STOCK MANAGEMENT
         IList<V3_Stock_Quantity_Management_Result> ListTransactionStockByProject(int page, int size, int project, string type, string fd, string td);
         int CountListTransactionStockByProject(int page, int size, int project, string type, string fd, string td);
+        #endregion
+
+        #region X-media
+
+        DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName);
+
         #endregion
     }
 }
