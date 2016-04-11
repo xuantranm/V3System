@@ -420,6 +420,7 @@
     <Content Include="Scripts\jquery.multiselect.min.js" />
     <Content Include="Scripts\jquery.tmpl.js" />
     <Content Include="Scripts\tmx.projectdetail.js" />
+    <Content Include="Scripts\tmx.report.js" />
     <Content Include="Scripts\tmx.stocktypeaction.js" />
     <Content Include="Scripts\tmx.priceact.js" />
     <Content Include="Scripts\tmx.stockreturnact.js" />
@@ -635,6 +636,7 @@
     <Content Include="Views\StockReturn\PDF.cshtml" />
     <Content Include="Views\StockIn\PDF.cshtml" />
     <Content Include="Views\Report\Dynamic.cshtml" />
+    <Content Include="Views\Report\Partials\_DynamicReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
