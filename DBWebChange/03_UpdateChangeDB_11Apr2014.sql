@@ -59,7 +59,7 @@ UPDATE dbo.WAMS_PROJECT SET iEnable = 0 WHERE iEnable=3
 GO
 UPDATE dbo.WAMS_PROJECT SET iEnable = 1 WHERE iEnable=2
 GO
-UPDATE dbo.WAMS_PROJECT SET StatusId=1
+UPDATE dbo.WAMS_PROJECT SET StatusId=1, EnableRequisition =1, EnablePO =1
 GO
 UPDATE dbo.WAMS_PROJECT SET CountryId = (select Id FROM Country WHERE NameNice like '%Viet%')
 GO

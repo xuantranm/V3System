@@ -227,7 +227,9 @@ ADD
 	[dModified] [datetime] NULL,
 	[iCreated] [int] NULL,
 	[iModified] [int] NULL,
-	[dEnd] [datetime] NULL
+	[dEnd] [datetime] NULL,
+	[EnableRequisition] [bit],
+	[EnablePO] [bit]
 GO
 -- Project_Client
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Project_Client]') AND type in (N'U'))
