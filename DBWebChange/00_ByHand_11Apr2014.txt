@@ -1,26 +1,28 @@
-8.WAMS_ITEM_SERVICE
-	Id Int primary key, auto generate
-1. WAMS_PRODUCT:
-	Id Int primary key, auto generate
-2. WAMS_PROJECT:
-	Id Int primary key, auto generate
-3. WAMS_PURCHASE_ORDER
-	Id Int primary key, auto generate
-4. WAMS_REQUISITION_MASTER
-	Id Int primary key, auto generate
-5. WAMS_SRV:
-	Id Int primary key, auto generate
-6. WAMS_STOCK:
-	Id Int primary key, auto generate
-7. WAMS_SUPPLIER:
-	bSupplierID Int primary key, auto generate
-9.WAMS_CATEGORY
+1.WAMS_CATEGORY
 	bCategoryID Int primary key, auto generate
-10.WAMS_LABEL
-	Same
-11.WAMS_UNIT
-	bUnitID int
-12. WAMS_POSITION
+2.WAMS_ITEM_SERVICE
+	Id Int primary key, auto generate
+3.WAMS_LABEL
+	bLabelID Int primary key, auto generate
+4. WAMS_POSITION
+	bPositionID Int primary key, auto generate
+5. WAMS_PRODUCT:
+	Id Int primary key, auto generate
+6. WAMS_PROJECT:
+	Id Int primary key, auto generate
+7. WAMS_PURCHASE_ORDER
+	Id Int primary key, auto generate
+8. WAMS_REQUISITION_MASTER
+	Id Int primary key, auto generate
+9. WAMS_SRV:
+	Id Int primary key, auto generate
+10. WAMS_STOCK:
+	Id Int primary key, auto generate
+11. WAMS_SUPPLIER:
+	bSupplierID Int primary key, auto generate
+12.WAMS_UNIT
+	bUnitID int primary key, auto generate 
+
 
 
 
