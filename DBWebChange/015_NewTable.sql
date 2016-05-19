@@ -110,6 +110,113 @@ INNER JOIN WAMS_SUPPLIER supplier ON supplier.bSupplierID = poMaster.bSupplierID
 INNER JOIN WAMS_PROJECT project ON poMaster.vProjectID = project.Id
 INNER JOIN WAMS_FULFILLMENT_DETAIL fulfill ON fulfill.vPOID = poMaster.Id
 ORDER BY poMaster.dPODate ASC
-
+GO
+-- XDynamicReport_Insert
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicReport_Insert]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XDynamicReport_Insert]
+GO
+CREATE PROCEDURE [dbo].[XDynamicReport_Insert]
+@Action nvarchar(20)
+,@POId int
+,@PODate datetime
+,@POCode nvarchar(16)
+,@POTypeId int
+,@POType varchar(50)
+,@ProjectId int
+,@ProjectCode nvarchar(20)
+,@ProjectName nvarchar(64)
+,@StockId int
+,@StockCode nvarchar(16)
+,@StockName nvarchar(2000)
+,@StockTypeId int
+,@StockType nvarchar(250)
+,@MRF nvarchar(200)
+,@CategoryId int
+,@Category nvarchar(64)
+,@SupplierId int
+,@Supplier nvarchar(64)
+,@UnitId int
+,@Unit nvarchar(64)
+,@Quantity decimal(18,2)
+,@QuantityReceived decimal(18,2)
+,@QuantityPending decimal(18,2)
+,@RalNo nvarchar(50)
+,@Color nvarchar(64)
+,@Weight nvarchar(20)
+,@Note nvarchar(max)
+,@CreatedBy nvarchar(500)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO [dbo].[XDynamicReport]
+           ([Action]
+           ,[POId]
+           ,[PODate]
+           ,[POCode]
+           ,[POTypeId]
+           ,[POType]
+           ,[ProjectId]
+           ,[ProjectCode]
+           ,[ProjectName]
+           ,[StockId]
+           ,[StockCode]
+           ,[StockName]
+           ,[StockTypeId]
+           ,[StockType]
+           ,[MRF]
+           ,[CategoryId]
+           ,[Category]
+           ,[SupplierId]
+           ,[Supplier]
+           ,[UnitId]
+           ,[Unit]
+           ,[Quantity]
+           ,[QuantityReceived]
+           ,[QuantityPending]
+           ,[RalNo]
+           ,[Color]
+           ,[Weight]
+           ,[Note]
+           ,[Created]
+           ,[Modified]
+           ,[CreatedBy]
+           ,[ModifiedBy])
+     VALUES
+           (@Action
+           ,@POId
+           ,@PODate
+           ,@POCode 
+           ,@POTypeId 
+           ,@POType 
+           ,@ProjectId
+           ,@ProjectCode 
+           ,@ProjectName 
+           ,@StockId
+           ,@StockCode 
+           ,@StockName 
+           ,@StockTypeId 
+           ,@StockType 
+           ,@MRF 
+           ,@CategoryId 
+           ,@Category 
+           ,@SupplierId 
+           ,@Supplier 
+           ,@UnitId 
+           ,@Unit 
+           ,@Quantity 
+           ,@QuantityReceived 
+           ,@QuantityPending 
+           ,@RalNo 
+           ,@Color
+           ,@Weight 
+           ,@Note 
+           ,GETDATE()
+           ,GETDATE()
+           ,@CreatedBy
+           ,@CreatedBy)
+	SELECT 1
+END
+GO
+-- exec [dbo].[V3_DataPaymentType] '03 DAYs'
 
 

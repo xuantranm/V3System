@@ -20,12 +20,12 @@ namespace Vivablast.Controllers
         //
         // GET: /Report/
 
-        public ActionResult Dynamic()
+        public ActionResult DynamicPe()
         {
             return View();
         }
 
-        public ActionResult LoadDynamic(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName)
+        public ActionResult LoadDynamicPe(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName)
         {
             var userName = System.Web.HttpContext.Current.User.Identity.Name;
             var model = _systemService.GetDynamicReport(page,size,poType,po,stockType,category,stockCode,stockName);
