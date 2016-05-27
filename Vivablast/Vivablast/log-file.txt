@@ -97,3 +97,41 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 System.NullReferenceException: Object reference not set to an instance of an object.
    at Ap.Service.Services.SupplierService.Update(WAMS_SUPPLIER entity, List`1 entityDetails, String LstDeleteDetailItem) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\SupplierService.cs:line 98
    at Vivablast.Controllers.SupplierController.EditResultJson(SupplierViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\SupplierController.cs:line 524
+2016-05-27 15:19:07,265 [25] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 15:22:44,191 [30] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 15:22:57,107 [7] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 15:23:17,458 [7] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 15:24:42,218 [30] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 15:44:06,468 [9] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 16:01:37,525 [32] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 16:56:02,473 [41] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 16:56:53,207 [45] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 16:57:28,737 [41] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 16:58:26,119 [45] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 16:58:55,970 [33] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 17:03:10,292 [27] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 17:06:39,075 [24] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 17:23:04,149 [46] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 17:23:51,922 [10] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 17:24:35,775 [14] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 17:24:47,903 [38] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2016-05-27 17:27:10,711 [9] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test

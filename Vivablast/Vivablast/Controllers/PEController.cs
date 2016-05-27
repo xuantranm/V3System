@@ -501,11 +501,10 @@ namespace Vivablast.Controllers
             }
 
             var item = _service.GetByPEPDF(id);
-            var model = new POViewModel
+            var model = new XPePdfViewModel
             {
                 PurchaseOrderCustom = item,
-                PoDetailsVResults = _service.ListConditionDetail(id, "1"),
-                VAT = 10
+                PoDetailsVResults = _service.ListConditionDetail(id, "1")
             };
             return View(model);
         }

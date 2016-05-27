@@ -1,7 +1,5 @@
-﻿@using Ap.Common.Constants
-@using Microsoft.Ajax.Utilities
-@using Vivablast.ViewModels
-@model RequisitionViewModel
+﻿@using Vivablast.ViewModels
+@model XRequisitionPdfViewModel
 @{
     Layout = null;
 }
@@ -54,11 +52,27 @@
                     font-weight: bold;
                 }
             </style>
-            <div>
-                <div style="float: left; width: 300px">
-                    <span style="font-weight: bold; margin-right: 10px;">From - Từ:</span> @Model.vFrom
+            <div style="padding-top: 10px;">
+                <table>
+                    <tr>
+                        <td style="width: 150px; text-align: center; padding: 0">
+                            <img src="@Model.Domain/Images/v3pdf.png" />
+                        </td>
+                        <td style="text-align:center; font-size:20px;font-weight:bold">
+                            <span style="font-size: 22px;">
+                                MATERIAL PURCHASING REQUISITION FORM
+                            </span>
+                            <br />
+                            <i>PHIẾU ĐỀ NGHỊ MUA HÀNG</i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding-top: 10px;">
+                <div style="float: left; width: 450px">
+                    <span style="font-weight: bold; margin-right: 10px;">Project code - Số dự án:</span> @Model.ProjectCode
                 </div>
-                <div style="float: left; width: 400px">
+                <div style="float: left; width: 350px">
                     <span style="font-weight: bold; margin-right: 10px;">No:</span> @Model.vMRF
                 </div>
                 <div style="float: left; width: 300px">
@@ -67,10 +81,10 @@
             </div>
             <div style="clear: both"></div>
             <div>
-                <div style="float: left; width: 300px">
-                    <span style="font-weight: bold; margin-right: 10px;">Project code - Số dự án:</span> @Model.ProjectCode
+                <div style="float: left; width: 450px">
+                    <span style="font-weight: bold; margin-right: 10px;">Project name - Tên dự án:</span> @Model.ProjectName
                 </div>
-                <div style="float: left; width: 400px">
+                <div style="float: left; width: 350px">
                     <span style="font-weight: bold; margin-right: 10px;">Delivery Time - Giờ giao hàng:</span> @Model.DeliverDateTemp
                 </div>
                 <div style="float: left; width: 300px">
@@ -115,17 +129,8 @@
                             Phải mua
                         </th>
                         <th>
-                            Follow-up<br />
-                            required<br />
-                            Theo dõi
-                        </th>
-                        <th>
-                            Purchase<br />
-                            Đã mua
-                        </th>
-                        <th>
-                            Send<br />
-                            Đã gởi
+                            Remark<br />
+                            Ghi chú
                         </th>
                     </tr>
                     @{var i = 1;}
@@ -141,7 +146,7 @@
                             <td>@item.Unit</td>
                             <td>@item.Quantities</td>
                             <td>@item.Quantity_PE.Value.ToString("g29")</td>
-                            <td style="text-align: center">
+                            @*<td style="text-align: center">
                                 @if (item.FollowUpRequired == 1)
                                 {
                                     <input type="checkbox" checked="" />
@@ -150,8 +155,8 @@
                                 {
                                     <input type="checkbox" />
                                 }
-                            </td>
-                            <td style="text-align: center">
+                            </td>*@
+                            @*<td style="text-align: center">
                                 @if (item.Purchased == 1)
                                 {
                                     <input type="checkbox" checked="" />
@@ -160,26 +165,19 @@
                                 {
                                     <input type="checkbox" />
                                 }
-                            </td>
+                            </td>*@
                             <td style="text-align: center">
-                                @if (item.Sent == 1)
-                                {
-                                    <input type="checkbox" checked="" />
-                                }
-                                else
-                                {
-                                    <input type="checkbox" />
-                                }
+                                @item.Remark
                             </td>
                         </tr>
-                                i++;
+                        i++;
                     }
-                    <tr>
+                    @*<tr>
                         <td colspan="9"></td>
                         <td style="font-size: 12px;">ALL - Tất cả</td>
                         <td style="font-size: 12px;">ALL - Tất cả</td>
                         <td style="font-size: 12px;">ALL - Tất cả</td>
-                    </tr>
+                    </tr>*@
                 </table>
             </div>
             <div style="clear: both"></div>
@@ -226,10 +224,12 @@
         </div>
         @using (Html.BeginForm("PrintPdf", "Helper", FormMethod.Post, new { id = "myform" }))
         {
-            <button type="button" id="btnPrint">Download</button>
-            <input type="hidden" name="content" id="hidContent" value="" />
-            <input type="hidden" name="fileName" id="fileName" value="Requisition" />
-            <input type="hidden" name="voucher" id="voucher" value="@Model.vMRF" />
+            <div style="margin-top: 20px">
+                <button type="button" id="btnPrint">Download</button>
+                <input type="hidden" name="content" id="hidContent" value="" />
+                <input type="hidden" name="fileName" id="fileName" value="Requisition" />
+                <input type="hidden" name="voucher" id="voucher" value="@Model.vMRF" />
+            </div>
         }
     </div>
     <script type="text/javascript">
@@ -260,3 +260,4 @@
         }
     </script>
 </body>
+</html>

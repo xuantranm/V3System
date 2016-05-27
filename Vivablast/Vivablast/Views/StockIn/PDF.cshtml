@@ -15,18 +15,46 @@
     <title>Vivablast Management System</title>
     <link href="/Images/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="/Content/print.css" rel="stylesheet" />
-    @*
-    <link href="/Content/styles.css" rel="stylesheet" />*@
+    @*<link href="/Content/styles.css" rel="stylesheet" />*@
     <script src="/scripts/jquery.min.js"></script>
     <script src="/Scripts/jquery-ui.js"></script>
     <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/Scripts/common.js?v=@System.Configuration.ConfigurationManager.AppSettings[" version"]"></script>
-
+    <script src="/Scripts/common.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
 </head>
 <body>
     <div class="container padding20">
         <div id="PrintLocation">
+            <style type="text/css">
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                th {
+                    height: 50px;
+                    text-align: center;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    background-color: white;
+                }
+
+                td {
+                    vertical-align: bottom;
+                }
+
+                td {
+                    padding: 10px;
+                }
+
+                .th td {
+                    height: 40px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            </style>
+
             <div style="padding-top: 10px;">
                 <table>
                     <tr>
@@ -88,15 +116,15 @@
                     @{var i = 1;}
                     @foreach (var item in Model.StockIns)
                     {
-                    <tr>
-                        <td style="text-align: center">@i</td>
-                        <td style="text-align: center">@item.StockCode</td>
-                        <td>@item.StockName</td>
-                        <td style="text-align: right">@item.Quantity.ToString("g29")</td>
-                        <td style="text-align: center"d>@item.Unit</td>
-                        <td>@item.Note</td>
-                    </tr>
-                    i++;
+                        <tr>
+                            <td style="text-align: center">@i</td>
+                            <td style="text-align: center">@item.StockCode</td>
+                            <td>@item.StockName</td>
+                            <td style="text-align: right">@item.Quantity.ToString("g29")</td>
+                            <td style="text-align: center" d>@item.Unit</td>
+                            <td>@item.Note</td>
+                        </tr>
+                        i++;
                     }
                     <tr>
                         <td colspan="4">Total - Tổng cộng: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.TotalQuantity</td>
@@ -130,14 +158,15 @@
                     </tr>
                 </table>
             </div>
-            <div class="divFooter">UNCLASSIFIED</div>
         </div>
         @using (Html.BeginForm("PrintPdf", "Helper", FormMethod.Post, new { id = "myform" }))
         {
-        <button type="button" id="btnPrint">Download</button>
-        <input type="hidden" name="content" id="hidContent" value="" />
-        <input type="hidden" name="fileName" id="fileName" value="Requisition" />
-        <input type="hidden" name="voucher" id="voucher" value="@Model.Srv" />
+            <div style="margin-top: 20px">
+                <button type="button" id="btnPrint">Download</button>
+                <input type="hidden" name="content" id="hidContent" value="" />
+                <input type="hidden" name="fileName" id="fileName" value="StockIn" />
+                <input type="hidden" name="voucher" id="voucher" value="@Model.Srv" />
+            </div>
         }
     </div>
     <script type="text/javascript">

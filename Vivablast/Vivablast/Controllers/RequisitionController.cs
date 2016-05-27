@@ -436,7 +436,7 @@ namespace Vivablast.Controllers
                     (Convert.ToInt32(_service.GetCodeLastest()) + 1).ToString(CultureInfo.InvariantCulture);
             }
 
-            var model = new RequisitionViewModel
+            var model = new XRequisitionPdfViewModel
             {
                 Id = item.Id,
                 vMRF = item.vMRF,

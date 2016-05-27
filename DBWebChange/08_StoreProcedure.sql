@@ -3930,6 +3930,7 @@ SET NOCOUNT ON;
 	AND 1 = CASE WHEN @td='' THEN 1 WHEN (po.dCreated <= convert(datetime,(@td + ' 23:59:59')) OR po.dCreated = NULL) THEN 1 END 
 	) SELECT * FROM AllRecords 
   WHERE [Row] > (@page - 1) * @size and  [Row] < (@page * @size) + 1;
+
 END
 /*
 DECLARE	@return_value int,
@@ -4043,11 +4044,75 @@ CREATE PROCEDURE [dbo].[V3_List_Pe_Detail]
 	,@enable char(1)
 AS
 BEGIN
-	DECLARE @fromRow int
-	DECLARE @toRow int
 
-	SET @fromRow = (@page - 1) * @size
-	SET @toRow = (@page * @size) + 1
+WITH AllRecords AS ( 
+   SELECT ROW_NUMBER() OVER (ORDER BY po.Id DESC) 
+   AS Row, po.Id
+	,po.vPOID AS PE
+	,po.dPODate AS PE_Date
+	,po.fPOTotal AS [Total]
+	,po.vRemark AS [Remark]
+	,po.vPOStatus AS [Status]
+	,po.vLocation AS Location
+	,po.dDeliverDate AS [Deliver_Date]
+	,SUBSTRING(po.vPOID, 5, 2) AS [Year]
+    ,CASE substring(po.vPOID, 0, 4) 
+      WHEN 'JAN' THEN 1 
+      WHEN 'FEB' THEN 2 
+      WHEN 'MAR' THEN 3 
+      WHEN 'APR' THEN 4 
+      WHEN 'MAY' THEN 5 
+      WHEN 'JUN' THEN 6 
+      WHEN 'JUL' THEN 7 
+      WHEN 'AUG' THEN 8 
+      WHEN 'SEP' THEN 9 
+      WHEN 'OCT' THEN 10
+      WHEN 'NOV' THEN 11  
+      WHEN 'DEC' THEN 12 END AS [Month] 
+      ,potype.vPOTypeName AS [Type] 
+      ,project.vProjectID AS Project_Code
+      ,project.vProjectName AS Project_Name
+      ,supp.vSupplierName AS Supplier
+      ,curr.vCurrencyName AS Currency
+      ,store.Name Store
+      ,po.vTermOfPayment AS Payment_Term
+      ,po.dCreated AS Created_Date
+	  ,usc.NameUser AS Created_By
+	  ,po.dModified AS Modified_Date
+	  ,usm.NameUser AS Modified_By
+	FROM [dbo].[WAMS_PURCHASE_ORDER] po (NOLOCK) 
+	LEFT JOIN [dbo].[WAMS_PROJECT] project (NOLOCK) ON po.vProjectID = project.Id
+	LEFT JOIN [dbo].[WAMS_PO_TYPE] potype (NOLOCK) ON potype.bPOTypeID = po.bPOTypeID
+	--LEFT JOIN [dbo].[PaymentTerm] pay (NOLOCK) ON pay.Id = po.iPayment
+	LEFT JOIN [dbo].[WAMS_CURRENCY_TYPE] curr (NOLOCK) ON curr.bCurrencyTypeID = po.bCurrencyTypeID
+	LEFT JOIN [dbo].[WAMS_SUPPLIER] supp (NOLOCK) ON supp.bSupplierID = po.bSupplierID
+	LEFT JOIN [dbo].[Store] store (NOLOCK) ON store.Id = po.iStore
+	CROSS APPLY [dbo].[udf_GetUserName](po.iCreated) AS usc
+	CROSS APPLY [dbo].[udf_GetUserName](po.iModified) AS usm
+	WHERE
+	1 = CASE WHEN @enable='' THEN 1 WHEN po.iEnable = CAST(@enable AS INT) THEN 1 END
+	AND 1 = CASE WHEN @store = 0 THEN 1 WHEN po.iStore = @store THEN 1 END
+	AND 1 = CASE WHEN @poType = 0 THEN 1 WHEN po.bPOTypeID = @poType THEN 1 END
+	AND 1= CASE WHEN @po='' THEN 1 WHEN po.vPOID = @po THEN 1 END
+	AND 1= CASE WHEN @status='All' THEN 1 WHEN po.vPOStatus = @status THEN 1 END
+	AND 1= CASE WHEN @mrf='' THEN 1 
+	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
+					INNER JOIN dbo.WAMS_REQUISITION_MASTER requi (NOLOCK) ON requi.Id = pod.vMRF
+					WHERE requi.vMRF like '%' + @mrf + '%') THEN 1 END
+	AND 1= CASE WHEN @supplier=0 THEN 1 WHEN po.bSupplierID = @supplier THEN 1 END
+	AND 1= CASE WHEN @project=0 THEN 1 WHEN po.vProjectID = @project THEN 1 END
+	AND 1= CASE WHEN @stockCode='' THEN 1 
+	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
+					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
+					WHERE stock.vStockID like '%' + @stockCode + '%') THEN 1 END
+	AND 1= CASE WHEN @stockName='' THEN 1 
+	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
+					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
+					WHERE stock.vStockName like '%' + @stockName + '%') THEN 1 END
+	AND 1 = CASE WHEN @fd='' THEN 1 WHEN (po.dCreated >= convert(datetime,(@fd + ' 00:00:00')) OR po.dCreated = NULL) THEN 1 END
+	AND 1 = CASE WHEN @td='' THEN 1 WHEN (po.dCreated <= convert(datetime,(@td + ' 23:59:59')) OR po.dCreated = NULL) THEN 1 END 
+	)
+
 	SELECT poDetail.ID AS Id
 		,poDetail.iDiscount AS Discount
 		,poDetail.fQuantity AS Quantity
@@ -4071,48 +4136,10 @@ BEGIN
 	  ,usm.NameUser AS Modified_By
 	  ,poDetail.iCreated AS Created_Id
 	  ,poDetail.PriceId AS Price_Id
-	FROM [dbo].[WAMS_PO_DETAILS] poDetail (NOLOCK)
-	INNER JOIN 
-	(SELECT * FROM (SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY [Year] DESC, [Month] DESC, [PE] DESC) AS [No]
-	,tblTemp.* 
-	FROM
-	(SELECT po.Id, po.vPOID AS PE, SUBSTRING(po.vPOID, 5, 2) AS [Year]
-    ,CASE substring(po.vPOID, 0, 4) 
-      WHEN 'JAN' THEN 1 
-      WHEN 'FEB' THEN 2 
-      WHEN 'MAR' THEN 3 
-      WHEN 'APR' THEN 4 
-      WHEN 'MAY' THEN 5 
-      WHEN 'JUN' THEN 6 
-      WHEN 'JUL' THEN 7 
-      WHEN 'AUG' THEN 8 
-      WHEN 'SEP' THEN 9 
-      WHEN 'OCT' THEN 10
-      WHEN 'NOV' THEN 11  
-      WHEN 'DEC' THEN 12 END AS [Month] FROM dbo.WAMS_PURCHASE_ORDER po
-	WHERE
-	1 = CASE WHEN @enable='' THEN 1 WHEN po.iEnable = CAST(@enable AS INT) THEN 1 END
-	AND 1 = CASE WHEN @store = 0 THEN 1 WHEN po.iStore = @store THEN 1 END
-	AND 1 = CASE WHEN @poType = 0 THEN 1 WHEN po.bPOTypeID = @poType THEN 1 END
-	AND 1= CASE WHEN @po='' THEN 1 WHEN po.vPOID = @po THEN 1 END
-	AND 1= CASE WHEN @status='All' THEN 1 WHEN po.vPOStatus = @status THEN 1 END
-	AND 1= CASE WHEN @mrf='' THEN 1 
-	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
-					INNER JOIN dbo.WAMS_REQUISITION_MASTER requi (NOLOCK) ON requi.Id = pod.vMRF
-					WHERE requi.vMRF like '%' + @mrf + '%') THEN 1 END
-	AND 1= CASE WHEN @supplier=0 THEN 1 WHEN po.bSupplierID = @supplier THEN 1 END
-	AND 1= CASE WHEN @project=0 THEN 1 WHEN po.vProjectID = @project THEN 1 END
-	AND 1= CASE WHEN @stockCode='' THEN 1 
-	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
-					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
-					WHERE stock.vStockID like '%' + @stockCode + '%') THEN 1 END
-	AND 1= CASE WHEN @stockName='' THEN 1 
-	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
-					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
-					WHERE stock.vStockName like '%' + @stockName + '%') THEN 1 END
-	AND 1 = CASE WHEN @fd='' THEN 1 WHEN (po.dCreated >= convert(datetime,(@fd + ' 00:00:00')) OR po.dCreated = NULL) THEN 1 END
-	AND 1 = CASE WHEN @td='' THEN 1 WHEN (po.dCreated <= convert(datetime,(@td + ' 23:59:59')) OR po.dCreated = NULL) THEN 1 END) tblTemp) tempTable
-	WHERE [No] > @fromRow AND [No] < @toRow) purchaseOrder ON purchaseOrder.Id = poDetail.vPOID
+	FROM 
+	(SELECT * FROM AllRecords 
+  WHERE [Row] > (@page - 1) * @size and  [Row] < (@page * @size) + 1) purchaseOrder 
+  LEFT JOIN [dbo].[WAMS_PO_DETAILS] poDetail (NOLOCK) ON purchaseOrder.Id = poDetail.vPOID
 	INNER JOIN [dbo].[WAMS_STOCK] stock (NOLOCK) ON stock.Id= poDetail.vProductID
 	LEFT JOIN [dbo].[WAMS_UNIT] unit (NOLOCK) ON unit.bUnitID = stock.bUnitID
 	LEFT JOIN [dbo].[WAMS_STOCK_TYPE] stype (NOLOCK) ON stype.Id = stock.iType
@@ -4120,13 +4147,14 @@ BEGIN
 	--LEFT JOIN [dbo].[Product_Price] price (NOLOCK) ON price.Id = poDetail.PriceId
 	CROSS APPLY [dbo].[udf_GetUserName](poDetail.iCreated) AS usc
 	CROSS APPLY [dbo].[udf_GetUserName](poDetail.iModified) AS usm
-	ORDER BY purchaseOrder.Year ASC, purchaseOrder.Month ASC, purchaseOrder.PE ASC
+	ORDER BY purchaseOrder.Year DESC, purchaseOrder.Month DESC, purchaseOrder.PE DESC
 END
 GO
 /*
 exec [dbo].[V3_List_PO] 1, 10, 0, 0,'','','', 0,0,'','','','',''
 exec [dbo].[V3_List_Pe_Detail] 1, 10, 0, 0,'','','', 0,0,'','','','',''
 */
+GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_List_Accounting]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[V3_List_Accounting]
 GO

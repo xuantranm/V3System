@@ -1,7 +1,5 @@
-﻿@using Ap.Common.Constants
-@using Microsoft.Ajax.Utilities
-@using Vivablast.ViewModels
-@model POViewModel
+﻿@using Vivablast.ViewModels
+@model XPePdfViewModel
 @{
     Layout = null;
 }
@@ -53,27 +51,87 @@
                     text-align: center;
                     font-weight: bold;
                 }
+
+                .head-table td {
+                    padding: 5px;
+                }
             </style>
-            <div>
-                <div style="float: left; width: 300px">
+            <div style="padding-top: 10px;">
+                <table>
+                    <tr>
+                        <td style="width: 150px; text-align: center; padding: 0">
+                            <img src="@Model.Domain/Images/v3pdf.png" />
+                        </td>
+                        <td style="text-align:center; font-size:20px;font-weight:bold">
+                            <span style="font-size: 22px;">
+                                PURCHASE ORDER
+                            </span>
+                            <br />
+                            <i>ĐƠN ĐẶT HÀNG</i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding-top: 10px; font-size: 12px" class="head-table">
+                <div style="float: left; width: 60%;">
+                    <table>
+                        <tr>
+                            <td style="width: 150px;font-weight: bold;">
+                                From - <i>Từ</i>:
+                            </td>
+                            <td style="font-weight:bold">
+                                VIVABLAST (VIETNAM) Co., Ltd.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Address - <i>Địa chỉ</i>:</td>
+                            <td>Binh Chieu I.Z, Binh Chieu Ward, Thu Duc, HCMC</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Tax code - <i>MST</i>:</td>
+                            <td>0300791426</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Tel:</td>
+                            <td>(08) 38 965 007</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Fax:</td>
+                            <td>(08) 38 965 004</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">PE Staff:<br /><i>Nhân viên mua hàng:</i></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="float: left; width: 40%; padding-left: 20px;">
+                    <div style="font-weight: bold;">Date - <i>Ngày</i>:</div>
+                    <table>
+                        <tr>
+                            <td style="width: 150px;font-weight: bold;">
+                                To:
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div style="clear: both"></div>
+            <div style="padding-top: 10px;">
+                <div style="float: left; width: 450px">
                     <span style="font-weight: bold; margin-right: 10px;">Project No:</span> @Model.PurchaseOrderCustom.Project_Code
                 </div>
-                <div style="float: left; width: 400px">
-                    <span style="font-weight: bold; margin-right: 10px;">Project Name:</span> @Model.PurchaseOrderCustom.Project_Name
-                </div>
                 <div style="float: left; width: 300px">
-                    <span style="font-weight: bold; margin-right: 10px;">P.O nb:</span> @Model.PurchaseOrderCustom.PE
+                    <span style="font-weight: bold; margin-right: 10px;">P.O no - <i>ĐĐH số:</i>:</span> @Model.PurchaseOrderCustom.PE
                 </div>
             </div>
             <div style="clear: both"></div>
             <div>
-                <div style="float: left; width: 300px">
-                </div>
-                <div style="float: left; width: 400px">
-                    <span style="font-weight: bold; margin-right: 10px;">VAT:</span> @Model.VAT
-                </div>
-                <div style="float: left; width: 300px">
-                    <span style="font-weight: bold; margin-right: 10px;">PO Sample:</span> 
+                <div style="float: left; width: 450px">
+                    <span style="font-weight: bold; margin-right: 10px;">Project Name:</span> @Model.PurchaseOrderCustom.Project_Name
                 </div>
             </div>
             <div style="clear: both; height: 10px;"></div>
@@ -81,16 +139,16 @@
                 <table>
                     <tr>
                         <th>Item</th>
-                        <th>Stock ID</th>
-                        <th>Description</th>
+                        <th>Stock ID<br /><i>Mã hàng</i></th>
+                        <th>Description<br /><i>Mô tả</i></th>
                         <th>Ral</th>
-                        <th>Color</th>
-                        <th>Unit</th>
-                        <th>Qty</th>
+                        <th>Color<br /><i>Màu</i></th>
+                        <th>Unit<br /><i>ĐVT</i></th>
+                        <th>Qty<br /><i>S.Lượng</i></th>
                         <th>MRF#</th>
-                        <th>UNIT PRICE<br />(VND)</th>
-                        <th>DISC<br />(%)</th>
-                        <th>TOTAL<br />(VND)</th>
+                        <th>Unit price<br />(VND)<br /><i>Đơn giá</i></th>
+                        <th>Discount<br /><i>Giảm giá</i></th>
+                        <th>Total<br />(VND)<br /><i>Thành tiền</i></th>
                     </tr>
                     @{var i = 1;}
                     @foreach (var item in Model.PoDetailsVResults)
@@ -129,17 +187,22 @@
             </div>
             <div style="clear: both"></div>
             <div style="margin-top: -10px;">
-                
+                <div>Delivery Time - <i>Thời gian nhận hàng</i>:</div>
+                <div>Delivery Location - <i>Địa điểm nhận hàng</i>:</div>
+                <div>Term payment - <i>Điều kiện thanh toán</i>:</div>
+                <div>Notes - <i>Ghi chú</i>:</div>
             </div>
         </div>
-        
+
         @using (Html.BeginForm("PrintPdf", "Helper", FormMethod.Post, new { id = "myform" }))
         {
-            <div style="clear: both; height: 10px;"></div>
-            <button type="button" id="btnPrint">Download</button>
-            <input type="hidden" name="content" id="hidContent" value="" />
-            <input type="hidden" name="fileName" id="fileName" value="PE" />
-            <input type="hidden" name="voucher" id="voucher" value="@Model.Id" />
+            <div style="margin-top: 20px">
+                <button type="button" id="btnPrint">Download</button>
+                <input type="hidden" name="content" id="hidContent" value="" />
+                <input type="hidden" name="fileName" id="fileName" value="PE" />
+                <input type="hidden" name="voucher" id="voucher" value="@Model.PurchaseOrderCustom.Id" />
+            </div>
+
         }
     </div>
     <script type="text/javascript">
@@ -170,3 +233,4 @@
         }
     </script>
 </body>
+</html>
