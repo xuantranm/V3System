@@ -4140,7 +4140,7 @@ WITH AllRecords AS (
 	(SELECT * FROM AllRecords 
   WHERE [Row] > (@page - 1) * @size and  [Row] < (@page * @size) + 1) purchaseOrder 
   LEFT JOIN [dbo].[WAMS_PO_DETAILS] poDetail (NOLOCK) ON purchaseOrder.Id = poDetail.vPOID
-	INNER JOIN [dbo].[WAMS_STOCK] stock (NOLOCK) ON stock.Id= poDetail.vProductID
+	LEFT JOIN [dbo].[WAMS_STOCK] stock (NOLOCK) ON stock.Id= poDetail.vProductID
 	LEFT JOIN [dbo].[WAMS_UNIT] unit (NOLOCK) ON unit.bUnitID = stock.bUnitID
 	LEFT JOIN [dbo].[WAMS_STOCK_TYPE] stype (NOLOCK) ON stype.Id = stock.iType
 	LEFT JOIN [dbo].[WAMS_REQUISITION_MASTER] req (NOLOCK) ON req.Id = poDetail.vMRF
