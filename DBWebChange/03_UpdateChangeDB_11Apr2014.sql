@@ -100,9 +100,9 @@ UPDATE dbo.WAMS_STOCK SET iType=7 WHERE vStockType='Tool';
 --UPDATE dbo.WAMS_STOCK SET iType=8 WHERE vStockType='Service';
 GO
 -- SERVICE MANAGEMENT INTO STOCK
---INSERT INTO dbo.WAMS_STOCK (vStockID, vStockName, vRemark, bCategoryID, bUnitID, bPositionID, iEnable,iType)
---SELECT vIDServiceItem, vServiceItemName, vDescription, bCategoryID, bUnitID, bPositionID, iEnable,8 FROM dbo.WAMS_ITEMS_SERVICE
---GO
+INSERT INTO dbo.WAMS_STOCK (vStockID, vStockName, vRemark, bCategoryID, bUnitID, bPositionID, iEnable,iType)
+SELECT vIDServiceItem, vServiceItemName, vDescription, bCategoryID, bUnitID, bPositionID, iEnable,8 FROM dbo.WAMS_ITEMS_SERVICE
+GO
 UPDATE dbo.WAMS_STOCK SET iEnable=2 WHERE iEnable=0
 GO
 UPDATE dbo.WAMS_STOCK SET iEnable= 3 WHERE iEnable=1
