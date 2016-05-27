@@ -344,7 +344,7 @@ BEGIN
 	SELECT Id, vProjectID, vProjectName, dBeginDate, dEnd FROM [dbo].[WAMS_PROJECT] (NOLOCK)
 	WHERE iEnable= 1 
 	and dBeginDate <= GETDATE() 
-	and (dEnd <= CAST(CONVERT(char(8), GETDATE(), 112) + ' 23:59:59.99' AS datetime) OR dEnd IS NULL)
+	and (dEnd >= CAST(CONVERT(char(8), GETDATE(), 112) + ' 23:59:59.99' AS datetime) OR dEnd IS NULL)
 	ORDER BY vProjectName ASC
 END
 

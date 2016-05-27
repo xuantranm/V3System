@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Ap.Business.Seedworks;
+using Ap.Business.ViewModels;
 using Ap.Data.Repositories;
 using Ap.Data.Seedworks;
 using Dapper;
@@ -31,56 +32,35 @@ namespace Ap.Business.Repositories
             return result;
         }
 
-        public IList<V3_List_PO> ListCondition(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)
+        public PeViewModel ListCondition(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)
         {
-            var sql = GetSqlConnection();
-            var result = sql.Query<V3_List_PO>("dbo.V3_List_PO", new
+            var model = new PeViewModel();
+            var paramss = new DynamicParameters();
+            paramss.Add("page", page);
+            paramss.Add("size", size);
+            paramss.Add("store", store);
+            paramss.Add("potype", potype);
+            paramss.Add("po", po);
+            paramss.Add("status", status);
+            paramss.Add("mrf", mrf);
+            paramss.Add("supplier", supplier);
+            paramss.Add("project", project);
+            paramss.Add("stockCode", stockCode);
+            paramss.Add("stockName", stockName);
+            paramss.Add("fd", fd);
+            paramss.Add("td", td);
+            paramss.Add("enable", enable);
+            paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (var sql = GetSqlConnection())
             {
-                page,
-                size,
-                store,
-                potype,
-                po,
-                status,
-                mrf,
-                supplier,
-                project,
-                stockCode,
-                stockName,
-                fd,
-                td,
-                enable
-            },
-                                         commandType: CommandType.StoredProcedure).ToList();
-
-            sql.Close();
-            return result.Any() ? result : new List<V3_List_PO>();
-        }
-
-        public int ListConditionCount(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)
-        {
-            var sql = GetSqlConnection();
-            var result = sql.Query<int>("dbo.V3_List_PO_Count", new
-            {
-                page,
-                size,
-                store,
-                potype,
-                po,
-                status,
-                mrf,
-                supplier,
-                project,
-                stockCode,
-                stockName,
-                fd,
-                td,
-                enable
-            },
-                                         commandType: CommandType.StoredProcedure).FirstOrDefault();
-
-            sql.Close();
-            return result;
+                var data = sql.Query<V3_List_PO>("V3_List_PO", paramss, commandType: CommandType.StoredProcedure);
+                sql.Close();
+                model.PoGetListResults = data.ToList();
+                var total = paramss.Get<int>("out");
+                model.TotalRecords = total;
+            }
+            return model;
         }
 
         public List<V3_Pe_Detail> ListConditionDetail(int id, string enable)

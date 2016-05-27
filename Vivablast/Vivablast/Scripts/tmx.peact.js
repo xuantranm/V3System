@@ -54,7 +54,7 @@
                                 cache: false,
                                 type: "POST",
                                 success: function (data) {
-                                    var markup = "<option value=''>All</option>";
+                                    var markup = "<option value='0'>0</option>";
                                     for (var x = 0; x < data.length; x++) {
                                         markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
                                     }

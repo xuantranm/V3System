@@ -205,7 +205,7 @@
                 "bFilter": false,
                 "bInfo": false,
                 "bPaginate": false,
-                "aaSorting": [[1, "desc"]],
+                "aaSorting": [[2, "desc"]],
                 "aoColumnDefs": [
                     {
                         "bSortable": false,

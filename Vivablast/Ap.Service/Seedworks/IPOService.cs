@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.ViewModels;
 using Vivablast.Models;
 
 namespace Ap.Service.Seedworks
@@ -12,9 +13,7 @@ namespace Ap.Service.Seedworks
 
         WAMS_PO_DETAILS GetByKeyDetail(int id);
 
-        IList<V3_List_PO> ListCondition(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable);
-
-        int ListConditionCount(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable);
+        PeViewModel ListCondition(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable);
 
         List<V3_Pe_Detail> ListConditionDetail(int id, string enable);
 

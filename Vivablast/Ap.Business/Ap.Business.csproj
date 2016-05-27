@@ -239,6 +239,7 @@
     <Compile Include="Seedworks\IStoreRepository.cs" />
     <Compile Include="Seedworks\IUserRepository.cs" />
     <Compile Include="Seedworks\IProjectRepository.cs" />
+    <Compile Include="ViewModels\PeViewModel.cs" />
     <Compile Include="ViewModels\DynamicReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

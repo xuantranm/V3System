@@ -4,6 +4,7 @@ using System.Linq;
 using Ap.Business.Domains;
 using Ap.Business.Dto;
 using Ap.Business.Seedworks;
+using Ap.Business.ViewModels;
 using Ap.Common.Constants;
 using Ap.Data.Seedworks;
 using Ap.Service.Seedworks;
@@ -46,14 +47,9 @@ namespace Ap.Service.Services
             return _repositoryDetail.GetByKey(id);
         }
 
-        public IList<V3_List_PO> ListCondition(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)
+        public PeViewModel ListCondition(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)
         {
             return _customRepository.ListCondition(page, size, store, potype, po, status, mrf, supplier, project, stockCode, stockName, fd, td, enable);
-        }
-
-        public int ListConditionCount(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)
-        {
-            return _customRepository.ListConditionCount(page, size, store, potype, po, status, mrf, supplier, project, stockCode, stockName, fd, td, enable);
         }
 
         public List<V3_Pe_Detail> ListConditionDetail(int id, string enable)

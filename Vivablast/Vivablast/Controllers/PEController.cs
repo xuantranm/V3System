@@ -84,14 +84,14 @@ namespace Vivablast.Controllers
         public ActionResult LoadPo(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)
         {
             var userName = System.Web.HttpContext.Current.User.Identity.Name;
-            var totalRecord = _service.ListConditionCount(page, size, store, potype, po, status, mrf, supplier, project, stockCode, stockName, fd, td, enable);
-            var totalTemp = Convert.ToDecimal(totalRecord) / Convert.ToDecimal(size);
+            var xPeViewModel = _service.ListCondition(page, size, store, potype, po, status, mrf, supplier, project, stockCode, stockName, fd, td, enable);
+            var totalTemp = Convert.ToDecimal(xPeViewModel.TotalRecords) / Convert.ToDecimal(size);
             var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
             var model = new POViewModel
             {
                 UserLogin = _systemService.GetUserAndRole(0, userName),
-                PoGetListResults = _service.ListCondition(page, size, store, potype, po, status, mrf, supplier, project, stockCode, stockName, fd, td, enable),
-                TotalRecords = Convert.ToInt32(totalRecord),
+                PoGetListResults = xPeViewModel.PoGetListResults,
+                TotalRecords = xPeViewModel.TotalRecords,
                 TotalPages = totalPages,
                 CurrentPage = page,
                 PageSize = size
@@ -115,7 +115,7 @@ namespace Vivablast.Controllers
         public void ExportToExcel(int page, int size, int store, int potype, string po, string status, string mrf, int supplier, int project, string stockCode, string stockName, string fd, string td, string enable)
         {
             // Get the data to report on
-            var masters = _service.ListCondition(page, size, store, potype, po, status, mrf, supplier, project, stockCode, stockName, fd, td, enable);
+            var masters = _service.ListCondition(page, size, store, potype, po, status, mrf, supplier, project, stockCode, stockName, fd, td, enable).PoGetListResults;
             var details = _service.ListConditionDetailExcel(page, size, store, potype, po, status, mrf, supplier, project, stockCode, stockName, fd, td, enable);
             // Create a new workbook
             var workbook = new HSSFWorkbook();
@@ -543,7 +543,13 @@ namespace Vivablast.Controllers
                 item.dPODate = DateTime.Now;
                 item.dDeliverDate = DateTime.Now;
             }
-
+            var vatList = _systemService.GetLookUp(Constants.LuVat);
+            vatList.Add(new LookUp
+            {
+                LookUpKey = "0",
+                LookUpValue = "0"
+            });
+            vatList = vatList.OrderBy(m => m.LookUpKey).ToList();
             var model = new POViewModel
             {
                 Id = item.Id,
@@ -567,7 +573,7 @@ namespace Vivablast.Controllers
                 bCurrencyTypeID = item.bCurrencyTypeID,
                 Currencies = new SelectList(this._systemService.CurrencyList(), "Id", "Name"),
                 Payments = new SelectList(this._systemService.PaymentList(), "Id", "Name"),
-                VatList = new SelectList(this._systemService.GetLookUp(Constants.LuVat), Constants.LookUpKey, Constants.LookUpValue),
+                VatList = new SelectList(vatList, Constants.LookUpKey, Constants.LookUpValue),
                 Payment = item.vTermOfPayment,
                 TotalRecords = totalDetailRecords,
                 PoDetailsVResults = listDetail,

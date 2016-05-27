@@ -95,42 +95,44 @@ namespace Ap.Service.Services
         public bool Update(WAMS_SUPPLIER entity, List<WAMS_PRODUCT> entityDetails, string LstDeleteDetailItem)
         {
             _repository.Update(entity);
-            foreach (var detail in entityDetails)
+            if (entityDetails != null)
             {
-                if (detail.Id != 0)
+                foreach (var detail in entityDetails)
                 {
-                    var detailEntity = _repositoryDetail.GetByKey(detail.Id);
-                    detailEntity.bSupplierID = entity.bSupplierID;
-                    detailEntity.vProductID = detail.vProductID;
-                    detailEntity.vDescription = detail.vDescription;
-                    detailEntity.dModified = DateTime.Now;
-                    detailEntity.iModified = entity.iModified;
-                    _repositoryDetail.Update(detailEntity);
-                }
-                else
-                {
-                    var detailEntity = new WAMS_PRODUCT
+                    if (detail.Id != 0)
                     {
-                        bSupplierID = entity.bSupplierID,
-                        vProductID = detail.vProductID,
-                        vDescription = detail.vDescription,
-                        iEnable = true,
-                        dCreated = entity.dCreated,
-                        iCreated = entity.iCreated
-                    };
-                    _repositoryDetail.Add(detailEntity);
+                        var detailEntity = _repositoryDetail.GetByKey(detail.Id);
+                        detailEntity.bSupplierID = entity.bSupplierID;
+                        detailEntity.vProductID = detail.vProductID;
+                        detailEntity.vDescription = detail.vDescription;
+                        detailEntity.dModified = DateTime.Now;
+                        detailEntity.iModified = entity.iModified;
+                        _repositoryDetail.Update(detailEntity);
+                    }
+                    else
+                    {
+                        var detailEntity = new WAMS_PRODUCT
+                        {
+                            bSupplierID = entity.bSupplierID,
+                            vProductID = detail.vProductID,
+                            vDescription = detail.vDescription,
+                            iEnable = true,
+                            dCreated = entity.dCreated,
+                            iCreated = entity.iCreated
+                        };
+                        _repositoryDetail.Add(detailEntity);
+                    }
                 }
-            }
 
-            if (!string.IsNullOrEmpty(LstDeleteDetailItem))
-            {
-                var listStrLineElements = LstDeleteDetailItem.Split(';').ToList();
-                foreach (var itemDetail in listStrLineElements)
+                if (!string.IsNullOrEmpty(LstDeleteDetailItem))
                 {
-                    _customRepository.DeleteDetail(Convert.ToInt32(itemDetail));
+                    var listStrLineElements = LstDeleteDetailItem.Split(';').ToList();
+                    foreach (var itemDetail in listStrLineElements)
+                    {
+                        _customRepository.DeleteDetail(Convert.ToInt32(itemDetail));
+                    }
                 }
             }
-
             _unitOfWork.CommitChanges();
             return true;
         }

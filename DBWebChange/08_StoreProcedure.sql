@@ -3829,18 +3829,42 @@ CREATE PROCEDURE [dbo].[V3_List_PO]
 ,@fd varchar(22) 
 ,@td varchar(22) 
 ,@enable char(1)
+,@out INT OUTPUT
 AS
 BEGIN
-	DECLARE @fromRow int
-	DECLARE @toRow int
+SET NOCOUNT ON;
+	-- get record count
+	WITH AllRecords AS ( 
+		SELECT 0 [TCo]
+	FROM [dbo].[WAMS_PURCHASE_ORDER] po (NOLOCK) 
+	WHERE
+	1 = CASE WHEN @enable='' THEN 1 WHEN po.iEnable = CAST(@enable AS INT) THEN 1 END
+	AND 1 = CASE WHEN @store = 0 THEN 1 WHEN po.iStore = @store THEN 1 END
+	AND 1 = CASE WHEN @poType = 0 THEN 1 WHEN po.bPOTypeID = @poType THEN 1 END
+	AND 1= CASE WHEN @po='' THEN 1 WHEN po.vPOID = @po THEN 1 END
+	AND 1= CASE WHEN @status='All' THEN 1 WHEN po.vPOStatus = @status THEN 1 END
+	AND 1= CASE WHEN @mrf='' THEN 1 
+	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
+					INNER JOIN dbo.WAMS_REQUISITION_MASTER requi (NOLOCK) ON requi.Id = pod.vMRF
+					WHERE requi.vMRF like '%' + @mrf + '%') THEN 1 END
+	AND 1= CASE WHEN @supplier=0 THEN 1 WHEN po.bSupplierID = @supplier THEN 1 END
+	AND 1= CASE WHEN @project=0 THEN 1 WHEN po.vProjectID = @project THEN 1 END
+	AND 1= CASE WHEN @stockCode='' THEN 1 
+	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
+					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
+					WHERE stock.vStockID like '%' + @stockCode + '%') THEN 1 END
+	AND 1= CASE WHEN @stockName='' THEN 1 
+	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
+					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
+					WHERE stock.vStockName like '%' + @stockName + '%') THEN 1 END
+	AND 1 = CASE WHEN @fd='' THEN 1 WHEN (po.dCreated >= convert(datetime,(@fd + ' 00:00:00')) OR po.dCreated = NULL) THEN 1 END
+	AND 1 = CASE WHEN @td='' THEN 1 WHEN (po.dCreated <= convert(datetime,(@td + ' 23:59:59')) OR po.dCreated = NULL) THEN 1 END
+	) SELECT @out = Count(*) From AllRecords;
 
-	SET @fromRow = (@page - 1) * @size
-	SET @toRow = (@page * @size) + 1
-
-	SELECT * FROM (SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY [Year] DESC, [Month] DESC, [PE] DESC) AS [No]
-	,tblTemp.* 
-	FROM
-	(SELECT po.Id
+  -- now get the records
+   WITH AllRecords AS ( 
+   SELECT ROW_NUMBER() OVER (ORDER BY po.Id DESC) 
+   AS Row, po.Id
 	,po.vPOID AS PE
 	,po.dPODate AS PE_Date
 	,po.fPOTotal AS [Total]
@@ -3903,63 +3927,18 @@ BEGIN
 					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
 					WHERE stock.vStockName like '%' + @stockName + '%') THEN 1 END
 	AND 1 = CASE WHEN @fd='' THEN 1 WHEN (po.dCreated >= convert(datetime,(@fd + ' 00:00:00')) OR po.dCreated = NULL) THEN 1 END
-	AND 1 = CASE WHEN @td='' THEN 1 WHEN (po.dCreated <= convert(datetime,(@td + ' 23:59:59')) OR po.dCreated = NULL) THEN 1 END) tblTemp) tempTable
-	WHERE [No] > @fromRow AND [No] < @toRow
+	AND 1 = CASE WHEN @td='' THEN 1 WHEN (po.dCreated <= convert(datetime,(@td + ' 23:59:59')) OR po.dCreated = NULL) THEN 1 END 
+	) SELECT * FROM AllRecords 
+  WHERE [Row] > (@page - 1) * @size and  [Row] < (@page * @size) + 1;
 END
 /*
-exec [dbo].[V3_List_PO] 1, 10, 0, 0,'','','1', 0,0,'','','','',''
+DECLARE	@return_value int,
+		@out int
+exec [dbo].[V3_List_PO] 1, 10, 0, 0,'','','1', 0,0,'','','','','', @out = @out OUTPUT
+SELECT	@out as N'@out'
+SELECT	'Return Value' = @return_value
 */
--- V3_List_PO_Count
-GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_List_PO_Count]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[V3_List_PO_Count]
-GO
-CREATE PROCEDURE [dbo].[V3_List_PO_Count]
-@page int
-,@size int
-,@store int
-,@poType int
-,@po nvarchar(16)
-,@status nvarchar(16)
-,@mrf nvarchar(16)
-,@supplier int
-,@project int
-,@stockCode nvarchar(200)
-,@stockName nvarchar(200)
-,@fd varchar(22) 
-,@td varchar(22) 
-,@enable char(1)
-AS
-BEGIN
-	SELECT COUNT(1) AS [Count]
-	FROM [dbo].[WAMS_PURCHASE_ORDER] (NOLOCK)
-	WHERE
-	1 = CASE WHEN @enable='' THEN 1 WHEN iEnable = CAST(@enable AS INT) THEN 1 END
-	AND 1 = CASE WHEN @store = 0 THEN 1 WHEN iStore = @store THEN 1 END
-	AND 1 = CASE WHEN @poType = 0 THEN 1 WHEN bPOTypeID = @poType THEN 1 END
-	AND 1= CASE WHEN @po='' THEN 1 WHEN vPOID = @po THEN 1 END
-	AND 1= CASE WHEN @status='All' THEN 1 WHEN vPOStatus = @status THEN 1 END
-	AND 1= CASE WHEN @mrf='' THEN 1 
-	WHEN Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
-					INNER JOIN dbo.WAMS_REQUISITION_MASTER requi (NOLOCK) ON requi.Id = pod.vMRF
-					WHERE requi.vMRF like '%' + @mrf + '%') THEN 1 END
-	AND 1= CASE WHEN @supplier=0 THEN 1 WHEN bSupplierID = @supplier THEN 1 END
-	AND 1= CASE WHEN @project=0 THEN 1 WHEN vProjectID = @project THEN 1 END
-	AND 1= CASE WHEN @stockCode='' THEN 1 
-	WHEN Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
-					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
-					WHERE stock.vStockID like '%' + @stockCode + '%') THEN 1 END
-	AND 1= CASE WHEN @stockName='' THEN 1 
-	WHEN Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
-					INNER JOIN dbo.WAMS_STOCK stock (NOLOCK) ON stock.Id = pod.vProductID
-					WHERE stock.vStockName like '%' + @stockName + '%') THEN 1 END
-	AND 1 = CASE WHEN @fd='' THEN 1 WHEN (dCreated >= convert(datetime,(@fd + ' 00:00:00')) OR dCreated = NULL) THEN 1 END
-	AND 1 = CASE WHEN @td='' THEN 1 WHEN (dCreated <= convert(datetime,(@td + ' 23:59:59')) OR dCreated = NULL) THEN 1 END
-END
-GO
-/*
-exec [dbo].[V3_List_PO_Count] 1, 10, 0, 0,'','','', 0,0,'','','','',''
-*/
+
 -- V3_PE_Information
 GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_PE_Information]') AND type in (N'P', N'PC'))
@@ -4116,7 +4095,7 @@ BEGIN
 	AND 1 = CASE WHEN @store = 0 THEN 1 WHEN po.iStore = @store THEN 1 END
 	AND 1 = CASE WHEN @poType = 0 THEN 1 WHEN po.bPOTypeID = @poType THEN 1 END
 	AND 1= CASE WHEN @po='' THEN 1 WHEN po.vPOID = @po THEN 1 END
-	AND 1= CASE WHEN @status='' THEN 1 WHEN po.vPOStatus = @status THEN 1 END
+	AND 1= CASE WHEN @status='All' THEN 1 WHEN po.vPOStatus = @status THEN 1 END
 	AND 1= CASE WHEN @mrf='' THEN 1 
 	WHEN po.Id IN (SELECT DISTINCT vPOID FROM dbo.WAMS_PO_DETAILS pod (NOLOCK)
 					INNER JOIN dbo.WAMS_REQUISITION_MASTER requi (NOLOCK) ON requi.Id = pod.vMRF

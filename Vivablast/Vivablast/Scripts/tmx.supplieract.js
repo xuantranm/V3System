@@ -175,11 +175,11 @@
                             vSupplierName: $('#vSupplierName').val(),
                             vAddress: $('#vAddress').val(),
                             vCity: $('#vCity').val(),
-                            Telephone1: $('#Telephone1').val(),
-                            Telephone2: $('#Telephone2').val(),
-                            Mobile: $('#Mobile').val(),
+                            vPhone1: $('#Telephone1').val(),
+                            vPhone2: $('#Telephone2').val(),
+                            vMobile: $('#Mobile').val(),
                             vFax: $('#vFax').val(),
-                            Email: $('#Email').val(),
+                            vEmail: $('#Email').val(),
                             vContactPerson: $('#vContactPerson').val(),
                             bSupplierTypeID: $('#bSupplierTypeID').val(),
                             CountryId: $('#CountryId').val(),
@@ -191,6 +191,7 @@
                         ListProducts: arrDetails,
                         LstDeleteDetailItem: $('#hidDeleteItemDetail').val()
                     };
+                    console.log(dataV3);
                     SaveEntity(dataV3, id);
                 }
             });
