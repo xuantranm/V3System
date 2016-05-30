@@ -508,7 +508,7 @@ namespace Ap.Business.Repositories
         #region X-media
 
         public DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType,
-            int category, string stockCode, string stockName)
+            int category, string stockCode, string stockName, string fd, string td)
         {
             var model = new DynamicReportViewModel();
             var paramss = new DynamicParameters();
@@ -520,6 +520,8 @@ namespace Ap.Business.Repositories
             paramss.Add("category", category);
             paramss.Add("stockCode", stockCode);
             paramss.Add("stockName", stockName);
+            paramss.Add("fd", fd);
+            paramss.Add("td", td);
             paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (var sql = GetSqlConnection())

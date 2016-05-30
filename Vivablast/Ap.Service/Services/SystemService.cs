@@ -406,10 +406,9 @@ namespace Ap.Service.Services
         #region X-media
 
         public DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType,
-            int category, string stockCode, string stockName)
+            int category, string stockCode, string stockName, string fd, string td)
         {
-            return _customSystemRepository.GetDynamicReport(page, size, poType, po, stockType, category, stockCode,
-                stockName);
+            return _customSystemRepository.GetDynamicReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
         }
 
         #endregion

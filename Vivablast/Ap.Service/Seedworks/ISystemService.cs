@@ -99,7 +99,7 @@ namespace Ap.Service.Seedworks
 
         #region X-media
 
-        DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName);
+        DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName, string fd, string td);
 
         #endregion
     }

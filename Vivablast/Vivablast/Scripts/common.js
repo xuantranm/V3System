@@ -1424,3 +1424,16 @@ function loadPictureStock(id) {
         }
     });
 }
+function page() {
+    var id = $(".pagination a.current").html();
+    if (typeof id === 'undefined') {
+        id = 1;
+    }
+    return id;
+}
+
+function size() {
+    var id = $("#pageSize").val();
+    id = id === "" ? 10 : id;
+    return id;
+}

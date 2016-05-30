@@ -7,18 +7,6 @@
     tmx.vivablast = tmx.vivablast || {};
     
     tmx.vivablast.reportManager = {
-        page: function () {
-            var id = $(".pagination a.current").html();
-            if (typeof id === 'undefined') {
-                id = 1;
-            }
-            return id;
-        },
-        size: function () {
-            var id = $("#pageSize").val();
-            id = id === "" ? 10 : id;
-            return id;
-        },
         sortBy: 1,
         sortType: 1,
         urltemp: '',
@@ -30,53 +18,22 @@
 
         init: function (uid) {
             $('#loading-indicator').hide();
-            tmx.vivablast.projectManager.loadProject(uid);
-            tmx.vivablast.projectManager.registerEventIndex(uid);
-            $("#projectCode").autocomplete({
-                source: "/Project/ListCode?term" + $("#projectCode").val()
+            tmx.vivablast.reportManager.loadReport(uid);
+            tmx.vivablast.reportManager.registerEventIndex(uid);
+            $("#searchPoCode").autocomplete({
+                source: "/PE/ListCode?term" + $("#searchPoCode").val()
             });
-            $("#projectName").autocomplete({
-                source: "/Project/ListName?term" + $("#projectName").val()
+            $("#searchStockCode").autocomplete({
+                source: "/Stock/ListCode?term" + $("#searchStockCode").val()
+            });
+            $("#searchStockName").autocomplete({
+                source: "/Stock/ListName?term" + $("#searchStockName").val()
             });
         },
         
-        getProjectCode: function () {
-            return $('#projectCode').val();
-        },
-        
-        getProjectName: function () {
-            return $('#projectName').val();
-        },
-        
-        getCountry: function () {
-            var country = $('#projectCountry').val();
-            country = country === "" ? 0 : country;
-            return country;
-        },
-        
-        getStatus: function () {
-            var country = $('#projectStatus').val();
-            country = country === "" ? 0 : country;
-            return country;
-        },
-        
-        getClient: function () {
-            var client = $('#projectClient').val();
-            client = client === "" ? 0 : client;
-            return client;
-        },
-        
-        getFD: function () {
-            return convertDateToMMDDYYYY($('#fromDate').val());
-        },
-
-        getTD: function () {
-            return convertDateToMMDDYYYY($('#toDate').val());
-        },
-        
-        loadProject: function () {
-            var fd = tmx.vivablast.projectManager.getFD();
-            var td = tmx.vivablast.projectManager.getTD();
+       loadReport: function () {
+            var fd = convertDateToMMDDYYYY($('#fromDate').val());
+            var td = convertDateToMMDDYYYY($('#toDate').val());
             if (fd != null && td != null && Date.parse(fd) > Date.parse(td)) {
                 $('#list-session').empty();
                 openErrorDialog({
@@ -86,26 +43,26 @@
             }
             else {
                 $.ajax({
-                    url: '/Project/LoadProject',
+                    url: '/report/loaddynamicpe',
                     type: 'GET',
                     data: {
-                        page: tmx.vivablast.projectManager.page(),
-                        size: tmx.vivablast.projectManager.size(),
-                        projectCode: tmx.vivablast.projectManager.getProjectCode(),
-                        projectName: tmx.vivablast.projectManager.getProjectName(),
-                        country: tmx.vivablast.projectManager.getCountry(),
-                        status: tmx.vivablast.projectManager.getStatus(),
-                        client: tmx.vivablast.projectManager.getClient(),
+                        page: page(),
+                        size: size(),
+                        poType: ($('#searchPoType').val() === "") ? 0 : $('#searchPoType').val(),
+                        po: $('#searchPoCode').val(),
+                        stockType: ($('#searchStockType').val() === "") ? 0 : $('#searchStockType').val(),
+                        category: ($('#searchStockCategory').val() === "") ? 0 : $('#searchStockCategory').val(),
+                        stockCode: $('#searchStockCode').val(),
+                        stockName: $('#searchStockName').val(),
                         fd: fd,
-                        td: td,
-                        enable: '1'
+                        td: td
                     },
                     datatype: 'json',
                     contentType: 'application/json; charset=utf-8',
                     success: function (data) {
                         if (data.length != 0) {
                             $('#list-session').empty().append(data);
-                            tmx.vivablast.projectManager.registerEventIndexInList();
+                            tmx.vivablast.reportManager.registerEventIndexInList();
                         }
                     }
                 });
@@ -113,18 +70,17 @@
         },
 
         exportExcel: function () {
-            //$('#loading-indicator').show();
-            var search = "&page=" + tmx.vivablast.projectManager.page();
-            search += "&size=" + tmx.vivablast.projectManager.size();
-            search += "&projectCode=" + tmx.vivablast.projectManager.getProjectCode();
-            search += "&projectName=" + tmx.vivablast.projectManager.getProjectName();
-            search += "&country=" + tmx.vivablast.projectManager.getCountry();
-            search += "&status=" + tmx.vivablast.projectManager.getStatus();
-            search += "&client=" + tmx.vivablast.projectManager.getClient();
-            search += "&fd=" + tmx.vivablast.projectManager.getFD();
-            search += "&td=" + tmx.vivablast.projectManager.getTD();
-            search += "&enable=1";
-            document.location.href = "/Project/ExportToExcel?" + search;
+            var search = "&page=" + page();
+            search += "&size=" + size();
+            search += "&poType=" + $('#searchPoType').val();
+            search += "&po=" + $('#searchPoCode').val(),
+            search += "&stockType=" + $('#searchStockType').val();
+            search += "&category=" + $('#searchStockCategory').val();
+            search += "&stockCode=" + $('#searchStockCode').val();
+            search += "&stockName=" + $('#searchStockName').val();
+            search += "&fd=" + convertDateToMMDDYYYY($('#fromDate').val());
+            search += "&td=" + convertDateToMMDDYYYY($('#toDate').val());
+            document.location.href = "/report/exporttoexcel?" + search;
         },
         
         registerEventIndex: function (uid) {
@@ -133,28 +89,28 @@
                 if (e.which == 13) {
                     $("a.current").removeClass("current");
                     $(".pagination a:first").addClass("current");
-                    tmx.vivablast.projectManager.loadProject(uid);
+                    tmx.vivablast.reportManager.loadReport(uid);
                 }
             }
             $('#pageSize', uid).on('change', function (e) {
                 $("a.current").removeClass("current");
                 $(".pagination a:first").addClass("current");
-                tmx.vivablast.projectManager.loadProject(uid);
+                tmx.vivablast.reportManager.loadReport(uid);
             });
             
             $('#btnSearch', uid).off('click').on('click', function () {
                 $("a.current").removeClass("current");
                 $(".pagination a:first").addClass("current");
-                tmx.vivablast.projectManager.loadProject(uid);
+                tmx.vivablast.reportManager.loadReport(uid);
             });
             
             $('#btnExport', uid).off('click').on('click', function () {
-                tmx.vivablast.projectManager.exportExcel(uid);
+                tmx.vivablast.reportManager.exportExcel(uid);
             });
         },
 
         registerEventIndexInList: function () {
-            $('#ProjectLst').dataTable({
+            $('#reportLst').dataTable({
                 "sDom": "Rlfrtip",
                 "bLengthChange": false,
                 "bFilter": false,
@@ -172,44 +128,7 @@
             $('.pagination a').off("click").on("click", function () {
                 $("a.current").removeClass("current");
                 $(this).addClass("current");
-                tmx.vivablast.projectManager.loadProject();
-            });
-            
-            $('.btn-danger').off("click").on("click", function () {
-                var id = $(this).closest('tr').find('.ItemKey').val();
-                var entityName = $(this).closest('tr').find('.ProjectCode').text();
-                openYesNoDialog({
-                    sectionTitle: "Delete",
-                    title: "Are you sure delete <b>" + entityName + "</b>.",
-                    data: '',
-                    yesCallback: function () {
-                        $.ajax({
-                            url: $('#hidDeleteUrl').val(),
-                            type: "POST",
-                            data: {
-                                id: id
-                            },
-                            cache: false,
-                            success: function (response) {
-                                if (response.result === true) {
-                                    tmx.vivablast.projectManager.loadProject();
-                                }
-                                else if (response.result === $('#hidUnDelete').val()) {
-                                    openErrorDialog({
-                                        title: "Can not delete",
-                                        data: "The user <b>" + entityName + "</b> has been used."
-                                    });
-                                }
-                            },
-                            error: function () {
-                                errorSystem();
-                            }
-                        });
-                    },
-                    noCallback: function () {
-
-                    }
-                });
+                tmx.vivablast.reportManager.loadReport();
             });
         },
     };

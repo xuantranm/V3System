@@ -190,12 +190,14 @@ namespace Ap.Service.Services
             }
             _unitOfWork.CommitChanges();
             // Update Total PE
+            
+            // Update Requisition : Store insert PO
+            //foreach (var requistionUpdate in listRequisitionUpdate)
+            //{
+            //    _customRepository.UpdateRequisition(requistionUpdate.Mrf, requistionUpdate.Stock, requistionUpdate.Quantity);
+            //}
+
             _customRepository.UpdatePeTotal(entity.Id);
-            // Update Requisition
-            foreach (var requistionUpdate in listRequisitionUpdate)
-            {
-                _customRepository.UpdateRequisition(requistionUpdate.Mrf, requistionUpdate.Stock, requistionUpdate.Quantity);
-            }
             // Insert New Payment Type
             _customRepository.UpdatePaymentType(entity.vTermOfPayment);
             return true;
