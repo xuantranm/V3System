@@ -192,10 +192,10 @@ namespace Ap.Service.Services
             // Update Total PE
             
             // Update Requisition : Store insert PO
-            //foreach (var requistionUpdate in listRequisitionUpdate)
-            //{
-            //    _customRepository.UpdateRequisition(requistionUpdate.Mrf, requistionUpdate.Stock, requistionUpdate.Quantity);
-            //}
+            foreach (var requistionUpdate in listRequisitionUpdate)
+            {
+                _customRepository.UpdateRequisition(requistionUpdate.Mrf, requistionUpdate.Stock, requistionUpdate.Quantity);
+            }
 
             _customRepository.UpdatePeTotal(entity.Id);
             // Insert New Payment Type
