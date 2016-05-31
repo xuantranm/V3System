@@ -460,11 +460,12 @@ UPDATE dbo.SRV SET [Status]='IN' WHERE [Status] ='FULFILLMENT'
 GO
 UPDATE dbo.WAMS_FULFILLMENT_DETAIL SET dCreated=dDateAssign, iCreated=1, iStore=1
 GO
-UPDATE dbo.WAMS_ITEMS_SERVICE SET iEnable=2 WHERE iEnable=0
-GO
-UPDATE dbo.WAMS_ITEMS_SERVICE SET iEnable= 3 WHERE iEnable=1
-GO
-UPDATE dbo.WAMS_ITEMS_SERVICE SET iEnable = 0 WHERE iEnable=3
-GO
-UPDATE dbo.WAMS_ITEMS_SERVICE SET iEnable = 1 WHERE iEnable=2
-GO
+-- update stock above. No need do service
+--UPDATE dbo.WAMS_STOCK SET iEnable=2 WHERE iEnable=0
+--GO
+--UPDATE dbo.WAMS_ITEMS_SERVICE SET iEnable= 3 WHERE iEnable=1
+--GO
+--UPDATE dbo.WAMS_ITEMS_SERVICE SET iEnable = 0 WHERE iEnable=3
+--GO
+--UPDATE dbo.WAMS_ITEMS_SERVICE SET iEnable = 1 WHERE iEnable=2
+--GO

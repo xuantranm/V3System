@@ -15,24 +15,25 @@ CREATE PROCEDURE [dbo].[V3_List_Stock_Search_Count]
 AS
 BEGIN
 	SELECT COUNT(1) AS [Count] 
-	FROM (SELECT 
-      [vStockID]
-      ,[vStockName]
-      ,[bUnitID]
-      ,[iEnable]
-      ,[bCategoryID]
-      ,[bPositionID]
-      ,[iType]
-  FROM [dbo].[WAMS_STOCK] (NOLOCK)
-   UNION ALL 
-   SELECT [vIDServiceItem]
-		,[vServiceItemName]
-		,[bUnitID]
-		,[iEnable]
-		,[bCategoryID]
-		,[bPositionID]
-		,8 
-  FROM [dbo].[WAMS_ITEMS_SERVICE] (NOLOCK)) stock
+	--FROM (SELECT 
+ --     [vStockID]
+ --     ,[vStockName]
+ --     ,[bUnitID]
+ --     ,[iEnable]
+ --     ,[bCategoryID]
+ --     ,[bPositionID]
+ --     ,[iType]
+ -- FROM [dbo].[WAMS_STOCK] (NOLOCK)
+ --  UNION ALL 
+ --  SELECT [vIDServiceItem]
+	--	,[vServiceItemName]
+	--	,[bUnitID]
+	--	,[iEnable]
+	--	,[bCategoryID]
+	--	,[bPositionID]
+	--	,8 
+ -- FROM [dbo].[WAMS_ITEMS_SERVICE] (NOLOCK)) 
+ FROM [dbo].[WAMS_STOCK] stock
 	WHERE
 	1 = CASE WHEN @enable='' THEN 1 WHEN stock.iEnable = CAST(@enable AS INT) THEN 1 END
 	AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
@@ -79,63 +80,64 @@ IF (@size = 1000)
 		,usc.NameUser AS Created_By
 		,stock.dModified AS Modified_Date
 		,usm.NameUser AS Modified_By
-		FROM (SELECT [Id]
-      ,[vStockID]
-      ,[vStockName]
-      ,[vRemark]
-      ,[bUnitID]
-      ,[bMeasurementID]
-      ,[vBrand]
-      ,[iEnable]
-      ,[bCategoryID]
-      ,[bPositionID]
-      ,[bLabelID]
-      ,[bWeight]
-      ,[vAccountCode]
-      ,[iType]
-      ,[PartNo]
-      ,[PartNoFor]
-      ,[PartNoMiniQty]
-      ,[RalNo]
-      ,[ColorName]
-      ,[Position]
-      ,[SubCategory]
-      ,[UserForPaint]
-      ,[dCreated]
-      ,[dModified]
-      ,[iCreated]
-      ,[iModified]
-      ,[Timestamp]
-  FROM [dbo].[WAMS_STOCK] (NOLOCK)
-   UNION ALL 
-   SELECT [Id]
-      ,[vIDServiceItem]
-      ,[vServiceItemName]
-      ,[vDescription]
-	  ,[bUnitID]
-	  ,NULL
-	  ,NULL
-	  ,[iEnable]
-      ,[bCategoryID]
-      ,[bPositionID]
-	  ,NULL
-	  ,[bWeight]
-      ,[vAccountCode]
-	  ,8
-      ,NULL
-      ,NULL
-	  ,NULL
-	  ,NULL
-	  ,NULL
-	  ,NULL
-	  ,NULL
-	  ,NULL
-      ,[dCreated]
-      ,[dModified]
-      ,[iCreated]
-      ,[iModified]
-      ,[Timestamp]
-  FROM [dbo].[WAMS_ITEMS_SERVICE] (NOLOCK)) stock
+		FROM WAMS_STOCK stock
+		--FROM (SELECT [Id]
+  --    ,[vStockID]
+  --    ,[vStockName]
+  --    ,[vRemark]
+  --    ,[bUnitID]
+  --    ,[bMeasurementID]
+  --    ,[vBrand]
+  --    ,[iEnable]
+  --    ,[bCategoryID]
+  --    ,[bPositionID]
+  --    ,[bLabelID]
+  --    ,[bWeight]
+  --    ,[vAccountCode]
+  --    ,[iType]
+  --    ,[PartNo]
+  --    ,[PartNoFor]
+  --    ,[PartNoMiniQty]
+  --    ,[RalNo]
+  --    ,[ColorName]
+  --    ,[Position]
+  --    ,[SubCategory]
+  --    ,[UserForPaint]
+  --    ,[dCreated]
+  --    ,[dModified]
+  --    ,[iCreated]
+  --    ,[iModified]
+  --    ,[Timestamp]
+  --FROM [dbo].[WAMS_STOCK] (NOLOCK)
+  -- UNION ALL 
+  -- SELECT [Id]
+  --    ,[vIDServiceItem]
+  --    ,[vServiceItemName]
+  --    ,[vDescription]
+	 -- ,[bUnitID]
+	 -- ,NULL
+	 -- ,NULL
+	 -- ,[iEnable]
+  --    ,[bCategoryID]
+  --    ,[bPositionID]
+	 -- ,NULL
+	 -- ,[bWeight]
+  --    ,[vAccountCode]
+	 -- ,8
+  --    ,NULL
+  --    ,NULL
+	 -- ,NULL
+	 -- ,NULL
+	 -- ,NULL
+	 -- ,NULL
+	 -- ,NULL
+	 -- ,NULL
+  --    ,[dCreated]
+  --    ,[dModified]
+  --    ,[iCreated]
+  --    ,[iModified]
+  --    ,[Timestamp]
+  --FROM [dbo].[WAMS_ITEMS_SERVICE] (NOLOCK)) stock
 		LEFT JOIN [dbo].[WAMS_STOCK_TYPE] stype (NOLOCK) ON stock.iType = stype.Id
 		LEFT JOIN [dbo].[WAMS_UNIT] unit (NOLOCK) ON stock.bUnitID = unit.bUnitID
 		LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON stock.bCategoryID = cate.bCategoryID
@@ -190,63 +192,64 @@ IF (@size = 1000)
 	,usc.NameUser AS Created_By
 	,stock.dModified AS Modified_Date
 	,usm.NameUser AS Modified_By
-	FROM (SELECT [Id]
-      ,[vStockID]
-      ,[vStockName]
-      ,[vRemark]
-      ,[bUnitID]
-      ,[bMeasurementID]
-      ,[vBrand]
-      ,[iEnable]
-      ,[bCategoryID]
-      ,[bPositionID]
-      ,[bLabelID]
-      ,[bWeight]
-      ,[vAccountCode]
-      ,[iType]
-      ,[PartNo]
-      ,[PartNoFor]
-      ,[PartNoMiniQty]
-      ,[RalNo]
-      ,[ColorName]
-      ,[Position]
-      ,[SubCategory]
-      ,[UserForPaint]
-      ,[dCreated]
-      ,[dModified]
-      ,[iCreated]
-      ,[iModified]
-      ,[Timestamp]
-  FROM [dbo].[WAMS_STOCK] (NOLOCK)
-   UNION ALL 
-   SELECT [Id]
-      ,[vIDServiceItem]
-      ,[vServiceItemName]
-      ,[vDescription]
-	  ,[bUnitID]
-	  ,NULL
-	  ,NULL
-	  ,[iEnable]
-      ,[bCategoryID]
-      ,[bPositionID]
-	  ,NULL
-	  ,[bWeight]
-      ,[vAccountCode]
-	  ,8
-      ,NULL
-      ,NULL
-	  ,NULL
-	  ,NULL
-	  ,NULL
-	  ,NULL
-	  ,NULL
-	  ,NULL
-      ,[dCreated]
-      ,[dModified]
-      ,[iCreated]
-      ,[iModified]
-      ,[Timestamp]
-  FROM [dbo].[WAMS_ITEMS_SERVICE] (NOLOCK)) stock
+	FROM WAMS_STOCK stock
+	--FROM (SELECT [Id]
+ --     ,[vStockID]
+ --     ,[vStockName]
+ --     ,[vRemark]
+ --     ,[bUnitID]
+ --     ,[bMeasurementID]
+ --     ,[vBrand]
+ --     ,[iEnable]
+ --     ,[bCategoryID]
+ --     ,[bPositionID]
+ --     ,[bLabelID]
+ --     ,[bWeight]
+ --     ,[vAccountCode]
+ --     ,[iType]
+ --     ,[PartNo]
+ --     ,[PartNoFor]
+ --     ,[PartNoMiniQty]
+ --     ,[RalNo]
+ --     ,[ColorName]
+ --     ,[Position]
+ --     ,[SubCategory]
+ --     ,[UserForPaint]
+ --     ,[dCreated]
+ --     ,[dModified]
+ --     ,[iCreated]
+ --     ,[iModified]
+ --     ,[Timestamp]
+ -- FROM [dbo].[WAMS_STOCK] (NOLOCK)
+ --  UNION ALL 
+ --  SELECT [Id]
+ --     ,[vIDServiceItem]
+ --     ,[vServiceItemName]
+ --     ,[vDescription]
+	--  ,[bUnitID]
+	--  ,NULL
+	--  ,NULL
+	--  ,[iEnable]
+ --     ,[bCategoryID]
+ --     ,[bPositionID]
+	--  ,NULL
+	--  ,[bWeight]
+ --     ,[vAccountCode]
+	--  ,8
+ --     ,NULL
+ --     ,NULL
+	--  ,NULL
+	--  ,NULL
+	--  ,NULL
+	--  ,NULL
+	--  ,NULL
+	--  ,NULL
+ --     ,[dCreated]
+ --     ,[dModified]
+ --     ,[iCreated]
+ --     ,[iModified]
+ --     ,[Timestamp]
+ -- FROM [dbo].[WAMS_ITEMS_SERVICE] (NOLOCK)) stock
 	LEFT JOIN [dbo].[WAMS_STOCK_TYPE] stype (NOLOCK) ON stock.iType = stype.Id
 	LEFT JOIN [dbo].[WAMS_UNIT] unit (NOLOCK) ON stock.bUnitID = unit.bUnitID
 	LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON stock.bCategoryID = cate.bCategoryID
@@ -323,7 +326,7 @@ IF (@size = 1000)
 		LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON stock.bCategoryID = cate.bCategoryID
 		CROSS APPLY [dbo].[udf_GetUserName](stock.iCreated) AS usc
 		CROSS APPLY [dbo].[udf_GetUserName](stock.iModified) AS usm
-		WHERE stock.iEnable = 1 AND storeStock.bQuantity > 0
+		WHERE stock.iEnable = 1 AND stock.iType != 8 AND storeStock.bQuantity > 0
 		AND 1 = CASE WHEN @project='' THEN 1 WHEN storeStock.vProjectID = @project THEN 1 END
 		AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 		AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -368,7 +371,7 @@ IF (@size = 1000)
 	LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON stock.bCategoryID = cate.bCategoryID
 	CROSS APPLY [dbo].[udf_GetUserName](stock.iCreated) AS usc
 	CROSS APPLY [dbo].[udf_GetUserName](stock.iModified) AS usm
-	WHERE stock.iEnable = 1 AND storeStock.bQuantity > 0
+	WHERE stock.iEnable = 1 AND stock.iType != 8 AND storeStock.bQuantity > 0
 		AND 1 = CASE WHEN @project='' THEN 1 WHEN storeStock.vProjectID = @project THEN 1 END
 		AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 		AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -401,7 +404,7 @@ BEGIN
 	SELECT COUNT(1) AS [Count] 
 	FROM [dbo].[WAMS_STOCK] stock (NOLOCK)
 	INNER JOIN dbo.WAMS_ASSIGNNING_STOCKS storeStock ON stock.Id = storeStock.vStockID
-	WHERE stock.iEnable = 1 AND storeStock.bQuantity > 0
+	WHERE stock.iEnable = 1 AND stock.iType != 8 AND storeStock.bQuantity > 0
 		AND 1 = CASE WHEN @project='' THEN 1 WHEN storeStock.vProjectID = @project THEN 1 END
 		AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 		AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -456,7 +459,7 @@ IF (@size = 1000)
 		LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON stock.bCategoryID = cate.bCategoryID
 		CROSS APPLY [dbo].[udf_GetUserName](stock.iCreated) AS usc
 		CROSS APPLY [dbo].[udf_GetUserName](stock.iModified) AS usm
-		WHERE stock.iEnable = 1 AND storeStock.Quantity > 0
+		WHERE stock.iEnable = 1 AND stock.iType != 8 AND storeStock.Quantity > 0
 		AND 1 = CASE WHEN @store='' THEN 1 WHEN storeStock.Store = @store THEN 1 END
 		AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 		AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -501,7 +504,7 @@ IF (@size = 1000)
 	LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON stock.bCategoryID = cate.bCategoryID
 	CROSS APPLY [dbo].[udf_GetUserName](stock.iCreated) AS usc
 	CROSS APPLY [dbo].[udf_GetUserName](stock.iModified) AS usm
-	WHERE stock.iEnable = 1 AND storeStock.Quantity > 0
+	WHERE stock.iEnable = 1 AND stock.iType != 8 AND storeStock.Quantity > 0
 	AND 1 = CASE WHEN @store='' THEN 1 WHEN storeStock.Store = @store THEN 1 END
 	AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 	AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -534,7 +537,7 @@ BEGIN
 	SELECT COUNT(1) AS [Count] 
 	FROM [dbo].[WAMS_STOCK] stock (NOLOCK)
 	INNER JOIN dbo.Store_Stock storeStock ON stock.Id = storeStock.StockID
-	WHERE stock.iEnable = 1 AND storeStock.Quantity > 0
+	WHERE stock.iEnable = 1 AND stock.iType != 8 AND storeStock.Quantity > 0
 	AND 1 = CASE WHEN @store='' THEN 1 WHEN storeStock.Store = @store THEN 1 END
 	AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 	AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -1912,7 +1915,7 @@ BEGIN
 		   FOR XML PATH('')),1,1,'') as Quantity   
 	FROM [dbo].[Store_Stock] t1
 	GROUP BY StockID) storeQuantity ON storeQuantity.StockID= stock.Id
-	WHERE
+	WHERE stock.iType != 8 AND
 	1 = CASE WHEN @enable='' THEN 1 WHEN stock.iEnable = CAST(@enable AS INT) THEN 1 END
 	AND 1= CASE WHEN @stype=0 THEN 1 WHEN stock.iType = @stype THEN 1 END
 	AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -3101,7 +3104,7 @@ IF (@size = 1000)
 		GROUP BY StockID) storeQuantity ON storeQuantity.StockID= stock.Id
 		CROSS APPLY [dbo].[udf_GetUserName](stock.iCreated) AS usc
 		CROSS APPLY [dbo].[udf_GetUserName](stock.iModified) AS usm
-		WHERE
+		WHERE stock.iType != 8 AND
 		1 = CASE WHEN @enable='' THEN 1 WHEN stock.iEnable = CAST(@enable AS INT) THEN 1 END
 		AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 		AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -3156,7 +3159,7 @@ IF (@size = 1000)
 	GROUP BY StockID) storeQuantity ON storeQuantity.StockID= stock.Id
 	CROSS APPLY [dbo].[udf_GetUserName](stock.iCreated) AS usc
 	CROSS APPLY [dbo].[udf_GetUserName](stock.iModified) AS usm
-	WHERE
+	WHERE stock.iType != 8 AND
 	1 = CASE WHEN @enable='' THEN 1 WHEN stock.iEnable = CAST(@enable AS INT) THEN 1 END
 	AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 	AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
@@ -3189,7 +3192,7 @@ AS
 BEGIN
 	SELECT COUNT(1) AS [Count] 
 	FROM [dbo].[WAMS_STOCK] stock (NOLOCK)
-	WHERE
+	WHERE stock.iType != 8 AND
 	1 = CASE WHEN @enable='' THEN 1 WHEN stock.iEnable = CAST(@enable AS INT) THEN 1 END
 	AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
 	AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
