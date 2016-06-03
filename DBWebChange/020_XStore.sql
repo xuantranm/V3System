@@ -96,6 +96,7 @@ CREATE PROCEDURE [dbo].[XInsertUpdatePe]
 ,@RalNo NVARCHAR(50)
 ,@Color NVARCHAR(64)
 ,@Weight DECIMAL
+,@lstDeleteDetailItem NVARCHAR(MAX)
 AS
 BEGIN
 	DECLARE @isDebug INT
@@ -105,8 +106,7 @@ BEGIN
 	DECLARE @now DATETIME
 	SET @now = GETDATE()
 	DECLARE @idjustinsert INT
-	DECLARE @QtyCurrent DECIMAL(18,2)
-	Declare @individualMRF varchar(20) = null
+	DECLARE @individualMRF varchar(20) = null
 	BEGIN TRAN		
 		INSERT INTO [dbo].[WAMS_PO_DETAILS]
 				   ([vPOID]
