@@ -83,6 +83,27 @@ BEGIN
 END
 GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XStockOutSiv]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XStockOutSiv]
+GO
+CREATE PROCEDURE XStockOutSiv
+	@siv varchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	INSERT INTO [dbo].[SIV]
+           ([SIV]
+           ,[vStatus]
+           ,[CreatedDate])
+     VALUES
+           (@siv
+           ,'OUT'
+           ,getdate())
+END
+GO
+
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XStockReturnParent]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[XStockReturnParent]
 GO

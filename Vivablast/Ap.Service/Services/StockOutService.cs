@@ -70,21 +70,8 @@ namespace Ap.Service.Services
                     var detailEntity = new WAMS_ASSIGNNING_STOCKS
                     {
                         bAssignningStockID = detail.bAssignningStockID,
-                        //vPOID = detail.vPOID,
                         vStockID = detail.vStockID,
-                        //dQuantity = detail.dQuantity,
-                        //dReceivedQuantity = detail.dReceivedQuantity,
-                        //dPendingQuantity = detail.dPendingQuantity,
-                        //dDateDelivery = detail.dDateDelivery,
-                        ////iShipID = detail.iShipID,
-                        //tDescription = detail.tDescription,
                         vMRF = detail.vMRF,
-                        // dCurrenQuantity = detail.dCurrenQuantity,
-                        //dInvoiceDate = detail.dInvoiceDate,
-                        //vInvoiceNo = detail.vInvoiceNo,
-                        //dImportTax = detail.dImportTax,
-                        //SRV = srvNew,
-                        //iStore = detail.iStore,
                         dCreated = DateTime.Now,
                         iCreated = login,
                         FlagFile = false
@@ -94,25 +81,7 @@ namespace Ap.Service.Services
                 else if (detail.bAssignningStockID != 0)
                 {
                     var detailEntity = GetByKey(detail.bAssignningStockID);
-                    //detailEntity.vPOID = detail.vPOID;
-                    //detailEntity.vStockID = detail.vStockID;
-                    //detailEntity.dQuantity = detail.dQuantity;
-                    //detailEntity.dReceivedQuantity = detail.dReceivedQuantity;
-                    //detailEntity.dPendingQuantity = detail.dPendingQuantity;
-                    //detailEntity.dDateDelivery = detail.dDateDelivery;
-                    //detailEntity.iShipID = detail.iShipID;
-                    //detailEntity.tDescription = detail.tDescription;
-                    //detailEntity.vMRF = detail.vMRF;
-                    // detailEntity.dCurrenQuantity = detail.dCurrenQuantity;
-                    //detailEntity.dInvoiceDate = detail.dInvoiceDate;
-                    //detailEntity.vInvoiceNo = detail.vInvoiceNo;
-                    //detailEntity.dImportTax = detail.dImportTax;
-                    //detailEntity.iEnable = true;
-                    //detailEntity.dDateAssign = detail.dDateAssign;
                     detailEntity.SIV = srvNew;
-                    //detailEntity.iStore = detail.iStore;
-                    //detailEntity.dCreated = createdDate;
-                    //detailEntity.iCreated = login;
                     detailEntity.dModified = DateTime.Now;
                     detailEntity.iModified = login;
                     _repository.Update(detailEntity);
@@ -136,6 +105,7 @@ namespace Ap.Service.Services
                     _customRepository.Add(detailEntity);
                 }
             }
+            _customRepository.InsertSiv(srvNew);
             _unitOfWork.CommitChanges();
             return true;
         }
@@ -199,7 +169,6 @@ namespace Ap.Service.Services
         {
             return _customRepository.XStockOuts(siv);
         }
-
         #endregion
     }
 }

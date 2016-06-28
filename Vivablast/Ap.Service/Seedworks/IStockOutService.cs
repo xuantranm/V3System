@@ -34,7 +34,6 @@ namespace Ap.Service.Seedworks
         XStockOutParent XStockOutParent(string siv);
 
         IList<XStockOut> XStockOuts(string siv);
-
         #endregion
     }
 }

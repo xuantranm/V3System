@@ -32,6 +32,8 @@ namespace Ap.Business.Seedworks
 
         IList<XStockOut> XStockOuts(string siv);
 
+        bool InsertSiv(string siv);
+
         #endregion
     }
 }

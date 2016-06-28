@@ -236,6 +236,19 @@ namespace Ap.Business.Repositories
             sql.Close();
             return result;
         }
+
+        public bool InsertSiv(string siv)
+        {
+            var sql = GetSqlConnection();
+            var result = sql.Query<bool>("dbo.XStockOutSiv", new
+            {
+                siv
+            },
+            commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+            sql.Close();
+            return result; 
+        }
         #endregion
         
     }
