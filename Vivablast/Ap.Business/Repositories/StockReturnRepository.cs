@@ -83,7 +83,7 @@ namespace Ap.Business.Repositories
         public IList<V3_List_StockReturn_Detail> ListConditionDetailExcel(int page, int size, int store, int project, int stockType, string stockCode, string stockName, string srv, string fd, string td, string enable)
         {
             var sql = GetSqlConnection();
-            var result = sql.Query<V3_List_StockReturn_Detail>("dbo.V3_List_StockReturn_Detail", new
+            var result = sql.Query<V3_List_StockReturn_Detail>("dbo.XStockReturnDetails", new
             {
                 page,
                 size,

@@ -1,3 +1,143 @@
+-- XStockReturnDetails
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XStockReturnDetails]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XStockReturnDetails]
+GO
+CREATE PROCEDURE [dbo].[XStockReturnDetails]
+	@page int
+	,@size int
+	,@store int
+	,@project int
+	,@stockType int
+	,@stockCode nvarchar(200)
+	,@stockName nvarchar(200)
+	,@srv nvarchar(20)
+	,@fd varchar(22) 
+	,@td varchar(22) 
+	,@enable int
+AS
+BEGIN
+	DECLARE @fromRow int
+	DECLARE @toRow int
+
+	SET @fromRow = (@page - 1) * @size
+	SET @toRow = (@page * @size) + 1
+
+	SELECT returnStock.bReturnListID [Id]
+	,returnStock.SRV
+	,returnStock.vStockID [Stock_Id]
+	,tbMaster.vStockID AS [Stock_Code]
+	,tbMaster.vStockName AS [Stock_Name]
+	,returnStock.bQuantity [Quantity]
+	,returnStock.dCreated [ReturnDate]
+	,returnStock.vCondition [Condition]
+	,unit.vUnitName AS Unit
+	,stype.TypeName AS [Type]
+	,cate.vCategoryName AS Category
+	,tbMaster.RalNo
+	,tbMaster.ColorName AS [Color]
+	,tbMaster.PartNo
+	FROM [dbo].WAMS_RETURN_LIST returnStock (NOLOCK)
+	INNER JOIN (SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SRV DESC) AS [No]
+	,tblTable.* 
+	FROM (SELECT DISTINCT bReturnListID [Id],sreturn.SRV
+	,stock.vStockID
+	,stock.vStockName
+	,stock.RalNo
+	,stock.ColorName
+	,stock.PartNo
+	,stock.bUnitID
+	,stock.iType
+	,stock.bCategoryID
+	FROM [dbo].WAMS_RETURN_LIST sreturn (NOLOCK)
+	INNER JOIN [dbo].[WAMS_STOCK] stock ON stock.Id = sreturn.vStockID
+	WHERE
+	1 = CASE WHEN @store=0 THEN 1 WHEN sreturn.FromStore = @store THEN 1 END
+	AND 1 = CASE WHEN @project = 0 THEN 1 WHEN sreturn.vProjectID = @project THEN 1 END
+	AND 1 = CASE WHEN @stocktype = 0 THEN 1 WHEN stock.iType = @stocktype THEN 1 END
+	AND 1 = CASE WHEN @stockCode = '' THEN 1 WHEN stock.vStockID = @stockCode THEN 1 END
+	AND 1 = CASE WHEN @stockName = '' THEN 1 WHEN stock.vStockName like '%' + @stockName + '%' THEN 1 END
+	AND 1 = CASE WHEN @srv = '' THEN 1 WHEN sreturn.SRV = @srv THEN 1 END
+	AND 1 = CASE WHEN @fd='' THEN 1 WHEN (sreturn.dCreated >= convert(datetime,(@fd + ' 00:00:00')) OR sreturn.dCreated = NULL) THEN 1 END
+	AND 1 = CASE WHEN @td='' THEN 1 WHEN (sreturn.dCreated <= convert(datetime,(@td + ' 23:59:59')) OR sreturn.dCreated = NULL) THEN 1 END
+	) tblTable ) tempTable
+	WHERE [No] > @fromRow AND [No] < @toRow) tbMaster ON tbMaster.SRV = returnStock.SRV
+	LEFT JOIN [dbo].[WAMS_UNIT] unit (NOLOCK) ON unit.bUnitID = tbMaster.bUnitID
+	LEFT JOIN [dbo].[WAMS_STOCK_TYPE] stype (NOLOCK) ON stype.Id = tbMaster.iType
+	LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON  cate.bCategoryID = tbMaster.bCategoryID
+	ORDER BY returnStock.SRV DESC
+END
+GO
+
+-- XStockOutDetails
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XStockOutDetails]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XStockOutDetails]
+GO
+CREATE PROCEDURE [dbo].[XStockOutDetails]
+	@page int
+	,@size int
+	,@store int
+	,@project int
+	,@stockType int
+	,@stockCode nvarchar(200)
+	,@stockName nvarchar(200)
+	,@siv nvarchar(20)
+	,@fd varchar(22) 
+	,@td varchar(22) 
+	,@enable int
+AS
+BEGIN
+	DECLARE @fromRow int
+	DECLARE @toRow int
+
+	SET @fromRow = (@page - 1) * @size
+	SET @toRow = (@page * @size) + 1
+
+	SELECT assign.bAssignningStockID [Id]
+	,assign.SIV
+	,assign.vStockID [Stock_Id]
+	,tbMaster.vStockID AS [Stock_Code]
+	,tbMaster.vStockName AS [Stock_Name]
+	,assign.bQuantity [Quantity]
+	,assign.dCreated [AssignDate]
+	,assign.vMRF [MRF]
+	,unit.vUnitName AS Unit
+	,stype.TypeName AS [Type]
+	,cate.vCategoryName AS Category
+	,tbMaster.RalNo
+	,tbMaster.ColorName AS [Color]
+	,tbMaster.PartNo
+	FROM [dbo].WAMS_ASSIGNNING_STOCKS assign (NOLOCK)
+	INNER JOIN (SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SIV DESC) AS [No]
+	,tblTable.* 
+	FROM
+	(SELECT DISTINCT assign.bAssignningStockID [Id], assign.SIV
+	,stock.vStockID
+	,stock.vStockName
+	,stock.RalNo
+	,stock.ColorName
+	,stock.PartNo
+	,stock.bUnitID
+	,stock.iType
+	,stock.bCategoryID
+	FROM [dbo].WAMS_ASSIGNNING_STOCKS assign (NOLOCK)
+	INNER JOIN [dbo].[WAMS_STOCK] stock ON stock.Id = assign.vStockID
+	WHERE
+	1 = CASE WHEN @store=0 THEN 1 WHEN assign.FromStore = @store THEN 1 END
+	AND 1 = CASE WHEN @project = 0 THEN 1 WHEN assign.vProjectID = @project THEN 1 END
+	AND 1 = CASE WHEN @stocktype = 0 THEN 1 WHEN stock.iType = @stocktype THEN 1 END
+	AND 1 = CASE WHEN @stockCode = '' THEN 1 WHEN stock.vStockID = @stockCode THEN 1 END
+	AND 1 = CASE WHEN @stockName = '' THEN 1 WHEN stock.vStockName like '%' + @stockName + '%' THEN 1 END
+	AND 1 = CASE WHEN @siv = '' THEN 1 WHEN assign.SIV = @siv THEN 1 END
+	AND 1 = CASE WHEN @fd='' THEN 1 WHEN (assign.dCreated >= convert(datetime,(@fd + ' 00:00:00')) OR assign.dCreated = NULL) THEN 1 END
+	AND 1 = CASE WHEN @td='' THEN 1 WHEN (assign.dCreated <= convert(datetime,(@td + ' 23:59:59')) OR assign.dCreated = NULL) THEN 1 END
+	) tblTable ) tempTable
+	WHERE [No] > @fromRow AND [No] < @toRow) tbMaster ON tbMaster.SIV = assign.SIV
+	LEFT JOIN [dbo].[WAMS_UNIT] unit (NOLOCK) ON unit.bUnitID = tbMaster.bUnitID
+	LEFT JOIN [dbo].[WAMS_STOCK_TYPE] stype (NOLOCK) ON stype.Id = tbMaster.iType
+	LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON  cate.bCategoryID = tbMaster.bCategoryID
+	ORDER BY assign.SIV DESC
+END
+GO
 --V3_List_Stock_Search_Count
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_List_Stock_Search_Count]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[V3_List_Stock_Search_Count]
@@ -732,7 +872,7 @@ BEGIN
 	SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SRV DESC) AS [No]
 	,tblTable.* 
 	FROM
-	(SELECT DISTINCT 0 [Id]
+	(SELECT DISTINCT bReturnListID [Id]
 	,sreturn.SRV
 	,project.vProjectID [Project_Code]
 	,project.vProjectName [Project_Name]

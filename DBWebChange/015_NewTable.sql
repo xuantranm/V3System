@@ -84,7 +84,9 @@ CREATE TABLE [dbo].[XDynamicReport](
 	[Created] [datetime] NULL,
 	[Modified] [datetime] NULL,
 	[CreatedBy] [nvarchar](500) NULL,
-	[ModifiedBy] [nvarchar](500) NULL
+	[ModifiedBy] [nvarchar](500) NULL,
+	[FagFrom] [nvarchar](10) NULL,
+	[FagId] INT NULL
  CONSTRAINT [PK_XDynamicReport] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

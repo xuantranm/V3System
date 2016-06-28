@@ -345,7 +345,7 @@ namespace Vivablast.Controllers
             {
                 workbook.Write(exportData);
 
-                var saveAsFileName = string.Format("StockOut-{0}.xls", DateTime.Now.ToString("ddMMyyyyHHmmss")).Replace("/", "-");
+                var saveAsFileName = string.Format("StockReturn-{0}.xls", DateTime.Now.ToString("ddMMyyyyHHmmss")).Replace("/", "-");
 
                 Response.ContentType = "application/vnd.ms-excel";
                 Response.AddHeader("Content-Disposition", string.Format("attachment;filename={0}", saveAsFileName));

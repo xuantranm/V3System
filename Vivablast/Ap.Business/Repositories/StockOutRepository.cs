@@ -83,16 +83,16 @@ namespace Ap.Business.Repositories
         }
 
         public IList<V3_List_StockAssign_Detail> ListConditionDetailExcel(int page, int size, int store, int project,
-            int stocktype, string stockCode, string stockName, string siv, string fd, string td, string enable)
+            int stockType, string stockCode, string stockName, string siv, string fd, string td, string enable)
         {
             var sql = GetSqlConnection();
-            var result = sql.Query<V3_List_StockAssign_Detail>("dbo.V3_List_StockIn_Detail", new
+            var result = sql.Query<V3_List_StockAssign_Detail>("dbo.XStockOutDetails", new
             {
                 page,
                 size,
                 store,
                 project,
-                stocktype,
+                stockType,
                 stockCode,
                 stockName,
                 siv,
