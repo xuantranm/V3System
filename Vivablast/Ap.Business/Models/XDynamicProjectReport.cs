@@ -11,32 +11,43 @@ namespace Ap.Business.Models
 {
     using System;
 
-    public partial class XDynamicReport
+    public partial class XDynamicProjectReport
     {
         public int Id { get; set; }
         public string Action { get; set; }
-        public DateTime PODate { get; set; }
-        public string POCode { get; set; }
-        public string POType { get; set; }
+        public DateTime Date { get; set; }
+        public int ProjectId { get; set; }
         public string ProjectCode { get; set; }
         public string ProjectName { get; set; }
+        public string StockId { get; set; }
         public string StockCode { get; set; }
         public string StockName { get; set; }
+        public int StockTypeId { get; set; }
         public string StockType { get; set; }
-        public string MRF { get; set; }
+        public int CategoryId { get; set; }
         public string Category { get; set; }
-        public string Supplier { get; set; }
+        public int UnitId { get; set; }
         public string Unit { get; set; }
-        public decimal Quantity { get; set; }
-        public decimal QuantityReceived { get; set; }
-        public decimal QuantityPending { get; set; }
-        public string RalNo { get; set; }
-        public string Color { get; set; }
+        public int SupplierId { get; set; }
+        public string Supplier { get; set; }
+        public string SRV { get; set; }
+        public string SIV { get; set; }
+        public string MRF { get; set; }
+        public string POId { get; set; }
+        public string POCode { get; set; }
+        public string POType { get; set; }
+        public decimal QtyStockIn { get; set; }
+        public decimal QtyStockReturn { get; set; }
+        public decimal QtyStockOut { get; set; }
+        public decimal QtyStockCurrent { get; set; }
+        public decimal QtyStockAfterChange { get; set; }
         public string Weight { get; set; }
         public string Note { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
+        public string FagFrom { get; set; }
+        public int FagId { get; set; }
     }
 }

@@ -1424,6 +1424,7 @@ function loadPictureStock(id) {
         }
     });
 }
+
 function page() {
     var id = $(".pagination a.current").html();
     if (typeof id === 'undefined') {

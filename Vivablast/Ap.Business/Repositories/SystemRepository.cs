@@ -507,10 +507,10 @@ namespace Ap.Business.Repositories
 
         #region X-media
 
-        public DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType,
+        public DynamicPeReportViewModel GetDynamicPeReport(int page, int size, int poType, string po, int stockType,
             int category, string stockCode, string stockName, string fd, string td)
         {
-            var model = new DynamicReportViewModel();
+            var model = new DynamicPeReportViewModel();
             var paramss = new DynamicParameters();
             paramss.Add("page", page);
             paramss.Add("size", size);
@@ -526,7 +526,7 @@ namespace Ap.Business.Repositories
 
             using (var sql = GetSqlConnection())
             {
-                var data = sql.Query<XDynamicReport>("XGetDynamicReport", paramss, commandType: CommandType.StoredProcedure);
+                var data = sql.Query<XDynamicPeReport>("XGetDynamicPeReport", paramss, commandType: CommandType.StoredProcedure);
                 sql.Close();
                 model.DynamicReports = data.ToList();
                 var total = paramss.Get<int>("out");
@@ -535,6 +535,35 @@ namespace Ap.Business.Repositories
             return model;
         }
 
+
+        public DynamicProjectReportViewModel GetDynamicProjectReport(int page, int size, int projectId, int stockTypeId,
+            int categoryId, string stockCode, string stockName, int action, int supplierId, string fd, string td)
+        {
+            var model = new DynamicProjectReportViewModel();
+            var paramss = new DynamicParameters();
+            paramss.Add("page", page);
+            paramss.Add("size", size);
+            paramss.Add("projectId", projectId);
+            paramss.Add("stockTypeId", stockTypeId);
+            paramss.Add("categoryId", categoryId);
+            paramss.Add("stockCode", stockCode);
+            paramss.Add("stockName", stockName);
+            paramss.Add("action", action);
+            paramss.Add("supplierId", supplierId);
+            paramss.Add("fd", fd);
+            paramss.Add("td", td);
+            paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (var sql = GetSqlConnection())
+            {
+                var data = sql.Query<XDynamicProjectReport>("XGetDynamicProjectReport", paramss, commandType: CommandType.StoredProcedure);
+                sql.Close();
+                model.DynamicProjectReports = data.ToList();
+                var total = paramss.Get<int>("out");
+                model.TotalRecords = total;
+            }
+            return model;
+        }
         #endregion
     }
 }

@@ -1,9 +1,9 @@
---XGetDynamicReport
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XGetDynamicReport]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[XGetDynamicReport]
+--XGetDynamicPeReport
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XGetDynamicPeReport]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XGetDynamicPeReport]
 GO
 
-CREATE PROCEDURE [dbo].[XGetDynamicReport]
+CREATE PROCEDURE [dbo].[XGetDynamicPeReport]
 @page int
 ,@size int
 ,@poType int
@@ -19,7 +19,7 @@ AS
 BEGIN
 	-- get record count
 	WITH AllRecords AS ( 
-		SELECT * FROM XDynamicReport
+		SELECT * FROM XDynamicPeReport
 	WHERE 1 = CASE WHEN @poType=0 THEN 1 WHEN POTypeId = @poType THEN 1 END
    AND 1= CASE WHEN @po= '' THEN 1 WHEN POId = @po THEN 1 END
    AND 1= CASE WHEN @stockType= 0 THEN 1 WHEN StockTypeId = @stockType THEN 1 END
@@ -33,7 +33,7 @@ BEGIN
   -- now get the records
   WITH AllRecords AS ( 
    SELECT ROW_NUMBER() OVER (ORDER BY Id DESC) 
-   AS Row, * FROM XDynamicReport
+   AS Row, * FROM XDynamicPeReport
    WHERE 1 = CASE WHEN @poType=0 THEN 1 WHEN POTypeId = @poType THEN 1 END
    AND 1= CASE WHEN @po= '' THEN 1 WHEN POId = @po THEN 1 END
    AND 1= CASE WHEN @stockType= 0 THEN 1 WHEN StockTypeId = @stockType THEN 1 END
@@ -157,7 +157,7 @@ BEGIN
 		
 		SET @idjustinsert = SCOPE_IDENTITY()
 
-		INSERT INTO [dbo].[XDynamicReport]
+		INSERT INTO [dbo].[XDynamicPeReport]
 				([Action]
 				,[POId]
 				,[PODate]

@@ -6,6 +6,7 @@
     });
 
     loadMenu();
+
     $('.input-group.date').datepicker({
         format: "dd/mm/yyyy",
         autoclose: true,
@@ -35,6 +36,56 @@
     });
 
     autosize($('.auto-size'));
+
+    $("#searchStockCode").autocomplete({
+        source: "/Stock/ListCode?term" + $("#searchStockCode").val()
+    });
+
+    $("#searchStockName").autocomplete({
+        source: "/Stock/ListName?term" + $("#searchStockName").val()
+    });
+
+    $("#searchStockCode").on("keyup blur change", function (event) {
+        var form = $(this).closest('form');
+        if ($(this).val() != '' || $(this).val() != 'Not found') {
+            loadStockName(form, $(this), $('#searchStockName'));
+        }
+    });
+
+    $("#searchStockName").on("keyup blur change", function (event) {
+        var form = $(this).closest('form');
+        if ($(this).val() != '' || $(this).val() != 'Not found') {
+            loadStockCode(form, $(this), $('#searchStockCode'));
+        }
+    });
+
+    $('#searchStockType').on('change', function (e) {
+        var typeId = 0;
+        if ($(this).val() !== "") {
+            typeId = $(this).val();
+        }
+        var url = "/Stock/LoadCategoryByType";
+        $.ajax({
+            url: url,
+            data: { type: typeId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value=''>All</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#searchStockCategory").html(markup);
+                //$("#searchStockCategory").trigger("chosen:updated");
+            },
+            error: function () {
+                openErrorDialog({
+                    title: "Can't load Category Data",
+                    data: "Please contact Administrator support."
+                });
+            }
+        });
+    });
 });
 
 function loadMenu() {

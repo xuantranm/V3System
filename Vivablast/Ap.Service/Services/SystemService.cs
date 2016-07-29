@@ -405,12 +405,18 @@ namespace Ap.Service.Services
 
         #region X-media
 
-        public DynamicReportViewModel GetDynamicReport(int page, int size, int poType, string po, int stockType,
+        public DynamicPeReportViewModel GetDynamicPeReport(int page, int size, int poType, string po, int stockType,
             int category, string stockCode, string stockName, string fd, string td)
         {
-            return _customSystemRepository.GetDynamicReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
+            return _customSystemRepository.GetDynamicPeReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
         }
 
+        public DynamicProjectReportViewModel GetDynamicProjectReport(int page, int size, int projectId, int stockTypeId,
+            int categoryId, string stockCode, string stockName, int action, int supplierId, string fd, string td)
+        {
+            return _customSystemRepository.GetDynamicProjectReport(page, size, projectId, stockTypeId, categoryId,
+                stockCode, stockName, action, supplierId, fd, td);
+        }
         #endregion
     }
 }

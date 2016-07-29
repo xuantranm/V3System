@@ -7,9 +7,9 @@ using Ap.Business.Models;
 
 namespace Ap.Business.ViewModels
 {
-    public class DynamicReportViewModel
+    public class DynamicPeReportViewModel
     {
-        public IList<XDynamicReport> DynamicReports { get; set; }
+        public IList<XDynamicPeReport> DynamicReports { get; set; }
 
         public int TotalRecords { get; set; }
 

@@ -31,14 +31,14 @@ namespace Vivablast.Controllers
         public ActionResult LoadDynamicPe(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName, string fd, string td)
         {
             var userName = System.Web.HttpContext.Current.User.Identity.Name;
-            var model = _systemService.GetDynamicReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
-           return PartialView("Partials/_DynamicReport", model);
+            var model = _systemService.GetDynamicPeReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
+           return PartialView("Partials/_DynamicPeReport", model);
         }
 
-        public void ExportToExcel(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName, string fd, string td)
+        public void ExportToExcelDynamicPe(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName, string fd, string td)
         {
             // Get the data to report on
-            var masters = _systemService.GetDynamicReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
+            var masters = _systemService.GetDynamicPeReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
             // Create a new workbook
             var workbook = new HSSFWorkbook();
 
@@ -231,6 +231,25 @@ namespace Vivablast.Controllers
                 Response.BinaryWrite(exportData.GetBuffer());
                 Response.End();
             }
+        }
+
+        public ActionResult DynamicProject()
+        {
+            var model = new DynamicProjectReportViewModel();
+            var projects = _systemService.ProjectList();
+            model.ProjectIds = projects;
+            model.ProjectNames = projects;
+            model.Suppliers = _systemService.SupplierList();
+            model.StockTypes = _systemService.TypeStockList();
+            model.StockCategories = _systemService.CategoryStockList(0);
+            return View(model);
+        }
+
+        public ActionResult LoadDynamicProject(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, int action, int supplierId, string fd, string td)
+        {
+            var userName = System.Web.HttpContext.Current.User.Identity.Name;
+            var model = _systemService.GetDynamicProjectReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
+            return PartialView("Partials/_DynamicProjectReport", model);
         }
     }
 }
