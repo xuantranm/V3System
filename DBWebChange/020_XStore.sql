@@ -263,3 +263,61 @@ BEGIN
 	
 	SELECT CAST(@result AS INT)
 END
+
+GO
+--XGetDynamicProjectReport
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XGetDynamicProjectReport]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XGetDynamicProjectReport]
+GO
+
+CREATE PROCEDURE [dbo].[XGetDynamicProjectReport]
+@page int
+,@size int
+,@projectId int
+,@stockTypeId int
+,@categoryId int
+,@stockCode nvarchar(200)
+,@stockName nvarchar(200)
+,@action nvarchar(20)
+,@supplierId int
+,@fd varchar(22) 
+,@td varchar(22) 
+,@out INT OUTPUT
+AS
+BEGIN
+	-- get record count
+	WITH AllRecords AS ( 
+		SELECT * FROM XDynamicProjectReport
+	WHERE 
+	1 = CASE WHEN @projectId=0 THEN 1 WHEN ProjectId = @projectId THEN 1 END
+    AND 1= CASE WHEN @stockTypeId= 0 THEN 1 WHEN StockTypeId = @stockTypeId THEN 1 END
+    AND 1= CASE WHEN @categoryId= 0 THEN 1 WHEN CategoryId = @categoryId THEN 1 END
+    AND 1= CASE WHEN @stockCode= '' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+    AND 1= CASE WHEN @stockName= '' THEN 1 WHEN StockName like '%'+ @stockName+'%' THEN 1 END
+    AND 1= CASE WHEN @action= '' THEN 1 WHEN Action = @action THEN 1 END
+    AND 1= CASE WHEN @supplierId= 0 THEN 1 WHEN SupplierId = @supplierId THEN 1 END
+    AND 1 = CASE WHEN @fd='' THEN 1 WHEN (PODate >= convert(datetime,(@fd + ' 00:00:00')) OR PODate = NULL) THEN 1 END
+    AND 1 = CASE WHEN @td='' THEN 1 WHEN (PODate <= convert(datetime,(@td + ' 23:59:59')) OR PODate = NULL) THEN 1 END
+	) SELECT @out = Count(*) From AllRecords;
+
+  -- now get the records
+  WITH AllRecords AS ( 
+   SELECT ROW_NUMBER() OVER (ORDER BY Id DESC) 
+   AS Row, * FROM XDynamicProjectReport
+   WHERE 
+    1 = CASE WHEN @projectId=0 THEN 1 WHEN ProjectId = @projectId THEN 1 END
+    AND 1= CASE WHEN @stockTypeId= 0 THEN 1 WHEN StockTypeId = @stockTypeId THEN 1 END
+    AND 1= CASE WHEN @categoryId= 0 THEN 1 WHEN CategoryId = @categoryId THEN 1 END
+    AND 1= CASE WHEN @stockCode= '' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+    AND 1= CASE WHEN @stockName= '' THEN 1 WHEN StockName like '%'+ @stockName+'%' THEN 1 END
+    AND 1= CASE WHEN @action= '' THEN 1 WHEN Action = @action THEN 1 END
+    AND 1= CASE WHEN @supplierId= 0 THEN 1 WHEN SupplierId = @supplierId THEN 1 END
+    AND 1 = CASE WHEN @fd='' THEN 1 WHEN (PODate >= convert(datetime,(@fd + ' 00:00:00')) OR PODate = NULL) THEN 1 END
+    AND 1 = CASE WHEN @td='' THEN 1 WHEN (PODate <= convert(datetime,(@td + ' 23:59:59')) OR PODate = NULL) THEN 1 END
+  ) SELECT * FROM AllRecords 
+  WHERE [Row] > (@page - 1) * @size and [Row] < (@page * @size) + 1;
+END
+/*
+exec dbo.XGetDynamicReport 1, 10, 1, '','', 0, 0,0
+*/
+GO

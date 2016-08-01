@@ -67,12 +67,38 @@ DROP PROCEDURE [dbo].[V3_GetPEDDL]
 GO
 
 CREATE PROCEDURE [dbo].[V3_GetPEDDL]
+@page int,
+@size int,
 @supplier int,
 @store int,
-@status varchar(20)
+@status varchar(20),
+@out INT OUTPUT
 AS
 BEGIN
-	SELECT [Id], vPOID AS [Code],CAST(SUBSTRING(vPOID, 5, 2) AS INT) AS [Year] 
+-- get record count
+	WITH AllRecords AS ( 
+		SELECT * FROM [dbo].[WAMS_PURCHASE_ORDER] (NOLOCK)
+	WHERE iEnable = 1
+	AND 1 = CASE WHEN @store=0 THEN 1 WHEN iStore = @store THEN 1 END
+	AND 1 = CASE WHEN @supplier=0 THEN 1 WHEN bSupplierID = @supplier THEN 1 END
+	AND 1 = CASE WHEN @status='' THEN 1 WHEN vPOStatus = @status THEN 1 END
+	) SELECT @out = Count(*) From AllRecords;
+	
+WITH AllRecords AS ( 
+   SELECT ROW_NUMBER() OVER (ORDER BY CAST(SUBSTRING(vPOID, 5, 2) AS INT) DESC, CASE substring(vPOID, 0, 4) 
+		  WHEN 'JAN' THEN 1 
+		  WHEN 'FEB' THEN 2 
+		  WHEN 'MAR' THEN 3 
+		  WHEN 'APR' THEN 4 
+		  WHEN 'MAY' THEN 5 
+		  WHEN 'JUN' THEN 6 
+		  WHEN 'JUL' THEN 7 
+		  WHEN 'AUG' THEN 8 
+		  WHEN 'SEP' THEN 9 
+		  WHEN 'OCT' THEN 10
+		  WHEN 'NOV' THEN 11  
+		  WHEN 'DEC' THEN 12 END DESC, vPOID DESC) 
+   AS Row, [Id], [vPOID] AS [Code],CAST(SUBSTRING(vPOID, 5, 2) AS INT) AS [Year] 
 		,CASE substring(vPOID, 0, 4) 
 		  WHEN 'JAN' THEN 1 
 		  WHEN 'FEB' THEN 2 
@@ -86,11 +112,13 @@ BEGIN
 		  WHEN 'OCT' THEN 10
 		  WHEN 'NOV' THEN 11  
 		  WHEN 'DEC' THEN 12 END AS PE_Month FROM [dbo].[WAMS_PURCHASE_ORDER] (NOLOCK)
-	WHERE iEnable=1
+	WHERE iEnable = 1
 	AND 1 = CASE WHEN @store=0 THEN 1 WHEN iStore = @store THEN 1 END
 	AND 1 = CASE WHEN @supplier=0 THEN 1 WHEN bSupplierID = @supplier THEN 1 END
 	AND 1 = CASE WHEN @status='' THEN 1 WHEN vPOStatus = @status THEN 1 END
-	ORDER BY [Year] DESC, PE_Month DESC, vPOID DESC
+	--ORDER BY [Year] DESC, PE_Month DESC, vPOID DESC
+  ) SELECT * FROM AllRecords 
+  WHERE [Row] > (@page - 1) * @size and [Row] < (@page * @size) + 1;
 END
 GO
 -- exec [dbo].[V3_GetPEDDL] 0, 0 ,'Complete'

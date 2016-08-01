@@ -19,7 +19,7 @@ namespace Ap.Business.Models
         public int ProjectId { get; set; }
         public string ProjectCode { get; set; }
         public string ProjectName { get; set; }
-        public string StockId { get; set; }
+        public int StockId { get; set; }
         public string StockCode { get; set; }
         public string StockName { get; set; }
         public int StockTypeId { get; set; }
@@ -33,7 +33,7 @@ namespace Ap.Business.Models
         public string SRV { get; set; }
         public string SIV { get; set; }
         public string MRF { get; set; }
-        public string POId { get; set; }
+        public int POId { get; set; }
         public string POCode { get; set; }
         public string POType { get; set; }
         public decimal QtyStockIn { get; set; }

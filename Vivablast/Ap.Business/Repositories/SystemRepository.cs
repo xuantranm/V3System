@@ -473,19 +473,26 @@ namespace Ap.Business.Repositories
             return result;
         }
 
-        public IList<V3_DDL_PE> Ddlpe(int supplier, int store, string status)
+        public XPeCodeViewModel Ddlpe(int page, int size, int supplier, int store, string status)
         {
-            var sql = GetSqlConnection();
-            var result = sql.Query<V3_DDL_PE>("dbo.V3_GetPEDDL", new
-            {
-                supplier,
-                store,
-                status
-            },
-                                         commandType: CommandType.StoredProcedure).ToList();
+            var model = new XPeCodeViewModel();
+            var paramss = new DynamicParameters();
+            paramss.Add("page", page);
+            paramss.Add("size", size);
+            paramss.Add("supplier", supplier);
+            paramss.Add("store", store);
+            paramss.Add("status", status);
+            paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-            sql.Close();
-            return result.Any() ? result : new List<V3_DDL_PE>();
+            using (var sql = GetSqlConnection())
+            {
+                var data = sql.Query<V3_DDL_PE>("V3_GetPEDDL", paramss, commandType: CommandType.StoredProcedure);
+                sql.Close();
+                model.PEs = data.ToList();
+                var total = paramss.Get<int>("out");
+                model.TotalRecords = total;
+            }
+            return model;
         }
 
         public V3_Ddl SuppliersFromPe(int pe)
@@ -537,7 +544,7 @@ namespace Ap.Business.Repositories
 
 
         public DynamicProjectReportViewModel GetDynamicProjectReport(int page, int size, int projectId, int stockTypeId,
-            int categoryId, string stockCode, string stockName, int action, int supplierId, string fd, string td)
+            int categoryId, string stockCode, string stockName, string action, int supplierId, string fd, string td)
         {
             var model = new DynamicProjectReportViewModel();
             var paramss = new DynamicParameters();

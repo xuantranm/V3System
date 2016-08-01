@@ -217,9 +217,9 @@ namespace Ap.Service.Services
         {
             return _customSystemRepository.PaymentTypeBySupplier(supplier);
         }
-        public IList<V3_DDL_PE> Ddlpe(int supplier, int store, string status)
+        public XPeCodeViewModel Ddlpe(int page, int size, int supplier, int store, string status)
         {
-            return _customSystemRepository.Ddlpe(supplier, store, status);
+            return _customSystemRepository.Ddlpe(page, size, supplier, store, status);
         }
 
         public V3_Ddl SuppliersFromPe(int pe)
@@ -412,7 +412,7 @@ namespace Ap.Service.Services
         }
 
         public DynamicProjectReportViewModel GetDynamicProjectReport(int page, int size, int projectId, int stockTypeId,
-            int categoryId, string stockCode, string stockName, int action, int supplierId, string fd, string td)
+            int categoryId, string stockCode, string stockName, string action, int supplierId, string fd, string td)
         {
             return _customSystemRepository.GetDynamicProjectReport(page, size, projectId, stockTypeId, categoryId,
                 stockCode, stockName, action, supplierId, fd, td);

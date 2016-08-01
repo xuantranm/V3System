@@ -400,7 +400,8 @@ namespace Vivablast.Controllers
                 stockInDetailList = _service.ListConditionDetail(id.Value, "1");
                 totalDetailRecords = stockInDetailList.Count();
             }
-            
+
+            var peCodeModel = _systemService.Ddlpe(1, 100, 0, 0, Constants.StatusOpen);
             var model = new FulfillmentViewModel
             {
                 vPOID = pe.Id,
@@ -409,7 +410,7 @@ namespace Vivablast.Controllers
                 Stores = new SelectList(_systemService.StoreList(), "Id", "Name"),
                 Suppliers = new SelectList(_systemService.SupplierList(), "Id", "Name"),
                 SupplierId= pe.bSupplierID,
-                PEs = new SelectList(_systemService.Ddlpe(0, 0, Constants.StatusOpen), "Id", "Code"),
+                PEs = new SelectList(peCodeModel.PEs, "Id", "Code"),
                 StockInDetailList = stockInDetailList,
                 TotalRecords = totalDetailRecords
             };
@@ -418,18 +419,16 @@ namespace Vivablast.Controllers
         }
 
         #region Load Condition & Autocomplete
-        public JsonResult LoadPeOpen(int store)
+        public JsonResult LoadPeOpen(int page, int size, int store)
         {
-            var objType = _systemService.Ddlpe(0, store, Constants.StatusOpen);
-            var obgType = new SelectList(objType, "Id", "Code", 0);
-            return Json(obgType);
+            var model = _systemService.Ddlpe(page, size, 0, store, Constants.StatusOpen);
+            return Json(model);
         }
 
-        public JsonResult LoadPeAdd(int supplier, int store)
+        public JsonResult LoadPeAdd(int page, int size, int supplier, int store)
         {
-            var objType = _systemService.Ddlpe(supplier, store, Constants.StatusOpen);
-            var obgType = new SelectList(objType, "Id", "Code", 0);
-            return Json(obgType);
+            var model = _systemService.Ddlpe(page, size, supplier, store, Constants.StatusOpen);
+            return Json(model);
         }
 
         public JsonResult LoadSupplierPe(int pe)

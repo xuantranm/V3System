@@ -8,21 +8,23 @@
         <thead>
             <tr>
                 <th>Action</th>
-                <th>PO Date</th>
-                <th>POID</th>
-                <th>PO Type</th>
+                <th>Date</th>
                 <th>Project Code</th>
                 <th>Project Name</th>
                 <th>Stock Code</th>
                 <th>Stock Name</th>
                 <th>Stock Type</th>
-                <th>MRF</th>
                 <th>Category</th>
-                <th>Supplier</th>
                 <th>Unit</th>
-                <th>Quantity</th>
-                <th>Received Quantity</th>
-                <th>Pending Quantity</th>
+                <th>Supplier</th>
+                <th>SRV</th>
+                <th>SIV</th>
+                <th>MRF</th>
+                <th>PO Code</th>
+                <th>Stock In</th>
+                <th>Stock Out</th>
+                <th>Stock Return</th>
+                <th>Stock Remain</th>
                 <th>Weight</th>
             </tr>
         </thead>
@@ -31,21 +33,23 @@
             {
                 <tr id="item@(item.Id)">
                     <td>@item.Action</td>
-                    <td>@item.PODate</td>
-                    <td>@item.POCode</td>
-                    <td>@item.POType</td>
+                    <td>@item.Date</td>
                     <td>@item.ProjectCode</td>
                     <td>@item.ProjectName</td>
                     <td>@item.StockCode</td>
                     <td>@item.StockName</td>
                     <td>@item.StockType</td>
-                    <td>@item.MRF</td>
                     <td>@item.Category</td>
-                    <td>@item.Supplier</td>
                     <td>@item.Unit</td>
-                    <td>@item.Quantity</td>
-                    <td>@item.QuantityReceived</td>
-                    <td>@item.QuantityPending</td>
+                    <td>@item.Supplier</td>
+                    <td>@item.SRV</td>
+                    <td>@item.SIV</td>
+                    <td>@item.MRF</td>
+                    <td>@item.POCode</td>
+                    <td>@item.QtyStockIn</td>
+                    <td>@item.QtyStockOut</td>
+                    <td>@item.QtyStockReturn</td>
+                    <td>@item.QtyStockCurrent</td>
                     <td>@item.Weight</td>
                 </tr>
             }

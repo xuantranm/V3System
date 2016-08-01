@@ -76,7 +76,7 @@ namespace Ap.Business.Seedworks
         IList<V3_GetRequisitionDDL> RequisitionByStockList(int stock, int store);
 
         string PaymentTypeBySupplier(int supplier);
-        IList<V3_DDL_PE> Ddlpe(int supplier, int store, string status);
+        XPeCodeViewModel Ddlpe(int page, int size, int supplier, int store, string status);
 
         V3_Ddl SuppliersFromPe(int pe);
 
@@ -88,7 +88,7 @@ namespace Ap.Business.Seedworks
 
         DynamicPeReportViewModel GetDynamicPeReport(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName, string fd, string td);
 
-        DynamicProjectReportViewModel GetDynamicProjectReport(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, int action, int supplierId, string fd, string td);
+        DynamicProjectReportViewModel GetDynamicProjectReport(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, string action, int supplierId, string fd, string td);
         #endregion
     }
 }

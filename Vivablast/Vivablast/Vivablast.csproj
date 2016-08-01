@@ -429,7 +429,7 @@
     <Content Include="Scripts\tmx.priceact.js" />
     <Content Include="Scripts\tmx.stockreturnact.js" />
     <Content Include="Scripts\tmx.stockoutact.js" />
-    <Content Include="Scripts\tmx.stockin.act.js" />
+    <Content Include="Scripts\custom\tmx.stockin.act.js" />
     <Content Include="Scripts\tmx.categoryaction.js" />
     <Content Include="Scripts\tmx.categorymanager.js" />
     <Content Include="Scripts\tmx.stocktypemanager.js" />
@@ -453,7 +453,7 @@
     <Content Include="Scripts\tmx.reactivestockmanager.js" />
     <Content Include="Scripts\jquery.numeric.js" />
     <Content Include="Scripts\tmx.supmanager.js" />
-    <Content Include="Scripts\tmx.stockinmanager.js" />
+    <Content Include="Scripts\custom\tmx.stockinmanager.js" />
     <Content Include="Scripts\tmx.pemanager.js" />
     <Content Include="Scripts\tmx.stockmanager.js" />
     <Content Include="Scripts\tmx.projectmanager.js" />

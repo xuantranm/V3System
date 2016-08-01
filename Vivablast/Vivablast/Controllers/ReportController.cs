@@ -245,10 +245,15 @@ namespace Vivablast.Controllers
             return View(model);
         }
 
-        public ActionResult LoadDynamicProject(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, int action, int supplierId, string fd, string td)
+        public ActionResult LoadDynamicProject(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, string actionFag, int supplierId, string fd, string td)
         {
-            var userName = System.Web.HttpContext.Current.User.Identity.Name;
-            var model = _systemService.GetDynamicProjectReport(page, size, poType, po, stockType, category, stockCode, stockName, fd, td);
+            var model = _systemService.GetDynamicProjectReport(page, size, projectId, stockTypeId, categoryId, stockCode, stockName, actionFag, supplierId, fd, td);
+            return PartialView("Partials/_DynamicProjectReport", model);
+        }
+
+        public ActionResult LoadDynamicProjectGroupItems(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, string actionFag, int supplierId, string fd, string td)
+        {
+            var model = _systemService.GetDynamicProjectReport(page, size, projectId, stockTypeId, categoryId, stockCode, stockName, actionFag, supplierId, fd, td);
             return PartialView("Partials/_DynamicProjectReport", model);
         }
     }

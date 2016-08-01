@@ -33,16 +33,25 @@
                 });
             }
             else {
+                var url;
+                if ($("#groupingItems").is(':checked')) {
+                    url = '/report/loaddynamicprojectgroupitems';
+                } else {
+                    url = '/report/loaddynamicproject';
+                }
                 $.ajax({
-                    url: '/report/loaddynamicproject',
+                    url: url,
                     type: 'GET',
                     data: {
                         page: page(),
                         size: size(),
-                        stockType: ($('#searchStockType').val() === "") ? 0 : $('#searchStockType').val(),
-                        category: ($('#searchStockCategory').val() === "") ? 0 : $('#searchStockCategory').val(),
+                        projectId: $('#searchProjectCode').val(),
+                        stockTypeId: ($('#searchStockType').val() === "") ? 0 : $('#searchStockType').val(),
+                        categoryId: ($('#searchStockCategory').val() === "") ? 0 : $('#searchStockCategory').val(),
                         stockCode: $('#searchStockCode').val(),
                         stockName: $('#searchStockName').val(),
+                        actionFag: $('#searchAction').val(),
+                        supplierId: $('#searchSupplier').val(),
                         fd: fd,
                         td: td
                     },

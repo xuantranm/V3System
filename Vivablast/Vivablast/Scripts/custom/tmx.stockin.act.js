@@ -26,7 +26,7 @@
                 tmx.vivablast.stockinact.LoadPeCondition();
             });
 
-            $('#vPOID').on('change', function (e) {
+           $('#vPOID').on('change', function (e) {
                 tmx.vivablast.stockinact.LoadSupplierCondition();
             });
 
@@ -315,19 +315,22 @@
             }
         },
 
-        LoadPeCondition: function(form) {
+        LoadPeCondition: function (form) {
+            var url;
             if ($('#iStore', form).val() != '' && $('#SupplierId', form).val() != '') {
-                var url = "/StockIn/LoadPeAdd";
+                url = "/StockIn/LoadPeAdd";
                 $.ajax({
                     url: url,
                     data: {
+                        page: 1,
+                        size: 100,
                         supplier: $('#SupplierId', form).val(),
                         store: $('#iStore', form).val()
                     },
                     cache: false,
                     type: "POST",
-                    success: function(data) {
-                        if (data.length == 0) {
+                    success: function (data) {
+                        if (data.TotalRecords == 0) {
                             clearVal();
                             var price = "<option value=''>Select</option>";
                             $("#vPOID", form).html(price);
@@ -335,9 +338,9 @@
                         } else {
                             clearVal();
                             var markup = "<option value=''>Select</option>";
-                            for (var x = 0; x < data.length; x++) {
-                                markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                            }
+                            $.each(data.PEs, function(i, item) {
+                                markup += "<option value=" + item.Id + ">" + item.Code + "</option>";
+                            });
                             $('#vPOID', form).html(markup);
                         }
                     },
@@ -347,16 +350,19 @@
                 });
             } else {
                 if ($('#iStore', form).val() != '') {
-                    var url = "/StockIn/LoadPeOpen";
+                    url = "/StockIn/LoadPeOpen";
                     $.ajax({
                         url: url,
                         data: {
+                            page: 1,
+                            size: 100,
                             store: $('#iStore', form).val()
                         },
                         cache: false,
                         type: "POST",
                         success: function (data) {
-                            if (data.length == 0) {
+                            console.log(data);
+                            if (data.TotalRecords == 0) {
                                 clearVal();
                                 var price = "<option value=''>Select</option>";
                                 $("#vPOID", form).html(price);
@@ -364,9 +370,9 @@
                             } else {
                                 clearVal();
                                 var markup = "<option value=''>Select</option>";
-                                for (var x = 0; x < data.length; x++) {
-                                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                                }
+                                $.each(data.PEs, function(i, item) {
+                                    markup += "<option value=" + item.Id + ">" + item.Code + "</option>";
+                                });
                                 $('#vPOID', form).html(markup);
                             }
                         },
