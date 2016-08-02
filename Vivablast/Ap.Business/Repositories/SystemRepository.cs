@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Ap.Business.Domains;
 using Ap.Business.Models;
@@ -538,6 +539,8 @@ namespace Ap.Business.Repositories
                 model.DynamicReports = data.ToList();
                 var total = paramss.Get<int>("out");
                 model.TotalRecords = total;
+                var totalTemp = Convert.ToDecimal(total) / Convert.ToDecimal(size);
+                model.TotalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
             }
             return model;
         }
@@ -568,6 +571,39 @@ namespace Ap.Business.Repositories
                 model.DynamicProjectReports = data.ToList();
                 var total = paramss.Get<int>("out");
                 model.TotalRecords = total;
+                var totalTemp = Convert.ToDecimal(total) / Convert.ToDecimal(size);
+                model.TotalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
+            }
+            return model;
+        }
+
+        public DynamicProjectReportViewModel GetDynamicProjectGroupItemReport(int page, int size, int projectId, int stockTypeId,
+            int categoryId, string stockCode, string stockName, string action, int supplierId, string fd, string td)
+        {
+            var model = new DynamicProjectReportViewModel();
+            var paramss = new DynamicParameters();
+            paramss.Add("page", page);
+            paramss.Add("size", size);
+            paramss.Add("projectId", projectId);
+            paramss.Add("stockTypeId", stockTypeId);
+            paramss.Add("categoryId", categoryId);
+            paramss.Add("stockCode", stockCode);
+            paramss.Add("stockName", stockName);
+            paramss.Add("action", action);
+            paramss.Add("supplierId", supplierId);
+            paramss.Add("fd", fd);
+            paramss.Add("td", td);
+            paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (var sql = GetSqlConnection())
+            {
+                var data = sql.Query<XDynamicProjectGroupItemReport>("XGetDynamicProjectGroupItemReport", paramss, commandType: CommandType.StoredProcedure);
+                sql.Close();
+                model.DynamicProjectGroupItemReports = data.ToList();
+                var total = paramss.Get<int>("out");
+                model.TotalRecords = total;
+                var totalTemp = Convert.ToDecimal(total) / Convert.ToDecimal(size);
+                model.TotalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
             }
             return model;
         }

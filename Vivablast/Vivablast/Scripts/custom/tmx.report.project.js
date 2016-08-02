@@ -17,6 +17,7 @@
         /** The tab option configuration*/
 
         init: function (uid) {
+            disableSearchDate();
             $('#loading-indicator').hide();
             tmx.vivablast.reportProjectManager.loadReport(uid);
             tmx.vivablast.reportProjectManager.registerEventIndex(uid);
@@ -68,17 +69,35 @@
         },
 
         exportExcel: function () {
+            var stockType = 0;
+            var categoryId = 0;
+            if ($('#searchStockType').val() != "") {
+                stockType = $('#searchStockType').val();
+            }
+            if ($('#searchStockCategory').val() != "") {
+                categoryId = $('#searchStockCategory').val();
+            }
+
             var search = "&page=" + page();
             search += "&size=" + size();
-            search += "&poType=" + $('#searchPoType').val();
-            search += "&po=" + $('#searchPoCode').val(),
-            search += "&stockType=" + $('#searchStockType').val();
-            search += "&category=" + $('#searchStockCategory').val();
+            search += "&projectId=" + 0;
+            search += "&stockTypeId=" + stockType,
+            search += "&categoryId=" + categoryId;
             search += "&stockCode=" + $('#searchStockCode').val();
             search += "&stockName=" + $('#searchStockName').val();
+            search += "&actionFag=" + $('#searchAction').val();
+            search += "&supplierId=" + 0;
             search += "&fd=" + convertDateToMMDDYYYY($('#fromDate').val());
             search += "&td=" + convertDateToMMDDYYYY($('#toDate').val());
-            document.location.href = "/report/exporttoexcel?" + search;
+ 
+            var url;
+            if ($("#groupingItems").is(':checked')) {
+                url = '/report/exportloaddynamicprojectgroupitems?';
+            } else {
+                url = '/report/exportloaddynamicproject?';
+            }
+
+            document.location.href = url + search;
         },
         
         registerEventIndex: function (uid) {
@@ -116,6 +135,26 @@
             $('#searchProjectName').on('change', function (e) {
                 $('#searchProjectCode').val($('#searchProjectName').val());
             });
+
+            $("#ckDate").change(function () {
+                if (!this.checked) {
+                    $('#groupingItems').prop('checked', true);
+                    disableSearchDate();
+                } else {
+                    $('#groupingItems').prop('checked', false);
+                    enableSearchDate();
+                }
+            });
+
+            $('#groupingItems').change(function() {
+                if (!this.checked) {
+                    $("#ckDate").prop('checked', true);
+                    enableSearchDate();
+                } else {
+                    $("#ckDate").prop('checked', false);
+                    disableSearchDate();
+                }
+            });
         },
 
         registerEventIndexInList: function () {
@@ -142,3 +181,17 @@
         },
     };
 })(jQuery, window.tmx = window.tmx || {});
+
+function disableSearchDate() {
+    $('#fromDate').val('');
+    $('#toDate').val('');
+    $('#fromDate').attr('disabled', 'disabled');
+    $('#toDate').attr('disabled', 'disabled');
+}
+
+function enableSearchDate() {
+    $('#fromDate').val($('#hidFromDate').val());
+    $('#toDate').val($('#hidToDate').val());
+    $('#fromDate').removeAttr('disabled');
+    $('#toDate').removeAttr('disabled');
+}

@@ -321,3 +321,51 @@ END
 exec dbo.XGetDynamicReport 1, 10, 1, '','', 0, 0,0
 */
 GO
+
+GO
+--XGetDynamicProjectGroupItemReport
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XGetDynamicProjectGroupItemReport]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XGetDynamicProjectGroupItemReport]
+GO
+
+CREATE PROCEDURE [dbo].[XGetDynamicProjectGroupItemReport]
+@page int
+,@size int
+,@projectId int
+,@stockTypeId int
+,@categoryId int
+,@stockCode nvarchar(200)
+,@stockName nvarchar(200)
+,@action nvarchar(20)
+,@supplierId int
+,@fd varchar(22) 
+,@td varchar(22) 
+,@out INT OUTPUT
+AS
+BEGIN
+	-- get record count
+	WITH AllRecords AS ( 
+		SELECT * FROM XDynamicProjectGroupItemReport
+	WHERE 
+    1= CASE WHEN @stockTypeId= 0 THEN 1 WHEN StockTypeId = @stockTypeId THEN 1 END
+    AND 1= CASE WHEN @categoryId= 0 THEN 1 WHEN CategoryId = @categoryId THEN 1 END
+    AND 1= CASE WHEN @stockCode= '' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+    AND 1= CASE WHEN @stockName= '' THEN 1 WHEN StockName like '%'+ @stockName+'%' THEN 1 END
+	) SELECT @out = Count(*) From AllRecords;
+
+  -- now get the records
+  WITH AllRecords AS ( 
+   SELECT ROW_NUMBER() OVER (ORDER BY Id DESC) 
+   AS Row, * FROM XDynamicProjectGroupItemReport
+   WHERE 
+    1= CASE WHEN @stockTypeId= 0 THEN 1 WHEN StockTypeId = @stockTypeId THEN 1 END
+    AND 1= CASE WHEN @categoryId= 0 THEN 1 WHEN CategoryId = @categoryId THEN 1 END
+    AND 1= CASE WHEN @stockCode= '' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+    AND 1= CASE WHEN @stockName= '' THEN 1 WHEN StockName like '%'+ @stockName+'%' THEN 1 END
+  ) SELECT * FROM AllRecords 
+  WHERE [Row] > (@page - 1) * @size and [Row] < (@page * @size) + 1;
+END
+/*
+exec dbo.XGetDynamicProjectGroupItemReport 1, 10, 0,0, '','','', 0,'','',0
+*/
+GO

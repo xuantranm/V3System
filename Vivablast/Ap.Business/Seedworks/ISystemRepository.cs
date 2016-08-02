@@ -89,6 +89,8 @@ namespace Ap.Business.Seedworks
         DynamicPeReportViewModel GetDynamicPeReport(int page, int size, int poType, string po, int stockType, int category, string stockCode, string stockName, string fd, string td);
 
         DynamicProjectReportViewModel GetDynamicProjectReport(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, string action, int supplierId, string fd, string td);
+
+        DynamicProjectReportViewModel GetDynamicProjectGroupItemReport(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, string action, int supplierId, string fd, string td);
         #endregion
     }
 }

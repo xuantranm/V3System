@@ -112,6 +112,7 @@
     <Compile Include="Dto\V3_List_Supplier.cs" />
     <Compile Include="Dto\V3_Check_Login.cs" />
     <Compile Include="Dto\XUser.cs" />
+    <Compile Include="Models\XDynamicProjectGroupItemReport.cs" />
     <Compile Include="Models\XDynamicProjectReport.cs" />
     <Compile Include="Models\XStockIn.cs" />
     <Compile Include="Models\XStockInParent.cs" />

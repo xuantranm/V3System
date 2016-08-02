@@ -8,6 +8,8 @@ namespace Ap.Business.ViewModels
     {
         public IList<XDynamicProjectReport> DynamicProjectReports { get; set; }
 
+        public IList<XDynamicProjectGroupItemReport> DynamicProjectGroupItemReports { get; set; }
+
         public int TotalRecords { get; set; }
 
         public int TotalPages { get; set; }

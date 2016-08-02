@@ -19,4 +19,3 @@ D:\PRACTISE\V3\Vivablast\Ap.Common\bin\Debug\Ap.Common.dll
 D:\PRACTISE\V3\Vivablast\Ap.Common\bin\Debug\Ap.Common.pdb
 D:\PRACTISE\V3\Vivablast\Ap.Common\obj\Debug\Ap.Common.dll
 D:\PRACTISE\V3\Vivablast\Ap.Common\obj\Debug\Ap.Common.pdb
-D:\PRACTISE\V3\Vivablast\Ap.Common\obj\Debug\Ap.Common.csprojResolveAssemblyReference.cache

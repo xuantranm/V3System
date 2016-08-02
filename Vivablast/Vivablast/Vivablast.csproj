@@ -643,6 +643,7 @@
     <Content Include="Views\Report\DynamicPe.cshtml" />
     <Content Include="Views\Report\DynamicProject.cshtml" />
     <Content Include="Views\Report\Partials\_DynamicProjectReport.cshtml" />
+    <Content Include="Views\Report\Partials\_DynamicProjectGroupItemReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

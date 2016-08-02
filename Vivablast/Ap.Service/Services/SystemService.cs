@@ -417,6 +417,14 @@ namespace Ap.Service.Services
             return _customSystemRepository.GetDynamicProjectReport(page, size, projectId, stockTypeId, categoryId,
                 stockCode, stockName, action, supplierId, fd, td);
         }
+
+        public DynamicProjectReportViewModel GetDynamicProjectGroupItemReport(int page, int size, int projectId,
+            int stockTypeId, int categoryId, string stockCode, string stockName, string action, int supplierId,
+            string fd, string td)
+        {
+            return _customSystemRepository.GetDynamicProjectGroupItemReport(page, size, projectId, stockTypeId, categoryId,
+                stockCode, stockName, action, supplierId, fd, td);
+        }
         #endregion
     }
 }
