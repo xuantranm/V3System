@@ -3319,31 +3319,6 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_Li
 DROP PROCEDURE [dbo].[V3_List_Stock_Count]
 GO
 
-CREATE PROCEDURE [dbo].[V3_List_Stock_Count]
-@page int
-,@size int
-,@enable char(1)
-,@stockCode nvarchar(200)
-,@stockName nvarchar(200)
-,@store varchar(50)
-,@type int
-,@category int
-AS
-BEGIN
-	SELECT COUNT(1) AS [Count] 
-	FROM [dbo].[WAMS_STOCK] stock (NOLOCK)
-	WHERE stock.iType != 8 AND
-	1 = CASE WHEN @enable='' THEN 1 WHEN stock.iEnable = CAST(@enable AS INT) THEN 1 END
-	AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
-	AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
-	AND 1= CASE WHEN @stockCode='' THEN 1 WHEN stock.vStockID = @stockCode THEN 1 END
-	AND 1= CASE WHEN @stockName='' THEN 1 WHEN stock.vStockName like '%' + @stockName + '%' THEN 1 END
-END
-/*
-exec dbo.V3_List_Stock_Count 1, 10, 1, '1,2', 0, 0,''
-*/
-GO
-
 -- V3_Stock_Quantity_Management
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[V3_Stock_Quantity_Management]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[V3_Stock_Quantity_Management]

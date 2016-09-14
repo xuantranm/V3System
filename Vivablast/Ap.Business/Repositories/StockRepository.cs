@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Ap.Business.Models;
 using Ap.Business.Seedworks;
+using Ap.Business.ViewModels;
 using Ap.Data.Repositories;
 using Ap.Data.Seedworks;
 using Dapper;
@@ -18,44 +21,34 @@ namespace Ap.Business.Repositories
 
         }
 
-        public IList<V3_List_Stock> ListCondition(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
+        public XStockViewModel GetStock(int page, int size, string stockCode, string stockName, string store, int type,
+            int category, string enable)
         {
-            var sql = GetSqlConnection();
-            var result = sql.Query<V3_List_Stock>("dbo.V3_List_Stock", new
+            var model = new XStockViewModel();
+            var paramss = new DynamicParameters();
+            paramss.Add("page", page);
+            paramss.Add("size", size);
+            paramss.Add("stockCode", stockCode);
+            paramss.Add("stockName", stockName);
+            paramss.Add("store", store);
+            paramss.Add("type", type);
+            paramss.Add("stockName", stockName);
+            paramss.Add("category", category);
+            paramss.Add("enable", enable);
+            paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (var sql = GetSqlConnection())
             {
-                page,
-                size,
-                stockCode,
-                stockName,
-                store,
-                type,
-                category,
-                enable
-            },
-                                         commandType: CommandType.StoredProcedure).ToList();
+                var data = sql.Query<XStock>("XGetListStock", paramss, commandType: CommandType.StoredProcedure);
+                sql.Close();
+                model.StockVs = data.ToList();
+                var total = paramss.Get<int>("out");
+                model.TotalRecords = total;
+                var totalTemp = Convert.ToDecimal(total) / Convert.ToDecimal(size);
+                model.TotalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
+            }
 
-            sql.Close();
-            return result.Any() ? result : new List<V3_List_Stock>();
-        }
-
-        public int ListConditionCount(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
-        {
-            var sql = GetSqlConnection();
-            var result = sql.Query<int>("dbo.V3_List_Stock_Count", new
-            {
-                page,
-                size,
-                stockCode,
-                stockName,
-                store,
-                type,
-                category,
-                enable
-            },
-                                         commandType: CommandType.StoredProcedure).FirstOrDefault();
-
-            sql.Close();
-            return result;
+            return model;
         }
 
         public IList<V3_List_Stock> PeListCondition(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable, int supplier)

@@ -1,3 +1,51 @@
+--V3_Stock_List
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XGetListStock]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[XGetListStock]
+GO
+CREATE PROCEDURE [dbo].[XGetListStock]
+@page int
+,@size int
+,@enable char(1)
+,@stockCode nvarchar(200)
+,@stockName nvarchar(200)
+,@store varchar(50)
+,@type int
+,@category int
+,@out INT OUTPUT
+AS
+BEGIN
+	WITH AllRecords AS ( 
+		SELECT * FROM XDynamicPeReport
+	WHERE 1 = CASE WHEN @poType=0 THEN 1 WHEN POTypeId = @poType THEN 1 END
+   AND 1= CASE WHEN @po= '' THEN 1 WHEN POId = @po THEN 1 END
+   AND 1= CASE WHEN @stockType= 0 THEN 1 WHEN StockTypeId = @stockType THEN 1 END
+   AND 1= CASE WHEN @category= 0 THEN 1 WHEN CategoryId = @category THEN 1 END
+   AND 1= CASE WHEN @stockCode= '' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+   AND 1= CASE WHEN @stockName= '' THEN 1 WHEN StockName like '%'+ @stockName+'%' THEN 1 END
+   AND 1 = CASE WHEN @fd='' THEN 1 WHEN (PODate >= convert(datetime,(@fd + ' 00:00:00')) OR PODate = NULL) THEN 1 END
+	AND 1 = CASE WHEN @td='' THEN 1 WHEN (PODate <= convert(datetime,(@td + ' 23:59:59')) OR PODate = NULL) THEN 1 END
+	) SELECT @out = Count(*) From AllRecords;
+
+  -- now get the records
+  WITH AllRecords AS ( 
+   SELECT ROW_NUMBER() OVER (ORDER BY Id DESC) 
+   AS Row, * FROM XDynamicPeReport
+   WHERE 1 = CASE WHEN @poType=0 THEN 1 WHEN POTypeId = @poType THEN 1 END
+   AND 1= CASE WHEN @po= '' THEN 1 WHEN POId = @po THEN 1 END
+   AND 1= CASE WHEN @stockType= 0 THEN 1 WHEN StockTypeId = @stockType THEN 1 END
+   AND 1= CASE WHEN @category= 0 THEN 1 WHEN CategoryId = @category THEN 1 END
+   AND 1= CASE WHEN @stockCode= '' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+   AND 1= CASE WHEN @stockName= '' THEN 1 WHEN StockName like '%'+ @stockName+'%' THEN 1 END
+   AND 1 = CASE WHEN @fd='' THEN 1 WHEN (PODate >= convert(datetime,(@fd + ' 00:00:00')) OR PODate = NULL) THEN 1 END
+	AND 1 = CASE WHEN @td='' THEN 1 WHEN (PODate <= convert(datetime,(@td + ' 23:59:59')) OR PODate = NULL) THEN 1 END
+  ) SELECT * FROM AllRecords 
+  WHERE [Row] > (@page - 1) * @size and [Row] < (@page * @size) + 1;
+END
+/*
+exec dbo.XGetListStock 1, 10, 1,'A010001','', '', 0, 0
+*/
+GO
+
 --XGetDynamicPeReport
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XGetDynamicPeReport]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[XGetDynamicPeReport]

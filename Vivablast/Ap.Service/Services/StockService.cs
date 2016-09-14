@@ -1,5 +1,6 @@
 ﻿using Ap.Business.Domains;
 using Ap.Business.Seedworks;
+using Ap.Business.ViewModels;
 using Ap.Data.Seedworks;
 using Ap.Service.Seedworks;
 using System.Collections.Generic;
@@ -36,6 +37,12 @@ namespace Ap.Service.Services
         public int ListConditionCount(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
         {
             return _customRepository.ListConditionCount(page, size, stockCode, stockName, store, type, category, enable);
+        }
+
+        public XStockViewModel GetStock(int page, int size, string stockCode, string stockName, string store, int type,
+            int category, string enable)
+        {
+            return _customRepository.GetStock(page, size, stockCode, stockName, store, type, category, enable);
         }
 
         public IList<V3_List_Stock> PeListCondition(int page, int size, string stockCode, string stockName, string store,
