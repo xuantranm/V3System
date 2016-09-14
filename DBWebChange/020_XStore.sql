@@ -15,34 +15,30 @@ CREATE PROCEDURE [dbo].[XGetListStock]
 AS
 BEGIN
 	WITH AllRecords AS ( 
-		SELECT * FROM XDynamicPeReport
-	WHERE 1 = CASE WHEN @poType=0 THEN 1 WHEN POTypeId = @poType THEN 1 END
-   AND 1= CASE WHEN @po= '' THEN 1 WHEN POId = @po THEN 1 END
-   AND 1= CASE WHEN @stockType= 0 THEN 1 WHEN StockTypeId = @stockType THEN 1 END
-   AND 1= CASE WHEN @category= 0 THEN 1 WHEN CategoryId = @category THEN 1 END
-   AND 1= CASE WHEN @stockCode= '' THEN 1 WHEN StockCode = @stockCode THEN 1 END
-   AND 1= CASE WHEN @stockName= '' THEN 1 WHEN StockName like '%'+ @stockName+'%' THEN 1 END
-   AND 1 = CASE WHEN @fd='' THEN 1 WHEN (PODate >= convert(datetime,(@fd + ' 00:00:00')) OR PODate = NULL) THEN 1 END
-	AND 1 = CASE WHEN @td='' THEN 1 WHEN (PODate <= convert(datetime,(@td + ' 23:59:59')) OR PODate = NULL) THEN 1 END
+		SELECT * FROM [dbo].[XStock] (NOLOCK)
+	WHERE iType != 8
+	AND 1 = CASE WHEN @enable='' THEN 1 WHEN iEnable = CAST(@enable AS INT) THEN 1 END
+	AND 1= CASE WHEN @type=0 THEN 1 WHEN iType = @type THEN 1 END
+	AND 1= CASE WHEN @category=0 THEN 1 WHEN bCategoryID = @category THEN 1 END
+	AND 1= CASE WHEN @stockCode='' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+	AND 1= CASE WHEN @stockName='' THEN 1 WHEN vStockName like '%' + @stockName + '%' THEN 1 END
 	) SELECT @out = Count(*) From AllRecords;
-
+	
   -- now get the records
   WITH AllRecords AS ( 
    SELECT ROW_NUMBER() OVER (ORDER BY Id DESC) 
-   AS Row, * FROM XDynamicPeReport
-   WHERE 1 = CASE WHEN @poType=0 THEN 1 WHEN POTypeId = @poType THEN 1 END
-   AND 1= CASE WHEN @po= '' THEN 1 WHEN POId = @po THEN 1 END
-   AND 1= CASE WHEN @stockType= 0 THEN 1 WHEN StockTypeId = @stockType THEN 1 END
-   AND 1= CASE WHEN @category= 0 THEN 1 WHEN CategoryId = @category THEN 1 END
-   AND 1= CASE WHEN @stockCode= '' THEN 1 WHEN StockCode = @stockCode THEN 1 END
-   AND 1= CASE WHEN @stockName= '' THEN 1 WHEN StockName like '%'+ @stockName+'%' THEN 1 END
-   AND 1 = CASE WHEN @fd='' THEN 1 WHEN (PODate >= convert(datetime,(@fd + ' 00:00:00')) OR PODate = NULL) THEN 1 END
-	AND 1 = CASE WHEN @td='' THEN 1 WHEN (PODate <= convert(datetime,(@td + ' 23:59:59')) OR PODate = NULL) THEN 1 END
+   AS Row, * FROM dbo.XStock (NOLOCK)
+   WHERE iType != 8
+	AND 1 = CASE WHEN @enable='' THEN 1 WHEN iEnable = CAST(@enable AS INT) THEN 1 END
+	AND 1= CASE WHEN @type=0 THEN 1 WHEN iType = @type THEN 1 END
+	AND 1= CASE WHEN @category=0 THEN 1 WHEN bCategoryID = @category THEN 1 END
+	AND 1= CASE WHEN @stockCode='' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+	AND 1= CASE WHEN @stockName='' THEN 1 WHEN vStockName like '%' + @stockName + '%' THEN 1 END
   ) SELECT * FROM AllRecords 
   WHERE [Row] > (@page - 1) * @size and [Row] < (@page * @size) + 1;
 END
 /*
-exec dbo.XGetListStock 1, 10, 1,'A010001','', '', 0, 0
+exec dbo.XGetListStock 1, 10, 1,'A010001','', '', 0, 0,0
 */
 GO
 
