@@ -14,27 +14,41 @@ CREATE PROCEDURE [dbo].[XGetListStock]
 ,@out INT OUTPUT
 AS
 BEGIN
-	WITH AllRecords AS ( 
-		SELECT * FROM [dbo].[XStock] (NOLOCK)
-	WHERE iType != 8
-	AND 1 = CASE WHEN @enable='' THEN 1 WHEN iEnable = CAST(@enable AS INT) THEN 1 END
-	AND 1= CASE WHEN @type=0 THEN 1 WHEN iType = @type THEN 1 END
-	AND 1= CASE WHEN @category=0 THEN 1 WHEN bCategoryID = @category THEN 1 END
-	AND 1= CASE WHEN @stockCode='' THEN 1 WHEN StockCode = @stockCode THEN 1 END
-	AND 1= CASE WHEN @stockName='' THEN 1 WHEN vStockName like '%' + @stockName + '%' THEN 1 END
-	) SELECT @out = Count(*) From AllRecords;
+	--WITH AllRecords AS ( 
+	--	SELECT * FROM [dbo].[XStock] (NOLOCK)
+	--WHERE iType != 8
+	--AND 1 = CASE WHEN @enable='' THEN 1 WHEN iEnable = CAST(@enable AS INT) THEN 1 END
+	--AND 1= CASE WHEN @type=0 THEN 1 WHEN iType = @type THEN 1 END
+	--AND 1= CASE WHEN @category=0 THEN 1 WHEN bCategoryID = @category THEN 1 END
+	--AND 1= CASE WHEN @stockCode='' THEN 1 WHEN StockCode = @stockCode THEN 1 END
+	--AND 1= CASE WHEN @stockName='' THEN 1 WHEN vStockName like '%' + @stockName + '%' THEN 1 END
+	--) SELECT @out = Count(*) From AllRecords;
 	
   -- now get the records
   WITH AllRecords AS ( 
-   SELECT ROW_NUMBER() OVER (ORDER BY Id DESC) 
-   AS Row, * FROM dbo.XStock (NOLOCK)
+   SELECT ROW_NUMBER() OVER (ORDER BY stock.Id DESC) 
+   AS Row, stock.*, storeQuantity.* FROM dbo.XStock stock (NOLOCK)
+   LEFT JOIN (SELECT StockID [QtyStockId],
+			STUFF((SELECT ';' + CAST(Store AS varchar(10))
+					FROM [dbo].[Store_Stock] t2 (NOLOCK) 
+					WHERE t2.StockID = t1.StockID
+					AND 1 = CASE WHEN @store = '' THEN 1 WHEN Store IN (SELECT * from dbo.fnStringList2Table(@store)) THEN 1 END
+					FOR XML PATH('')),1,1,'') as Stores,
+			STUFF((SELECT ';' + CAST(Quantity as varchar(10))
+				FROM [dbo].[Store_Stock] t2 (NOLOCK)
+				WHERE t2.StockID = t1.StockID
+				AND 1 = CASE WHEN @store = '' THEN 1 WHEN Store IN (SELECT * from dbo.fnStringList2Table(@store)) THEN 1 END
+				FOR XML PATH('')),1,1,'') as Quantity   
+		FROM [dbo].[Store_Stock] t1 (NOLOCK)
+		GROUP BY StockID) storeQuantity ON storeQuantity.[QtyStockId]= stock.StockId
    WHERE iType != 8
-	AND 1 = CASE WHEN @enable='' THEN 1 WHEN iEnable = CAST(@enable AS INT) THEN 1 END
-	AND 1= CASE WHEN @type=0 THEN 1 WHEN iType = @type THEN 1 END
-	AND 1= CASE WHEN @category=0 THEN 1 WHEN bCategoryID = @category THEN 1 END
-	AND 1= CASE WHEN @stockCode='' THEN 1 WHEN StockCode = @stockCode THEN 1 END
-	AND 1= CASE WHEN @stockName='' THEN 1 WHEN vStockName like '%' + @stockName + '%' THEN 1 END
-  ) SELECT * FROM AllRecords 
+	AND 1 = CASE WHEN @enable='' THEN 1 WHEN stock.iEnable = CAST(@enable AS INT) THEN 1 END
+	AND 1= CASE WHEN @type=0 THEN 1 WHEN stock.iType = @type THEN 1 END
+	AND 1= CASE WHEN @category=0 THEN 1 WHEN stock.bCategoryID = @category THEN 1 END
+	AND 1= CASE WHEN @stockCode='' THEN 1 WHEN stock.StockCode = @stockCode THEN 1 END
+	AND 1= CASE WHEN @stockName='' THEN 1 WHEN stock.vStockName like '%' + @stockName + '%' THEN 1 END
+  )
+  SELECT * FROM AllRecords 
   WHERE [Row] > (@page - 1) * @size and [Row] < (@page * @size) + 1;
 END
 /*
@@ -90,7 +104,7 @@ BEGIN
   WHERE [Row] > (@page - 1) * @size and [Row] < (@page * @size) + 1;
 END
 /*
-exec dbo.XGetDynamicReport 1, 10, 1, '','', 0, 0,0
+exec dbo.XGetDynamicPeReport 1, 10, 1, '',0, 0,'','','','', 0
 */
 GO
 

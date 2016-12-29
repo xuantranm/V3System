@@ -114,6 +114,7 @@
     <Compile Include="Dto\XUser.cs" />
     <Compile Include="Models\XDynamicProjectGroupItemReport.cs" />
     <Compile Include="Models\XDynamicProjectReport.cs" />
+    <Compile Include="Models\XStock.cs" />
     <Compile Include="Models\XStockIn.cs" />
     <Compile Include="Models\XStockInParent.cs" />
     <Compile Include="Models\XDynamicPeReport.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="Seedworks\IUserRepository.cs" />
     <Compile Include="Seedworks\IProjectRepository.cs" />
     <Compile Include="ViewModels\DynamicProjectReportViewModel.cs" />
+    <Compile Include="ViewModels\XStockViewModel.cs" />
     <Compile Include="ViewModels\XPeCodeViewModel.cs" />
     <Compile Include="ViewModels\PeViewModel.cs" />
     <Compile Include="ViewModels\DynamicPeReportViewModel.cs" />

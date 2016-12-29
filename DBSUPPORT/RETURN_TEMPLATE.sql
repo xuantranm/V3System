@@ -10,9 +10,9 @@ SET @date = '2016-03-29'
 INSERT INTO dbo.WAMS_SRV ([SRV],[Status],[dDate]) SELECT @newSIV,'RETURN',@date
 
 GO
-
+DECLARE @CurrentMaxID INT
+SET @CurrentMaxID = (SELECT MAX(ID) FROM WAMS_STOCK_MANAGEMENT_QUANTITY)
 UPDATE dbo.WAMS_STOCK_MANAGEMENT_QUANTITY SET dQuantityAfterChange = (dQuantityCurrent + dQuantityChange)
-WHERE vStatus='RETURN' AND bUserID=1 AND dQuantityAfterChange=0 AND ID>89990 
-GO
+WHERE vStatus='RETURN' AND bUserID=1 AND dQuantityAfterChange=0 AND ID > @CurrentMaxID
 SELECT DISTINCT vStatusID, vProjectID FROM dbo.WAMS_STOCK_MANAGEMENT_QUANTITY (NOLOCK)
-WHERE bUserID=1 AND vStatus='RETURN' AND ID>9999
+WHERE bUserID=1 AND vStatus='RETURN' AND ID > @CurrentMaxID
