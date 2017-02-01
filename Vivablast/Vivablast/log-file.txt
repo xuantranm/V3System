@@ -219,3 +219,73 @@ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-s
    at Ap.Service.Services.SystemService.CheckUser(String user, String password) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\SystemService.cs:line 45
    at Vivablast.Controllers.LoginController.CheckUser(String test1, String test2, Boolean test3) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\LoginController.cs:line 39
 ClientConnectionId:00000000-0000-0000-0000-000000000000
+2017-02-01 15:20:37,657 [28] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-01 15:22:30,555 [23] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-01 15:24:49,432 [22] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-01 15:30:24,751 [22] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-01 15:31:49,292 [27] ERROR Vivablast.Controllers.StockInController [(null)] - Update PO!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockInService.SRVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 163
+   at Ap.Service.Services.StockInService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 66
+   at Vivablast.Controllers.StockInController.EditData(FulfillmentViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockInController.cs:line 466
+2017-02-01 15:32:05,654 [22] ERROR Vivablast.Controllers.StockInController [(null)] - Update PO!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockInService.SRVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 163
+   at Ap.Service.Services.StockInService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 66
+   at Vivablast.Controllers.StockInController.EditData(FulfillmentViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockInController.cs:line 466
+2017-02-01 15:33:38,055 [28] ERROR Vivablast.Controllers.StockInController [(null)] - Update PO!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockInService.SRVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 163
+   at Ap.Service.Services.StockInService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 66
+   at Vivablast.Controllers.StockInController.EditData(FulfillmentViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockInController.cs:line 466
+2017-02-01 15:34:03,068 [28] ERROR Vivablast.Controllers.StockInController [(null)] - Update PO!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockInService.SRVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 163
+   at Ap.Service.Services.StockInService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 66
+   at Vivablast.Controllers.StockInController.EditData(FulfillmentViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockInController.cs:line 466
+2017-02-01 15:41:32,425 [28] ERROR Vivablast.Controllers.StockInController [(null)] - Update PO!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockInService.SRVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 163
+   at Ap.Service.Services.StockInService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 66
+   at Vivablast.Controllers.StockInController.EditData(FulfillmentViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockInController.cs:line 466
+2017-02-01 15:42:02,042 [28] ERROR Vivablast.Controllers.StockInController [(null)] - Update PO!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockInService.SRVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 163
+   at Ap.Service.Services.StockInService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockInService.cs:line 66
+   at Vivablast.Controllers.StockInController.EditData(FulfillmentViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockInController.cs:line 466
+2017-02-01 15:44:59,339 [17] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-01 16:19:26,745 [8] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockOutService.SIVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 138
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 63
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+2017-02-01 16:22:30,553 [33] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockOutService.SIVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 138
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 63
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+2017-02-01 16:22:48,481 [32] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockOutService.SIVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 138
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 63
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+2017-02-01 16:23:06,490 [32] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockOutService.SIVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 138
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 63
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+2017-02-01 16:23:29,656 [33] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockOutService.SIVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 138
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 63
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+2017-02-01 16:31:11,217 [37] ERROR Vivablast.Controllers.StockReturnController [(null)] - Update PO!
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Ap.Service.Services.StockReturnService.SRVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockReturnService.cs:line 159
+   at Ap.Service.Services.StockReturnService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockReturnService.cs:line 58
+   at Vivablast.Controllers.StockReturnController.EditData(ReturnAddViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockReturnController.cs:line 406

@@ -86,6 +86,14 @@ namespace Vivablast.ViewModels
 
         public byte[] Timestamp { get; set; }
 
+        public string Unit { get; set; }
+        public string Category { get; set; }
+        public string Label { get; set; }
+        public string Type { get; set; }
+        public string Files { get; set; }
+        public string OrginalFile { get; set; }
+        public string FilePath { get; set; }
+
         #endregion
 
         public XUser UserLogin { get; set; }

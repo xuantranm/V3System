@@ -29,21 +29,11 @@ namespace Ap.Service.Services
             return _repository.GetByKey(id);
         }
 
-        public IList<V3_List_Stock> ListCondition(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
+        public XStockViewModel StockViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
         {
-            return _customRepository.ListCondition(page, size, stockCode, stockName, store, type, category, enable);
+            return _customRepository.StockViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
         }
 
-        public int ListConditionCount(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
-        {
-            return _customRepository.ListConditionCount(page, size, stockCode, stockName, store, type, category, enable);
-        }
-
-        public XStockViewModel GetStock(int page, int size, string stockCode, string stockName, string store, int type,
-            int category, string enable)
-        {
-            return _customRepository.GetStock(page, size, stockCode, stockName, store, type, category, enable);
-        }
 
         public IList<V3_List_Stock> PeListCondition(int page, int size, string stockCode, string stockName, string store,
             int type, int category, string enable, int supplier)

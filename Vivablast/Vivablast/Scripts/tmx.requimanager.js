@@ -106,6 +106,7 @@
         },
 
         getStatus: function () {
+
             return $('#searchStatus').val();
         },
 

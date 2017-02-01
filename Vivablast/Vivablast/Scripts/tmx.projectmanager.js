@@ -154,7 +154,7 @@
         },
 
         registerEventIndexInList: function () {
-            $('#ProjectLst').dataTable({
+            $('#List').dataTable({
                 "sDom": "Rlfrtip",
                 "bLengthChange": false,
                 "bFilter": false,

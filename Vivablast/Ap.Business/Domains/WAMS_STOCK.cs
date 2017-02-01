@@ -52,7 +52,15 @@ namespace Ap.Business.Domains
         public Nullable<int> iCreated { get; set; }
         public Nullable<int> iModified { get; set; }
         public byte[] Timestamp { get; set; }
-    
+
+        public string Unit { get; set; }
+        public string Category { get; set; }
+        public string Label { get; set; }
+        public string Type { get; set; }
+        public string Files { get; set; }
+        public string OrginalFile { get; set; }
+        public string FilePath { get; set; }
+
         //public virtual ICollection<WAMS_ASSIGNNING_STOCKS> WAMS_ASSIGNNING_STOCKS { get; set; }
         //public virtual ICollection<WAMS_FULFILLMENT_DETAIL> WAMS_FULFILLMENT_DETAIL { get; set; }
         //public virtual WAMS_MEASUREMENT WAMS_MEASUREMENT { get; set; }

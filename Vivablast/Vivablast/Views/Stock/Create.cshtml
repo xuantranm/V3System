@@ -6,7 +6,7 @@
 @{
     ViewBag.Title = "Stock";
 }
-<script src="/scripts/jquery.tmpl.min.js"></script>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -15,6 +15,11 @@
                 @Html.HiddenFor(x => x.Id)
                 @Html.HiddenFor(x => x.vStockID, new { @id = "hidCheckCode" })
                 @Html.HiddenFor(x => x.vStockName, new { @id = "hidCheckName" })
+                @Html.HiddenFor(x => x.Type)
+                @Html.HiddenFor(x => x.Category)
+                @Html.HiddenFor(x => x.Unit)
+                @Html.HiddenFor(x => x.Position)
+                @Html.HiddenFor(x => x.Label)
                 @Html.HiddenFor(x => x.Timestamp)
                 @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
                 <input type="hidden" value="@Url.Action("Create", "Stock")" id="hidSaveUrl" />
@@ -129,7 +134,7 @@
                         @Html.ValidationMessageFor(model => model.PartNoMiniQty)
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group hidden">
                     <label class="col-sm-4">Sub Category</label>
                     <div class="col-sm-8">
                         @Html.TextBoxFor(model => model.SubCategory, new { @class = "form-control" })
@@ -163,69 +168,6 @@
                     @{Html.RenderAction("Document", "Ajax", new RouteValueDictionary { { "id", Model.Id }, { "type", DocumentType.StockPicture } });}
                 </div>
             </div>
-
-            @*@using (Ajax.BeginForm(null, null, new AjaxOptions { HttpMethod = "Post" }, new { @enctype = "multipart/form-data", @class = "picture-upload-form" }))
-                {
-                    <div class="form-group" id="upload-picture">
-                        <b>Pictures:</b>
-                        <div class="col-xs-12">
-                            <div class="col-xs-12 form-horizontal">
-                                <div class="row">
-                                    <span class="field-validation-error upload-picture-error-message"></span>
-                                </div>
-                                <div class="row">
-                                    THIS IS SIDESHOW PICTURES
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <input class="form-control" type="file" name="file" />
-                                    </div>
-                                    <button type="button" class="btn btn-primary btn-upload-picture">Upload</button>
-                                    <div style="clear: both"></div>
-                                    <div style="float: left; font-style: italic">
-                                        [Size picture width = 600px and height = 450px for nice display.]
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }*@
-
-            @*<!-- IMAGE AREA-->
-                <h3>PICTURES</h3>
-
-                @using (Ajax.BeginForm(null, null, new AjaxOptions { HttpMethod = "Post" }, new { @enctype = "multipart/form-data", @class = "file-upload-form" }))
-                {
-                    <div class="float-left">
-                        <input type="file" name="file" />
-                    </div>
-                    <div class="float-left">
-                        <input type="button" value="Upload picture" class="btn-default btn-upload-file" />
-                    </div>
-                    <div style="clear: both"></div>
-                    <div style="float: left; font-style: italic">
-                        [Size picture width = 600px and height = 450px for nice display.]
-                    </div>
-                    <div style="float: left">
-                        <span class="field-validation-error upload-file-error-message"></span>
-                    </div>
-
-                    <div style="clear: both; height: 10px;"></div>
-                    <div style="float: left">Pictures uploaded:</div>
-                    <div style="clear: both; height: 10px;"></div>
-                    <div id="pictures-body" style="float: left;"></div>
-
-                    <script id="pictures-tmpl" type="text/x-jQuery-tmpl">
-                        <div class="product-col" style="height:200px; margin:10px">
-                            <div class="img">
-                                <img alt="" src="@(System.Web.Configuration.WebConfigurationManager.AppSettings["PathImg"])${FileName}" />
-                            </div>
-                            <div style="margin-left: 12px;margin-top: -175px;">
-                                <button class="btn btn-warning btn-xs btn-delete-file" data-value="${LookUpId}" data-name="${FileName}">Xóa</button>
-                            </div>
-                        </div>
-                    </script>
-                }*@
         </div>
 
         <div class="clearboth height10"></div>
@@ -239,7 +181,7 @@
         </div>
     </div>
 </div>
-    <script src="/Scripts/tmx.stockact.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
+    <script src="/Scripts/custom/tmx.stockact.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
     <script src="/Scripts/sidleimg.js"></script>
     <script>
         $(function () {
@@ -249,11 +191,5 @@
                 $('.alert-info').removeClass('hide');
             }
         });
-        //uploadDocument('/Stock/UploadDocument', '/Stock/LoadDocuments');
-        //deleteDocument('/Stock/DeleteDocument', '/Stock/LoadDocuments');
-        //loadDocuments('/Stock/LoadDocuments');
         uploadFileControl.init();
-        //uploadFile('/Stock/UploadPicture', '/Stock/LoadPictures');
-        //deleteFile('/Stock/DeletePicture', '/Stock/LoadPictures');
-        //loadFiles('/Stock/LoadPictures');
     </script>

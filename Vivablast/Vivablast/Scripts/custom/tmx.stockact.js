@@ -21,14 +21,43 @@
             
             $('#iType').on('change', function (e) {
                 var typeId = 0;
-                if ($('#iType').val() !== "") {
+                if ($(this).val() > 0) {
+                    $('#Type').val($("option:selected", this).text());
+                    console.log($('#Type').val());
                     typeId = $('#iType').val();
+                } else {
+                    $('#Type').val('');
                 }
-                
+
                 tmx.vivablast.stockact.loadStock(typeId,0);
                 tmx.vivablast.stockact.loadCategory(typeId);
                 tmx.vivablast.stockact.loadUnit(typeId);
                 //tmx.vivablast.stockact.loadLabel(typeId);
+            });
+
+            $('#bCategoryID').on('change', function (e) {
+                if ($(this).val() > 0) {
+                    $('#Category').val($("option:selected", this).text());
+                } else {
+                    $('#Category').val('');
+                }
+            });
+
+            $('#bUnitID').on('change', function (e) {
+                if ($(this).val() > 0) {
+                    
+                    $('#Unit').val($("option:selected", this).text());
+                } else {
+                    $('#Unit').val('');
+                }
+            });
+
+            $('#bPositionID').on('change', function (e) {
+                if ($(this).val() > 0) {
+                    $('#Position').val($("option:selected", this).text());
+                } else {
+                    $('#Position').val('');
+                }
             });
         },
 
@@ -40,7 +69,6 @@
                 cache: false,
                 type: "POST",
                 success: function (data) {
-                    console.log(data);
                     $("#vStockID").val(data);
                 },
                 error: function () {
@@ -145,7 +173,11 @@
                             PartNoFor: $('#PartNoFor').val(),
                             PartNoMiniQty: $('#PartNoMiniQty').val(),
                             SubCategory: $('#SubCategory').val(),
-                            Timestamp: $('#Timestamp').val()
+                            Timestamp: $('#Timestamp').val(),
+                            Type: $('#Type').val(),
+                            Category: $('#Category').val(),
+                            Unit: $('#Unit').val(),
+                            Position: $('#Position').val(),
                         }
                     };
                     

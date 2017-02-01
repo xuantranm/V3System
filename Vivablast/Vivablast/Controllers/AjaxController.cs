@@ -236,18 +236,14 @@ namespace Vivablast.Controllers
 
         public ActionResult SearchStockRequisitionFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
         {
-            var totalRecord = _stockService.ListConditionCount(page, size, stockCode, stockName, store, type, category, enable);
-            var totalTemp = Convert.ToDecimal(totalRecord) / Convert.ToDecimal(size);
+            var model = _stockService.StockViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
+            var totalTemp = Convert.ToDecimal(model.TotalRecords) / Convert.ToDecimal(size);
             var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
-            var model = new StockViewModel
-            {
-                StockVs = _stockService.ListCondition(page, size, stockCode, stockName, store, type, category, enable),
-                StoreVs = _systemService.StoreList(),
-                TotalRecords = Convert.ToInt32(totalRecord),
-                TotalPages = totalPages,
-                CurrentPage = page,
-                PageSize = size
-            };
+            model.TotalPages = totalPages;
+            model.CurrentPage = page;
+            model.PageSize = size;
+            model.StoreVs = _systemService.StoreList();
+            model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
 
             return PartialView("Partials/_SearchStockRequisitionPartial", model);
         }

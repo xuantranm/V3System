@@ -135,7 +135,7 @@ namespace Ap.Service.Services
             var code = _customRepository.SIVLastest(type);
             var yearTemp = DateTime.Today.Year.ToString(CultureInfo.InvariantCulture);
             var codeTemp = type + yearTemp;
-            if (string.IsNullOrEmpty(code.NumSIV))
+            if (code == null)
             {
                 codeTemp += "000001";
             }

@@ -53,11 +53,27 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ImageProcessor, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.2.5.2\lib\net45\ImageProcessor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageProcessor.Web, Version=4.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.Web.4.8.1\lib\net45\ImageProcessor.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.4.0.5\lib\net45\ImageResizer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.2.0\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -67,7 +83,7 @@
       <HintPath>..\..\..\DB\Export\Export\Export\bin\Microsoft.Office.Interop.SmartTag.dll</HintPath>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>..\..\Excel\DLL\NPOI.dll</HintPath>
+      <HintPath>..\..\DLL\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NReco.PdfGenerator">
       <HintPath>..\packages\NReco.PdfGenerator.1.1.6.0\lib\net20\NReco.PdfGenerator.dll</HintPath>
@@ -224,6 +240,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AccountingViewModel.cs" />
     <Compile Include="ViewModels\AssignAddViewModel.cs" />
+    <Compile Include="ViewModels\StockCreateViewModel.cs" />
     <Compile Include="ViewModels\XPePdfViewModel.cs" />
     <Compile Include="ViewModels\XRequisitionPdfViewModel.cs" />
     <Compile Include="ViewModels\XInPdfViewModel.cs" />
@@ -444,7 +461,7 @@
     <Content Include="Scripts\tmx.service.js" />
     <Content Include="Scripts\tmx.service.act.js" />
     <Content Include="Scripts\tmx.useraction.js" />
-    <Content Include="Scripts\tmx.stockact.js" />
+    <Content Include="Scripts\custom\tmx.stockact.js" />
     <Content Include="Scripts\tmx.accountingmanager.js" />
     <Content Include="Scripts\tmx.stockreturnmanager.js" />
     <Content Include="Scripts\tmx.stockoutmanager.js" />

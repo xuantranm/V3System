@@ -8,14 +8,11 @@ namespace Ap.Business.Seedworks
 {
     public interface IStockRepository
     {
-        IList<V3_List_Stock> ListCondition(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable);
+        XStockViewModel StockViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable);
 
-        int ListConditionCount(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable);
+        //int ListConditionCount(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable);
 
         IList<V3_List_Stock> PeListCondition(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable, int supplier);
-
-        XStockViewModel GetStock(int page, int size, string stockCode, string stockName, string store, int type,
-            int category, string enable);
 
         int PeListConditionCount(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable, int supplier);
 

@@ -818,3 +818,6 @@ button.closesecond {
     width:30px!important; 
     height:30px!important;
 }
+.img-table-item {
+    max-height: 50px !important;
+}

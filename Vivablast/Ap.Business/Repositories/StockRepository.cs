@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ap.Business.Domains;
 using Ap.Business.Models;
 using Ap.Business.Seedworks;
 using Ap.Business.ViewModels;
@@ -21,7 +22,7 @@ namespace Ap.Business.Repositories
 
         }
 
-        public XStockViewModel GetStock(int page, int size, string stockCode, string stockName, string store, int type,
+        public XStockViewModel StockViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type,
             int category, string enable)
         {
             var model = new XStockViewModel();
@@ -32,14 +33,13 @@ namespace Ap.Business.Repositories
             paramss.Add("stockName", stockName);
             paramss.Add("store", store);
             paramss.Add("type", type);
-            paramss.Add("stockName", stockName);
             paramss.Add("category", category);
             paramss.Add("enable", enable);
             paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (var sql = GetSqlConnection())
             {
-                var data = sql.Query<XStock>("XGetListStock", paramss, commandType: CommandType.StoredProcedure);
+                var data = sql.Query<XStockModel>("XGetListStock", paramss, commandType: CommandType.StoredProcedure);
                 sql.Close();
                 model.StockVs = data.ToList();
                 var total = paramss.Get<int>("out");

@@ -1,17 +1,13 @@
 ﻿namespace Vivablast.Controllers
 {
     using System;
-    using System.Globalization;
     using System.IO;
-    using System.Linq;
     using System.Web.Mvc;
-    using Ap.Business.Domains;
     using Ap.Service.Seedworks;
     using log4net;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
     using ViewModels;
-    using Constants = Ap.Common.Constants.Constants;
 
     [Authorize]
     public class ReActiveStockController : Controller
@@ -45,20 +41,14 @@
 
         public ActionResult LoadStock(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
         {
-            var userName = System.Web.HttpContext.Current.User.Identity.Name;
-            var totalRecord = _service.ListConditionCount(page, size, stockCode, stockName, store, type, category, enable);
-            var totalTemp = Convert.ToDecimal(totalRecord) / Convert.ToDecimal(size);
+            var model = _service.StockViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
+            var totalTemp = Convert.ToDecimal(model.TotalRecords) / Convert.ToDecimal(size);
             var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
-            var model = new StockViewModel
-            {
-                UserLogin = _systemService.GetUserAndRole(0, userName),
-                StockVs = _service.ListCondition(page, size, stockCode, stockName, store, type, category, enable),
-                StoreVs = _systemService.StoreList(),
-                TotalRecords = Convert.ToInt32(totalRecord),
-                TotalPages = totalPages,
-                CurrentPage = page,
-                PageSize = size
-            };
+            model.TotalPages = totalPages;
+            model.CurrentPage = page;
+            model.PageSize = size;
+            model.StoreVs = _systemService.StoreList();
+            model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
 
             return PartialView("_StockPartial", model);
         }
@@ -66,7 +56,7 @@
         public void ExportToExcel(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
         {
             // Get the data to report on
-            var masters = _service.ListCondition(page, size, stockCode, stockName, store, type, category, enable);
+            var masters = _service.StockViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
             var workbook = new HSSFWorkbook();
 
             #region Cell Styles
@@ -182,7 +172,7 @@
             rowIndex++;
 
             // Add data rows
-            foreach (var master in masters)
+            foreach (var master in masters.StockVs)
             {
                 row = sheet.CreateRow(rowIndex);
                 //row.CreateCell(0).SetCellValue(master.MRF);
@@ -195,13 +185,13 @@
                 //row.CreateCell(5).SetCellValue(master.Remark);
                 //row.CreateCell(6).SetCellValue(master.Project_Code);
                 //row.CreateCell(7).SetCellValue(master.Project_Name);
-                row.CreateCell(8).SetCellValue(master.Created_Date != null
-                                                   ? master.Created_Date.Value.ToString("dd/MM/yyyy")
-                                                   : master.Created_Date.ToString());
+                row.CreateCell(8).SetCellValue(master.dCreated != null
+                                                   ? master.dCreated.Value.ToString("dd/MM/yyyy")
+                                                   : master.dCreated.ToString());
                 row.CreateCell(9).SetCellValue(master.Created_By);
-                row.CreateCell(10).SetCellValue(master.Modified_Date != null
-                                                   ? master.Modified_Date.Value.ToString("dd/MM/yyyy")
-                                                   : master.Modified_Date.ToString());
+                row.CreateCell(10).SetCellValue(master.dModified != null
+                                                   ? master.dModified.Value.ToString("dd/MM/yyyy")
+                                                   : master.dModified.ToString());
                 row.CreateCell(11).SetCellValue(master.Modified_By);
                 rowIndex++;
             }

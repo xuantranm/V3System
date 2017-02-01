@@ -1,6 +1,5 @@
 ﻿@using Ap.Common.Constants
-@using Vivablast.ViewModels
-@model StockViewModel
+@model Ap.Business.ViewModels.XStockViewModel
 
 @if (Model.TotalRecords == 0)
 {
@@ -40,8 +39,8 @@ else
                     <td class="center">
                         <button type="button" class="btn btn-info btnSearchProductSelectProduct">Select</button>
                     </td>
-                    <td class="center ProductCodeSearchForm">@item.Stock_Code</td>
-                    <td class="center ProductNameSearchForm">@item.Stock_Name</td>
+                    <td class="center ProductCodeSearchForm">@item.vStockID</td>
+                    <td class="center ProductNameSearchForm">@item.vStockName</td>
                     @{
                     if (!string.IsNullOrEmpty(item.Quantity))
                     {
@@ -79,7 +78,7 @@ else
                     <td class="center hidden-xs ProductTypeSearchForm">@item.Type</td>
                     <td class="center hidden-xs">@item.Category</td>
                     <td class="center hidden-xs ProductRalNoSearchForm">@item.RalNo</td>
-                    <td class="center hidden-xs ProductColorSearchForm">@item.Color</td>
+                    <td class="center hidden-xs ProductColorSearchForm">@item.ColorName</td>
                     <td class="center hidden-xs ProductPartNoSearchForm">@item.PartNo</td>
                 </tr>
                 }

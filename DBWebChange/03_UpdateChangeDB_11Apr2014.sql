@@ -90,19 +90,21 @@ INSERT INTO dbo.WAMS_STOCK_TYPE (TypeName, TypeCode, iEnable) VALUES ('Sparepart
 INSERT INTO dbo.WAMS_STOCK_TYPE (TypeName, TypeCode, iEnable) VALUES ('Tool','TO', 1);
 INSERT INTO dbo.WAMS_STOCK_TYPE (TypeName, TypeCode, iEnable) VALUES ('Service','SE', 1);
 GO
-UPDATE dbo.WAMS_STOCK SET iType=1 WHERE vStockType='Consumable';
-UPDATE dbo.WAMS_STOCK SET iType=2 WHERE vStockType='Equipment';
-UPDATE dbo.WAMS_STOCK SET iType=3 WHERE vStockType='Material';
-UPDATE dbo.WAMS_STOCK SET iType=4 WHERE vStockType='Paint';
-UPDATE dbo.WAMS_STOCK SET iType=5 WHERE vStockType='Scaffolding';
-UPDATE dbo.WAMS_STOCK SET iType=6 WHERE vStockType='Sparepart';
-UPDATE dbo.WAMS_STOCK SET iType=7 WHERE vStockType='Tool';
---UPDATE dbo.WAMS_STOCK SET iType=8 WHERE vStockType='Service';
-GO
 -- SERVICE MANAGEMENT INTO STOCK
 INSERT INTO dbo.WAMS_STOCK (vStockID, vStockName, vRemark, bCategoryID, bUnitID, bPositionID, iEnable,iType)
 SELECT vIDServiceItem, vServiceItemName, vDescription, bCategoryID, bUnitID, bPositionID, iEnable,8 FROM dbo.WAMS_ITEMS_SERVICE
 GO
+
+UPDATE dbo.WAMS_STOCK SET iType=1, [Type]='Consumable' WHERE vStockType='Consumable';
+UPDATE dbo.WAMS_STOCK SET iType=2, [Type]='Equipment' WHERE vStockType='Equipment';
+UPDATE dbo.WAMS_STOCK SET iType=3, [Type]='Material' WHERE vStockType='Material';
+UPDATE dbo.WAMS_STOCK SET iType=4, [Type]='Paint' WHERE vStockType='Paint';
+UPDATE dbo.WAMS_STOCK SET iType=5, [Type]='Scaffolding' WHERE vStockType='Scaffolding';
+UPDATE dbo.WAMS_STOCK SET iType=6, [Type]='Sparepart' WHERE vStockType='Sparepart';
+UPDATE dbo.WAMS_STOCK SET iType=7, [Type]='Tool' WHERE vStockType='Tool';
+UPDATE dbo.WAMS_STOCK SET iType=8, [Type]='Service' WHERE vStockType='Service';
+GO
+
 UPDATE dbo.WAMS_STOCK SET iEnable=2 WHERE iEnable=0
 GO
 UPDATE dbo.WAMS_STOCK SET iEnable= 3 WHERE iEnable=1

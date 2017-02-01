@@ -160,7 +160,7 @@ namespace Ap.Service.Services
             var code = _customRepository.SRVLastest(type);
             var yearTemp = DateTime.Today.Year.ToString(CultureInfo.InvariantCulture);
             var codeTemp = type + yearTemp;
-            if (string.IsNullOrEmpty(code.NumSRV))
+            if (code == null)
             {
                 codeTemp += "000001";
             }

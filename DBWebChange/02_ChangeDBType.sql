@@ -270,15 +270,23 @@ SET ANSI_PADDING OFF
 GO
 -- WAMS_STOCK
 ALTER TABLE dbo.WAMS_STOCK 
-ADD [iType] int,
+ADD 
+	[Unit] [nvarchar](16) NULL,
+	[Category] [nvarchar](64) NULL,
+	[Position] [nvarchar](64) NULL,
+	[Label] [nvarchar](64) NULL,
+	[iType] int,
+	[Type] [nvarchar](64) NULL,
 	[PartNo] [nvarchar](50) NULL,
 	[PartNoFor] [nvarchar](64) NULL,
 	[PartNoMiniQty] [int] NULL,
 	[RalNo] [nvarchar](50) NULL,
 	[ColorName] [nvarchar](64) NULL,
-	[Position] [nvarchar](50) NULL,
 	[SubCategory] [int] NULL,
 	[UserForPaint] int NULL,
+	[Files] [nvarchar](512) NULL, 
+	[OrginalFile] [nvarchar](512) NULL, 
+	[FilePath] [nvarchar](512) NULL, 
 	[dCreated] [datetime] NULL,
 	[dModified] [datetime] NULL,
 	[iCreated] [int] NULL,

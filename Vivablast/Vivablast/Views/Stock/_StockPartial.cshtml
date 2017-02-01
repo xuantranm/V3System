@@ -1,7 +1,8 @@
 ﻿@using System.Globalization
 @using Ap.Common.Constants
-@using Vivablast.ViewModels
-@model StockViewModel
+@using Ap.Business.ViewModels
+@model XStockViewModel
+
 @if (Model.TotalRecords == 0)
 {
     <div>
@@ -21,6 +22,7 @@ else
                     <th class="center hidden-xs">No</th>
                     <th class="center">Stock Code</th>
                     <th class="center">Stock Name</th>
+                    <th class="center">Picture</th>
                     <th class="center hidden-xs">Acc. Code</th>
                     <th class="center">Stock Type</th>
                     <th class="center hidden-xs">Unit</th>
@@ -42,40 +44,41 @@ else
             <tbody>
                 @foreach (var item in Model.StockVs)
                 {
-                <tr class="vbcolum">
-                    <td class="center">
-                        <!-- In future update security use R -->
-                        <a href="@Url.Action("Manage", "Stock", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
-                            <span class="glyphicon glyphicon-edit"></span>
-                            Qty
-                        </a>
-                        @if (Model.UserLogin.StockR > 2)
-                            {
-                            <a href="@Url.Action("Create", "Stock", new {id = @item.Id}, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration: none;">
+                    <tr class="vbcolum">
+                        <td class="center">
+                            <!-- In future update security use R -->
+                            <a href="@Url.Action("Manage", "Stock", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
                                 <span class="glyphicon glyphicon-edit"></span>
-                                Edit
+                                Qty
                             </a>
-                            }
-                        @if (Model.UserLogin.StockR > 3)
+                            @if (Model.UserLogin.StockR > 2)
                             {
-                            <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration: none;">
-                                <span class="glyphicon glyphicon-remove"></span>
-                                Delete
-                            </a>
+                                <a href="@Url.Action("Create", "Stock", new {id = @item.Id}, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration: none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Edit
+                                </a>
                             }
-                        <input type="hidden" class="ItemKey" value="@item.Id" />
-                    </td>
-                    <td class="center hidden-xs">@item.No</td>
-                    <td class="center StockCode">@item.Stock_Code</td>
-                    <td>@item.Stock_Name</td>
-                    <td class="center hidden-xs">@item.Account_Code</td>
-                    <td class="center">@item.Type</td>
-                    <td class="center hidden-xs">@item.Unit</td>
-                    <td class="center hidden-xs">@item.Category</td>
-                    <td class="center hidden-xs">@item.RalNo</td>
-                    <td class="center hidden-xs">@item.Color</td>
-                    <td class="center hidden-xs">@item.Weight</td>
-                    @{
+                            @if (Model.UserLogin.StockR > 3)
+                            {
+                                <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration: none;">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    Delete
+                                </a>
+                            }
+                            <input type="hidden" class="ItemKey" value="@item.Id" />
+                        </td>
+                        <td class="center hidden-xs">@item.Id</td>
+                        <td class="center StockCode">@item.vStockID</td>
+                        <td>@item.vStockName</td>
+                        <td><img class="img-responsive img-table-item" src="@item.FilePath@item.Files" /></td>
+                        <td class="center hidden-xs">@item.vAccountCode</td>
+                        <td class="center">@item.Type</td>
+                        <td class="center hidden-xs">@item.Unit</td>
+                        <td class="center hidden-xs">@item.Category</td>
+                        <td class="center hidden-xs">@item.RalNo</td>
+                        <td class="center hidden-xs">@item.ColorName</td>
+                        <td class="center hidden-xs">@item.bWeight</td>
+                        @{
                     if (!string.IsNullOrEmpty(item.Quantity))
                     {
                         var qtArr = item.Quantity.Trim().Split(';');
@@ -111,14 +114,14 @@ else
                             <td class="center @storeClass">0</td>
                         }
                     }
-}
-                    <td class="center hidden-xs">@Constants.ConvertDate(item.Created_Date.ToString())</td>
-                    <td class="center hidden-xs">@item.Created_By</td>
-                    <td class="center hidden-xs">@Constants.ConvertDate(item.Modified_Date.ToString())</td>
-                    <td class="center hidden-xs">
-                        @item.Modified_By
-                    </td>
-                </tr>
+                        }
+                        <td class="center hidden-xs">@item.dCreated</td>
+                        <td class="center hidden-xs">@item.Created_By</td>
+                        <td class="center hidden-xs">@item.dModified</td>
+                        <td class="center hidden-xs">
+                            @item.Modified_By
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

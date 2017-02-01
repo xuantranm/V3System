@@ -68,3 +68,17 @@ D:\PRACTISE\V3\Vivablast\Ap.Business\bin\Debug\Ap.Common.pdb
 D:\PRACTISE\V3\Vivablast\Ap.Business\obj\Debug\Ap.Business.csprojResolveAssemblyReference.cache
 D:\PRACTISE\V3\Vivablast\Ap.Business\obj\Debug\Ap.Business.dll
 D:\PRACTISE\V3\Vivablast\Ap.Business\obj\Debug\Ap.Business.pdb
+C:\Projects\V3\Vivablast\Ap.Business\obj\Debug\Ap.Business.csprojResolveAssemblyReference.cache
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\Ap.Business.dll.config
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\Ap.Business.dll
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\Ap.Business.pdb
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\Ap.Data.dll
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\EntityFramework.dll
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\Ap.Common.dll
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\Ap.Data.pdb
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\EntityFramework.xml
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\V3\Vivablast\Ap.Business\bin\Debug\Ap.Common.pdb
+C:\Projects\V3\Vivablast\Ap.Business\obj\Debug\Ap.Business.dll
+C:\Projects\V3\Vivablast\Ap.Business\obj\Debug\Ap.Business.pdb

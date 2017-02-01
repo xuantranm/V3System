@@ -1,4 +1,7 @@
-﻿using NPOI.HSSF.UserModel;
+﻿using ImageProcessor;
+using ImageProcessor.Imaging;
+using ImageProcessor.Imaging.Formats;
+using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 
 namespace Vivablast.Controllers
@@ -51,21 +54,14 @@ namespace Vivablast.Controllers
 
         public ActionResult LoadStock(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
         {
-            var userName = System.Web.HttpContext.Current.User.Identity.Name;
-            var totalRecord = _service.ListConditionCount(page, size, stockCode, stockName, store, type, category, enable);
-            var totalTemp = Convert.ToDecimal(totalRecord) / Convert.ToDecimal(size);
-            int totalPages = size == 1000 ? 1 : Convert.ToInt32(Math.Ceiling(totalTemp));
-            
-            var model = new StockViewModel
-            {
-                UserLogin = _systemService.GetUserAndRole(0, userName),
-                StockVs = _service.ListCondition(page, size, stockCode, stockName, store, type, category, enable),
-                StoreVs = _systemService.StoreList(),
-                TotalRecords = Convert.ToInt32(totalRecord),
-                TotalPages = totalPages,
-                CurrentPage = page,
-                PageSize = size
-            };
+            var model = _service.StockViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
+            var totalTemp = Convert.ToDecimal(model.TotalRecords) / Convert.ToDecimal(size);
+            var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
+            model.TotalPages = totalPages;
+            model.CurrentPage = page;
+            model.PageSize = size;
+            model.StoreVs = _systemService.StoreList();
+            model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
 
             return PartialView("_StockPartial", model);
         }
@@ -73,7 +69,7 @@ namespace Vivablast.Controllers
         public void ExportToExcel(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
         {
             // Get the data to report on
-            var masters = _service.ListCondition(page, size, stockCode, stockName, store, type, category, enable);
+            var masters = _service.StockViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
             // Create a new workbook
             var workbook = new HSSFWorkbook();
 
@@ -202,27 +198,27 @@ namespace Vivablast.Controllers
             rowIndex++;
 
             // Add data rows
-            foreach (var master in masters)
+            foreach (var master in masters.StockVs)
             {
                 row = sheet.CreateRow(rowIndex);
                 row.CreateCell(0).SetCellValue(master.Id);
-                row.CreateCell(1).SetCellValue(master.Stock_Code);
-                row.CreateCell(2).SetCellValue(master.Stock_Name);
-                row.CreateCell(3).SetCellValue(master.Account_Code);
+                row.CreateCell(1).SetCellValue(master.vStockID);
+                row.CreateCell(2).SetCellValue(master.vStockName);
+                row.CreateCell(3).SetCellValue(master.vAccountCode);
                 row.CreateCell(4).SetCellValue(master.Type);
                 row.CreateCell(5).SetCellValue(master.Unit);
                 row.CreateCell(6).SetCellValue(master.Category);
-                row.CreateCell(7).SetCellValue(master.Weight.ToString());
+                row.CreateCell(7).SetCellValue(master.bWeight.ToString());
                 row.CreateCell(8).SetCellValue(master.RalNo);
                 row.CreateCell(9).SetCellValue(master.PartNo);
-                row.CreateCell(10).SetCellValue(master.Color);
-                row.CreateCell(11).SetCellValue(master.Created_Date != null
-                                                   ? master.Created_Date.Value.ToString("dd/MM/yyyy")
-                                                   : master.Created_Date.ToString());
+                row.CreateCell(10).SetCellValue(master.ColorName);
+                row.CreateCell(11).SetCellValue(master.dCreated != null
+                                                   ? master.dCreated.Value.ToString("dd/MM/yyyy")
+                                                   : master.dCreated.ToString());
                 row.CreateCell(12).SetCellValue(master.Created_By);
-                row.CreateCell(13).SetCellValue(master.Modified_Date != null
-                                                   ? master.Modified_Date.Value.ToString("dd/MM/yyyy")
-                                                   : master.Modified_Date.ToString());
+                row.CreateCell(13).SetCellValue(master.dModified != null
+                                                   ? master.dModified.Value.ToString("dd/MM/yyyy")
+                                                   : master.dModified.ToString());
                 row.CreateCell(14).SetCellValue(master.Modified_By);
                 rowIndex++;
             }
@@ -381,7 +377,7 @@ namespace Vivablast.Controllers
                 model.Stock.iCreated = model.LoginId;
                 model.Stock.dCreated = DateTime.Now;
                 _service.Insert(model.Stock);
-
+                //UploadPictureBase64(model, model.Stock.Id);
                 return Json(new { result = Constants.Success, id= model.Stock.Id });
             }
             catch (Exception e)
@@ -647,5 +643,237 @@ namespace Vivablast.Controllers
             };
             return View(model);
         }
+
+        #region File Extend
+        static byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+        static byte[] Overlay(byte[] photo, System.Drawing.Image overlay, int offset, int quality = 100, int opacity = 100)
+        {
+            var position = new Point();
+            using (var ms = new MemoryStream(photo))
+            {
+                var image = System.Drawing.Image.FromStream(ms);
+                position.X = image.Width - overlay.Width - offset;
+                position.Y = image.Height - overlay.Height - offset;
+            }
+
+            var imagelayer = new ImageLayer
+            {
+                Image = overlay,
+                Position = position,
+                Opacity = opacity
+            };
+
+            using (var inStream = new MemoryStream(photo))
+            {
+                using (var outStream = new MemoryStream())
+                {
+                    using (var imageFactory = new ImageFactory(preserveExifData: true))
+                    {
+                        imageFactory.Load(inStream)
+                            .Overlay(imagelayer)
+                            .Format(new JpegFormat())
+                            .Quality(quality)
+                            .BackgroundColor(Color.White)
+                            .Save(outStream);
+
+                        return outStream.ToArray();
+                    }
+                }
+            }
+        }
+
+        //public void UploadPictureBase64(ProjectBankCreateViewModel model, int id)
+        //{
+        //    if (model.File64S == null)
+        //    {
+        //        return;
+        //    }
+        //    var type = Common.Business.Bank;
+
+        //    var uploadFolderNoneMapPath = Utilities.DirectoryPhysical(string.Empty) + DateTime.Now.Day + DateTime.Now.Month + "/";
+        //    //Set mappath
+        //    var uploadFolder = Server.MapPath(uploadFolderNoneMapPath);
+        //    if (!Directory.Exists(uploadFolder))
+        //        Directory.CreateDirectory(uploadFolder);
+
+        //    int i = 0;
+        //    int pi = 0;
+        //    foreach (var file64 in model.File64S)
+        //    {
+        //        var idPicture = model.FileIds[i];
+        //        var title = string.IsNullOrEmpty(model.Titles[i]) ? String.Empty : model.Titles[i];
+        //        var main = Convert.ToInt32(model.Mains[i]);
+
+        //        var position = (pi + 1);
+        //        if (model.FilePositions.Contains(position))
+        //        {
+        //            pi = model.FilePositions.Max() + 1;
+        //            position = pi;
+        //        }
+
+        //        if (!string.IsNullOrEmpty(file64))
+        //        {
+        //            #region New File
+        //            var orginalName = file64.Split(',')[0];
+        //            var file = file64.Split(',')[2];
+        //            var photoByte = Convert.FromBase64String(file);
+        //            const string format = "jpg";
+        //            //model.Main = model.Main;
+        //            var picture = new FileViewModel
+        //            {
+        //                File =
+        //                    new File
+        //                    {
+        //                        ObjectId = id,
+        //                        Type = type,
+        //                        OrginalName = orginalName,
+        //                        Title = title,
+        //                        FileType = format,
+        //                        Main = main,
+        //                        Position = position,
+        //                        Path = uploadFolderNoneMapPath
+        //                    }
+        //            };
+        //            var cache = new MemoryCache("watermark");
+        //            var watermark = (byte[])cache.Get("watermark");
+        //            if (watermark == null)
+        //            {
+        //                var policy = new CacheItemPolicy
+        //                {
+        //                    UpdateCallback = null,
+        //                    SlidingExpiration = new TimeSpan(364, 23, 59, 59, 0)
+        //                };
+        //                watermark = ImageToByteArray(Image.FromFile(Server.MapPath("~/images/watermark.png")));
+        //                cache.Add("watermark", watermark, policy);
+        //            }
+
+        //            Image newImage;
+
+        //            using (var ms = new MemoryStream(watermark))
+        //            {
+        //                newImage = Image.FromStream(ms);
+        //            }
+        //            var photoBytes = Overlay(photoByte, newImage, 20);
+        //            var settings = new ResizeSettings { Scale = ScaleMode.DownscaleOnly, Format = format };
+
+        //            // filename with placeholder for size
+        //            if (picture.GetConvertedFileName() == null ||
+        //                string.IsNullOrWhiteSpace(picture.GetConvertedFileName()))
+        //            {
+        //                //picture.SetFileName(DateTime.Now.Day + DateTime.Now.Month + "_" + picture.CreateFilename() + "_{0}." + format);
+        //                //picture.File.FileName = DateTime.Now.Day + DateTime.Now.Month + "_" + picture.CreateFilename() + "_{0}." + format;
+
+        //                // Use for change name to display image 2, 3, 4,...
+        //                picture.SetFileName(position + "_" + type + id + "_{0}." + format);
+        //                picture.File.FileName = position + "_" + type + id + "_853." + format;
+        //            }
+
+        //            // First, we save the original image without any watermarking
+        //            if (!System.IO.File.Exists(picture.GetFilePathPhysical(FileViewModel.PictureSize.Original)))
+        //            {
+        //                settings.MaxWidth = 1024;
+        //                settings.MaxHeight = 768;
+        //                ImageBuilder.Current.Build(photoBytes,
+        //                    uploadFolder + picture.SetFileName(FileViewModel.PictureSize.Original),
+        //                    settings,
+        //                    false, false);
+
+        //                // save biggest version as original
+        //                //if (string.IsNullOrWhiteSpace(picture.OriginalFilepath))
+        //                //    picture.FileName = picture.GetFilePath(FileViewModel.PictureSize.Original);
+
+        //                // reset if a seekable stream. Will fail on the next resizing if not seekable
+        //            }
+
+        //            if (!System.IO.File.Exists(picture.GetFilePathPhysical(FileViewModel.PictureSize.Large)))
+        //            {
+        //                var dest = uploadFolder + picture.SetFileName(FileViewModel.PictureSize.Large);
+        //                //var dest = uploadFolder + fileName + "_" + FileViewModel.PictureSize.Large;
+        //                settings.MaxWidth = 1024;
+        //                settings.MaxHeight = 768;
+        //                if (picture.WaterMarkLarge == FileViewModel.WatermarkType.None)
+        //                    ImageBuilder.Current.Build(photoBytes, dest, settings, false, false);
+        //                // save biggest version as original
+        //                //if (string.IsNullOrWhiteSpace(picture.File.Path))
+        //                //    picture.File.Path = picture.GetFilePath(FileViewModel.PictureSize.Large);
+        //            }
+
+        //            if (!System.IO.File.Exists(picture.GetFilePathPhysical(FileViewModel.PictureSize.Medium)))
+        //            {
+        //                var dest = uploadFolder + picture.SetFileName(FileViewModel.PictureSize.Medium);
+        //                //var dest = uploadFolder + fileName + FileViewModel.PictureSize.Medium;
+        //                settings.MaxWidth = 631;
+        //                settings.MaxHeight = 394;
+        //                if (picture.WaterMarkLarge == FileViewModel.WatermarkType.None)
+        //                    ImageBuilder.Current.Build(photoBytes, dest, settings, false, false);
+        //                // save biggest version as original
+        //                //if (string.IsNullOrWhiteSpace(picture.File.Path))
+        //                //    picture.File.Path = picture.GetFilePath(FileViewModel.PictureSize.Medium);
+        //            }
+
+        //            if (!System.IO.File.Exists(picture.GetFilePathPhysical(FileViewModel.PictureSize.Small)))
+        //            {
+        //                var dest = uploadFolder + picture.SetFileName(FileViewModel.PictureSize.Small);
+        //                //var dest = uploadFolder + fileName + FileViewModel.PictureSize.Small;
+        //                settings.MaxWidth = 214;
+        //                settings.MaxHeight = 133;
+        //                if (picture.WaterMarkLarge == FileViewModel.WatermarkType.None)
+        //                    ImageBuilder.Current.Build(photoBytes, dest, settings, false, false);
+        //                // save biggest version as original
+        //                //if (string.IsNullOrWhiteSpace(picture.File.Path))
+        //                //    picture.File.Path = picture.GetFilePath(FileViewModel.PictureSize.Small);
+        //            }
+
+        //            if (!System.IO.File.Exists(picture.GetFilePathPhysical(FileViewModel.PictureSize.Tiny)))
+        //            {
+        //                var dest = uploadFolder + picture.SetFileName(FileViewModel.PictureSize.Tiny);
+        //                //var dest = uploadFolder + fileName + FileViewModel.PictureSize.Tiny;
+        //                settings.MaxWidth = 110;
+        //                settings.MaxHeight = 110;
+        //                if (picture.WaterMarkLarge == FileViewModel.WatermarkType.None)
+        //                    ImageBuilder.Current.Build(photoBytes, dest, settings, false, false);
+        //                // save biggest version as original
+        //                //if (string.IsNullOrWhiteSpace(picture.File.Path))
+        //                //    picture.File.Path = picture.GetFilePath(FileViewModel.PictureSize.Tiny);
+        //            }
+        //            // INSERT INTO DB
+        //            _projectService.InsertUpdateFile(picture.File);
+        //            #endregion
+        //        }
+        //        else
+        //        {
+        //            _projectService.UpdateFile(idPicture, title, main, model.FilePositions[i]);
+        //        }
+        //        i++;
+        //        pi++;
+        //        //return Json(true);
+        //    }
+        //}
+
+        //public void DeletePhysical(string picture)
+        //{
+        //    if (picture == null)
+        //        return;
+        //    var sizes = new List<string>
+        //    {
+        //        ((int)FileViewModel.PictureSize.Original).ToString(),
+        //        ((int)FileViewModel.PictureSize.Large).ToString(),
+        //        ((int)FileViewModel.PictureSize.Medium).ToString(),
+        //        ((int)FileViewModel.PictureSize.Small).ToString(),
+        //        ((int)FileViewModel.PictureSize.Tiny).ToString(),
+        //    };
+        //    foreach (var dir in sizes.Select(size => Server.MapPath(String.Format(picture, size))))
+        //    {
+        //        System.IO.File.Delete(dir);
+        //    }
+        //}
+        #endregion
     }
 }

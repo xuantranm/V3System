@@ -115,7 +115,7 @@
         },
 
         registerEventIndexInList: function () {
-            $('#UserLst').dataTable({
+            $('#List').dataTable({
                 "sDom": "Rlfrtip",
                 "bLengthChange": false,
                 "bFilter": false,

@@ -1,247 +1,3 @@
-/****** Object:  Table [dbo].[XStock]    Script Date: 08/02/2016 09:50:28 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XStock]') AND type in (N'U'))
-DROP TABLE [dbo].[XStock]
-GO
-
-/****** Object:  Table [dbo].[XStock]    Script Date: 08/02/2016 09:50:28 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[XStock](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[StockId] INT NOT NULL,
-	[StockCode] [nvarchar](16) NOT NULL,
-	[vStockName] [nvarchar](2000) NOT NULL,
-	[vRemark] [nvarchar](1024) NULL,
-	[bUnitID] [int] NULL,
-	[Unit] [nvarchar] (16) NULL,
-	[bMeasurementID] [bigint] NULL,
-	[vBrand] [nvarchar](128) NULL,
-	[iEnable] [bit] NULL,
-	[bCategoryID] [int] NULL,
-	[Category] [nvarchar] (64) NULL,
-	[bPositionID] [int] NULL,
-	[Position] [nvarchar] (64) NULL,
-	[bLabelID] [int] NULL,
-	[Label] [nvarchar] (64) NULL,
-	[bWeight] [float] NULL,
-	[vAccountCode] [nvarchar](20) NULL,
-	[iType] [int] NULL,
-	[Type] [nvarchar] (64) NULL,
-	[PartNo] [nvarchar](50) NULL,
-	[PartNoFor] [nvarchar](64) NULL,
-	[PartNoMiniQty] [int] NULL,
-	[RalNo] [nvarchar](50) NULL,
-	[ColorName] [nvarchar](64) NULL,
-	[SubCategory] [int] NULL,
-	[UserForPaint] [int] NULL,
-	[dCreated] [datetime] NULL,
-	[dModified] [datetime] NULL,
-	[iCreated] [int] NULL,
-	[Created] [nvarchar] (500) NULL,
-	[iModified] [int] NULL,
-	[Modified] [nvarchar] (500) NULL,
-	[Timestamp] [timestamp] NOT NULL
- CONSTRAINT [PK_XStock] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-INSERT INTO [dbo].[XStock]
-           ([StockId]
-           ,[StockCode]
-           ,[vStockName]
-           ,[vRemark]
-           ,[bUnitID]
-           ,[Unit]
-           ,[bMeasurementID]
-           ,[vBrand]
-           ,[iEnable]
-           ,[bCategoryID]
-           ,[Category]
-           ,[bPositionID]
-           ,[Position]
-           ,[bLabelID]
-           ,[Label]
-           ,[bWeight]
-           ,[vAccountCode]
-           ,[iType]
-           ,[Type]
-           ,[PartNo]
-           ,[PartNoFor]
-           ,[PartNoMiniQty]
-           ,[RalNo]
-           ,[ColorName]
-           ,[SubCategory]
-           ,[UserForPaint]
-           ,[dCreated]
-           ,[dModified]
-           ,[iCreated]
-           ,[Created]
-           ,[iModified]
-           ,[Modified])
-      SELECT stock.Id 
-		,stock.vStockID
-		,stock.vStockName
-		,stock.vRemark
-      ,stock.[bUnitID]
-      ,unit.vUnitName [Unit]
-      ,stock.[bMeasurementID]
-      ,stock.[vBrand]
-      ,stock.[iEnable]
-      ,stock.[bCategoryID]
-      ,cate.vCategoryName [Category]
-      ,stock.[bPositionID]
-      ,stock.[Position]
-      ,stock.[bLabelID]
-      ,label.vLabelName [Label]
-      ,stock.[bWeight]
-      ,stock.[vAccountCode]
-      ,stock.[iType]
-      ,stype.TypeName [Type]
-      ,stock.[PartNo]
-      ,stock.[PartNoFor]
-      ,stock.[PartNoMiniQty]
-      ,stock.[RalNo]
-      ,stock.[ColorName]
-      ,stock.[SubCategory]
-      ,stock.[UserForPaint]
-      ,stock.[dCreated]
-      ,stock.[dModified]
-      ,stock.[iCreated]
-      ,usc.NameUser
-      ,stock.[iModified]
-      ,usm.NameUser
-		FROM [dbo].[WAMS_STOCK] stock (NOLOCK)
-		LEFT JOIN [dbo].[WAMS_STOCK_TYPE] stype (NOLOCK) ON stock.iType = stype.Id
-		LEFT JOIN [dbo].[WAMS_UNIT] unit (NOLOCK) ON stock.bUnitID = unit.bUnitID
-		LEFT JOIN [dbo].[WAMS_CATEGORY] cate (NOLOCK) ON stock.bCategoryID = cate.bCategoryID
-		LEFT JOIN dbo.WAMS_LABELS label (NOLOCK) ON label.bLabelID = stock.bLabelID     
-	   CROSS APPLY [dbo].[udf_GetUserName](stock.iCreated) AS usc
-	   CROSS APPLY [dbo].[udf_GetUserName](stock.iModified) AS usm
-
-GO
-GO
-
-/****** Object:  Table [dbo].[XDynamicProjectGroupItemReport]    Script Date: 08/02/2016 11:59:31 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicProjectGroupItemReport]') AND type in (N'U'))
-DROP TABLE [dbo].[XDynamicProjectGroupItemReport]
-GO
-
-/****** Object:  Table [dbo].[XDynamicProjectGroupItemReport]    Script Date: 08/02/2016 11:59:31 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[XDynamicProjectGroupItemReport](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[StockId] [int] NULL,
-	[StockCode] [nvarchar](16) NULL,
-	[StockName] [nvarchar](2000) NULL,
-	[StockTypeId] [int] NULL,
-	[StockType] [nvarchar](250) NULL,
-	[CategoryId] [int] NULL,
-	[Category] [nvarchar](64) NULL,
-	[UnitId] [int] NULL,
-	[Unit] [nvarchar](64) NULL,
-	[QtyStockIn] [decimal](18, 2) NULL,
-	[QtyStockReturn] [decimal](18, 2) NULL,
-	[QtyStockOut] [decimal](18, 2) NULL,
-	[QtyStockRemaining] [decimal](18, 2) NULL,
-	[Weight] [nvarchar](20) NULL,
-	[Note] [nvarchar](max) NULL,
-	[Created] [datetime] NULL,
-	[Modified] [datetime] NULL,
-	[CreatedById] INT NULL,
-	[CreatedBy] [nvarchar](500) NULL,
-	[ModifiedById] INT NULL,
-	[ModifiedBy] [nvarchar](500) NULL,
-	[FagFrom] [nvarchar](10) NULL,
-	[FagId] [int] NULL,
- CONSTRAINT [PK_XDynamicProjectGroupItemReport] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-INSERT INTO [V3].[dbo].[XDynamicProjectGroupItemReport]
-           ([StockId]
-           ,[StockCode]
-           ,[StockName]
-           ,[StockTypeId]
-           ,[StockType]
-           ,[CategoryId]
-           ,[Category]
-           ,[UnitId]
-           ,[Unit]
-           ,[QtyStockIn]
-           ,[QtyStockReturn]
-           ,[QtyStockOut]
-           ,[QtyStockRemaining]
-           ,[Weight]
-           ,[Note]
-           ,[Created]
-           ,[Modified]
-           ,[CreatedById]
-           ,[CreatedBy]
-           ,[ModifiedById]
-           ,[ModifiedBy]
-           ,[FagFrom]
-           ,[FagId])
-SELECT
-stock.StockId, 
-stock.StockCode,
-stock.vStockName,
-stock.iType,
-stock.[Type] [StockType],
-stock.bCategoryID,
-stock.Category,
-stock.bUnitID,
-stock.Unit,
-(select case when stockin.StockinQty is null then 0 else stockin.StockinQty end) [QtyStockIn], 
-(select case when returnlist.ReturnedQty is null then 0 else returnlist.ReturnedQty end) [QtyStockReturn], 
-(select case when assign.AssignedQty is null then 0 else assign.AssignedQty end) [QtyStockOut], 
-(select case when storeQuantity.RemainingQty is null then 0 else storeQuantity.RemainingQty end) [QtyStockRemaining], 
---(select case when stock.bQuantity is null then 0 else stock.bQuantity end) as 'bRemaining' ,
-stock.bWeight
-,NULL
-,GETDATE()
-,GETDATE()
-,NULL
-,NULL
-,NULL
-,NULL
-,NULL
-,NULL
-FROM XStock stock	
-LEFT JOIN
-(SELECT vStockID,sum(dReceivedQuantity) [StockinQty] 
-FROM WAMS_FULFILLMENT_DETAIL 
---WHERE dStockInDate >=@dFrom and dStockInDate < @dTo 
-GROUP BY vStockID) AS stockin ON stockin.vStockId = stock.StockId 
-LEFT JOIN
-(SELECT vStockID,sum(bQuantity) [AssignedQty] 
-FROM WAMS_ASSIGNNING_STOCKS 
---WHERE dDateAssign >=@dFrom and dDateAssign < @dTo 
-GROUP BY vStockId) AS assign ON assign.vStockId = stock.StockId
-LEFT JOIN
-(SELECT vStockID,sum(bQuantity) [ReturnedQty] 
-FROM WAMS_RETURN_LIST 
-	 --WHERE dDateReturn >=@dFrom and dDateReturn < @dTo 
-GROUP BY vStockId) AS returnlist ON returnlist.vStockId = stock.StockId
-LEFT JOIN (SELECT StockID, sum(Quantity) [RemainingQty] 
-			 FROM [dbo].[Store_Stock] t1 (NOLOCK)
-			GROUP BY StockID) AS storeQuantity ON storeQuantity.StockID= stock.StockId
-GO
-
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XUser]') AND type in (N'U'))
 DROP TABLE [dbo].[XUser]
 GO
@@ -291,6 +47,154 @@ CREATE TABLE [dbo].[XUser](
 ) ON [PRIMARY]
 
 GO
+INSERT INTO [dbo].[XUser]
+           ([UserName]
+           ,[Password]
+           ,[FirstName]
+           ,[LastName]
+		   ,[DepartmentId]
+           ,[Department]
+           ,[Telephone]
+           ,[Mobile]
+           ,[Email]
+           ,[Enable]
+		   ,[StoreId]
+           ,[Store]
+           ,[UserR]
+           ,[ProjectR]
+           ,[StoreR]
+           ,[StockR]
+           ,[RequisitionR]
+           ,[StockOutR]
+           ,[StockReturnR]
+           ,[StockInR]
+           ,[ReActiveStockR]
+           ,[PER]
+           ,[SupplierR]
+           ,[PriceR]
+           ,[StockServiceR]
+           ,[AccountingR]
+           ,[MaintenanceR]
+           ,[WorkerR]
+           ,[ShippmentR]
+           ,[ReturnSupplierR]
+           ,[StockTypeR]
+           ,[CategoryR])
+           (SELECT a.vUsername, a.vNewPassword,a.vFirstName, a.vLastName,NULL,a.vDepartment,
+		   a.vPhone, a.vMobile, a.vEmail, a.iEnable,1,'Binh Chieu'
+		   ,b.[User],b.Project,b.Store,b.Stock 
+		   ,b.Requisition,b.StockOut,b.StockReturn,b.StockIn  
+		   ,b.ReActiveStock,b.PE,b.Supplier,b.Price  
+		   ,b.StockService,b.Accounting,b.Maintenance,b.Worker
+		   ,b.Shippment,b.ReturnSupplier,b.StockType,b.Category  
+		   FROM WAMS_USER a INNER JOIN WAMS_FUNCTION_MANAGEMENT b ON a.bUserId= b.bUserID)
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicProjectGroupItemReport]') AND type in (N'U'))
+DROP TABLE [dbo].[XDynamicProjectGroupItemReport]
+GO
+CREATE TABLE [dbo].[XDynamicProjectGroupItemReport](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[StockId] [int] NULL,
+	[StockCode] [nvarchar](16) NULL,
+	[StockName] [nvarchar](2000) NULL,
+	[StockTypeId] [int] NULL,
+	[StockType] [nvarchar](250) NULL,
+	[CategoryId] [int] NULL,
+	[Category] [nvarchar](64) NULL,
+	[UnitId] [int] NULL,
+	[Unit] [nvarchar](64) NULL,
+	[QtyStockIn] [decimal](18, 2) NULL,
+	[QtyStockReturn] [decimal](18, 2) NULL,
+	[QtyStockOut] [decimal](18, 2) NULL,
+	[QtyStockRemaining] [decimal](18, 2) NULL,
+	[Weight] [nvarchar](20) NULL,
+	[Note] [nvarchar](max) NULL,
+	[Created] [datetime] NULL,
+	[Modified] [datetime] NULL,
+	[CreatedById] INT NULL,
+	[CreatedBy] [nvarchar](500) NULL,
+	[ModifiedById] INT NULL,
+	[ModifiedBy] [nvarchar](500) NULL,
+	[FagFrom] [nvarchar](10) NULL,
+	[FagId] [int] NULL,
+ CONSTRAINT [PK_XDynamicProjectGroupItemReport] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+INSERT INTO [dbo].[XDynamicProjectGroupItemReport]
+           ([StockId]
+           ,[StockCode]
+           ,[StockName]
+           ,[StockTypeId]
+           ,[StockType]
+           ,[CategoryId]
+           ,[Category]
+           ,[UnitId]
+           ,[Unit]
+           ,[QtyStockIn]
+           ,[QtyStockReturn]
+           ,[QtyStockOut]
+           ,[QtyStockRemaining]
+           ,[Weight]
+           ,[Note]
+           ,[Created]
+           ,[Modified]
+           ,[CreatedById]
+           ,[CreatedBy]
+           ,[ModifiedById]
+           ,[ModifiedBy]
+           ,[FagFrom]
+           ,[FagId])
+SELECT
+stock.StockId, 
+stock.StockCode,
+stock.vStockName,
+stock.iType,
+stock.[Type] [StockType],
+stock.bCategoryID,
+stock.Category,
+stock.bUnitID,
+stock.Unit,
+(select case when stockin.StockinQty is null then 0 else stockin.StockinQty end) [QtyStockIn], 
+(select case when returnlist.ReturnedQty is null then 0 else returnlist.ReturnedQty end) [QtyStockReturn], 
+(select case when assign.AssignedQty is null then 0 else assign.AssignedQty end) [QtyStockOut], 
+(select case when storeQuantity.RemainingQty is null then 0 else storeQuantity.RemainingQty end) [QtyStockRemaining], 
+--(select case when stock.bQuantity is null then 0 else stock.bQuantity end) as 'bRemaining' ,
+stock.bWeight
+,NULL
+,GETDATE()
+,GETDATE()
+,NULL
+,NULL
+,NULL
+,NULL
+,NULL
+,NULL
+FROM WAMS_STOCK stock	
+LEFT JOIN
+(SELECT vStockID,sum(dReceivedQuantity) [StockinQty] 
+FROM WAMS_FULFILLMENT_DETAIL 
+--WHERE dStockInDate >=@dFrom and dStockInDate < @dTo 
+GROUP BY vStockID) AS stockin ON stockin.vStockId = stock.StockId 
+LEFT JOIN
+(SELECT vStockID,sum(bQuantity) [AssignedQty] 
+FROM WAMS_ASSIGNNING_STOCKS 
+--WHERE dDateAssign >=@dFrom and dDateAssign < @dTo 
+GROUP BY vStockId) AS assign ON assign.vStockId = stock.StockId
+LEFT JOIN
+(SELECT vStockID,sum(bQuantity) [ReturnedQty] 
+FROM WAMS_RETURN_LIST 
+	 --WHERE dDateReturn >=@dFrom and dDateReturn < @dTo 
+GROUP BY vStockId) AS returnlist ON returnlist.vStockId = stock.StockId
+LEFT JOIN (SELECT StockID, sum(Quantity) [RemainingQty] 
+			 FROM [dbo].[Store_Stock] t1 (NOLOCK)
+			GROUP BY StockID) AS storeQuantity ON storeQuantity.StockID= stock.StockId
+GO
+
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicPeReport]') AND type in (N'U'))
 DROP TABLE [dbo].[XDynamicPeReport]
 GO
@@ -389,115 +293,6 @@ INNER JOIN WAMS_PROJECT project ON poMaster.vProjectID = project.Id
 INNER JOIN WAMS_FULFILLMENT_DETAIL fulfill ON fulfill.vPOID = poMaster.Id
 ORDER BY poMaster.dPODate ASC
 GO
--- XDynamicPeReport_Insert
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicPeReport_Insert]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[XDynamicPeReport_Insert]
-GO
-CREATE PROCEDURE [dbo].[XDynamicPeReport_Insert]
-@Action nvarchar(20)
-,@POId int
-,@PODate datetime
-,@POCode nvarchar(16)
-,@POTypeId int
-,@POType varchar(50)
-,@ProjectId int
-,@ProjectCode nvarchar(20)
-,@ProjectName nvarchar(64)
-,@StockId int
-,@StockCode nvarchar(16)
-,@StockName nvarchar(2000)
-,@StockTypeId int
-,@StockType nvarchar(250)
-,@MRF nvarchar(200)
-,@CategoryId int
-,@Category nvarchar(64)
-,@SupplierId int
-,@Supplier nvarchar(64)
-,@UnitId int
-,@Unit nvarchar(64)
-,@Quantity decimal(18,2)
-,@QuantityReceived decimal(18,2)
-,@QuantityPending decimal(18,2)
-,@RalNo nvarchar(50)
-,@Color nvarchar(64)
-,@Weight nvarchar(20)
-,@Note nvarchar(max)
-,@CreatedBy nvarchar(500)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	INSERT INTO [dbo].[XDynamicPeReport]
-           ([Action]
-           ,[POId]
-           ,[PODate]
-           ,[POCode]
-           ,[POTypeId]
-           ,[POType]
-           ,[ProjectId]
-           ,[ProjectCode]
-           ,[ProjectName]
-           ,[StockId]
-           ,[StockCode]
-           ,[StockName]
-           ,[StockTypeId]
-           ,[StockType]
-           ,[MRF]
-           ,[CategoryId]
-           ,[Category]
-           ,[SupplierId]
-           ,[Supplier]
-           ,[UnitId]
-           ,[Unit]
-           ,[Quantity]
-           ,[QuantityReceived]
-           ,[QuantityPending]
-           ,[RalNo]
-           ,[Color]
-           ,[Weight]
-           ,[Note]
-           ,[Created]
-           ,[Modified]
-           ,[CreatedBy]
-           ,[ModifiedBy])
-     VALUES
-           (@Action
-           ,@POId
-           ,@PODate
-           ,@POCode 
-           ,@POTypeId 
-           ,@POType 
-           ,@ProjectId
-           ,@ProjectCode 
-           ,@ProjectName 
-           ,@StockId
-           ,@StockCode 
-           ,@StockName 
-           ,@StockTypeId 
-           ,@StockType 
-           ,@MRF 
-           ,@CategoryId 
-           ,@Category 
-           ,@SupplierId 
-           ,@Supplier 
-           ,@UnitId 
-           ,@Unit 
-           ,@Quantity 
-           ,@QuantityReceived 
-           ,@QuantityPending 
-           ,@RalNo 
-           ,@Color
-           ,@Weight 
-           ,@Note 
-           ,GETDATE()
-           ,GETDATE()
-           ,@CreatedBy
-           ,@CreatedBy)
-	SELECT 1
-END
-GO
--- exec [dbo].[V3_DataPaymentType] '03 DAYs'
-
-
 
 --26-07-2016
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicProjectReport]') AND type in (N'U'))
@@ -621,115 +416,6 @@ INSERT INTO [dbo].[XDynamicProjectReport] ([Action]
     LEFT JOIN WAMS_PURCHASE_ORDER (NOLOCK) po ON stockManager.vPOID = po.Id
     ORDER BY stockManager.ID ASC
     
-GO
--- XDynamicProjectReport_Insert
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicProjectReport_Insert]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[XDynamicProjectReport_Insert]
-GO
-CREATE PROCEDURE [dbo].[XDynamicProjectReport_Insert]
-@Action nvarchar(20)
-,@Date datetime
-,@ProjectId int
-,@ProjectCode nvarchar(20)
-,@ProjectName nvarchar(64)
-,@StockId int
-,@StockCode nvarchar(16)
-,@StockName nvarchar(2000)
-,@StockTypeId int
-,@StockType nvarchar(250)
-,@CategoryId int
-,@Category nvarchar(64)
-,@UnitId int
-,@Unit nvarchar(64)
-,@SupplierId int
-,@Supplier nvarchar(64)
-,@SRV nvarchar(20)
-,@SIV nvarchar(20)
-,@MRF nvarchar(200)
-,@POId int
-,@PODate datetime
-,@POCode nvarchar(16)
-,@QtyStockIn decimal(18,2)
-,@QtyStockReturn decimal(18,2)
-,@QtyStockOut decimal(18,2)
-,@QtyStockCurrent decimal(18,2)
-,@QtyStockAfterChange decimal(18,2)
-,@Weight nvarchar(20)
-,@Note nvarchar(max)
-,@CreatedBy nvarchar(500)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	INSERT INTO [dbo].[XDynamicProjectReport]
-           ([Action]
-           ,[Date]
-           ,[ProjectId]
-           ,[ProjectCode]
-           ,[ProjectName]
-           ,[StockId]
-           ,[StockCode]
-           ,[StockName]
-           ,[StockTypeId]
-           ,[StockType]
-           ,[CategoryId]
-           ,[Category]
-           ,[UnitId]
-           ,[Unit]
-           ,[SupplierId]
-           ,[Supplier]
-           ,[SRV]
-           ,[SIV]
-           ,[MRF]
-           ,[POId]
-           ,[PODate]
-           ,[POCode]
-           ,[QtyStockIn]
-           ,[QtyStockReturn]
-           ,[QtyStockOut]
-           ,[QtyStockCurrent]
-           ,[QtyStockAfterChange]
-           ,[Weight]
-           ,[Note]
-           ,[Created]
-           ,[Modified]
-           ,[CreatedBy]
-           ,[ModifiedBy])
-     VALUES
-           (@Action
-           ,@Date
-           ,@ProjectId
-           ,@ProjectCode 
-           ,@ProjectName 
-           ,@StockId
-           ,@StockCode 
-           ,@StockName 
-           ,@StockTypeId 
-           ,@StockType 
-           ,@CategoryId 
-           ,@Category 
-           ,@UnitId 
-           ,@Unit 
-           ,@SupplierId 
-           ,@Supplier
-           ,@SRV
-           ,@SIV
-           ,@MRF 
-           ,@POId
-           ,@PODate
-           ,@POCode 
-		 ,@QtyStockIn 
-           ,@QtyStockReturn 
-           ,@QtyStockOut 
-           ,@QtyStockCurrent
-           ,@QtyStockAfterChange
-           ,@Weight 
-           ,@Note 
-           ,GETDATE()
-           ,GETDATE()
-           ,@CreatedBy
-           ,@CreatedBy)
-	SELECT 1
-END
 GO
 
 
