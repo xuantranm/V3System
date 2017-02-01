@@ -97,7 +97,7 @@ publish/
 
 # NuGet Packages Directory
 ## TODO: If you have NuGet Package Restore enabled, uncomment the next line
-packages/
+# packages/
 
 # Windows Azure Build Output
 csx
@@ -159,7 +159,7 @@ uploads
 Docs
 temp
 backup
-packages/
+# packages/
 obj/
 Vivablast/Vivablast/Pictures/
 Vivablast/Vivablast/Documents/
