@@ -316,3 +316,5 @@ Parameter name: key
    at Ap.Data.Repositories.Repository`1.GetByKey(Object keyValue) in c:\Projects\V3\Vivablast\Ap.Data\Repositories\Repository.cs:line 42
    at Ap.Service.Services.StockService.ReActive(String condition) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockService.cs:line 146
    at Vivablast.Controllers.ReActiveStockController.ReActive(String condition) in c:\Projects\V3\Vivablast\Vivablast\Controllers\ReActiveStockController.cs:line 275
+2017-02-01 23:46:54,276 [100] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test

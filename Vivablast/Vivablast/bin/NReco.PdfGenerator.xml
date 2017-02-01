@@ -4,6 +4,28 @@
         <name>NReco.PdfGenerator</name>
     </assembly>
     <members>
+        <member name="T:NReco.PdfGenerator.LicenseInfo">
+            <summary>
+            Represents PdfGenerator commercial license information.
+            </summary>
+        </member>
+        <member name="M:NReco.PdfGenerator.LicenseInfo.SetLicenseKey(System.String,System.String)">
+            <summary>
+            Activate component license and enable restricted features.
+            </summary>
+            <param name="owner">license owner ID</param>
+            <param name="key">unique license key from component order's page</param>
+        </member>
+        <member name="P:NReco.PdfGenerator.LicenseInfo.IsLicensed">
+            <summary>
+            Determines if component has activated license key.
+            </summary>
+        </member>
+        <member name="P:NReco.PdfGenerator.LicenseInfo.LicenseOwner">
+            <summary>
+            License owner identifier.
+            </summary>
+        </member>
         <member name="T:NReco.PdfGenerator.WkHtmlToPdfException">
             <summary>
             The exception that is thrown when WkHtmlToPdf process retruns non-zero error exit code
@@ -16,9 +38,8 @@
         </member>
         <member name="T:NReco.PdfGenerator.HtmlToPdfConverter">
             <summary>
-            Html to PDF document converter
+            Html to PDF converter component (C# WkHtmlToPdf process wrapper).
             </summary>
-            <sort>10</sort>
         </member>
         <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.#ctor">
             <summary>
@@ -27,26 +48,34 @@
         </member>
         <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.GeneratePdf(System.String)">
             <summary>
-            Generate PDF by specifed HTML content
+            Generates PDF by specifed HTML content
             </summary>
             <param name="htmlContent">HTML content</param>
             <returns>PDF bytes</returns>
         </member>
         <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.GeneratePdf(System.String,System.String)">
             <summary>
-            Generate PDF by specfied HTML content and prepend cover page (useful with GenerateToc option)
+            Generates PDF by specfied HTML content and prepend cover page (useful with GenerateToc option)
             </summary>
             <param name="htmlContent">HTML document</param>
-            <param name="coverHtml">first page HTML</param>
+            <param name="coverHtml">first page HTML (optional; can be null)</param>
             <returns>PDF bytes</returns>
         </member>
         <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.GeneratePdf(System.String,System.String,System.IO.Stream)">
             <summary>
-            Generate PDF by specfied HTML content and prepend cover page (useful with GenerateToc option)
+            Generates PDF by specfied HTML content (optionally with the cover page).
             </summary>
             <param name="htmlContent">HTML document</param>
-            <param name="coverHtml">first page HTML</param>
+            <param name="coverHtml">first page HTML (optional; can be null)</param>
             <param name="output">output stream for generated PDF</param>
+        </member>
+        <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.GeneratePdf(System.String,System.String,System.String)">
+            <summary>
+            Generates PDF by specfied HTML content (optionally with the cover page).
+            </summary>
+            <param name="htmlContent">HTML document</param>
+            <param name="coverHtml">first page HTML (can be null)</param>
+            <param name="outputPdfFilePath">path to the output PDF file (if file already exists it will be removed before PDF generation)</param>
         </member>
         <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.GeneratePdfFromFile(System.String,System.String)">
             <summary>
@@ -70,7 +99,33 @@
             </summary>
             <param name="htmlFilePath">path to HTML file or absolute URL</param>
             <param name="coverHtml">first page HTML (optional, can be null)</param>
+            <param name="outputPdfFilePath">path to the output PDF file (if file already exists it will be removed before PDF generation)</param>
+        </member>
+        <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.GeneratePdfFromFiles(System.String[],System.String,System.IO.Stream)">
+            <summary>
+            Generate PDF into specified <see cref="T:System.IO.Stream"/> by several HTML documents (local files or URLs) 
+            </summary>
+            <param name="htmlFiles">list of HTML files or URLs</param>
+            <param name="coverHtml">first page HTML (optional, can be null)</param>
+            <param name="output">output stream for generated PDF</param>
+        </member>
+        <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.GeneratePdfFromFiles(System.String[],System.String,System.String)">
+            <summary>
+            Generate PDF into specified output file by several HTML documents (local files or URLs) 
+            </summary>
+            <param name="htmlFiles">list of HTML files or URLs</param>
+            <param name="coverHtml">first page HTML (optional, can be null)</param>
             <param name="outputPdfFilePath">path to output PDF file (if file already exists it will be removed before PDF generation)</param>
+        </member>
+        <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.BeginBatch">
+            <summary>
+            Intiates PDF processing in the batch mode (generate several PDF documents using one wkhtmltopdf process) 
+            </summary>
+        </member>
+        <member name="M:NReco.PdfGenerator.HtmlToPdfConverter.EndBatch">
+            <summary>
+            Ends PDF processing in the batch mode.
+            </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.PdfToolPath">
             <summary>
@@ -86,6 +141,12 @@
             Get or set WkHtmlToPdf tool EXE file name ('wkhtmltopdf.exe' by default)
             </summary>
         </member>
+        <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.TempFilesPath">
+            <summary>
+            Get or set location for temp files (if not specified location returned by <see cref="M:System.IO.Path.GetTempPath"/> is used for temp files)
+            </summary>
+            <remarks>Temp files are used for providing cover page/header/footer HTML templates to wkhtmltopdf tool.</remarks>
+        </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.Orientation">
             <summary>
             Get or set PDF page orientation
@@ -98,42 +159,42 @@
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.LowQuality">
             <summary>
-            Get or set option to generate low quality PDF (shrink the result document space)
+            Gets or sets option to generate low quality PDF (shrink the result document space)
             </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.Grayscale">
             <summary>
-            Get or set option to generate grayscale PDF
+            Gets or sets option to generate grayscale PDF
             </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.Zoom">
             <summary>
-            Get or set zoom factor
+            Gets or sets zoom factor
             </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.Margins">
             <summary>
-            Get or set PDF page margins (in mm)
+            Gets or sets PDF page margins (in mm)
             </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.PageWidth">
             <summary>
-            Get or set PDF page width (in mm)
+            Gets or sets PDF page width (in mm)
             </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.PageHeight">
             <summary>
-            Get or set PDF page height (in mm)
+            Gets or sets PDF page height (in mm)
             </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.GenerateToc">
             <summary>
-            Get or set TOC generation flag
+            Gets or sets TOC generation flag
             </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.TocHeaderText">
             <summary>
-            Get or set custom TOC header text (default: "Table of Contents")
+            Gets or sets custom TOC header text (default: "Table of Contents")
             </summary>
         </member>
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.CustomWkHtmlArgs">
@@ -182,6 +243,11 @@
         <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.Quiet">
             <summary>
             Suppress wkhtmltopdf debug/info log messages (by default is true)
+            </summary>
+        </member>
+        <member name="P:NReco.PdfGenerator.HtmlToPdfConverter.License">
+            <summary>
+            Component commercial license information.
             </summary>
         </member>
         <member name="T:NReco.PdfGenerator.PageOrientation">
