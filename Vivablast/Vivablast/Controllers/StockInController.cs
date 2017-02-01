@@ -523,7 +523,7 @@ namespace Vivablast.Controllers
             if (string.IsNullOrEmpty(id)) return View(model);
             var temp = _service.XStockIns(id);
             model.StockIns = temp;
-
+            model.TotalQuantity = temp.Sum(x => x.Quantity);
             return View(model);
         }
         #endregion

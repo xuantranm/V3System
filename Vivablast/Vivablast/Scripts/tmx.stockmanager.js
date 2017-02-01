@@ -250,14 +250,16 @@
                             },
                             cache: false,
                             success: function (response) {
+                                console.log(response.result);
                                 if (response.result === true) {
                                     tmx.vivablast.stockManager.loadStock();
                                 }
-                                else if (response.result === $('#hidUnDelete').val()) {
+                                else{
                                     openErrorDialog({
                                         title: "Can not delete",
-                                        data: "The stock <b>" + entityName + "</b> has been used."
+                                        data: "The stock had been use. System make <b>" + entityName + "</b> has been inactive."
                                     });
+                                    tmx.vivablast.stockManager.loadStock();
                                 }
                             },
                             error: function () {

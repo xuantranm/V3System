@@ -1,4 +1,5 @@
-﻿using Ap.Business.Domains;
+﻿using System;
+using Ap.Business.Domains;
 using Ap.Business.Seedworks;
 using Ap.Business.ViewModels;
 using Ap.Data.Seedworks;
@@ -141,8 +142,21 @@ namespace Ap.Service.Services
             return _customRepository.ListStockQuantityCount(page, size, stockCode, stockName, store, type, category, fd, td, enable);
         }
 
+        public bool DeActive(int id)
+        {
+            var stock = _repository.GetByKey(id);
+            stock.iEnable = false;
+            _repository.Update(stock);
+            _unitOfWork.CommitChanges();
+            return true;
+        }
+
         public bool ReActive(string condition)
         {
+            var stock = _repository.GetByKey(Convert.ToInt32(condition));
+            stock.iEnable = true;
+            _repository.Update(stock);
+            _unitOfWork.CommitChanges();
             return true;
         }
 

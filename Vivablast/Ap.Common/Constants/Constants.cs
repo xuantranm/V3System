@@ -18,6 +18,7 @@
         public static readonly string DuplicateCode = "Code duplicated";
         public static readonly string DuplicateEmail = "Email duplicated";
         public static readonly string UnDelete = "UnDelete";
+        public static readonly string InActive = "In active";
         public static readonly string Empty = " can't empty.";
         public static readonly string DataJustChanged = "DataJustChanged";
         

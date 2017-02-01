@@ -47,6 +47,8 @@ namespace Ap.Service.Seedworks
 
         int ListStockQuantityCount(int page, int size, string stockCode, string stockName, string store, int type, int category, string fd, string td, string enable);
 
+        bool DeActive(int id);
+
         bool ReActive(string condition);
 
         string NewStockCode(int type, int category);

@@ -541,7 +541,8 @@ namespace Vivablast.Controllers
         {
             if (_service.CheckDelete(id) == 1)
             {
-                return Json(new { result = Constants.UnDelete });
+                _service.DeActive(id);
+                return Json(new { result = false });
             }
 
             var fag = _service.Delete(id);

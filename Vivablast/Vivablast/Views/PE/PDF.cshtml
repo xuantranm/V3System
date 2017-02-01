@@ -1,4 +1,6 @@
-﻿@using Vivablast.ViewModels
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
 @model XPePdfViewModel
 @{
     Layout = null;
@@ -159,9 +161,19 @@
                             <td>@item.Unit</td>
                             <td>@item.Quantity.Value.ToString("g29")</td>
                             <td>@item.MRF</td>
-                            <td>@item.UnitPrice</td>
+                            <td>
+                            @if (item.Price != null)
+                            {
+                                @(((decimal)item.Price).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                            }
+                            </td>
                             <td style="text-align: center">@item.Discount</td>
-                            <td style="text-align: center">@item.Item_Total</td>
+                            <td style="text-align: center">
+                                @if (item.Item_Total != null)
+                                {
+                                    @(((decimal)item.Item_Total).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                }
+                            </td>
                         </tr>
                         i++;
                     }
@@ -170,21 +182,23 @@
                             Delivery Time - <i>Thời gian nhận hàng</i>:
                         </td>
                         <td style="font-size: 12px;font-weight: bold;">Sub Total</td>
-                        <td colspan="2" style="font-size: 12px;">@Model.PurchaseOrderCustom.TotalNotVAT</td>
+                        <td colspan="2" style="font-size: 12px;">
+                            @Model.PurchaseOrderCustom.TotalNotVAT.ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat)
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="8" style="border-left: 1px solid white;border-bottom: 1px solid white;padding-left: 0;font-size: 12px;">
                             Delivery Location - <i>Địa điểm nhận hàng</i>:
                         </td>
                         <td style="font-size: 12px;font-weight: bold;">VAT (%)</td>
-                        <td colspan="2" style="font-size: 12px;">@Model.PurchaseOrderCustom.TotalVAT</td>
+                        <td colspan="2" style="font-size: 12px;">@Model.PurchaseOrderCustom.TotalVAT.ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat)</td>
                     </tr>
                     <tr>
                         <td colspan="8" style="border-left: 1px solid white;border-bottom: 1px solid white;padding-left: 0;font-size: 12px;">
                             Term payment - <i>Điều kiện thanh toán</i>:
                         </td>
                         <td style="font-size: 12px;font-weight: bold;">Total<br/><i>Tổng cộng</i></td>
-                        <td colspan="2" style="font-size: 12px;">@Model.PurchaseOrderCustom.Total</td>
+                        <td colspan="2" style="font-size: 12px;">@Model.PurchaseOrderCustom.Total.ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat)</td>
                     </tr>
                 </table>
             </div>

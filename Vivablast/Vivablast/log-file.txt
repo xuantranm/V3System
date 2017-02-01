@@ -289,3 +289,30 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at Ap.Service.Services.StockReturnService.SRVLastest(String type) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockReturnService.cs:line 159
    at Ap.Service.Services.StockReturnService.Insert(List`1 entityDetails, Int32 login) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockReturnService.cs:line 58
    at Vivablast.Controllers.StockReturnController.EditData(ReturnAddViewModel model) in c:\Projects\V3\Vivablast\Vivablast\Controllers\StockReturnController.cs:line 406
+2017-02-01 23:04:50,837 [31] ERROR Vivablast.Controllers.ReActiveStockController [(null)] - Re Active Stock 6428
+System.ArgumentException: The type of the key field 'Id' is expected to be 'System.Int32', but the value provided is actually of type 'System.String'.
+Parameter name: key
+   at System.Data.Entity.Core.EntityKey.ValidateTypeOfKeyValue(MetadataWorkspace workspace, EdmMember keyMember, Object keyValue, Boolean isArgumentException, String argumentName)
+   at System.Data.Entity.Core.EntityKey.ValidateEntityKey(MetadataWorkspace workspace, EntitySet entitySet, Boolean isArgumentException, String argumentName)
+   at System.Data.Entity.Core.Objects.ObjectContext.TryGetObjectByKey(EntityKey key, Object& value)
+   at Ap.Data.Repositories.Repository`1.GetByKey(Object keyValue) in c:\Projects\V3\Vivablast\Ap.Data\Repositories\Repository.cs:line 42
+   at Ap.Service.Services.StockService.ReActive(String condition) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockService.cs:line 146
+   at Vivablast.Controllers.ReActiveStockController.ReActive(String condition) in c:\Projects\V3\Vivablast\Vivablast\Controllers\ReActiveStockController.cs:line 275
+2017-02-01 23:04:59,543 [7] ERROR Vivablast.Controllers.ReActiveStockController [(null)] - Re Active Stock 6428
+System.ArgumentException: The type of the key field 'Id' is expected to be 'System.Int32', but the value provided is actually of type 'System.String'.
+Parameter name: key
+   at System.Data.Entity.Core.EntityKey.ValidateTypeOfKeyValue(MetadataWorkspace workspace, EdmMember keyMember, Object keyValue, Boolean isArgumentException, String argumentName)
+   at System.Data.Entity.Core.EntityKey.ValidateEntityKey(MetadataWorkspace workspace, EntitySet entitySet, Boolean isArgumentException, String argumentName)
+   at System.Data.Entity.Core.Objects.ObjectContext.TryGetObjectByKey(EntityKey key, Object& value)
+   at Ap.Data.Repositories.Repository`1.GetByKey(Object keyValue) in c:\Projects\V3\Vivablast\Ap.Data\Repositories\Repository.cs:line 42
+   at Ap.Service.Services.StockService.ReActive(String condition) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockService.cs:line 146
+   at Vivablast.Controllers.ReActiveStockController.ReActive(String condition) in c:\Projects\V3\Vivablast\Vivablast\Controllers\ReActiveStockController.cs:line 275
+2017-02-01 23:05:27,460 [92] ERROR Vivablast.Controllers.ReActiveStockController [(null)] - Re Active Stock 6428
+System.ArgumentException: The type of the key field 'Id' is expected to be 'System.Int32', but the value provided is actually of type 'System.String'.
+Parameter name: key
+   at System.Data.Entity.Core.EntityKey.ValidateTypeOfKeyValue(MetadataWorkspace workspace, EdmMember keyMember, Object keyValue, Boolean isArgumentException, String argumentName)
+   at System.Data.Entity.Core.EntityKey.ValidateEntityKey(MetadataWorkspace workspace, EntitySet entitySet, Boolean isArgumentException, String argumentName)
+   at System.Data.Entity.Core.Objects.ObjectContext.TryGetObjectByKey(EntityKey key, Object& value)
+   at Ap.Data.Repositories.Repository`1.GetByKey(Object keyValue) in c:\Projects\V3\Vivablast\Ap.Data\Repositories\Repository.cs:line 42
+   at Ap.Service.Services.StockService.ReActive(String condition) in c:\Projects\V3\Vivablast\Ap.Service\Services\StockService.cs:line 146
+   at Vivablast.Controllers.ReActiveStockController.ReActive(String condition) in c:\Projects\V3\Vivablast\Vivablast\Controllers\ReActiveStockController.cs:line 275

@@ -8,14 +8,14 @@
 
     tmx.vivablast.reactiveStockManager = {
         page: function () {
-            var id = $("#mycontent .pagination a.current").html();
+            var id = $(".pagination a.current").html();
             if (typeof id === 'undefined') {
                 id = 1;
             }
             return id;
         },
         pageSize: function () {
-            var id = $("#mycontent #pageSize").val();
+            var id = $("#pageSize").val();
             id = id === "" ? 10 : id;
             return id;
         },
@@ -34,59 +34,102 @@
         },
 
         loadReActiveStock: function () {
-            $('#loading-indicator').show();
-            window.Helpers.ajaxHelper.getHtml({
-                controller: 'ReActiveStock',
-                action: 'LoadStock',
-                data: {
-                    page: tmx.vivablast.reactiveStockManager.page,
-                    size: tmx.vivablast.reactiveStockManager.pageSize,
-                    stock: tmx.vivablast.reactiveStockManager.getSearch(),
-                    store: tmx.vivablast.reactiveStockManager.getStore(),
-                    type: tmx.vivablast.reactiveStockManager.getType(),
-                    category: tmx.vivablast.reactiveStockManager.getCategory()
-                },
-                success: function (data) {
-                    if (data.length != 0) {
-                        $('#list-session').empty().append(data);
-                        tmx.vivablast.reactiveStockManager.registerEventIndexInList();
+            if (tmx.vivablast.reactiveStockManager.pageSize() == 1000) {
+                openYesNoDialog({
+                    sectionTitle: "Load all data",
+                    title: "Are you sure load all data. It will display slowly.",
+                    data: '',
+                    yesCallback: function () {
+                        $.ajax({
+                            url: '/ReActiveStock/LoadStock',
+                            type: 'GET',
+                            data: {
+                                page: tmx.vivablast.reactiveStockManager.page(),
+                                size: tmx.vivablast.reactiveStockManager.pageSize(),
+                                stockCode: tmx.vivablast.reactiveStockManager.getStockCode(),
+                                stockName: tmx.vivablast.reactiveStockManager.getStockName(),
+                                store: tmx.vivablast.reactiveStockManager.getStore(),
+                                type: tmx.vivablast.reactiveStockManager.getType(),
+                                category: tmx.vivablast.reactiveStockManager.getCategory(),
+                                enable: '0'
+                            },
+                            datatype: 'json',
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+                                if (data.length != 0) {
+                                    $('#list-session').empty().append(data);
+                                    tmx.vivablast.reactiveStockManager.registerEventIndexInList();
+                                }
+                            }
+                        });
+                    },
+                    noCallback: function () {
+
                     }
-                },
-                async: false
-            });
-            $('#loading-indicator').hide();
+                });
+            } else {
+                $.ajax({
+                    url: '/ReActiveStock/LoadStock',
+                    type: 'GET',
+                    data: {
+                        page: tmx.vivablast.reactiveStockManager.page(),
+                        size: tmx.vivablast.reactiveStockManager.pageSize(),
+                        stockCode: tmx.vivablast.reactiveStockManager.getStockCode(),
+                        stockName: tmx.vivablast.reactiveStockManager.getStockName(),
+                        store: tmx.vivablast.reactiveStockManager.getStore(),
+                        type: tmx.vivablast.reactiveStockManager.getType(),
+                        category: tmx.vivablast.reactiveStockManager.getCategory(),
+                        enable: '0'
+                    },
+                    datatype: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.length != 0) {
+                            $('#list-session').empty().append(data);
+                            tmx.vivablast.reactiveStockManager.registerEventIndexInList();
+                        }
+                    }
+                });
+            }
+
+            if ($('#searchStore').val() != "") {
+                $('.store' + $('#searchStore').val()).attr('style', 'display:block');
+            } else {
+                $('[class^=store]').attr('style', 'display:block');
+            }
         },
 
         exportExcel: function () {
             var search = "page=" + tmx.vivablast.reactiveStockManager.page();
             search += "&size=" + tmx.vivablast.reactiveStockManager.pageSize();
-            search += "&stock=" + tmx.vivablast.reactiveStockManager.getSearch();
+            search += "&stockCode=" + tmx.vivablast.reactiveStockManager.getStockCode();
+            search += "&stockName=" + tmx.vivablast.reactiveStockManager.getStockName();
             search += "&store=" + tmx.vivablast.reactiveStockManager.getStore();
             search += "&type=" + tmx.vivablast.reactiveStockManager.getType();
             search += "&category=" + tmx.vivablast.reactiveStockManager.getCategory();
             document.location.href = "/ReActiveStock/ExportToExcel?" + search;
         },
         
-        getSearch: function () {
-            return $('#system #StockSearch').val();
+        getStockCode: function () {
+            return $('#StockCode').val();
+        },
+
+        getStockName: function () {
+            return $('#StockName').val();
         },
 
         getStore: function () {
-            var result = $('#system #searchStore').val();
-            result = result === "" ? 0 : result;
-            return result;
-            // return $('#system #searchStore').val();
-            // return "2,3";
+            return $('#searchStore').val();
         },
-        
+
         getType: function () {
-            var result = $('#system #searchType').val();
+            var result = $('#searchType').val();
             result = result === "" ? 0 : result;
             return result;
         },
-        
+
         getCategory: function () {
-            var result = $('#system #searchCategory').val();
+            var result = $('#searchCategory').val();
             result = result === "" ? 0 : result;
             return result;
         },
@@ -96,21 +139,25 @@
             function enter(e) {
                 if (e.which == 13) {
                     $("a.current").removeClass("current");
-                    $("#mycontent .pagination a:first").addClass("current");
+                    $(".pagination a:first").addClass("current");
                     tmx.vivablast.reactiveStockManager.loadReActiveStock(uid);
                 }
             }
             $('#pageSize', uid).on('change', function (e) {
                 $("a.current").removeClass("current");
-                $("#mycontent .pagination a:first").addClass("current");
+                $(".pagination a:first").addClass("current");
                 tmx.vivablast.reactiveStockManager.loadReActiveStock(uid);
             });
             
             $('#searchType').on('change', function (e) {
-                var url = "/ReActiveStock/LoadCategoryByType";
+                var typeId = 0;
+                if ($('#searchType').val() !== "") {
+                    typeId = $('#searchType').val();
+                }
+                var url = "/Stock/LoadCategoryByType";
                 $.ajax({
                     url: url,
-                    data: { type: $(this).val() },
+                    data: { type: typeId },
                     cache: false,
                     type: "POST",
                     success: function (data) {
@@ -122,14 +169,17 @@
                         $("#searchCategory").trigger("chosen:updated");
                     },
                     error: function () {
-                        alert("Error: Can't load Category Data.Please contact Administrator support.");
+                        openErrorDialog({
+                            title: "Can't load Category Data",
+                            data: "Please contact Administrator support."
+                        });
                     }
                 });
             });
             
             $('#btnSearch', uid).off('click').on('click', function () {
                 $("a.current").removeClass("current");
-                $("#mycontent .pagination a:first").addClass("current");
+                $(".pagination a:first").addClass("current");
                 tmx.vivablast.reactiveStockManager.loadReActiveStock(uid);
             });
             
@@ -139,7 +189,7 @@
         },
 
         registerEventIndexInList: function () {
-            $('#StockLst').dataTable({
+            $('#List').dataTable({
                 "sDom": "Rlfrtip",
                 "bLengthChange": false,
                 "bFilter": false,
@@ -162,7 +212,7 @@
                         url: $('#hidReActiveUrl').val(),
                         type: "POST",
                         data: {
-                            condition: $(this).closest('tr').find('.ItemKey').text()
+                            condition: $(this).closest('tr').find('.ItemKey').val()
                         },
                         cache: false,
                         success: function (response) {
