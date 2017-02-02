@@ -1,0 +1,242 @@
+﻿@using Ap.Common.Constants
+@using Microsoft.Ajax.Utilities
+@using Vivablast.ViewModels
+@model XAssignPdfViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Vivablast Management System</title>
+    <link href="/Images/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    @*<link href="/Content/styles.css" rel="stylesheet" />*@
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Scripts/common.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="PrintLocation">
+            <style type="text/css">
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                th {
+                    height: 50px;
+                    text-align: center;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    background-color: white;
+                }
+
+                td {
+                    vertical-align: bottom;
+                }
+
+                td {
+                    padding: 10px;
+                }
+
+                .th td {
+                    height: 40px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            </style>
+            
+            <div style="padding-top: 10px;">
+                <table>
+                    <tr>
+                        <td style="width: 150px; text-align: center; padding: 0">
+                            <img src="@Model.Domain/Images/v3pdf.png" />
+                        </td>
+                        <td style="text-align:center; font-size:20px;font-weight:bold">
+                            <span style="font-size: 28px;">STORE ISSUE VOUCHER</span>
+                            <br />
+                            <i>PHIẾU XUẤT KHO</i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="padding-top: 10px;">
+                <div style="float: left; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">MRF#:</span> @Model.Mrf
+                </div>
+                <div style="float: left; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">No:</span> @Model.Siv
+                </div>
+            </div>
+            <div style="clear: both"></div>
+            <div>
+                <div style="float: left; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">Project Code - Mã số dự án:</span> @Model.ProjectCode
+                </div>
+                <div style="float: left; width: 400px">
+                    <span style="font-weight: bold; margin-right: 10px;">Date - Ngày:</span> @Model.DateFormat
+                </div>
+            </div>
+            <div style="clear: both; height: 10px;"></div>
+            <div>
+                <table>
+                    <tr>
+                        <td colspan="6"></td>
+                        <td colspan="2" style="text-align: center">REASON - Lý do</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Item<br />
+                            STT
+                        </th>
+                        <th>
+                            Code<br />
+                            Mã số
+                        </th>
+                        <th>
+                            Description<br />
+                            Mô tả
+                        </th>
+                        <th>
+                            Unit<br />
+                            ĐVT
+                        </th>
+                        <th>
+                            Qty,Issue<br />
+                            Số lượng
+                        </th>
+                        <th>RalNo</th>
+                        <th>
+                            Colour<br />
+                            Màu sắc
+                        </th>
+                        <th>
+                            Remarks<br />
+                            Ghi chú
+                        </th>
+                    </tr>
+                    @{var i = 1;}
+                    @foreach (var item in Model.StockOuts)
+                    {
+                        <tr>
+                            <td style="text-align: center">@i</td>
+                            <td>@item.StockCode</td>
+                            <td>@item.StockName</td>
+                            <td>@item.Unit</td>
+                            <td>@item.Quantity.ToString("g29")</td>
+                            <td>@item.RalNo</td>
+                            <td>@item.Color</td>
+                            <td>@item.Note</td>
+                        </tr>
+                        i++;
+                    }
+                    <tr>
+                        <td colspan="8" style="text-align: right;font-weight: bold">TOTAL WEIGHT - Tổng cộng: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.TotalQuantity.ToString("g29")</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="clear: both"></div>
+            <div style="padding-top: 10px;">
+                <table>
+                    <tr style="background-color: #f2f2f2">
+                        <td colspan="4">ISSUE - Xuất</td>
+                    </tr>
+                    <tr class="th">
+                        <td>Prepared by - Chuẩn bị:</td>
+                        <td>Checked by - Kiểm tra:</td>
+                        <td>Approved by Mngr for Issue to site - TP phê duyệt:</td>
+                        <td>Transferred by - Chuyển bởi:</td>
+                    </tr>
+                    <tr>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date - Ngày:&nbsp; @DateTime.Now.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                    </tr>
+                    <tr style="background-color: #f2f2f2">
+                        <td colspan="2" style="text-align: center">RECEIVE - Nhận</td>
+                        <td colspan="2" style="text-align: center">RETURN - Trả</td>
+                    </tr>
+                    <tr class="th">
+                        <td>Received by - Người nhận:</td>
+                        <td>Site Manager- GĐ công trường:</td>
+                        <td>Checked by - Kiểm tra:</td>
+                        <td>Approved by - Phê duyệt:</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        @using (Html.BeginForm("PrintPdf", "Helper", FormMethod.Post, new { id = "myform" }))
+        {
+            <button type="button" id="btnPrint">Download</button>
+            <input type="hidden" name="content" id="hidContent" value="" />
+            <input type="hidden" name="fileName" id="fileName" value="Requisition" />
+            <input type="hidden" name="voucher" id="voucher" value="@Model.Siv" />
+        }
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+        /// <summary>Enum for Page Type</summary>
+        var PDFPageType = {
+            Default: 'Default',
+            Portrait: 'Portrait',
+            Landscape: 'Landscape'
+        }
+
+        $('#btnPrint').click(function () {
+            var printContents = '<html><head><title></title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body>' + $('#PrintLocation').html() + '</body></html>';
+            var pageType = PDFPageType.Portrait;
+            $('#hidContent').val(htmlEncode(printContents));
+            $('#myform').submit();
+        });
+
+        function htmlEncode(value) {
+            //create a in-memory div, set it's inner text(which jQuery automatically encodes)
+            //then grab the encoded contents back out.  The div never exists on the page.
+            return $('<div/>').text(value).html();
+        }
+
+        function htmlDecode(value) {
+            return $('<div/>').html(value).text();
+        }
+    </script>
+</body>

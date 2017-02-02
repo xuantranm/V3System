@@ -1,0 +1,109 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model AccountingViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="float-left margintop5">
+    <label>Type</label>
+</div>
+<div class="float-left marginleft10">
+    <select id="searchType" class="form-control width90">
+        <option value="1">Out</option>
+        <option value="2">Return</option>
+        <option value="3">In</option>
+    </select>
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Status</label>
+</div>
+<div class="float-left marginleft10">
+    <select id="searchStatus" class="form-control width110">
+        <option value="1">Uncheck</option>
+        <option value="2">Process</option>
+        <option value="3">Checked</option>
+    </select>
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>SIV/SRV</label>
+</div>
+<div class="float-left marginleft10">
+    <input type="text" name="searchSIRV" class="form-control width100" id="searchSIRV" placeholder="SIV or SRV">
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Begin Store</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.FStoreId, Model.FromStores, Constants.AllDLL, new { @id = "searchFStore", @class = "form-control width150" })
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>End Store</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.TStoreId, Model.ToStores, Constants.AllDLL, new { @id = "searchTStore", @class = "form-control width150" })
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Stock</label>
+</div>
+<div class="float-left marginleft10">
+    <input type="text" name="searchStock" class="form-control width300" id="searchStock" placeholder="Stock Code or Name">
+</div>
+<div class="clearboth height10"></div>
+<div class="float-left margintop5">
+    <label>Project</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.ProjectId, Model.Projects, Constants.AllDLL, new { @id = "searchProject", @class = "form-control width110" })
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>Supplier</label>
+</div>
+<div class="float-left marginleft10">
+    @Html.DropDownListFor(model => model.SupplierId, Model.Suppliers, Constants.AllDLL, new { @id = "searchSupplier", @class = "form-control width220" })
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>PE Code</label>
+</div>
+<div class="float-left marginleft10">
+    <input type="text" name="searchPE" class="form-control width110" id="searchPE" placeholder="PE Code">
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>From</label>
+</div>
+<div class="input-group date marginleft10 float-left width140">
+    <input id="fromDate" value="@Constants.FromDate" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+</div>
+<div class="float-left marginleft10 margintop5">
+    <label>To</label>
+</div>
+<div class="input-group date marginleft10 float-left width140">
+    <input id="toDate" value="@Constants.ToDate" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+</div>
+<div class="float-left marginleft10">
+    <label>@Constants.Rows</label>
+</div>
+<div class="float-left marginleft10 marginright10">
+    <select id="pageSize" class="form-control width70">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="1000">1000</option>
+    </select>
+</div>
+<button type="button" id="btnSearch" class="btn btn-primary">
+    <span class="glyphicon glyphicon-search"></span>Search
+</button>
+<button type="button" id="btnExport" class="btn btn-primary">
+    <span class="glyphicon glyphicon-export"></span>Export
+</button>
+<div class="clearboth height10"></div>
+
+<div id="list-session">
+    <div class="alert alert-info bold" role="alert">LOADING...</div>
+</div>
+
+<script src="/Scripts/tmx.accountingmanager.js"></script>
+

@@ -1,0 +1,184 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Vivablast Management System</title>
+    <link href="/Images/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    @*<link href="/Content/styles.css" rel="stylesheet" />*@
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Scripts/common.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
+    <style type="text/css">
+        .errorClass {
+            border-color: red !important;
+        }
+
+        .errorLabel {
+            color: #cb1a37;
+            line-height: 18px;
+            font-weight: normal !important;
+            font-size: 12px;
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h2 class="text-center">Login</h2>
+                                <p>Welcome to V3 System.</p>
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="alert alert-danger hide" role="alert">
+                                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                <span class="sr-only">Error:</span>
+                                                The input you entered is incorrect.
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                <input type="text" id="inputUserEmail" class="form-control" name="inputUserEmail" placeholder="User name or email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                                <input type="password" id="inputPassword" class="form-control" name="inputPassword" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div style="float: left; margin-bottom:15px;margin-top: -15px;margin-left: 40px;"><input type="checkbox" id="showPw"></div> <div style="float: left; margin-bottom:15px;margin-top: -15px;margin-left: 5px;">Show password.</div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <div class="form-group">
+                                            <button class="btn btn-lg btn-primary btn-block" id="btnLogin" data-loading-text="Proccessing...">
+                                                <span class="glyphicon glyphicon-log-in"></span> Login
+                                            </button>
+                                        </div>
+                                        <div class="form-group">
+                                            <a href="@Url.Action("ForgotPassword", "Login")" class="btn btn-lg btn-default btn-block">
+                                                <span class="glyphicon glyphicon-question-sign"></span> Forgot password
+                                            </a>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $.ajaxSetup({ cache: false });
+        document.onkeypress = enter;
+        function enter(e) {
+            if (e.which == 13) {
+                Login();
+            }
+        }
+
+        $('#showPw').click(function () {
+                var $this = $(this);
+                // $this will contain a reference to the checkbox   
+                if ($this.is(':checked')) {
+                    // the checkbox was checked 
+                    $('#inputPassword').removeAttr('type');
+                    $('#inputPassword').attr('type','text');
+                } else {
+                    // the checkbox was unchecked
+                    $('#inputPassword').removeAttr('type');
+                    $('#inputPassword').attr('type', 'password');
+                }
+            });
+
+        $('#btnLogin').off('click').on('click', function () {
+            Login();
+        });
+
+        function Login() {
+            clearVal();
+            $('#btnLogin').button('loading');
+            if ($.trim($('#inputUserEmail').val()) == "") {
+                Error();
+                $('#inputUserEmail').focus();
+                $('#inputUserEmail').addClass('errorClass');
+                $('#inputUserEmail').parent().after('<label class="errorLabel">Field not blank.</label>');
+            }
+            else if ($.trim($('#inputPassword').val()) == "") {
+                Error();
+                $('#inputPassword').focus();
+                $('#inputPassword').addClass('errorClass');
+                $('#inputPassword').parent().after('<label class="errorLabel">Field not blank.</label>');
+            } else {
+                var cok = false;
+                if ($('#keep').is(':checked')) {
+                    cok = true;
+                }
+                var a = window.location.search;
+                var b = a.replace('?ReturnUrl=%2f', '');
+                if (b === "") {
+                    b = "Home";
+                }
+
+                var url = '@Url.Action("CheckUser","Login")';
+                $.ajax({
+                    url: url,
+                    data: {
+                        test1: $.trim($('#inputUserEmail').val()),
+                        test2: $.trim($('#inputPassword').val()),
+                        test3: cok
+                    },
+                    cache: false,
+                    asysn: false,
+                    type: "POST",
+                    success: function (result) {
+                        if (result.success) {
+                            window.location.href = 'http://' + window.location.host + '/' + b;
+                        }
+                        else {
+                            $('#btnLogin').button('reset');
+                            openErrorDialog({
+                                title: "Can't login.",
+                                data: "Information incorrect. Try again or contact Administrator support."
+                            });
+                        }
+                    },
+                    error: function () {
+                        $('#btnLogin').button('reset');
+                        openErrorDialog({
+                            title: "Can't login.",
+                            data: "Please try agian Or contact Administrator support."
+                        });
+                    }
+                });
+            }
+        };
+
+        function Error() {
+            $('.alert').removeClass("hide");
+            $('#btnLogin').button('reset');
+        }
+    </script>
+</body>
+
+</html>

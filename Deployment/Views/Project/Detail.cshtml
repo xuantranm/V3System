@@ -1,0 +1,152 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model ProjectViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="container" role="list">
+    <h2>Detail</h2>
+    <div class="row">
+        <form class="form-horizontal">
+            @Html.HiddenFor(m=>m.ProjectCustom.Id, new { @id = "Id" })
+            <!-- PROJECT INFORMATION -->
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Code</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Project_Code)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Project_Name)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Status</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Status)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Location</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Location)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Contact</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Main_Contact)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Company</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Company)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Client</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Client)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Country</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Country)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Begin</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Begin_Date)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">End</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.End_Date)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Created</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Created_Date)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">By</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Created_By)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Last modified</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Modified_Date)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">By</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-static">@Html.DisplayFor(model => model.ProjectCustom.Modified_By)</p>
+                    </div>
+                </div>
+            </div>
+            <!-- PROJECT TRANSACTION -->
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="transactionStock">
+                <div class="form-group col-xs-12"><h3>TRANSACTION HISTORY</h3></div>
+                <div class="form-group col-sm-6 col-xs-12">
+                    <label>Action</label>
+                    <select id="type" class="form-control">
+                        <option value="">All</option>
+                        <option value="RETURN">Stock Return</option>
+                        <option value="ASSIGN">Stock Out</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-6 col-xs-12">
+                    <label>Rows</label>
+                    <select id="pageSize" class="form-control">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="1000">All</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-6 col-xs-12">
+                    <label>From</label>
+                    <input id="fromDate" type="text" class="form-control datepicker" />
+                </div>
+                <div class="form-group col-sm-6 col-xs-12">
+                    <label>To</label>
+                    <input id="toDate" type="text" class="form-control datepicker" />
+                </div>
+                <div class="form-group col-sm-6 col-xs-12">
+                    <button type="button" id="btnSearch" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>
+                </div>
+                <div class="form-group col-sm-6 col-xs-12">
+                    <button type="button" id="btnExport" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-export"></span> Export
+                    </button>
+                </div>
+                <div role="list" class="row">
+                    <div id="list-session" class="col-xs-12">
+                        <div class="alert alert-info bold" role="alert">LOADING...</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Create", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+<script src="/Scripts/tmx.projectdetail.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

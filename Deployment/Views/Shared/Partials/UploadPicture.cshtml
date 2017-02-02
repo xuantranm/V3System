@@ -1,0 +1,92 @@
+﻿@model Vivablast.ViewModels.DocumentViewModel
+
+<div class="col-xs-12 form-horizontal">
+    @using (Ajax.BeginForm(null, null, new AjaxOptions { HttpMethod = "Post" }, new { @enctype = "multipart/form-data", @id = "picture-upload-form" }))
+    {
+        <div class="row">
+            <span class="field-validation-error"></span>
+        </div>
+        <div id="picturearea" class="row">
+            @if (Model.Count == 0)
+            {
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="NoImg"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item NoImg">
+                            <img src="@(System.Web.Configuration.WebConfigurationManager.AppSettings["PathImages"])No-Image-Available.gif" alt="No image" />
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        @for (var i = 0; i <= Model.Count - 1; i++)
+                        {
+                            <li data-target="#carousel-example-generic" data-slide-to="@i"></li>
+                        }
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        @foreach (var picture in Model.FileList)
+                        {
+                            <div class="item">
+                                <img src="@(System.Web.Configuration.WebConfigurationManager.AppSettings["PathImg"])@picture.FileGuid" alt="@picture.FileName"/>
+                                @*<div style="background:url(@(System.Web.Configuration.WebConfigurationManager.AppSettings["PathImg"])@picture.FileGuid) center center;background-size:cover;" class="slider-size">bo class carousel-caption vo</div>*@
+                                <div class="carousel-caption">
+                                    <button class="btn btn-danger btn-delete-picture" data-id="@picture.FileId" data-guid="@picture.FileGuid">Delete</button>
+                                    <span class="marginleft10">@picture.FileName</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="clearboth height10"></div>
+        @Html.HiddenFor(model => model.KeyId)
+        @Html.HiddenFor(model => model.DocumentCategoryId)
+        <div class="row">
+            <div class="col-xs-6">
+                <input type="file" name="file" />
+            </div>
+            <button type="button" class="btn btn-primary" id="btnUploadPicture">Upload</button>
+            <a class="btn btn-danger" href="javascript:;" style="display: none">Remove Selected</a>
+        </div>
+    }
+</div>
+
+<script>
+    $(function () {
+        var countItem = $('.carousel-inner .item').length;
+        if (countItem >= 1) {
+            $('.carousel-indicators li:first').addClass('active');
+            $('.carousel-inner div:first').addClass('active');
+            if (countItem === 1) {
+                $('#picturearea .left').addClass('hide');
+                $('#picturearea .right').addClass('hide');
+            }
+        }
+    });
+</script>

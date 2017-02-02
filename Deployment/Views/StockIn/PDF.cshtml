@@ -1,0 +1,199 @@
+﻿@using Ap.Common.Constants
+@using Microsoft.Ajax.Utilities
+@using Vivablast.ViewModels
+@model XInPdfViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Vivablast Management System</title>
+    <link href="/Images/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    @*<link href="/Content/styles.css" rel="stylesheet" />*@
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Scripts/common.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
+</head>
+<body>
+    <div class="container padding20">
+        <div id="PrintLocation">
+            <style type="text/css">
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                th {
+                    height: 50px;
+                    text-align: center;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    background-color: white;
+                }
+
+                td {
+                    vertical-align: bottom;
+                }
+
+                td {
+                    padding: 10px;
+                }
+
+                .th td {
+                    height: 40px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            </style>
+
+            <div style="padding-top: 10px;">
+                <table>
+                    <tr>
+                        <td style="width: 150px; text-align: center; padding: 0">
+                            <img src="@Model.Domain/Images/v3pdf.png" />
+                        </td>
+                        <td style="text-align:center; font-size:20px;font-weight:bold">
+                            <span style="font-size: 22px;">
+                                STORE RECEIVE VOUCHER
+                            </span>
+                            <br />
+                            <i>PHIẾU NHẬP KHO</i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding-top: 10px;">
+                <div style="float: left; width: 700px">
+                    <span style="font-weight: bold; margin-right: 10px;">From (vendor references) - <i>Nhà cung cấp:</i></span> @Model.From
+                </div>
+                <div style="float: right; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">No #:</span> @Model.Srv
+                </div>
+            </div>
+            <div style="clear: both; height: 10px;"></div>
+            <div>
+                <div style="float: right; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">Date - <i>Ngày:</i></span> @Model.DateFormat
+                </div>
+            </div>
+            <div style="clear: both; height: 10px;"></div>
+            <div>
+                <table>
+                    <tr>
+                        <th>
+                            ITEM
+                        </th>
+                        <th>
+                            Code<br />
+                            <i>Mã số</i>
+                        </th>
+                        <th>
+                            DESCRIPTION<br />
+                            <i>Mô tả</i>
+                        </th>
+                        <th>
+                            Q.TY<br />
+                            <i>SL</i>
+                        </th>
+                        <th>
+                            UNIT<br />
+                            <i>ĐVT</i>
+                        </th>
+                        <th>
+                            REMARKS<br />
+                            <i>Ghi chú</i>
+                        </th>
+                    </tr>
+                    @{var i = 1;}
+                    @foreach (var item in Model.StockIns)
+                    {
+                        <tr>
+                            <td style="text-align: center">@i</td>
+                            <td style="text-align: center">@item.StockCode</td>
+                            <td>@item.StockName</td>
+                            <td style="text-align: right">@item.Quantity.ToString("g29")</td>
+                            <td style="text-align: center" d>@item.Unit</td>
+                            <td>@item.Note</td>
+                        </tr>
+                        i++;
+                    }
+                    <tr>
+                        <td colspan="4" style="text-align: right;font-weight: bold">Total - Tổng cộng: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.TotalQuantity.ToString("g29")</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="font-size: 12px;">White Copy : Store &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blue Copy : Acc</div>
+            <div style="clear: both"></div>
+            <div style="padding-top: 5px;">
+                <table>
+                    <tr class="th">
+                        <td>Prepared by - <i>Chuẩn bị:</i></td>
+                        <td>Checked by - <i>Kiểm tra:</i></td>
+                        <td>Approved by - <i>Phê duyệt:</i></td>
+                    </tr>
+                    <tr>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date - Ngày:&nbsp; @DateTime.Now.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                        <td>
+                            Date - Ngày:
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        @using (Html.BeginForm("PrintPdf", "Helper", FormMethod.Post, new { id = "myform" }))
+        {
+            <div style="margin-top: 20px">
+                <button type="button" id="btnPrint">Download</button>
+                <input type="hidden" name="content" id="hidContent" value="" />
+                <input type="hidden" name="fileName" id="fileName" value="StockIn" />
+                <input type="hidden" name="voucher" id="voucher" value="@Model.Srv" />
+            </div>
+        }
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+        /// <summary>Enum for Page Type</summary>
+        var PDFPageType = {
+            Default: 'Default',
+            Portrait: 'Portrait',
+            Landscape: 'Landscape'
+        }
+
+        $('#btnPrint').click(function () {
+            var printContents = '<html><head><title></title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body>' + $('#PrintLocation').html() + '</body></html>';
+            var pageType = PDFPageType.Portrait;
+            $('#hidContent').val(htmlEncode(printContents));
+            $('#myform').submit();
+        });
+
+        function htmlEncode(value) {
+            //create a in-memory div, set it's inner text(which jQuery automatically encodes)
+            //then grab the encoded contents back out.  The div never exists on the page.
+            return $('<div/>').text(value).html();
+        }
+
+        function htmlDecode(value) {
+            return $('<div/>').html(value).text();
+        }
+    </script>
+</body>

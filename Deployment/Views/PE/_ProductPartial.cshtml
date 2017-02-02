@@ -1,0 +1,116 @@
+﻿@using Vivablast.ViewModels
+@model SupplierViewModel
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "client-create-form", @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(x => x.iCreated, new { @id = "iLogin" })
+    <input type="hidden" value="@Url.Action("MoreProduct", "PE")" id="hidSaveUrl" />
+
+
+    <div class="form-group">
+        <label class="col-sm-3 col-xs-12 control-label">Stock Code</label>
+        <div class="col-sm-4 col-xs-10">
+            @Html.HiddenFor(x => x.StockId)
+            @Html.TextBoxFor(model => model.StockCode, new { @placeholder = "Stock Code", @class = "form-control" })
+        </div>
+        <div class="col-sm-2 col-xs-2">
+            <button type="button" id="btnSearchStock">...</button>
+        </div>
+        <div class="col-sm-3 hidden-xs">
+            <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+            <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-xs-12 picture-effect">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Remark</label>
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(
+                        model => model.vDescription,
+                        new { @placeholder = "Remark", @class = "auto-size" }
+                        )
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-3 col-xs-12 control-label">Stock Name</label>
+        <label id="lblStockName" class="col-sm-9 lblredbol col-xs-12"></label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-xs-6 control-label">Qty in Store</label>
+        <label id="lblStockQty" class="col-sm-9 col-xs-6 lblredbol"></label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-xs-6 control-label">Stock Type</label>
+        <div class="col-sm-9 col-xs-6">
+            <label id="lblStockType" class="lblredbol"></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-xs-6 control-label">Stock Unit</label>
+        <div class="col-sm-9 col-xs-6">
+            <label id="lblStockUnit" class="lblredbol"></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-xs-6 control-label">Part No</label>
+        <div class="col-sm-9 col-xs-6">
+            <label id="lblPartNo" class="lblredbol"></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-xs-6 control-label">Ral No</label>
+        <div class="col-sm-9 col-xs-6">
+            <label id="lblRalNo" class="lblredbol"></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-xs-6 control-label">Color</label>
+        <label id="lblColor" class="col-sm-9 col-xs-6 lblredbol"></label>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-12 bold20 linered">Product List</label>
+    </div>
+    <div class="table-responsive">
+        <table id="LstItem" class="table table-bordered table-hover">
+            <thead>
+                <tr class="vbheaddetail">
+                    <th></th>
+                    <th class="center">Stock Code</th>
+                    <th class="center">Stock Name</th>
+                    <th class="center">Type</th>
+                    <th class="center">Unit</th>
+                    <th class="center">Remark</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.TotalRecords > 0)
+                {
+                    foreach (var item in Model.GetProductDetails)
+                    {
+                        <tr class="vbcolum">
+                            <td class="center">
+                                <input type="hidden" value="@item.Id" class="DetailId" />
+                                <input type="hidden" value="@item.Stock_Id" class="StockId" />
+                                <button type="button" class="btnEdit btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>Edit</button>
+                                <button type="button" class="btnDelete btn btn-xs btn-danger marginleft2"><span class="glyphicon glyphicon-remove"></span>Delete</button>
+                            </td>
+                            <td class="center StockCode">@item.Stock_Code</td>
+                            <td class="center StockName">@item.Stock_Name</td>
+                            <td class="center StockType">@item.Type</td>
+                            <td class="center Unit">@item.Unit</td>
+                            <td class="center Description">@item.Remark</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}

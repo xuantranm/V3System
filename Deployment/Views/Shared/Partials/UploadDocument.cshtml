@@ -1,0 +1,38 @@
+﻿@model Vivablast.ViewModels.DocumentViewModel
+<div class="col-xs-12 form-horizontal">
+        @using (Ajax.BeginForm(null, null, new AjaxOptions { HttpMethod = "Post" }, new { @enctype = "multipart/form-data", @id = "document-upload-form" }))
+        {
+            <div class="row">
+                <span class="upload-file-error-message danger"></span>
+            </div>
+            <div class="row">
+                <table class="table upload-files-table">
+                    <tr>
+                        <th>Select</th>
+                        <th>File Name</th>
+                        <th>Uploaded Date</th>
+                    </tr>
+                    @foreach (var item in Model.FileList)
+                    {
+                        <tr>
+                            <td><input type="checkbox" name="file-check" value="@item.FileGuid" /></td>
+                            <td>
+                                <input type="hidden" name="file-id" value="@item.FileId" />
+                                <a href="/ajax/download/@item.FileId" title="@item.FileName" class="fileNameUploaded">@item.FileName</a>
+                            </td>
+                            <td>@item.ActionDate</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            @Html.HiddenFor(model => model.KeyId)
+            @Html.HiddenFor(model => model.DocumentCategoryId)
+            <div class="row">
+                <div class="col-xs-6">
+                    <input type="file" name="file"/>
+                </div>
+                <button type="button" class="btn btn-primary" id="btnUploadDocument">Upload</button>
+                <a class="btn btn-danger btn-delete-file" href="javascript:;" style="display: none">Remove Selected</a>
+            </div>
+        }
+</div>

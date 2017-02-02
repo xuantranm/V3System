@@ -1,0 +1,263 @@
+﻿@using Vivablast.ViewModels
+@model XRequisitionPdfViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Vivablast Management System</title>
+    <link href="/Images/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    @*<link href="/Content/styles.css" rel="stylesheet" />*@
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Scripts/common.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="PrintLocation">
+            <style type="text/css">
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                th {
+                    height: 50px;
+                    text-align: center;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    background-color: white;
+                }
+
+                td {
+                    vertical-align: bottom;
+                }
+
+                td {
+                    padding: 10px;
+                }
+
+                .th td {
+                    height: 40px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            </style>
+            <div style="padding-top: 10px;">
+                <table>
+                    <tr>
+                        <td style="width: 150px; text-align: center; padding: 0">
+                            <img src="@Model.Domain/Images/v3pdf.png" />
+                        </td>
+                        <td style="text-align:center; font-size:20px;font-weight:bold">
+                            <span style="font-size: 22px;">
+                                MATERIAL PURCHASING REQUISITION FORM
+                            </span>
+                            <br />
+                            <i>PHIẾU ĐỀ NGHỊ MUA HÀNG</i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding-top: 10px;">
+                <div style="float: left; width: 450px">
+                    <span style="font-weight: bold; margin-right: 10px;">Project code - Số dự án:</span> @Model.ProjectCode
+                </div>
+                <div style="float: left; width: 350px">
+                    <span style="font-weight: bold; margin-right: 10px;">No:</span> @Model.vMRF
+                </div>
+                <div style="float: left; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">Date - Ngày:</span> @DateTime.Now
+                </div>
+            </div>
+            <div style="clear: both"></div>
+            <div>
+                <div style="float: left; width: 450px">
+                    <span style="font-weight: bold; margin-right: 10px;">Project name - Tên dự án:</span> @Model.ProjectName
+                </div>
+                <div style="float: left; width: 350px">
+                    <span style="font-weight: bold; margin-right: 10px;">Delivery Time - Giờ giao hàng:</span> @Model.DeliverDateTemp
+                </div>
+                <div style="float: left; width: 300px">
+                    <span style="font-weight: bold; margin-right: 10px;">Delivery Location - Nơi nhận:</span> @Model.vDeliverLocation
+                </div>
+            </div>
+            <div style="clear: both; height: 10px;"></div>
+            <div>
+                <table>
+                    <tr>
+                        <th>
+                            Item<br />
+                            STT
+                        </th>
+                        <th>
+                            Stock ID<br />
+                            Mã số
+                        </th>
+                        <th>
+                            Description<br />
+                            Mặt hàng
+                        </th>
+                        <th>RalNo</th>
+                        <th>
+                            Colour<br />
+                            Màu
+                        </th>
+                        <th>
+                            QTY<br />
+                            Số lượng
+                        </th>
+                        <th>
+                            UOM<br />
+                            ĐVT
+                        </th>
+                        <th>
+                            IN STOCK<br />
+                            Trong kho
+                        </th>
+                        <th>
+                            TO BE PUR.<br />
+                            Phải mua
+                        </th>
+                        <th>
+                            Remark<br />
+                            Ghi chú
+                        </th>
+                    </tr>
+                    @{var i = 1;}
+                    @foreach (var item in Model.GetRequisitionDetailsVResults)
+                    {
+                        <tr>
+                            <td style="text-align: center">@i</td>
+                            <td>@item.Stock_Code</td>
+                            <td>@item.Stock_Name</td>
+                            <td>@item.Ral_No</td>
+                            <td>@item.Color</td>
+                            <td>@item.Quantity.Value.ToString("g29")</td>
+                            <td>@item.Unit</td>
+                            <td>@item.Quantities</td>
+                            <td>@item.Quantity_PE.Value.ToString("g29")</td>
+                            @*<td style="text-align: center">
+                                @if (item.FollowUpRequired == 1)
+                                {
+                                    <input type="checkbox" checked="" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" />
+                                }
+                            </td>*@
+                            @*<td style="text-align: center">
+                                @if (item.Purchased == 1)
+                                {
+                                    <input type="checkbox" checked="" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" />
+                                }
+                            </td>*@
+                            <td style="text-align: center">
+                                @item.Remark
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                    @*<tr>
+                        <td colspan="9"></td>
+                        <td style="font-size: 12px;">ALL - Tất cả</td>
+                        <td style="font-size: 12px;">ALL - Tất cả</td>
+                        <td style="font-size: 12px;">ALL - Tất cả</td>
+                    </tr>*@
+                </table>
+            </div>
+            <div style="clear: both"></div>
+            <div style="margin-top: -10px;">
+                <table>
+                    <tr class="th">
+                        <td>Prepared by - Chuẩn bị</td>
+                        <td>Approved by Manager for Issue<br />Quản lý phê duyệt</td>
+                        <td>Checked by Store<br />Kho kiểm tra</td>
+                        <td>Approved by BOM for Purchasing<br />Phê duyệt mua hàng</td>
+                        <td>Purchased by<br />Người mua</td>
+                    </tr>
+                    <tr>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                        <td style="height: 69px"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-size: 10px;">Name & Signature - Ký ghi họ và tên</span><br />
+                            Date - Ngày:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
+                        </td>
+                        <td>
+                            <span style="font-size: 10px;">Name & Signature - Ký ghi họ và tên</span><br />
+                            Date - Ngày:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
+                        </td>
+                        <td>
+                            <span style="font-size: 10px;">Name & Signature - Ký ghi họ và tên</span><br />
+                            Date - Ngày:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
+                        </td>
+                        <td>
+                            <span style="font-size: 10px;">Name & Signature - Ký ghi họ và tên</span><br />
+                            Date - Ngày:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
+                        </td>
+                        <td>
+                            <span style="font-size: 10px;">Name & Signature - Ký ghi họ và tên</span><br />
+                            Date - Ngày:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        @using (Html.BeginForm("PrintPdf", "Helper", FormMethod.Post, new { id = "myform" }))
+        {
+            <div style="margin-top: 20px">
+                <button type="button" id="btnPrint">Download</button>
+                <input type="hidden" name="content" id="hidContent" value="" />
+                <input type="hidden" name="fileName" id="fileName" value="Requisition" />
+                <input type="hidden" name="voucher" id="voucher" value="@Model.vMRF" />
+            </div>
+        }
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+        /// <summary>Enum for Page Type</summary>
+        var PDFPageType = {
+            Default: 'Default',
+            Portrait: 'Portrait',
+            Landscape: 'Landscape'
+        }
+
+        $('#btnPrint').click(function () {
+            var printContents = '<html><head><title></title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body>' + $('#PrintLocation').html() + '</body></html>';
+            var pageType = PDFPageType.Portrait;
+            $('#hidContent').val(htmlEncode(printContents));
+            $('#myform').submit();
+        });
+
+        function htmlEncode(value) {
+            //create a in-memory div, set it's inner text(which jQuery automatically encodes)
+            //then grab the encoded contents back out.  The div never exists on the page.
+            return $('<div/>').text(value).html();
+        }
+
+        function htmlDecode(value) {
+            return $('<div/>').html(value).text();
+        }
+    </script>
+</body>
+</html>

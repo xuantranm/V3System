@@ -1,0 +1,217 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model AssignViewModel
+
+@{
+    ViewBag.Title = "Stock Out";
+}
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "stock-out-create-form", @class = "form-horizontal" }))
+        {
+            @Html.HiddenFor(x => x.bAssignningStockID)
+            @Html.HiddenFor(x => x.vMRF, new { @id = "hidCheckCode" })
+            @Html.HiddenFor(x => x.Timestamp)
+            @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
+            @Html.HiddenFor(x => x.Mode)
+            <input type="hidden" value="@Url.Action("Create", "StockOut")" id="hidSaveUrl" />
+            <input type="hidden" value="" id="hidDeleteItemDetail" />
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-12 bold20 linered">Stock Out Information</label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">From Store <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.FromStore, Model.Stores, Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <label class="col-sm-3 control-label">To Store</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(model => model.ToStore, Model.Stores, Constants.SelectDDL, new { @class = "form-control" })
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Project Code <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.vProjectID, Model.Projects, @Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Project Name <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.ProjectName, Model.ProjectNames, @Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">MRF</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vMRF, new { @placeholder = "MRF", @class = "form-control" })
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <label class="col-sm-3 control-label">Date</label>
+                        <div class="col-sm-9">
+                            <input id="dDeliverDate" name="dDeliverDate" value="@Model." type="text" class="form-control datepicker" />
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <label class="col-xs-12 h3">Assign Detail</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Stock Code</label>
+                    <div class="col-sm-4 col-xs-10">
+                        @Html.HiddenFor(x => x.StockId)
+                        @Html.TextBoxFor(model => model.StockCode, new { @placeholder = "Stock Code", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <button type="button" id="btnSearchStock">...</button>
+                    </div>
+                    <div class="col-sm-3 hidden-xs">
+                        <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-xs-12 picture-effect">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Qty Assign <span class="red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.bQuantity, new { @placeholder = "Quantity Assign", @class = "form-control quantity-input" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Remark</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(
+                            model => model.Description,
+                            new { @placeholder = "Remark", @class = "auto-size" }
+                            )
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Store Quantity</label>
+                            <label id="lblStockQty" class="col-xs-9 lblredbol"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group visible-xs-block">
+                    <div class="col-xs-12 visible-xs-block">
+                        <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <div class="row">
+                        <div class="gallery-stock">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="clear: both"></div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Stock Name</label>
+                    <label id="lblStockName" class="col-xs-9 lblredbol"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Stock Type</label>
+                    <div class="col-xs-9">
+                        <label id="lblStockType" class="lblredbol"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Stock Unit</label>
+                    <div class="col-xs-9">
+                        <label id="lblStockUnit" class="lblredbol"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Part No</label>
+                    <div class="col-xs-9">
+                        <label id="lblPartNo" class="lblredbol"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Ral No</label>
+                    <div class="col-xs-9">
+                        <label id="lblRalNo" class="lblredbol"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Color</label>
+                    <label id="lblColor" class="col-xs-9 lblredbol"></label>
+                </div>
+            </div>
+
+            @*In future will implement Assigned List: List of all item assigned for this project*@
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-12 bold20 linered">Stock Item List</label>
+                </div>
+                <div class="table-responsive">
+                    <table id="LstItem" class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="vbheaddetail">
+                                <th class="width106"></th>
+                                <th class="center">Stock Code</th>
+                                <th class="center">Stock Name</th>
+                                <th class="center">Qty Assign</th>
+                                <th class="center">Description</th>
+                                @*<th class="center hidden-xs">Assigned Date</th>
+                                    <th class="center hidden-xs">By</th>
+                                    <th class="center hidden-xs">Modified Date</th>
+                                    <th class="center hidden-xs">By</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TotalRecords > 0)
+                            {
+                                foreach (var item in Model.AssignStockItemList)
+                                {
+                                    <tr class="vbcolum">
+                                        <td class="center">
+                                            <input type="hidden" value="@item.bAssignningStockID" class="DetailId" />
+                                            <input type="hidden" value="@item.vStockID" class="StockId" />
+                                            <input type="hidden" value="0" class="ModifyQty" />
+                                            <button type="button" class="btnEdit btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>Edit</button>
+                                            <button type="button" class="btnDelete btn btn-xs btn-danger marginleft2"><span class="glyphicon glyphicon-remove"></span>Delete</button>
+                                        </td>
+                                        <td class="center StockCode">@item.vStockID</td>
+                                        <td class="center StockName">@item.vStockID</td>
+                                        <td class="center Quantity">@item.bQuantity</td>
+                                        <td class="center Remark">@item.Description</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="alert alert-danger col-xs-12" style="display: none">
+                <strong>Error!</strong> No item in list.
+            </div>
+            <div class="modal-footer center">
+                <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
+                    <span class="glyphicon glyphicon-save"></span> Save
+                </button>
+                <a href="@Url.Action("Create", "StockOut")" class="btn btn-primary btnAdd displaynone">
+                    <span class="glyphicon glyphicon-plus"></span> New
+                </a>
+                @Html.ActionLink("Back To List", "Index", "StockOut", new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>
+
+
+<script src="/Scripts/tmx.stockoutact.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

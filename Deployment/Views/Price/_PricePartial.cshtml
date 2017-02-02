@@ -1,0 +1,108 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model PriceViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    <div style="clear: both; height: 10px;"></div>
+    if (Model.TotalPages > 1)
+    {
+    <div class="float-left margintop5">@Model.TotalRecords @Constants.DisplayResult</div>
+    <div class="float-left marginleft10">
+        @Html.Partial("Partials/_PreparePagingPartial")
+    </div>
+    }
+    else
+    {
+    <div style="float: left;">@Model.TotalRecords @Constants.DisplayResult</div>
+    }
+    <div class="clearboth"></div>
+    <div class="float-left">
+        <table id="PriceLst" class="table table-bordered table-hover noresize" style="width: 2000px">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.Price > 2)
+                    {
+                        <th class="center" style="width: 150px!important">Action</th>
+                    }
+                    <th class="center">Store</th>
+                    <th class="center">Supplier Name</th>
+                    <th class="center">Stock Code</th>
+                    <th class="center">Stock Name</th>
+                    <th class="center">Price</th>
+                    <th class="center">Currency</th>
+                    <th class="center">Status</th>
+                    <th class="center">Start Date</th>
+                    <th class="center">End Date</th>
+                    <th class="center">Created Date</th>
+                    <th class="center">By</th>
+                    <th class="center">Modified Date</th>
+                    <th class="center">By</th>
+                    <th class="center width30"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListPrice)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.Price > 2)
+                        {
+                            <td class="center">
+                                <a href="@Url.Action("Create", "Price", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Edit
+                                </a>
+                                @if (Model.UserLogin.User > 3)
+                                {
+                                    <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Delete
+                                    </a>
+                                }
+
+                            </td>
+                        }
+                        <td class="center">@item.Store</td>
+                        <td class="center">@item.Supplier</td>
+                        <td class="center StockCode">@item.Stock_Code</td>
+                        <td class="center">@item.Stock_Name</td>
+                        <td class="center PriceValue">
+                            @if (@item.Price != null)
+                            {
+                                @(((decimal)@item.Price).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                            }
+                        </td>
+                        <td class="center">@item.Currency</td>
+                        <td class="center">@item.Status</td>
+                        <td class="center">@Constants.ConvertDate(item.Start.ToString())</td>
+                        <td class="center">@Constants.ConvertDate(item.End.ToString())</td>
+                        <td class="center">@Constants.ConvertDate(item.Created_Date.ToString())</td>
+                        <td class="center">@item.Created_By</td>
+                        <td class="center">@Constants.ConvertDate(item.Modified_Date.ToString())</td>
+                        <td class="center">@item.Modified_By</td>
+                        <td class="center">
+                            @*<a href="#">Detail</a>*@
+                            <!-- In future update security use R -->
+                            <div class="arrow"></div>
+                            <input type="hidden" value="@item.Id" class="ItemKey" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="clearboth"></div>
+                if (Model.TotalPages > 1)
+                {
+    <div class="float-left">
+        @Html.Partial("Partials/_PreparePagingPartial")
+    </div>
+                }
+}

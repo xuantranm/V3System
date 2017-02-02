@@ -1,0 +1,241 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model RequisitionViewModel
+
+@{
+    ViewBag.Title = "Requisition";
+}
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "requisition-create-form", @class = "form-horizontal" }))
+        {
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.vMRF, new { @id = "hidCheckCode" })
+            @Html.HiddenFor(x => x.Timestamp)
+            @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
+            <input type="hidden" value="@Url.Action("Create", "Requisition")" id="hidSaveUrl" />
+            <input type="hidden" value="" id="hidDeleteItemDetail" />
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-12 bold20 linered">Requisition Information</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">MRF <span class="red">*</span></label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vMRF, new { disabled = "disabled", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Project Code</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.vProjectID, Model.Projects, @Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Project Name</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.ProjectName, Model.ProjectNames, @Constants.SelectDDL, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Deliver Date</label>
+                    <div class="col-sm-9">
+                        <input id="dDeliverDate" name="dDeliverDate" value="@Model.DeliverDateTemp" type="text" class="form-control datepicker" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Deliver Location</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vDeliverLocation, new { @placeholder = "Deliver Location", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Store</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.iStore, Model.Stores, new { @id = "StoreId", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12 col-xs-12 bold20 linered">Stock Detail</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Stock Code</label>
+                    <div class="col-sm-4 col-xs-10">
+                        @Html.HiddenFor(x => x.StockId)
+                        @Html.TextBoxFor(model => model.StockCode, new { @placeholder = "Stock Code", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <button type="button" id="btnSearchStock">...</button>
+                    </div>
+                    <div class="col-sm-3 hidden-xs">
+                        <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-xs-12 picture-effect">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-4 col-xs-12 control-label">Qty Request</label>
+                            <div class="col-sm-8 col-xs-12">
+                                @Html.TextBoxFor(model => model.fQuantity, new { @placeholder = "Total Qty", disabled = "disabled", @class = "form-control quantity-input disable" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 col-xs-12 control-label">Qty Purchased</label>
+                            <div class="col-sm-8 col-xs-12">
+                                @Html.TextBoxFor(model => model.fTobePurchased, new { @placeholder = "Total Order", disabled = "disabled", @class = "form-control quantity-input disable" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 col-xs-12 control-label">Remark</label>
+                            <div class="col-sm-8 col-xs-12">
+                                @Html.TextAreaFor(
+                                    model => model.Remark,
+                                    new { @placeholder = "Remark", @class = "auto-size" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group visible-xs-block">
+                    <div class="col-xs-12 visible-xs-block">
+                        <button type="button" class="btn btn-primary btn-block btnAddItem"><span class="glyphicon glyphicon-plus"></span> Add</button>
+                        <button type="button" class="btn btn-primary btn-block btnUpdateItem displaynone"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <div class="row">
+                        <div class="gallery-stock">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="clear: both"></div>
+                <div class="form-group">
+                        <label class="col-sm-3 control-label">Stock Name</label>
+                        <div class="col-sm-9">
+                            <label id="lblStockName" class="lblredbol">@Model.StockName</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Stock Type</label>
+                        <div class="col-sm-9">
+                            <label id="lblStockType" class="lblredbol">@Model.StockType</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Qty In Store</label>
+                        <div class="col-sm-9">
+                            <label id="lblStockQty" class="lblredbol">@Model.Quantities</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Unit</label>
+                        <div class="col-sm-9">
+                            <label id="lblStockUnit" class="lblredbol">@Model.Unit</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Part No</label>
+                        <div class="col-sm-9">
+                            <label id="lblPartNo" class="lblredbol">@Model.PartNo</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Ral No</label>
+                        <div class="col-sm-9">
+                            <label id="lblRalNo" class="lblredbol">@Model.RalNo</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Color</label>
+                        <div class="col-sm-9">
+                            <label id="lblColor" class="lblredbol">@Model.ColorName</label>
+                        </div>
+                    </div>
+                    @Html.HiddenFor(x => x.iPurchased)
+                    @Html.HiddenFor(x => x.iSent)
+                    @Html.HiddenFor(x => x.dCreated)
+                </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-12 bold20 linered">Requisition Item List</label>
+                </div>
+                <div class="table-responsive">
+                    <table id="LstItem" class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="vbheaddetail">
+                                <th class="hidden-xs"></th>
+                                <th class="center">Stock Code</th>
+                                <th class="center hidden-xs">Stock Name</th>
+                                <th class="center">Qty</th>
+                                <th class="center">To be PE</th>
+                                <th class="center hidden-xs">Remark</th>
+                                <th class="center hidden-xs">Purchased</th>
+                                <th class="center hidden-xs">Fulfillment</th>
+                                <th class="center hidden-xs">Date Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.TotalRecords > 0)
+                            {
+                                foreach (var item in Model.GetRequisitionDetailsVResults)
+                                {
+                                    <tr class="vbcolum">
+                                        <td class="center hidden-xs">
+                                            <input type="hidden" value="@item.Id" class="DetailId" />
+                                            <input type="hidden" value="@item.Stock_Id" class="StockId" />
+                                            <button type="button" class="btnEdit btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>Edit</button>
+                                            <button type="button" class="btnDelete btn btn-xs btn-danger marginleft2"><span class="glyphicon glyphicon-remove"></span>Delete</button>
+                                        </td>
+                                        <td class="center StockCode">
+                                            @item.Stock_Code
+                                        </td>
+                                        <td class="StockName hidden-xs">@item.Stock_Name</td>
+                                        <td class="center Quantity">
+                                            @if (@item.Quantity != null)
+                                            {
+                                                @(((decimal)@item.Quantity).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                            }
+                                        </td>
+                                        <td class="center QuantityPe">
+                                            @if (@item.Quantity_PE != null)
+                                            {
+                                                @(((decimal)@item.Quantity_PE).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                                            }
+                                        </td>
+                                        <td class="center hidden-xs Remark">@item.Remark</td>
+                                        <td class="center hidden-xs Purchased">@item.Purchased</td>
+                                        <td class="center hidden-xs Sent">@item.Sent</td>
+                                        <td class="center hidden-xs CreatedDate">@item.Created_Date.GetValueOrDefault().ToString("dd/MM/yyyy")</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="alert alert-danger col-xs-12" style="display: none">
+                <strong>Error!</strong> No item in list.
+            </div>
+            <div class="modal-footer center">
+                <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
+                    <span class="glyphicon glyphicon-save"></span> Save
+                </button>
+                <a href="@Url.Action("Create", "Requisition")" class="btn btn-primary btnAdd displaynone">
+                    <span class="glyphicon glyphicon-plus"></span> New
+                </a>
+                @Html.ActionLink("Back To List Requisition", "Index", "Requisition", new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>
+
+<script src="/Scripts/tmx.requisitionact.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>

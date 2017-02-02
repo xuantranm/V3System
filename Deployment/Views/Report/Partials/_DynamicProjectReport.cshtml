@@ -1,0 +1,70 @@
+﻿@model Ap.Business.ViewModels.DynamicProjectReportViewModel
+
+<div>
+    Kết quả: <b><span id="totalRecords">@Model.TotalRecords</span></b>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Date</th>
+                <th>Project Code</th>
+                <th>Project Name</th>
+                <th>Stock Code</th>
+                <th>Stock Name</th>
+                <th>Stock Type</th>
+                <th>Category</th>
+                <th>Unit</th>
+                <th>Supplier</th>
+                <th>SRV</th>
+                <th>SIV</th>
+                <th>MRF</th>
+                <th>PO Code</th>
+                <th>Stock In</th>
+                <th>Stock Out</th>
+                <th>Stock Return</th>
+                <th>Stock Remain</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.DynamicProjectReports)
+            {
+                <tr id="item@(item.Id)">
+                    <td>@item.Action</td>
+                    <td>@item.Date</td>
+                    <td>@item.ProjectCode</td>
+                    <td>@item.ProjectName</td>
+                    <td>@item.StockCode</td>
+                    <td>@item.StockName</td>
+                    <td>@item.StockType</td>
+                    <td>@item.Category</td>
+                    <td>@item.Unit</td>
+                    <td>@item.Supplier</td>
+                    <td>@item.SRV</td>
+                    <td>@item.SIV</td>
+                    <td>@item.MRF</td>
+                    <td>@item.POCode</td>
+                    <td>@item.QtyStockIn</td>
+                    <td>@item.QtyStockOut</td>
+                    <td>@item.QtyStockReturn</td>
+                    <td>@item.QtyStockCurrent</td>
+                    <td>@item.Weight</td>
+                </tr>
+            }
+            @if (!Model.DynamicProjectReports.Any())
+            {
+                <tr>
+                    <td colspan="17" class="text-center">No data</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@if (Model.TotalPages > 1)
+{
+    <div class="float-left">
+        @Html.Partial("Partials/_PreparePagingPartial")
+    </div>
+}

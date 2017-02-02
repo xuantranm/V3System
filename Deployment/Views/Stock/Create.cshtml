@@ -1,0 +1,195 @@
+﻿@using Ap.Common.Constants
+@using Ap.Common.Enums
+@using Vivablast.ViewModels
+@model StockViewModel
+
+@{
+    ViewBag.Title = "Stock";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "stock-create-form", @class = "form-horizontal" }))
+            {
+                @Html.HiddenFor(x => x.Id)
+                @Html.HiddenFor(x => x.vStockID, new { @id = "hidCheckCode" })
+                @Html.HiddenFor(x => x.vStockName, new { @id = "hidCheckName" })
+                @Html.HiddenFor(x => x.Type)
+                @Html.HiddenFor(x => x.Category)
+                @Html.HiddenFor(x => x.Unit)
+                @Html.HiddenFor(x => x.Position)
+                @Html.HiddenFor(x => x.Label)
+                @Html.HiddenFor(x => x.Timestamp)
+                @Html.HiddenFor(x => x.UserLogin.Id, new { @id = "iLogin" })
+                <input type="hidden" value="@Url.Action("Create", "Stock")" id="hidSaveUrl" />
+                <div class="form-group">
+                    <label class="col-sm-4">Stock Type <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.iType, Model.Types, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.iType)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Category</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.bCategoryID, Model.Categories, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.bCategoryID)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Stock Code <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.vStockID, new { @placeholder = "Code", @class = "form-control", disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Stock Name <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.vStockName, new { @placeholder = "Name", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.vStockName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Brand</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.vBrand, new { @placeholder = "Brand", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.vBrand)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Account Code</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.vAccountCode, new { @placeholder = "Account Code", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.vAccountCode)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Unit <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.bUnitID, Model.Units, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.bUnitID)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Position</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.bPositionID, Model.Positions, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.bPositionID)
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    <label class="col-sm-4">Label</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.bLabelID, Model.Labels, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.bLabelID)
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    <label class="col-sm-4">Weight</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.bWeight, new { @placeholder = "Weight", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.bWeight)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Remark</label>
+                    <div class="col-sm-8">
+                        @Html.TextAreaFor(model => model.vRemark, new { @placeholder = "Remark", @class = "auto-size" })
+                        @Html.ValidationMessageFor(model => model.vRemark)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Ral No</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.RalNo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RalNo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Color</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.ColorName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ColorName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Part No</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.PartNo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PartNo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Part No For</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.PartNoFor, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PartNoFor)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">Part No Mini Qty</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.PartNoMiniQty, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PartNoMiniQty)
+                    </div>
+                </div>
+                <div class="form-group hidden">
+                    <label class="col-sm-4">Sub Category</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.SubCategory, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SubCategory)
+                    </div>
+                </div>
+            }
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
+                        <span class="glyphicon glyphicon-save"></span>Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fileareadiv" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 customDisabled">
+            <div class="alert alert-info hide" role="alert">UPLOAD FUNCTION WILL ENABLE AFTER SAVE.</div>
+            <div class="form-group" id="upload-document">
+                <b>Documents:</b>
+                <div class="col-xs-12">
+                    @{Html.RenderAction("Document", "Ajax", new RouteValueDictionary { { "id", Model.Id }, { "type", DocumentType.StockDocument } });}
+                </div>
+            </div>
+
+            <div class="clearboth height10"></div>
+
+            <div class="form-group" id="upload-document">
+                <b>Pictures:</b>
+                <div class="col-xs-12">
+                    @{Html.RenderAction("Document", "Ajax", new RouteValueDictionary { { "id", Model.Id }, { "type", DocumentType.StockPicture } });}
+                </div>
+            </div>
+        </div>
+
+        <div class="clearboth height10"></div>
+
+        <div class="modal-footer center">
+
+            <a href="@Url.Action("Create", "Stock")" class="btn btn-primary btnAdd displaynone">
+                <span class="glyphicon glyphicon-plus"></span>New
+            </a>
+            @Html.ActionLink("Back To List Stock", "Index", "Stock", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+    <script src="/Scripts/custom/tmx.stockact.js?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]"></script>
+    <script src="/Scripts/sidleimg.js"></script>
+    <script>
+        $(function () {
+            if ($('#Id').val() > 0) {
+                $('#fileareadiv').removeClass('customDisabled');
+            } else {
+                $('.alert-info').removeClass('hide');
+            }
+        });
+        uploadFileControl.init();
+    </script>

@@ -1,0 +1,107 @@
+﻿@using Vivablast.Common
+@using Vivablast.ViewModels.Builders
+
+@model AccountingViewModelBuilder
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    <input type="hidden" value="@Url.Action("Save", "Accounting")" id="hidSaveUrl" />
+    <div style="clear: both; height: 10px;"></div>
+    <div class="float-left marginright10"><button type="submit" id="btnSave" class="btn btn-danger">Save</button></div>
+    if (Model.TotalPages > 1)
+    {
+    <div class="float-left margintop5">@Model.TotalRecords @Constants.DisplayResult</div>
+    <div class="float-left marginleft10">
+        @Html.Partial("Partials/_PreparePagingPartial")
+    </div>
+    }
+    else
+    {
+    <div style="float: left;">@Model.TotalRecords @Constants.DisplayResult</div>
+    }
+    
+    <div class="clearboth"></div>
+    <div class="float-left">
+        <table id="ContentLst" class="table table-bordered table-hover noresize" style="width: 1600px">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.Accounting > 1)
+                    {
+                        <th class="center width50">Check</th>
+                    }
+                    <th class="center">Stock Code</th>
+                    <th class="center">Stock Name</th>
+                    <th class="center">Quantity</th>
+                    <th class="center">Qty Pending</th>
+                    <th class="center">Qty PO</th>
+                    <th class="center">Type Acc.</th>
+                    <th class="center">Status Acc.</th>
+                    <th class="center">SIV/SRV</th>
+                    <th class="center">Begin Store</th>
+                    <th class="center">End Store</th>
+                    <th class="center">Project Code</th>
+                    <th class="center">Project Name</th>
+                    <th class="center">PO</th>
+                    <th class="center">Supplier</th>
+                    <th class="center">Created Date</th>
+                    <th class="center">By</th>
+                    <th class="center">Modified Date</th>
+                    <th class="center">By</th>
+                    <th class="center">Accounting Date</th>
+                    <th class="center">By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AccountingGetListResults)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.Accounting > 1)
+                        {
+                            <td class="center">
+                                <input type="checkbox" class="AccCheck" @Constants.AccChecked(item.AccCheck)/>
+                                <input type="hidden" value="@item.StockId" class="hidStockId"/>
+                                <input type="hidden" value="@item.SIRV" class="hidSIRV"/>
+                                <input type="hidden" value="@item.Id" class="hidId"/>
+                                <input type="hidden" value="@item.SIRVFag" class="hidSIRVFag"/>
+                            </td>
+                        }
+                        <td class="center">@item.stockCode</td>
+                        <td class="center">@item.vStockName</td>
+                        <td class="center">@item.Qty</td>
+                        <td class="center">@item.QtyPending</td>
+                        <td class="center">@item.QtyPO</td>
+                        <td class="center">@item.SIRVFag</td>
+                        <td class="center">@item.AccStatus</td>
+                        <td class="center">@item.SIRV</td>
+                        <td class="center">@item.StoreFromName</td>
+                        <td class="center">@item.StoreToName</td>
+                        <td class="center">@item.projectCode</td>
+                        <td class="center">@item.vProjectName</td>
+                        <td class="center">@item.POCode</td>
+                        <td class="center">@item.SupplierName</td>
+                        <td class="center">@Constants.ConvertDate(@item.dCreated.ToString())</td>
+                        <td class="center">@item.Created_By</td>
+                        <td class="center">@Constants.ConvertDate(item.dModified.ToString())</td>
+                        <td class="center">@item.Modified_By</td>
+                        <td class="center">@Constants.ConvertDate(@item.AccdCreated.ToString())</td>
+                        <td class="center">@item.CheckBy</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="clearboth"></div>
+                if (Model.TotalPages > 1)
+                {
+    <div style="float: left;">
+        @Html.Partial("Partials/_PreparePagingPartial")
+    </div>
+                }
+                
+}

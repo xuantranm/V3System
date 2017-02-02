@@ -1,0 +1,86 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model SupplierViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    <div>
+        @Model.TotalRecords @Constants.DisplayResult
+    </div>
+    <div class="table-responsive">
+        <table id="SupplierLst" class="table table-bordered table-hover">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.SupplierR > 2)
+                    {
+                        <th class="center 150px!important">Action</th>
+                    }
+                    <th class="center">Id</th>
+                    <th class="center SupplierName">S.Name</th>
+                    <th class="center">S.Type</th>
+                    <th class="center hidden-xs">Address</th>
+                    <th class="center hidden-xs">City</th>
+                    <th class="center hidden-xs">Country</th>
+                    <th class="center hidden-xs">Phone 1</th>
+                    <th class="center hidden-xs">Mobile</th>
+                    <th class="center hidden-xs">Fax</th>
+                    <th class="center hidden-xs">Email</th>
+                    <th class="center hidden-xs">Contact Person</th>
+                    <th class="center hidden-xs"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SupplierGetListResults)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.SupplierR > 2)
+                        {
+                            <td class="center">
+                                <a href="@Url.Action("Create", "Supplier", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Edit
+                                </a>
+                                @if (Model.UserLogin.SupplierR > 3)
+                                {
+                                    <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Delete
+                                    </a>
+                                }
+                                <input type="hidden" value="@item.Id" class="ItemKey" />
+                            </td>
+                        }
+                        <td class="center">@item.Id</td>
+                        <td class="center">@item.Name</td>
+                        <td class="center">@item.Type</td>
+                        <td class="center hidden-xs">@item.Address</td>
+                        <td class="center hidden-xs">@item.City</td>
+                        <td class="center hidden-xs">@item.Country</td>
+                        <td class="center hidden-xs">@item.Phone</td>
+                        <td class="center hidden-xs">@item.Mobile</td>
+                        <td class="center hidden-xs">@item.Fax</td>
+                        <td class="center hidden-xs">@item.Email</td>
+                        <td class="center hidden-xs">@item.Contact</td>
+                        <td class="center hidden-xs">
+                            <div class="arrow"></div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="clearboth"></div>
+    if (Model.TotalPages > 1)
+    {
+        <div class="float-left">
+            @Html.Partial("Partials/_PreparePagingPartial")
+        </div>
+    }
+}
+

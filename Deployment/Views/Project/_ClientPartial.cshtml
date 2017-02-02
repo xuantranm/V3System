@@ -1,0 +1,16 @@
+﻿@model Ap.Business.Domains.Project_Client
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "client-create-form", @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(x => x.iCreated, new { @id = "iLogin" })
+    <input type="hidden" value="@Url.Action("NewClient", "Project")" id="hidSaveUrl" />
+
+
+    <div class="form-group">
+        <label class="col-sm-2">Client <span class="red">*</span></label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.Name, new { @placeholder = "Name", @class = "form-control" })
+        </div>
+    </div>
+}

@@ -1,0 +1,76 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+
+@model CategoryViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+
+    <div>@Model.TotalRecords @Constants.DisplayResult</div>
+
+    <div class="table-responsive">
+        <table id="DataLst" class="table table-bordered table-hover noresize">
+            <thead>
+                <tr class="vbhead">
+                    @if (Model.UserLogin.CategoryR > 2)
+                    {
+                        <th class="center" style="width: 150px!important">Action</th>
+                    }
+                    <th class="center">Key</th>
+                    <th class="center">Name</th>
+                    <th class="center">Code</th>
+                    <th class="center hidden-xs">Created Date</th>
+                    <th class="center hidden-xs">By</th>
+                    <th class="center hidden-xs">Modified Date</th>
+                    <th class="center hidden-xs">By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListEntity)
+                {
+                    <tr class="vbcolum">
+                        @if (Model.UserLogin.CategoryR > 2)
+                        {
+                            <td class="center">
+                                <a href="@Url.Action("Create", "Category", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Edit
+                                </a>
+                                @if (Model.UserLogin.CategoryR > 3)
+                                {
+                                    <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Delete
+                                    </a>
+                                }
+                                <input type="hidden" class="ItemKey" value="@item.Id" />
+                            </td>
+                        }
+                        <td class="center">@item.Id</td>
+                        <td class="center EntityName">@item.Name</td>
+                        <td>@item.Code</td>
+                        <td class="center hidden-xs">@Constants.ConvertDate(item.Created_Date.ToString())</td>
+                        <td class="center hidden-xs">@item.Created_By</td>
+                        <td class="center hidden-xs">@Constants.ConvertDate(item.Modified_Date.ToString())</td>
+                        <td class="center hidden-xs">
+                            @item.Modified_By
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    if (Model.TotalPages > 1)
+    {
+        <div>
+            @Html.Partial("Partials/_PreparePagingPartial")
+        </div>
+    }
+}

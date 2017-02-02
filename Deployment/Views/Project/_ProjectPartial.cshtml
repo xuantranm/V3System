@@ -1,0 +1,104 @@
+﻿@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model ProjectViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div>
+        @Constants.NoData
+    </div>
+}
+else
+{
+    <div>
+        @Model.TotalRecords @Constants.DisplayResult
+    </div>
+    <div class="table-responsive">
+        <table id="List" class="table table-bordered table-hover">
+            <thead>
+                <tr class="vbhead">
+                    <th class="center">Action</th>
+                    <th class="center">Code</th>
+                    <th class="center">Name</th>
+                    <th class="center">Contact</th>
+                    <th class="center hidden-xs">Client</th>
+                    <th class="center hidden-xs">Country</th>
+                    <th class="center hidden-xs">Location</th>
+                    <th class="center hidden-xs">Begin Date</th>
+                    <th class="center hidden-xs">End Date</th>
+                    <th class="center">Status</th>
+                    @*<th class="center">Main Contact</th>
+                        <th class="center">Status</th>
+                        <th class="center">Remark</th>
+                        <th class="center">Created Date</th>
+                        <th class="center">By</th>
+                        <th class="center">Modified Date</th>
+                        <th class="center">By</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProjectGetListResults)
+                {
+                    <tr>
+                        @if (Model.UserLogin.ProjectR > 2)
+                        {
+                            <td class="center">
+                                <a href="@Url.Action("Detail", "Project", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Detail
+                                </a>
+                                <a href="@Url.Action("Create", "Project", new { id = @item.Id }, null)" class="btn btn-xs btn-primary" style="color: white; text-decoration:none;">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Edit
+                                </a>
+                                @if (Model.UserLogin.ProjectR > 3)
+                                {
+                                    <a href="javascript:;" class="btn btn-xs btn-danger" style="color: white; text-decoration:none;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        Delete
+                                    </a>
+                                }
+                                <input type="hidden" class="ItemKey" value="@item.Id" />
+                            </td>
+                        }
+                        <td class="center ProjectCode">@item.Project_Code</td>
+                        <td>@item.Project_Name</td>
+                        <td>@item.Main_Contact</td>
+                        <td class="center hidden-xs">@item.Client</td>
+                        <td class="center hidden-xs">@item.Country</td>
+                        <td class="center hidden-xs">@item.Location</td>
+                        <td class="center hidden-xs">@item.Begin_Date.ToString("dd/MM/yyyy")</td>
+                        @{
+                    if (item.End_Date.HasValue)
+                    {
+                        <td class="center hidden-xs">@item.End_Date.Value.ToString("dd/MM/yyyy")</td>
+                    }
+                    else
+                    {
+                        <td class="center hidden-xs"></td>
+                    }
+                        }
+                        <td class="center">@item.Status</td>
+                        @*<td class="center">@item.Main_Contact</td>
+                            
+                            <td>@item.Remark</td>
+                            <td class="center">@Constants.ConvertDate(item.Created_Date.ToString())</td>
+                            <td class="center">@item.Created_By</td>
+                            <td class="center">@Constants.ConvertDate(item.Modified_Date.ToString())</td>
+                            <td class="center">
+                                @item.Modified_By
+                                <input type="hidden" class="ItemKey" value="@item.Id" />
+                            </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    if (Model.TotalPages > 1)
+    {
+        <div class="float-left">
+            @Html.Partial("Partials/_PreparePagingPartial")
+        </div>
+    }
+}
+

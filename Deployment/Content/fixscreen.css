@@ -1,0 +1,40 @@
+﻿@media (max-width: 767px) {
+    td >.btn {
+        margin: 2px;
+    }
+}
+@media (min-width: 768px) {
+    .navbar-right {
+      margin-top: -50px;
+    }
+    .form-inline .form-group {
+      margin-bottom: 15px;
+    }
+    .gallery-stock .carousel-control .glyphicon-chevron-left, .gallery-stock .carousel-control .glyphicon-chevron-right,.gallery-stock .carousel-control .icon-prev,.gallery-stock .carousel-control .icon-next {
+        font-size: 15px;
+        margin-top: -5px;
+    }
+    .picture-effect input, .picture-effect textarea {
+        margin-left: 12px;
+    }
+    .gallery-stock {
+        padding-left: 15px;
+        max-height: 130px;
+    }
+}
+@media (min-width: 992px) {
+
+}
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .button-control {
+        margin-top: 10px;
+        text-align: center;
+    }
+}

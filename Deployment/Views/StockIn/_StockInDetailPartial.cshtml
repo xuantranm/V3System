@@ -1,0 +1,69 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model FulfillmentViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div style="color: red;font-weight: bold">
+        @Constants.EmptyData
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="DetailList table table-bordered table-hover">
+            <thead>
+                <tr class="vbheaddetail">
+                    <th class="center hidden-xs">PO</th>
+                    <th class="center">Stock Code</th>
+                    <th class="center">Stock Name</th>
+                    <th class="center">Qty Order</th>
+                    <th class="center">Qty Receive</th>
+                    <th class="center">Qty Pending</th>
+                    <th class="center hidden-xs">Invoice No</th>
+                    <th class="center hidden-xs">Invoice Date</th>
+                    <th class="center hidden-xs">MRF</th>
+                    <th class="center">SRV</th>
+                    <th class="center">Remark</th>
+                    <th class="center hidden-xs">Stock Type</th>
+                    <th class="center hidden-xs">Stock Unit</th>
+                    <th class="center hidden-xs">Stock Category</th>
+                    <th class="center hidden-xs">Ral No</th>
+                    <th class="center hidden-xs">Part No</th>
+                    <th class="center hidden-xs">Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.StockInDetailList)
+                {
+                    <tr class="vbcolum">
+                        <td class="center hidden-xs">@item.PE_Code</td>
+                        <td class="center">@item.Stock_Code</td>
+                        <td class="center">@item.Stock_Name</td>
+                        <td class="center">
+                            @item.Qty_Total.ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat)
+                        </td>
+                        <td class="center">
+                            @item.Qty_Received.ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat)
+                        </td>
+                        <td class="center">
+                            @item.Qty_Pending.ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat)
+                        </td>
+                        <td class="center hidden-xs">@item.InvoiceNo</td>
+                        <td class="center hidden-xs">@item.InvoiceDate.ToString("dd/MM/yyyy")</td>
+                        <td class="center hidden-xs">@item.MRF</td>
+                        <td class="center">@item.SRV</td>
+                        <td class="center">@item.Description</td>
+                        <td class="center hidden-xs">@item.Type</td>
+                        <td class="center hidden-xs">@item.Unit</td>
+                        <td class="center hidden-xs">@item.Category</td>
+                        <td class="center hidden-xs">@item.RalNo</td>
+                        <td class="center hidden-xs">@item.PartNo</td>
+                        <td class="center hidden-xs">@item.Color</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+        }

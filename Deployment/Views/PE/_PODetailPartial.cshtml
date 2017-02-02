@@ -1,0 +1,68 @@
+﻿@using System.Globalization
+@using Ap.Common.Constants
+@using Vivablast.ViewModels
+@model POViewModel
+
+@if (Model.TotalRecords == 0)
+{
+    <div style="color: red;font-weight: bold">
+        @Constants.EmptyData
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="DetailList table table-bordered table-hover">
+            <thead>
+                <tr class="vbheaddetail">
+                    <th class="center hidden-xs">PO</th>
+                    <th class="center">Stock Code</th>
+                    <th class="center">Stock Name</th>
+                    <th class="center">Qty</th>
+                    <th class="center hidden-xs">Unit</th>
+                    <th class="center hidden-xs">U.Price</th>
+                    <th class="center hidden-xs">VAT</th>
+                    <th class="center hidden-xs">Disc</th>
+                    <th class="center hidden-xs">C.Price</th>
+                    <th class="center hidden-xs">MRF</th>
+                    <th class="center hidden-xs">Status</th>
+                    <th class="center hidden-xs">Deliver Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PoDetailsVResults)
+                {
+                    <tr class="vbcolum">
+                        <td class="center hidden-xs">@item.PE</td>
+                        <td class="center">@item.Stock_Code</td>
+                        <td class="center">@item.Stock_Name</td>
+                        <td class="center">
+                            @if (@item.Quantity != null)
+                            {
+                                @(((decimal)@item.Quantity).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                            }
+                        </td>
+                        <td class="center hidden-xs">@item.Unit</td>
+                        <td class="center hidden-xs">
+                            @if (@item.Price != null)
+                            {
+                                @(((decimal)@item.Price).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                            }
+                        </td>
+                        <td class="center hidden-xs">@item.VAT</td>
+                        <td class="center hidden-xs">@item.Discount</td>
+                        <td class="center hidden-xs">
+                            @if (@item.Item_Total != null)
+                            {
+                                @(((decimal)@item.Item_Total).ToStringNoTruncation(CultureInfo.CreateSpecificCulture("en-US").NumberFormat))
+                            }
+                        </td>
+                        <td class="center hidden-xs">@item.MRF</td>
+                        <td class="center hidden-xs">@item.Status</td>
+                        <td class="center hidden-xs">@item.Delivery_Date</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+        }
