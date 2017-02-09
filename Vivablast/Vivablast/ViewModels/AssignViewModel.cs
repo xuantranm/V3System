@@ -64,6 +64,8 @@ namespace Vivablast.ViewModels
         public byte[] Timestamp { get; set; }
 
         public string Description { get; set; }
+
+        public DateTime? DateStockOut { get; set; }
         #endregion
 
         #region Detail

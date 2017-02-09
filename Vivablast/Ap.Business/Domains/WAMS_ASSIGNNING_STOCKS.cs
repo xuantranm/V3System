@@ -43,5 +43,7 @@ namespace Ap.Business.Domains
     
         //public virtual WAMS_PROJECT WAMS_PROJECT { get; set; }
         //public virtual WAMS_STOCK WAMS_STOCK { get; set; }
+
+        public DateTime? DateStockOut { get; set; }
     }
 }

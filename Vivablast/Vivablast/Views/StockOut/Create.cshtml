@@ -54,12 +54,12 @@
                         @Html.TextBoxFor(model => model.vMRF, new { @placeholder = "MRF", @class = "form-control" })
                     </div>
                 </div>
-                @*<div class="form-group">
-                        <label class="col-sm-3 control-label">Date</label>
-                        <div class="col-sm-9">
-                            <input id="dDeliverDate" name="dDeliverDate" value="@Model." type="text" class="form-control datepicker" />
-                        </div>
-                    </div>*@
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Date</label>
+                    <div class="col-sm-9">
+                        <input id="dDateStockOut" name="dDateStockOut" value="@DateTime.Now.ToString("dd/MM/yyyy")" type="text" class="form-control datepicker" />
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="col-xs-12 h3">Assign Detail</label>
                 </div>

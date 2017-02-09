@@ -175,7 +175,8 @@ namespace Ap.Business.Repositories
                 model.ToStore,
                 model.iCreated,
                 model.FlagFile,
-                model.Description
+                model.Description,
+                model.DateStockOut
             },
                                            commandType: CommandType.StoredProcedure).SingleOrDefault();
 
