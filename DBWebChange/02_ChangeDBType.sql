@@ -204,6 +204,14 @@ CREATE TABLE [dbo].[Store](
 	[Tel] [nvarchar](50) NULL,
 	[Phone] [nvarchar](50) NULL,
 	[Description] [ntext] NULL,
+	
+	[PDFHeader] [nvarchar](256) NULL,
+	[CoRegNo] [nvarchar](50) NULL,
+	[GSTRegNo] [nvarchar](50) NULL,
+	[Email] [nvarchar](256) NULL,
+	[Website] [nvarchar](256) NULL,
+	[PDFFooter] [nvarchar](256) NULL,
+	
 	[iEnable] [bit],
 	[dCreated] [datetime] NULL,
 	[dModified] [datetime] NULL,

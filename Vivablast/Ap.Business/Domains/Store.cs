@@ -17,11 +17,6 @@ namespace Ap.Business.Domains
     
     public partial class Store : BaseEntity
     {
-        public Store()
-        {
-            this.WAMS_USER = new HashSet<WAMS_USER>();
-        }
-
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
@@ -31,13 +26,18 @@ namespace Ap.Business.Domains
         public string Tel { get; set; }
         public string Phone { get; set; }
         public string Description { get; set; }
-        public Nullable<bool> iEnable { get; set; }
-        public Nullable<System.DateTime> dCreated { get; set; }
-        public Nullable<System.DateTime> dModified { get; set; }
-        public Nullable<int> iCreated { get; set; }
-        public Nullable<int> iModified { get; set; }
+        public string PDFHeader { get; set; }
+        public string CoRegNo { get; set; }
+        public string GSTRegNo { get; set; }
+        public string Email { get; set; }
+        public string Website { get; set; }
+        public string PDFFooter { get; set; }
+
+        public bool? iEnable { get; set; }
+        public DateTime? dCreated { get; set; }
+        public DateTime? dModified { get; set; }
+        public int? iCreated { get; set; }
+        public int? iModified { get; set; }
         public byte[] Timestamp { get; set; }
-    
-        public virtual ICollection<WAMS_USER> WAMS_USER { get; set; }
     }
 }
