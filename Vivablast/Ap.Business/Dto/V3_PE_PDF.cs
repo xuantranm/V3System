@@ -20,11 +20,32 @@ namespace Vivablast.Models
         public string Remark { get; set; }
         public string Status { get; set; }
         public string Location { get; set; }
-        public Nullable<System.DateTime> Deliver_Date { get; set; }
+        public DateTime Deliver_Date { get; set; }
+        public string From { get; set; }
+        public string Address { get; set; }
+        public string TaxCode { get; set; }
+        public string CC { get; set; }
+        public string Tel { get; set; }
+        public string Fax { get; set; }
+        public string PeStaff { get; set; }
+        public string CoRegNo { get; set; }
+        public string GSTRegNo { get; set; }
+        public string PengerangSite { get; set; }
+        public string GSTAddress { get; set; }
+        
         public string Type { get; set; }
         public string Project_Code { get; set; }
         public string Project_Name { get; set; }
+
+        #region Supplier
         public string Supplier { get; set; }
+        public string SupplierAtt { get; set; }
+        public string SupplierEmail { get; set; }
+        public string SupplierTel { get; set; }
+        public string SupplierFax { get; set; }
+
+        #endregion
+        
         public string Currency { get; set; }
         public string Store { get; set; }
         public string Payment_Term { get; set; }
@@ -35,5 +56,6 @@ namespace Vivablast.Models
 
         public decimal TotalVAT { get; set; }
         public decimal TotalNotVAT { get; set; }
+        
     }
 }

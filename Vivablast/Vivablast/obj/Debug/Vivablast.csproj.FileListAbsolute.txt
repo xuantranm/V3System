@@ -147,3 +147,4 @@ D:\PRACTISE\V3\Vivablast\Vivablast\bin\ImageResizer.dll
 D:\PRACTISE\V3\Vivablast\Vivablast\bin\Microsoft.IO.RecyclableMemoryStream.dll
 D:\PRACTISE\V3\Vivablast\Vivablast\bin\NPOI.dll
 D:\PRACTISE\V3\Vivablast\Vivablast\bin\ImageResizer.xml
+D:\PRACTISE\V3\Vivablast\Vivablast\bin\Microsoft.IO.RecyclableMemoryStream.pdb

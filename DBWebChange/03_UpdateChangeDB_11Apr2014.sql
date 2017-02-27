@@ -21,6 +21,7 @@ UPDATE dbo.WAMS_USER SET iEnable = 1 WHERE iEnable=2
 GO
 -- password@123
 UPDATE dbo.WAMS_USER SET vNewPassword='4617ECF11B542A14F3D0AE5591BF181FE139C563';
+-- RESOLVE PASSWORD LATER........................................................................................................................
 GO
 UPDATE dbo.WAMS_USER SET storeId=1
 GO
@@ -338,6 +339,11 @@ UPDATE dbo.WAMS_PURCHASE_ORDER SET iEnable= 3 WHERE iEnable=1
 UPDATE dbo.WAMS_PURCHASE_ORDER SET iEnable = 0 WHERE iEnable=3
 UPDATE dbo.WAMS_PURCHASE_ORDER SET iEnable = 1 WHERE iEnable=2
 UPDATE dbo.WAMS_PURCHASE_ORDER SET dCreated = dPODate, iCreated = 1
+UPDATE dbo.WAMS_PURCHASE_ORDER SET CoRegNo = '1109730-A' , 
+GSTRegNo ='000527642624', 
+Address = 'Level 7, Menara Milenium, Jalan Damanlela  Pusat Bandar Damansara  Damansara Heights  Kuala Lumpur  Wilayah Persekutuan  50490, Malaysia',
+PengerangSite ='HS (D) 18380 PTD 3468 Mukim of Pengerang, 81600 Pengerang, Johor, Malaysia',
+GSTAddress ='02-20 Jalan Austin Perdana 2/22, Taman Austin Perdana, 81100 Johor Bahru, Johor'
 GO  
 UPDATE WAS 
 SET WAS.vProjectID = P.Id

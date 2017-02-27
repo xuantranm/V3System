@@ -330,3 +330,7 @@ System.Exception: Test
 System.Exception: Test
 2017-02-27 07:44:25,848 [18] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
 System.Exception: Test
+2017-02-27 11:08:38,346 [37] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-27 11:09:06,891 [37] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test

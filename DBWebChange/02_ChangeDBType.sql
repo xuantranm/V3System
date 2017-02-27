@@ -420,7 +420,15 @@ ADD	[iStore] [int] NULL,
 GO
 -- ALTER TABLE WAMS_PURCHASE_ORDER
 ALTER TABLE dbo.WAMS_PURCHASE_ORDER 
-ADD [iStore] [int] NULL,
+ADD [Address] NVARCHAR(MAX),
+[TaxCode] NVARCHAR(128),
+[PeStaff] NVARCHAR(128),
+[CoRegNo] NVARCHAR(128),
+[GSTRegNo] NVARCHAR(128),
+[PengerangSite] NVARCHAR(512),
+[GSTAddress] NVARCHAR(512),
+
+	[iStore] [int] NULL,
 	[iPayment] [int] NULL,
 	[dCreated] [datetime] NULL,
 	[dModified] [datetime] NULL,
