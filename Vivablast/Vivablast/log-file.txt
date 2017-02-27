@@ -318,3 +318,15 @@ Parameter name: key
    at Vivablast.Controllers.ReActiveStockController.ReActive(String condition) in c:\Projects\V3\Vivablast\Vivablast\Controllers\ReActiveStockController.cs:line 275
 2017-02-01 23:46:54,276 [100] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
 System.Exception: Test
+2017-02-27 07:39:41,096 [23] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-27 07:40:07,294 [7] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-27 07:40:52,546 [19] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-27 07:41:39,147 [17] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-27 07:42:40,969 [19] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-02-27 07:44:25,848 [18] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test

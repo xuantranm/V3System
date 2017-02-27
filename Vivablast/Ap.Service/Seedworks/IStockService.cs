@@ -11,6 +11,8 @@ namespace Ap.Service.Seedworks
 
         XStockViewModel StockViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable);
 
+        XStockViewModel ProductPeViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable, int supplier);
+
         IList<V3_List_Stock> PeListCondition(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable, int supplier);
 
         int PeListConditionCount(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable, int supplier);

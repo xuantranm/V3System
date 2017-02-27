@@ -428,6 +428,8 @@
     <Content Include="Images\img\text-loading.gif" />
     <Content Include="Images\No-Image-Available.gif" />
     <Content Include="Images\v3pdf.png" />
+    <Content Include="Images\wamsmalaysia.jpg" />
+    <Content Include="Images\wamsmalaysiafooter.jpg" />
     <Content Include="log4net.config" />
     <Content Include="Scripts\autosize.js" />
     <Content Include="Scripts\bootstrap-multiselect.js" />

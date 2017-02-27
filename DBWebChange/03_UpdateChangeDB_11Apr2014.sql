@@ -48,8 +48,10 @@ Category = 0
 GO
 INSERT INTO dbo.Country (Iso, NameBasic, NameNice, Iso3, NumCode, PhoneCode, iEnable) VALUES
 ('VN', 'VIET NAM', 'Viet Nam', 'VNM', 704, 84, 1);
+INSERT INTO dbo.Country (Iso, NameBasic, NameNice, Iso3, NumCode, PhoneCode, iEnable) VALUES
+('ML', 'MALAYSIA', 'Malaysia', 'ML', 704, 84, 1);
 GO
-INSERT INTO dbo.Store (Name,Code,CountryId, iEnable) VALUES ('Binh Chieu','VN_BC',1,1)
+INSERT INTO dbo.Store (Name,Code,CountryId, iEnable) VALUES ('Malaysia','Malaysia',1,1)
 GO
 UPDATE dbo.WAMS_PROJECT SET iEnable=2 WHERE iEnable=0
 GO
@@ -61,7 +63,8 @@ UPDATE dbo.WAMS_PROJECT SET iEnable = 1 WHERE iEnable=2
 GO
 UPDATE dbo.WAMS_PROJECT SET StatusId=1, EnableRequisition =1, EnablePO =1
 GO
-UPDATE dbo.WAMS_PROJECT SET CountryId = (select Id FROM Country WHERE NameNice like '%Viet%')
+--UPDATE dbo.WAMS_PROJECT SET CountryId = (select Id FROM Country WHERE NameNice like '%Viet%')
+UPDATE dbo.WAMS_PROJECT SET CountryId = (select Id FROM Country WHERE NameNice like '%Ma%')
 GO
 DELETE Project_Client
 INSERT INTO dbo.Project_Client(Name)

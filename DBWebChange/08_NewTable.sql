@@ -150,8 +150,8 @@ INSERT INTO [dbo].[XDynamicProjectGroupItemReport]
            ,[FagFrom]
            ,[FagId])
 SELECT
-stock.StockId, 
-stock.StockCode,
+stock.Id, 
+stock.vStockID,
 stock.vStockName,
 stock.iType,
 stock.[Type] [StockType],
@@ -179,20 +179,20 @@ LEFT JOIN
 (SELECT vStockID,sum(dReceivedQuantity) [StockinQty] 
 FROM WAMS_FULFILLMENT_DETAIL 
 --WHERE dStockInDate >=@dFrom and dStockInDate < @dTo 
-GROUP BY vStockID) AS stockin ON stockin.vStockId = stock.StockId 
+GROUP BY vStockID) AS stockin ON stockin.vStockId = stock.Id 
 LEFT JOIN
 (SELECT vStockID,sum(bQuantity) [AssignedQty] 
 FROM WAMS_ASSIGNNING_STOCKS 
 --WHERE dDateAssign >=@dFrom and dDateAssign < @dTo 
-GROUP BY vStockId) AS assign ON assign.vStockId = stock.StockId
+GROUP BY vStockId) AS assign ON assign.vStockId = stock.Id
 LEFT JOIN
 (SELECT vStockID,sum(bQuantity) [ReturnedQty] 
 FROM WAMS_RETURN_LIST 
 	 --WHERE dDateReturn >=@dFrom and dDateReturn < @dTo 
-GROUP BY vStockId) AS returnlist ON returnlist.vStockId = stock.StockId
+GROUP BY vStockId) AS returnlist ON returnlist.vStockId = stock.Id
 LEFT JOIN (SELECT StockID, sum(Quantity) [RemainingQty] 
 			 FROM [dbo].[Store_Stock] t1 (NOLOCK)
-			GROUP BY StockID) AS storeQuantity ON storeQuantity.StockID= stock.StockId
+			GROUP BY StockID) AS storeQuantity ON storeQuantity.StockID= stock.Id
 GO
 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicPeReport]') AND type in (N'U'))

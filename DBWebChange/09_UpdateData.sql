@@ -26,20 +26,3 @@ UPDATE t1
   INNER JOIN dbo.WAMS_LABELS AS t2
   ON t1.bLabelID = t2.bLabelID
   GO
-  INSERT INTO [dbo].[Country]
-           ([Iso]
-           ,[NameBasic]
-           ,[NameNice]
-           ,[Iso3]
-           ,[NumCode]
-           ,[PhoneCode]
-           ,[iEnable])
-     VALUES
-           ('ML'
-           ,'MALAYSIA'
-           ,'Malaysia'
-           ,'MLS'
-           ,'87'
-           ,'24'
-           ,1)
-           GO

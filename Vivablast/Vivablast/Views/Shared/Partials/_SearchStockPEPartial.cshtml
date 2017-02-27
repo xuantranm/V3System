@@ -1,6 +1,5 @@
 ﻿@using Ap.Common.Constants
-@using Vivablast.ViewModels
-@model StockViewModel
+@model Ap.Business.ViewModels.XStockViewModel
 
 @if (Model.TotalRecords == 0)
 {
@@ -14,77 +13,77 @@ else
         @Model.TotalRecords @Constants.DisplayResult
     </div>
     <div class="table-responsive">
-            <table id="StockLst" class="table table-bordered table-hover">
-                <thead>
-                    <tr class="vbhead">
-                        <th class="center width80">Choose</th>
-                        <th class="center width120">Stock Code</th>
-                        <th class="center">Stock Name</th>
-                        @foreach (var store in Model.StoreVs)
-                        {
-                            <th class="center">Store: @store.Name</th>
-                        }
-                        <th class="center width120">Unit</th>
-                        <th class="center width150">Type</th>
-                        <th class="center width150">Category</th>
-                        <th class="center width150">Ral No</th>
-                        <th class="center width150">Color</th>
-                        <th class="center width150">Part No</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.StockVs)
+        <table id="StockLst" class="table table-bordered table-hover">
+            <thead>
+                <tr class="vbhead">
+                    <th class="center">Choose</th>
+                    <th class="center">Stock Code</th>
+                    <th class="center">Stock Name</th>
+                    @foreach (var store in Model.StoreVs)
                     {
-                        <tr>
-                            <input type="hidden" value="@item.Id" class="StockIdSearchForm" />
-                            <td class="center">
-                                <button type="button" class="btn btn-info btnSearchProductSelectProduct">Select</button>
-                            </td>
-                            <td class="center ProductCodeSearchForm">@item.Stock_Code</td>
-                            <td class="center ProductNameSearchForm">@item.Stock_Name</td>
-                            @{
-                        if (!string.IsNullOrEmpty(item.Quantity))
-                        {
-                            var qtArr = item.Quantity.Trim().Split(';');
-                            var stArr = item.Stores.Trim().Split(';');
-                            foreach (var store in Model.StoreVs)
-                            {
-                                // Check if store not in stArr
-                                var results = Array.FindAll(stArr, s => s.Equals(store.Id.ToString()));
-                                if (!results.Any())
-                                {
-                                    <td class="center @store.Id">0</td>
-                                }
-                                var i = 0;
-                                foreach (var st in stArr)
-                                {
-                                    if (store.Id == Convert.ToInt32(st))
-                                    {
-                                        <td class="center @store.Id">@qtArr[i]</td>
-                                    }
-                                    i++;
-                                }
-                            }
-
-                        }
-                        else
-                        {
-                            foreach (var store in Model.StoreVs)
-                            {
-                                <td class="center @store.Id">0</td>
-                            }
-                        }
-                            }
-                            <td class="center ProductUnitSearchForm">@item.Unit</td>
-                            <td class="center ProductTypeSearchForm">@item.Type</td>
-                            <td class="center ProductCategorySearchForm">@item.Category</td>
-                            <td class="center ProductRalNoSearchForm">@item.RalNo</td>
-                            <td class="center ProductColorSearchForm">@item.Color</td>
-                            <td class="center ProductPartNoSearchForm">@item.PartNo</td>
-                        </tr>
+                        <th class="center hidden-xs">Store: @store.Name</th>
                     }
-                </tbody>
-            </table>
+                    <th class="center hidden-xs">Unit</th>
+                    <th class="center hidden-xs">Type</th>
+                    <th class="center hidden-xs">Category</th>
+                    <th class="center hidden-xs">Ral No</th>
+                    <th class="center hidden-xs">Color</th>
+                    <th class="center hidden-xs">Part No</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.StockVs)
+                {
+                    <tr>
+                        <input type="hidden" value="@item.Id" class="StockIdSearchForm" />
+                        <td class="center">
+                            <button type="button" class="btn btn-info btnSearchProductSelectProduct">Select</button>
+                        </td>
+                        <td class="center ProductCodeSearchForm">@item.vStockID</td>
+                        <td class="center ProductNameSearchForm">@item.vStockName</td>
+                        @{
+                    if (!string.IsNullOrEmpty(item.Quantity))
+                    {
+                        var qtArr = item.Quantity.Trim().Split(';');
+                        var stArr = item.Stores.Trim().Split(';');
+                        foreach (var store in Model.StoreVs)
+                        {
+                            // Check if store not in stArr
+                            var results = Array.FindAll(stArr, s => s.Equals(store.Id.ToString()));
+                            if (!results.Any())
+                            {
+                                <td class="center hidden-xs @store.Id">0</td>
+                            }
+                            var i = 0;
+                            foreach (var st in stArr)
+                            {
+                                if (store.Id == Convert.ToInt32(st))
+                                {
+                                    <td class="center hidden-xs @store.Id">@qtArr[i]</td>
+                                }
+                                i++;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        foreach (var store in Model.StoreVs)
+                        {
+                            <td class="center hidden-xs @store.Id">0</td>
+                        }
+                    }
+                        }
+                        <td class="center hidden-xs ProductUnitSearchForm">@item.Unit</td>
+                        <td class="center hidden-xs ProductTypeSearchForm">@item.Type</td>
+                        <td class="center hidden-xs">@item.Category</td>
+                        <td class="center hidden-xs ProductRalNoSearchForm">@item.RalNo</td>
+                        <td class="center hidden-xs ProductColorSearchForm">@item.ColorName</td>
+                        <td class="center hidden-xs ProductPartNoSearchForm">@item.PartNo</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 
     <div class="clearboth"></div>
@@ -95,6 +94,3 @@ else
         </div>
     }
 }
-
-
-
