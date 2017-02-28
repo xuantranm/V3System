@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.Dtos;
 using Ap.Business.ViewModels;
 using Vivablast.Models;
 
@@ -48,6 +49,8 @@ namespace Ap.Service.Seedworks
         IList<V3_GetStockLabelDDL_Result> LabelStockList(int type);
 
         IList<V3_List_PoType_Ddl> PoTypeList();
+
+        IList<KeyValueDto> Pes();
 
         IList<V3_GetSupplierDDL_Result> SupplierList();
 

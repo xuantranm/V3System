@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using Ap.Business.Domains;
+using Ap.Business.Dtos;
 using Ap.Business.Seedworks;
 using Ap.Business.ViewModels;
 using Ap.Common.Constants;
@@ -181,6 +182,11 @@ namespace Ap.Service.Services
         public IList<V3_List_PoType_Ddl> PoTypeList()
         {
             return _customSystemRepository.PoTypeList();
+        }
+
+        public IList<KeyValueDto> Pes()
+        {
+            return _customSystemRepository.Pes();
         }
 
         public IList<V3_GetSupplierDDL_Result> SupplierList()

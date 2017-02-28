@@ -115,7 +115,7 @@ namespace Ap.Business.Repositories
             sql.Close();
 
             if (result.Any()) return result;
-            var a = new List<string> { "Not found" };
+            var a = new List<string>();
             return a;
         }
 

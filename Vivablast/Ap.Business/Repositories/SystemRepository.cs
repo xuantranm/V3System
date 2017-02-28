@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Ap.Business.Domains;
+using Ap.Business.Dtos;
 using Ap.Business.Models;
 using Ap.Business.Seedworks;
 using Ap.Business.ViewModels;
@@ -382,6 +383,18 @@ namespace Ap.Business.Repositories
 
             sql.Close();
             return result.Any() ? result : new List<V3_List_PoType_Ddl>();
+        }
+
+        public IList<KeyValueDto> Pes()
+        {
+            var sql = GetSqlConnection();
+            var result = sql.Query<KeyValueDto>("dbo.PoTypeList", new
+            {
+            },
+                                         commandType: CommandType.StoredProcedure).ToList();
+
+            sql.Close();
+            return result.Any() ? result : new List<KeyValueDto>();
         }
 
         public IList<V3_GetSupplierDDL_Result> SupplierList()

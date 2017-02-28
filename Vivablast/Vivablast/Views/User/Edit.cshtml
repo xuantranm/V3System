@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Store <span class="red">*</span></label>
                     <div class="col-sm-9">
-                        @Html.DropDownListFor(model => model.StoreId, Model.Stores, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.StoreId, Model.Stores, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.StoreId)
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                             @Html.PasswordFor(model => model.Password, new { @placeholder = "", @class = "form-control", @maxlength = "16" })
                         </div>
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <div class="col-sm-6">
                             <span id="8char" class="glyphicon glyphicon-remove" style="color: #FF0004;"></span> 8 Characters Long<br>
                             <span id="ucase" class="glyphicon glyphicon-remove" style="color: #FF0004;"></span> One Uppercase Letter
@@ -76,18 +76,18 @@
                             <span id="lcase" class="glyphicon glyphicon-remove" style="color: #FF0004;"></span> One Lowercase Letter<br>
                             <span id="num" class="glyphicon glyphicon-remove" style="color: #FF0004;"></span> One Number
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Re-Password <span class="red">*</span></label>
                         <div class="col-sm-9">
                             @Html.PasswordFor(model => model.RePassword, new { @placeholder = "Confirm Password", @class = "form-control" })
                         </div>
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <div class="col-sm-12">
                             <span id="pwmatch" class="glyphicon glyphicon-remove" style="color: #FF0004;"></span> Passwords Match
                         </div>
-                    </div>
+                    </div>*@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Email <span class="red">*</span></label>
@@ -95,11 +95,6 @@
                         @Html.TextBoxFor(model => model.Email, new { @placeholder = "Email", @class = "form-control", @maxlength = "64" })
                     </div>
                 </div>
-                @*<div class="form-group">
-                    <div class="col-sm-12" style="text-align: left">
-                        <span id="emok" class="glyphicon glyphicon-remove" style="color: #FF0004;"></span> Email available
-                    </div>
-                </div>*@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">First Name <span class="red">*</span></label>
                     <div class="col-sm-9">

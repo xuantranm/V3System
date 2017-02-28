@@ -1,3 +1,6 @@
+SELECT MAX(ID) FROM WAMS_STOCK_MANAGEMENT_QUANTITY
+
+GO
 -- RETURN STOCK 
 DECLARE @project NVARCHAR(16)
 DECLARE @date DATETIME
@@ -11,7 +14,7 @@ INSERT INTO dbo.WAMS_SRV ([SRV],[Status],[dDate]) SELECT @newSIV,'RETURN',@date
 
 GO
 DECLARE @CurrentMaxID INT
-SET @CurrentMaxID = (SELECT MAX(ID) FROM WAMS_STOCK_MANAGEMENT_QUANTITY)
+SET @CurrentMaxID = 0
 
 UPDATE dbo.WAMS_STOCK_MANAGEMENT_QUANTITY SET dQuantityAfterChange = (dQuantityCurrent + dQuantityChange)
 WHERE vStatus='RETURN' AND bUserID=1 AND dQuantityAfterChange=0 AND ID > @CurrentMaxID
