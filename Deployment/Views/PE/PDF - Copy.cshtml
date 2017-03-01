@@ -33,14 +33,14 @@
                             @*<img src="@Model.Domain/Images/wamsmalaysia.jpg" style="width: 268px; height: 70px; text-align: center" />*@
                         </td>
                         <td style="vertical-align: middle;text-align:center; font-size:20px;font-weight:bold">
-                            @*<span style="font-size: 26px;">
+                            <span style="font-size: 26px;">
                                 PURCHASE ORDER
-                            </span>*@
-                            <span style="font-size: 22px;">
+                            </span>
+                            @*<span style="font-size: 22px;">
                                 PURCHASE ORDER
                             </span>
                             <br />
-                            <i>ĐƠN ĐẶT HÀNG</i>
+                            <i>ĐƠN ĐẶT HÀNG</i>*@
                         </td>
                     </tr>
                 </table>
@@ -49,72 +49,86 @@
                 <div style="float: left;width: 50%">
                     <table>
                         <tr>
-                            <td style="width: 150px;font-weight: bold;">
+                            @*<td style="width: 150px;font-weight: bold;">
                                 From - <i>Từ</i>:
+                            </td>*@
+                            <td style="width: 150px;font-weight: bold;">
+                                From:
                             </td>
                             <td style="font-weight:bold">
-                                @Model.PurchaseOrderCustom.From
+                                
                             </td>
                         </tr>
                         <tr>
-                            <td style="font-weight: bold;vertical-align: middle;">Address - <i>Địa chỉ</i>:</td>
-                            <td>@Model.PurchaseOrderCustom.Address</td>
+                            <td style="font-weight: bold;">Kuala Lumpur Office:</td>
+                            <td>Level 7, Menara Milenium, Jalan Damanlela  Pusat Bandar Damansara  Damansara Heights  Kuala Lumpur  Wilayah Persekutuan  50490, Malaysia</td>
                         </tr>
-                        <tr>
+                        @*<tr>
+                            <td style="font-weight: bold;">Address - <i>Địa chỉ</i>:</td>
+                            <td>Binh Chieu I.Z, Binh Chieu Ward, Thu Duc, HCMC</td>
+                        </tr>*@
+                        @*<tr>
                             <td style="font-weight: bold;">Tax code - <i>MST</i>:</td>
-                            <td>@Model.PurchaseOrderCustom.TaxCode</td>
-                        </tr>
+                            <td>0300791426</td>
+                        </tr>*@
                         <tr>
                             <td style="font-weight: bold;">Tel:</td>
-                            <td>@Model.PurchaseOrderCustom.Tel</td>
+                            @*<td>(08) 38 965 007</td>*@
+                            <td>+60 (0) 1373 749 83</td>
                         </tr>
                         <tr>
+                            <td style="font-weight: bold;">Pengerang site:</td>
+                            <td>HS (D) 18380 PTD 3468 Mukim of Pengerang, 81600 Pengerang, Johor, Malaysia</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">GST address:</td>
+                            <td>02-20 Jalan Austin Perdana 2/22, Taman Austin Perdana, 81100 Johor Bahru, Johor</td>
+                        </tr>
+                        @*<tr>
                             <td style="font-weight: bold;">Fax:</td>
-                            <td>@Model.PurchaseOrderCustom.Fax</td>
-                        </tr>
+                            <td>(08) 38 965 004</td>
+                        </tr>*@
                         <tr>
-                            <td style="font-weight: bold;">PE Staff:</td>
-                            <td>@Model.PurchaseOrderCustom.PeStaff</td>
+                            <td style="font-weight: bold;">PE Staff:@*<br /><i>Nhân viên mua hàng:</i>*@</td>
+                            <td></td>
                         </tr>
                     </table>
                 </div>
 
                 <div style="float: left; width: 50%">
                     <div style="margin-left: 20px">
-                        <div style="font-weight: bold;padding: 5px;margin-bottom: 5px;">Date - <i>Ngày</i>: @Model.PurchaseOrderCustom.PE_Date.ToString("d", new CultureInfo("ms-MY"))</div>
-                        <div style="">
-                            <table>
-                                <tr>
-                                    <td style="width: 150px;font-weight: bold;">
-                                        To: @Model.PurchaseOrderCustom.Supplier @*<span style="font-weight: normal">@Model.PurchaseOrderCustom.Supplier</span>*@
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 150px;font-weight: bold;">
-                                        Att: @Model.PurchaseOrderCustom.SupplierAtt
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 150px;font-weight: bold;">
-                                        Cc: @Model.PurchaseOrderCustom.SupplierEmail
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 150px;font-weight: bold;">
-                                        Tel: @Model.PurchaseOrderCustom.SupplierTel
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 150px;font-weight: bold;">
-                                        Fax: @Model.PurchaseOrderCustom.SupplierFax
-                                        @*<br/>
-                    <span style="color:white">.</span>*@
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        
+                        <div style="font-weight: bold;padding: 5px;margin-bottom: 5px;">Date @*- <i>Ngày</i>*@: @Model.PurchaseOrderCustom.PE_Date.ToString("d", new CultureInfo("ms-MY"))</div>
+                        <table>
+                            <tr>
+                                <td style="width: 150px;font-weight: bold;">
+                                    To: @Model.PurchaseOrderCustom.Supplier
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;font-weight: bold;">
+                                    Att: @Model.PurchaseOrderCustom.SupplierAtt
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;font-weight: bold;">
+                                    Cc: @Model.PurchaseOrderCustom.SupplierEmail
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;font-weight: bold;">
+                                    Tel: @Model.PurchaseOrderCustom.SupplierTel
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 150px;font-weight: bold;">
+                                    Fax: @Model.PurchaseOrderCustom.SupplierFax
+                                    <br/>
+                                    <span style="color:white">.</span>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
+                    
                 </div>
             </div>
 
