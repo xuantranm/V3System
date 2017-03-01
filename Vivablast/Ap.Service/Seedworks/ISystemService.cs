@@ -50,7 +50,7 @@ namespace Ap.Service.Seedworks
 
         IList<V3_List_PoType_Ddl> PoTypeList();
 
-        IList<KeyValueDto> Pes();
+        IList<KeyValueDto> PeStockIn(string condition);
 
         IList<V3_GetSupplierDDL_Result> SupplierList();
 

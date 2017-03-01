@@ -53,6 +53,7 @@
     <Compile Include="Domains\Function.cs" />
     <Compile Include="Domains\LookUp.cs" />
     <Compile Include="Domains\XUser.cs" />
+    <Compile Include="Dtos\KeyValueDto.cs" />
     <Compile Include="Dto\ProjectCustom.cs" />
     <Compile Include="Dto\PeRequisitionUpdate.cs" />
     <Compile Include="Dto\V3_Ddl.cs" />

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Ap.Business.Domains;
 using Ap.Business.Models;
 using Vivablast.Models;
 
@@ -6,7 +7,7 @@ namespace Ap.Business.ViewModels
 {
     public class DynamicProjectReportViewModel
     {
-        public IList<XDynamicProjectReport> DynamicProjectReports { get; set; }
+        public IList<WAMS_STOCK_MANAGEMENT_QUANTITY> DynamicProjectReports { get; set; }
 
         public IList<XDynamicProjectGroupItemReport> DynamicProjectGroupItemReports { get; set; }
 

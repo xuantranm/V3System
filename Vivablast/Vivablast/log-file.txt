@@ -334,3 +334,192 @@ System.Exception: Test
 System.Exception: Test
 2017-02-27 11:09:06,891 [37] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
 System.Exception: Test
+2017-03-01 11:20:09,243 [36] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:15d2e279-1da8-434c-a4c3-22eea5c6d902
+Error Number:8144,State:2,Class:16
+2017-03-01 11:21:24,440 [35] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:15d2e279-1da8-434c-a4c3-22eea5c6d902
+Error Number:8144,State:2,Class:16
+2017-03-01 11:27:54,117 [19] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:21a7c744-0f0f-4b10-be9f-6623a6889508
+Error Number:8144,State:2,Class:16
+2017-03-01 11:27:59,381 [49] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:21a7c744-0f0f-4b10-be9f-6623a6889508
+Error Number:8144,State:2,Class:16
+2017-03-01 11:31:57,983 [35] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:21a7c744-0f0f-4b10-be9f-6623a6889508
+Error Number:8144,State:2,Class:16
+2017-03-01 11:33:57,879 [35] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:6a42fdb7-40fd-477f-beb4-17053ce8cf2e
+Error Number:8144,State:2,Class:16
+2017-03-01 11:34:18,048 [35] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:6a42fdb7-40fd-477f-beb4-17053ce8cf2e
+Error Number:8144,State:2,Class:16
+2017-03-01 11:34:30,071 [35] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:6a42fdb7-40fd-477f-beb4-17053ce8cf2e
+Error Number:8144,State:2,Class:16
+2017-03-01 11:35:51,271 [35] ERROR Vivablast.Controllers.StockOutController [(null)] - Update Stock Out!
+System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_InsertStockOut has too many arguments specified.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.<QueryInternal>d__d`1.MoveNext() in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 688
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in d:\PRACTISE\V3\Vivablast\Ap.Data\Dapper\SqlMapper.cs:line 645
+   at Ap.Business.Repositories.StockOutRepository.Add(WAMS_ASSIGNNING_STOCKS model) in d:\PRACTISE\V3\Vivablast\Ap.Business\Repositories\StockOutRepository.cs:line 166
+   at Ap.Service.Services.StockOutService.Insert(List`1 entityDetails, Int32 login) in d:\PRACTISE\V3\Vivablast\Ap.Service\Services\StockOutService.cs:line 105
+   at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
+ClientConnectionId:6a42fdb7-40fd-477f-beb4-17053ce8cf2e
+Error Number:8144,State:2,Class:16

@@ -294,129 +294,82 @@ INNER JOIN WAMS_FULFILLMENT_DETAIL fulfill ON fulfill.vPOID = poMaster.Id
 ORDER BY poMaster.dPODate ASC
 GO
 
---26-07-2016
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicProjectReport]') AND type in (N'U'))
-DROP TABLE [dbo].[XDynamicProjectReport]
-GO
-CREATE TABLE [dbo].[XDynamicProjectReport](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Action] [nvarchar](20) NULL,
-	[Date] [datetime] NULL,
-	[ProjectId] [int] NULL,
-	[ProjectCode] [nvarchar](20) NULL,
-	[ProjectName] [nvarchar](64) NULL,
-	[StockId] [int] NULL,
-	[StockCode] [nvarchar](16) NULL,
-	[StockName] [nvarchar](2000) NULL,
-	[StockTypeId] [int] NULL,
-	[StockType] [nvarchar](250) NULL,
-	[CategoryId] [int] NULL,
-	[Category] [nvarchar](64) NULL,
-	[UnitId] [int] NULL,
-	[Unit] [nvarchar](64) NULL,
-	[SupplierId] [int] NULL,
-	[Supplier] [nvarchar](64) NULL,
-	[SRV] [nvarchar] (20) NULL,
-	[SIV] [nvarchar] (20) NULL,
-	[MRF] [nvarchar](200) NULL,
-	[POId] [int] NULL,
-	[PODate] [datetime] NULL,
-	[POCode] [nvarchar](16) NULL,
-	[QtyStockIn] [decimal] (18,2) NULL,
-	[QtyStockReturn] [decimal] (18,2) NULL,
-	[QtyStockOut] [decimal] (18,2) NULL,
-	[QtyStockCurrent] [decimal] (18,2) NULL,
-	[QtyStockAfterChange] [decimal] (18,2) NULL,
-     [Weight] [nvarchar](20) NULL,
-     [Note] [nvarchar](max) NULL,
-	[Created] [datetime] NULL,
-	[Modified] [datetime] NULL,
-	[CreatedBy] [nvarchar](500) NULL,
-	[ModifiedBy] [nvarchar](500) NULL,
-	[FagFrom] [nvarchar](10) NULL,
-	[FagId] INT NULL
- CONSTRAINT [PK_XDynamicProjectReport] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
 
-INSERT INTO [dbo].[XDynamicProjectReport] ([Action]
-           ,[Date]
-           ,[ProjectId]
-           ,[ProjectCode]
-           ,[ProjectName]
-           ,[StockId]
-           ,[StockCode]
-           ,[StockName]
-           ,[StockTypeId]
-           ,[StockType]
-           ,[CategoryId]
-           ,[Category]
-           ,[UnitId]
-           ,[Unit]
-           ,[SupplierId]
-           ,[Supplier]
-           ,[SRV]
-           ,[SIV]
-           ,[MRF]
-           ,[POId]
-           ,[PODate]
-           ,[POCode]
-           ,[QtyStockIn]
-           ,[QtyStockReturn]
-           ,[QtyStockOut]
-           ,[QtyStockCurrent] 
-		 ,[QtyStockAfterChange]
-           ,[Weight]
-           ,[FagFrom]
-           ,[FagId])
-     SELECT stockManager.vStatus [Action], stockManager.dDate [Date]
-    , stockManager.vProjectID [ProjectId], project.vProjectID [ProjectCode], project.vProjectName [ProjectName]
-    , stockManager.vStockID [StockId], stock.vStockID [StockCode], stock.vStockName [StockName]
-    , stock.iType [StockTypeId], stockType.TypeName [StockType]
-    , stock.bCategoryID [CategoryId], stockCategory.vCategoryName [Category]
-    , stock.bUnitID [UnitId], stockUnit.vUnitName [Unit]
-    , supplier.bSupplierID [SupplierId], supplier.vSupplierName [Supplier]
-    , CASE stockManager.vStatus
-    WHEN 'ASSIGN' THEN NULL 
-    ELSE stockManager.vStatusID
-    END [SRV]
-    , CASE stockManager.vStatus
-    WHEN 'ASSIGN' THEN stockManager.vStatusID
-    ELSE NULL
-    END [SIV]
-    , stockManager.vMRF [MRF]
-    , stockManager.vPOID [POId], po.dPODate [PODate], po.vPOID [POCode]
-    , CASE stockManager.vStatus
-    WHEN 'FULFILLMENT' THEN stockManager.dQuantityChange 
-    ELSE 0
-    END [QtyStockIn]
-    , CASE stockManager.vStatus
-    WHEN 'RETURN' THEN stockManager.dQuantityChange 
-    ELSE 0
-    END [QtyStockReturn]
-    , CASE stockManager.vStatus
-    WHEN 'ASSIGN' THEN stockManager.dQuantityChange 
-    ELSE 0
-    END [QtyStockOut]
-    , stockManager.dQuantityCurrent [QtyStockCurrent]
-    , stockManager.dQuantityAfterChange [QtyStockAfterChange]
-    , stock.bWeight [Weight]
-    ,NULL
-    ,NULL
-    FROM WAMS_STOCK_MANAGEMENT_QUANTITY (NOLOCK) stockManager
-    INNER JOIN WAMS_STOCK (NOLOCK) stock ON stockManager.vStockID = stock.Id
-    INNER JOIN WAMS_STOCK_TYPE (NOLOCK) stockType ON stock.iType = stockType.Id
-    INNER JOIN WAMS_CATEGORY (NOLOCK) stockCategory ON stock.bCategoryID = stockCategory.bCategoryID
-    INNER JOIN WAMS_UNIT (NOLOCK) stockUnit ON stock.bUnitID = stockUnit.bUnitID
-    LEFT JOIN WAMS_PROJECT (NOLOCK) project ON stockManager.vProjectID = project.Id
-    LEFT JOIN WAMS_SUPPLIER (NOLOCK) supplier ON stockManager.bSupplierID = supplier.bSupplierID
-    LEFT JOIN WAMS_PURCHASE_ORDER (NOLOCK) po ON stockManager.vPOID = po.Id
-    ORDER BY stockManager.ID ASC
+--INSERT INTO [dbo].[XDynamicProjectReport] ([Action]
+--           ,[Date]
+--           ,[ProjectId]
+--           ,[ProjectCode]
+--           ,[ProjectName]
+--           ,[StockId]
+--           ,[StockCode]
+--           ,[StockName]
+--           ,[StockTypeId]
+--           ,[StockType]
+--           ,[CategoryId]
+--           ,[Category]
+--           ,[UnitId]
+--           ,[Unit]
+--           ,[SupplierId]
+--           ,[Supplier]
+--           ,[SRV]
+--           ,[SIV]
+--           ,[MRF]
+--           ,[POId]
+--           ,[PODate]
+--           ,[POCode]
+--           ,[QtyStockIn]
+--           ,[QtyStockReturn]
+--           ,[QtyStockOut]
+--           ,[QtyStockCurrent] 
+--		 ,[QtyStockAfterChange]
+--           ,[Weight]
+--           ,[FagFrom]
+--           ,[FagId])
+--     SELECT stockManager.vStatus [Action], stockManager.dDate [Date]
+--    , stockManager.vProjectID [ProjectId], project.vProjectID [ProjectCode], project.vProjectName [ProjectName]
+--    , stockManager.vStockID [StockId], stock.vStockID [StockCode], stock.vStockName [StockName]
+--    , stock.iType [StockTypeId], stockType.TypeName [StockType]
+--    , stock.bCategoryID [CategoryId], stockCategory.vCategoryName [Category]
+--    , stock.bUnitID [UnitId], stockUnit.vUnitName [Unit]
+--    , supplier.bSupplierID [SupplierId], supplier.vSupplierName [Supplier]
+--    , CASE stockManager.vStatus
+--    WHEN 'ASSIGN' THEN NULL 
+--    ELSE stockManager.vStatusID
+--    END [SRV]
+--    , CASE stockManager.vStatus
+--    WHEN 'ASSIGN' THEN stockManager.vStatusID
+--    ELSE NULL
+--    END [SIV]
+--    , stockManager.vMRF [MRF]
+--    , stockManager.vPOID [POId], po.dPODate [PODate], po.vPOID [POCode]
+--    , CASE stockManager.vStatus
+--    WHEN 'FULFILLMENT' THEN stockManager.dQuantityChange 
+--    ELSE 0
+--    END [QtyStockIn]
+--    , CASE stockManager.vStatus
+--    WHEN 'RETURN' THEN stockManager.dQuantityChange 
+--    ELSE 0
+--    END [QtyStockReturn]
+--    , CASE stockManager.vStatus
+--    WHEN 'ASSIGN' THEN stockManager.dQuantityChange 
+--    ELSE 0
+--    END [QtyStockOut]
+--    , stockManager.dQuantityCurrent [QtyStockCurrent]
+--    , stockManager.dQuantityAfterChange [QtyStockAfterChange]
+--    , stock.bWeight [Weight]
+--    ,NULL
+--    ,NULL
+--    FROM WAMS_STOCK_MANAGEMENT_QUANTITY (NOLOCK) stockManager
+--    INNER JOIN WAMS_STOCK (NOLOCK) stock ON stockManager.vStockID = stock.Id
+--    INNER JOIN WAMS_STOCK_TYPE (NOLOCK) stockType ON stock.iType = stockType.Id
+--    INNER JOIN WAMS_CATEGORY (NOLOCK) stockCategory ON stock.bCategoryID = stockCategory.bCategoryID
+--    INNER JOIN WAMS_UNIT (NOLOCK) stockUnit ON stock.bUnitID = stockUnit.bUnitID
+--    LEFT JOIN WAMS_PROJECT (NOLOCK) project ON stockManager.vProjectID = project.Id
+--    LEFT JOIN WAMS_SUPPLIER (NOLOCK) supplier ON stockManager.bSupplierID = supplier.bSupplierID
+--    LEFT JOIN WAMS_PURCHASE_ORDER (NOLOCK) po ON stockManager.vPOID = po.Id
+--    ORDER BY stockManager.ID ASC
     
-GO
+--GO
 
 
 

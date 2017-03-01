@@ -19,7 +19,7 @@ namespace Ap.Business.Repositories
 
         }
 
-        public IList<V3_List_StockIn> ListCondition(int page, int size, int store, int poType, string status, string po, int supplier,
+        public IList<V3_List_StockIn> ListCondition(int page, int size, int store, int poType, string status, int po, int supplier,
             string srv, string stockCode, string stockName, string fd, string td, string enable)
         {
             var sql = GetSqlConnection();
@@ -45,7 +45,7 @@ namespace Ap.Business.Repositories
             return result.Any() ? result : new List<V3_List_StockIn>();
         }
 
-        public int ListConditionCount(int page, int size, int store, int poType, string status, string po, int supplier, string srv,
+        public int ListConditionCount(int page, int size, int store, int poType, string status, int po, int supplier, string srv,
             string stockCode, string stockName, string fd, string td, string enable)
         {
             var sql = GetSqlConnection();
@@ -86,7 +86,7 @@ namespace Ap.Business.Repositories
         }
 
         public IList<V3_List_StockIn_Detail> ListConditionDetailExcel(int page, int size, int store, int poType, string status,
-            string po,
+            int po,
             int supplier, string srv,
             string stockCode, string stockName, string fd, string td, string enable)
         {

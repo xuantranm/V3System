@@ -373,38 +373,31 @@ namespace Vivablast.Controllers
             cell.CellStyle = headerLabelCellStyle;
 
             cell = row.CreateCell(11);
-            cell.SetCellValue("SRV");
+            cell.SetCellValue("SIV/SRV");
             cell.CellStyle = headerLabelCellStyle;
 
-            cell = row.CreateCell(12);
-            cell.SetCellValue("SIV");
-            cell.CellStyle = headerLabelCellStyle;
-
-            cell = row.CreateCell(13);
+           cell = row.CreateCell(12);
             cell.SetCellValue("MRF");
             cell.CellStyle = headerLabelCellStyle;
 
-            cell = row.CreateCell(14);
+            cell = row.CreateCell(13);
             cell.SetCellValue("PO Code");
             cell.CellStyle = headerLabelCellStyle;
 
+            cell = row.CreateCell(14);
+            cell.SetCellValue("Qty Current");
+            cell.CellStyle = headerLabelCellStyle;
+
             cell = row.CreateCell(15);
-            cell.SetCellValue("Stock In");
+            cell.SetCellValue("Qty In/Out/Return");
             cell.CellStyle = headerLabelCellStyle;
 
             cell = row.CreateCell(16);
-            cell.SetCellValue("Stock Out");
+            cell.SetCellValue("Qty After In/Out/Return");
             cell.CellStyle = headerLabelCellStyle;
+
 
             cell = row.CreateCell(17);
-            cell.SetCellValue("Stock Return");
-            cell.CellStyle = headerLabelCellStyle;
-
-            cell = row.CreateCell(18);
-            cell.SetCellValue("Stock Remaining");
-            cell.CellStyle = headerLabelCellStyle;
-
-            cell = row.CreateCell(19);
             cell.SetCellValue("Weight");
             cell.CellStyle = headerLabelCellStyle;
             rowIndex++;
@@ -414,8 +407,8 @@ namespace Vivablast.Controllers
             {
                 row = sheet.CreateRow(rowIndex);
                 row.CreateCell(0).SetCellValue(numberRow);
-                row.CreateCell(1).SetCellValue(master.Action);
-                row.CreateCell(2).SetCellValue(master.Date.ToString("dd/MM/yyyy"));
+                row.CreateCell(1).SetCellValue(master.vStatus);
+                row.CreateCell(2).SetCellValue(master.dDate.ToString("dd/MM/yyyy"));
                 row.CreateCell(3).SetCellValue(master.ProjectCode);
                 row.CreateCell(4).SetCellValue(master.ProjectName);
                 row.CreateCell(5).SetCellValue(master.StockCode);
@@ -424,15 +417,13 @@ namespace Vivablast.Controllers
                 row.CreateCell(8).SetCellValue(master.Category);
                 row.CreateCell(9).SetCellValue(master.Unit);
                 row.CreateCell(10).SetCellValue(master.Supplier);
-                row.CreateCell(11).SetCellValue(master.SRV);
-                row.CreateCell(12).SetCellValue(master.SIV);
-                row.CreateCell(13).SetCellValue(master.MRF);
-                row.CreateCell(14).SetCellValue(master.POCode);
-                row.CreateCell(15).SetCellValue(master.QtyStockIn.ToString());
-                row.CreateCell(16).SetCellValue(master.QtyStockOut.ToString());
-                row.CreateCell(17).SetCellValue(master.QtyStockReturn.ToString());
-                row.CreateCell(18).SetCellValue(master.QtyStockCurrent.ToString());
-                row.CreateCell(19).SetCellValue(master.Weight);
+                row.CreateCell(11).SetCellValue(master.vStatusID);
+                row.CreateCell(12).SetCellValue(master.MRFCode);
+                row.CreateCell(13).SetCellValue(master.POCode);
+                row.CreateCell(14).SetCellValue(master.dQuantityCurrent.ToString());
+                row.CreateCell(15).SetCellValue(master.dQuantityChange.ToString());
+                row.CreateCell(16).SetCellValue(master.dQuantityAfterChange.ToString());
+                row.CreateCell(17).SetCellValue(master.Weight);
                 rowIndex++;
                 numberRow++;
             }

@@ -20,24 +20,24 @@ namespace Ap.Business.Domains
         [Key]
         public int bAssignningStockID { get; set; }
         public int vStockID { get; set; }
-        public Nullable<int> vProjectID { get; set; }
-        public Nullable<decimal> bQuantity { get; set; }
+        public int? vProjectID { get; set; }
+        public decimal? bQuantity { get; set; }
         public string vWorkerID { get; set; }
         public string SIV { get; set; }
         public string vMRF { get; set; }
-        public Nullable<int> FromStore { get; set; }
-        public Nullable<int> ToStore { get; set; }
-        public Nullable<System.DateTime> dCreated { get; set; }
-        public Nullable<System.DateTime> dModified { get; set; }
-        public Nullable<int> iCreated { get; set; }
-        public Nullable<int> iModified { get; set; }
-        public Nullable<int> AccCheck { get; set; }
+        public int? FromStore { get; set; }
+        public int? ToStore { get; set; }
+        public DateTime? dCreated { get; set; }
+        public DateTime? dModified { get; set; }
+        public int? iCreated { get; set; }
+        public int? iModified { get; set; }
+        public int? AccCheck { get; set; }
         public string AccDescription { get; set; }
-        public Nullable<System.DateTime> AccdCreated { get; set; }
-        public Nullable<System.DateTime> AccdModified { get; set; }
-        public Nullable<int> AcciCreated { get; set; }
-        public Nullable<int> AcciModidied { get; set; }
-        public Nullable<bool> FlagFile { get; set; }
+        public DateTime? AccdCreated { get; set; }
+        public DateTime? AccdModified { get; set; }
+        public int? AcciCreated { get; set; }
+        public int? AcciModidied { get; set; }
+        public bool? FlagFile { get; set; }
         public string Description { get; set; }
         public byte[] Timestamp { get; set; }
     

@@ -26,8 +26,9 @@ namespace Vivablast.ViewModels
 
         public int? PoTypeId { get; set; }
 
-        public SelectList Pes { get; set; }
+        public SelectList PeStockIns { get; set; }
 
+        public int? PeId { get; set; }
         public SelectList Suppliers { get; set; }
 
         public int? SupplierId { get; set; }

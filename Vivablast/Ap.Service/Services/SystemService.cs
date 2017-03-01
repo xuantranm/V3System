@@ -184,9 +184,9 @@ namespace Ap.Service.Services
             return _customSystemRepository.PoTypeList();
         }
 
-        public IList<KeyValueDto> Pes()
+        public IList<KeyValueDto> PeStockIn(string condition)
         {
-            return _customSystemRepository.Pes();
+            return _customSystemRepository.PeStockIn(condition);
         }
 
         public IList<V3_GetSupplierDDL_Result> SupplierList()

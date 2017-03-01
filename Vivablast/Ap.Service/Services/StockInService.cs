@@ -38,13 +38,13 @@ namespace Ap.Service.Services
             return new List<V3_List_StockIn>();
         }
 
-        public IList<V3_List_StockIn> ListCondition(int page, int size, int store, int poType, string status, string po, int supplier,
+        public IList<V3_List_StockIn> ListCondition(int page, int size, int store, int poType, string status, int po, int supplier,
             string srv, string stockCode, string stockName, string fd, string td, string enable)
         {
             return _customRepository.ListCondition(page, size, store, poType, status, po, supplier, srv, stockCode, stockName, fd, td, enable);
         }
 
-        public int ListConditionCount(int page, int size, int store, int poType, string status, string po, int supplier, string srv,
+        public int ListConditionCount(int page, int size, int store, int poType, string status, int po, int supplier, string srv,
             string stockCode, string stockName, string fd, string td, string enable)
         {
             return _customRepository.ListConditionCount(page, size, store, poType, status, po, supplier, srv, stockCode, stockName, fd, td, enable);
@@ -55,7 +55,7 @@ namespace Ap.Service.Services
             return _customRepository.ListConditionDetail(id, enable);
         }
 
-        public IList<V3_List_StockIn_Detail> ListConditionDetailExcel(int page, int size, int store, int poType, string status, string po, int supplier, string srv,
+        public IList<V3_List_StockIn_Detail> ListConditionDetailExcel(int page, int size, int store, int poType, string status, int po, int supplier, string srv,
             string stockCode, string stockName, string fd, string td, string enable)
         {
             return _customRepository.ListConditionDetailExcel(page, size, store, poType, status, po, supplier, srv, stockCode, stockName, fd, td, enable);

@@ -385,11 +385,12 @@ namespace Ap.Business.Repositories
             return result.Any() ? result : new List<V3_List_PoType_Ddl>();
         }
 
-        public IList<KeyValueDto> Pes()
+        public IList<KeyValueDto> PeStockIn(string condition)
         {
             var sql = GetSqlConnection();
-            var result = sql.Query<KeyValueDto>("dbo.PoTypeList", new
+            var result = sql.Query<KeyValueDto>("dbo.XPeStockIn", new
             {
+                condition
             },
                                          commandType: CommandType.StoredProcedure).ToList();
 
@@ -579,7 +580,7 @@ namespace Ap.Business.Repositories
 
             using (var sql = GetSqlConnection())
             {
-                var data = sql.Query<XDynamicProjectReport>("XGetDynamicProjectReport", paramss, commandType: CommandType.StoredProcedure);
+                var data = sql.Query<WAMS_STOCK_MANAGEMENT_QUANTITY>("XGetDynamicProjectReport", paramss, commandType: CommandType.StoredProcedure);
                 sql.Close();
                 model.DynamicProjectReports = data.ToList();
                 var total = paramss.Get<int>("out");

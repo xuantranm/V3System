@@ -24,13 +24,35 @@ namespace Ap.Business.Domains
         public decimal dQuantityAfterChange { get; set; }
         public string vStatus { get; set; }
         public string vStatusID { get; set; }
-        public Nullable<int> bUserID { get; set; }
-        public Nullable<int> vProjectID { get; set; }
-        public Nullable<int> vMRF { get; set; }
-        public Nullable<int> vPOID { get; set; }
-        public Nullable<int> bSupplierID { get; set; }
+        public int? bUserID { get; set; }
+        public int? vProjectID { get; set; }
+        public int? vMRF { get; set; }
+        public string MRFCode { get; set; }
+        public int? vPOID { get; set; }
+        public int? bSupplierID { get; set; }
         public System.DateTime dDate { get; set; }
-        public Nullable<int> FromStore { get; set; }
-        public Nullable<int> ToStore { get; set; }
+        public int? FromStore { get; set; }
+        public int? ToStore { get; set; }
+        public string ProjectCode { get; set; }
+        public string ProjectName { get; set; }
+        public string StockCode { get; set; }
+        public string StockName { get; set; }
+        public int StockTypeId { get; set; }
+        public string StockType { get; set; }
+        public int CategoryId { get; set; }
+        public string Category { get; set; }
+        public int UnitId { get; set; }
+        public string Unit { get; set; }
+        public string Supplier { get; set; }
+        public DateTime? PODate { get; set; }
+        public string POCode { get; set; }
+        public string Weight { get; set; }
+        public string Note { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
+        public string FagFrom { get; set; }
+        public int FagId { get; set; }
     }
 }

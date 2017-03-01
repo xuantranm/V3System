@@ -21,7 +21,6 @@ namespace Ap.Business.Seedworks
         V3_Information_Stock StockInGetStockInformation(string code, int store, int pe);
 
         
-
         #region STOCK MANAGEMENT
         StockInQuantity GetStockInQuantity(int code, int pe);
         IList<V3_Stock_Quantity_Management_Result> ListTransactionStockByProject(int page, int size, int project, string type, string fd, string td);
@@ -62,7 +61,7 @@ namespace Ap.Business.Seedworks
 
         IList<V3_GetStockLabelDDL_Result> LabelStockList(int type);
 
-        IList<KeyValueDto> Pes();
+        IList<KeyValueDto> PeStockIn(string condition);
 
         IList<V3_List_PoType_Ddl> PoTypeList();
 

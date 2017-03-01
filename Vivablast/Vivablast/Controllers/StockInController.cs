@@ -45,12 +45,13 @@ namespace Vivablast.Controllers
                 UserLogin = user,
                 Stores = new SelectList(_systemService.StoreList(), "Id", "Name"),
                 PoTypes = new SelectList(_systemService.PoTypeList(), "Id", "Name"),
-                Suppliers = new SelectList(_systemService.SupplierList(), "Id", "Name")
+                Suppliers = new SelectList(_systemService.SupplierList(), "Id", "Name"),
+                PeStockIns = new SelectList(_systemService.PeStockIn(string.Empty), "Key", "Value")
             };
             return View(model);
         }
 
-        public ActionResult LoadDataList(int page, int size, int store, int poType, string status, string po, int supplier, string srv, string stockCode, string stockName, string fd, string td, string enable)
+        public ActionResult LoadDataList(int page, int size, int store, int poType, string status, int po, int supplier, string srv, string stockCode, string stockName, string fd, string td, string enable)
         {
             var userName = System.Web.HttpContext.Current.User.Identity.Name;
             var totalRecord = _service.ListConditionCount(page, size, store, poType, status, po, supplier, srv, stockCode, stockName, fd, td, enable);
@@ -81,7 +82,7 @@ namespace Vivablast.Controllers
             return PartialView("_StockInDetailPartial", model);
         }
 
-        public void ExportToExcel(int page, int size, int store, int poType, string status, string po, int supplier, string srv, string stockCode, string stockName, string fd, string td, string enable)
+        public void ExportToExcel(int page, int size, int store, int poType, string status, int po, int supplier, string srv, string stockCode, string stockName, string fd, string td, string enable)
         {
             // Get the data to report on
             var masters = _service.ListCondition(page, size, store, poType, status, po, supplier, srv, stockCode, stockName, fd, td, enable);

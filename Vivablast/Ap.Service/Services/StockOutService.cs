@@ -72,6 +72,7 @@ namespace Ap.Service.Services
                         bAssignningStockID = detail.bAssignningStockID,
                         vStockID = detail.vStockID,
                         vMRF = detail.vMRF,
+                        DateStockOut = detail.DateStockOut,
                         dCreated = DateTime.Now,
                         iCreated = login,
                         FlagFile = false
@@ -82,6 +83,7 @@ namespace Ap.Service.Services
                 {
                     var detailEntity = GetByKey(detail.bAssignningStockID);
                     detailEntity.SIV = srvNew;
+                    detailEntity.DateStockOut = detail.DateStockOut;
                     detailEntity.dModified = DateTime.Now;
                     detailEntity.iModified = login;
                     _repository.Update(detailEntity);
@@ -100,7 +102,8 @@ namespace Ap.Service.Services
                         ToStore = detail.ToStore,
                         iCreated = login,
                         FlagFile = false,
-                        Description = detail.Description
+                        Description = detail.Description,
+                        DateStockOut = detail.DateStockOut
                     };
                     _customRepository.Add(detailEntity);
                 }

@@ -342,6 +342,7 @@ ALTER TABLE dbo.WAMS_ASSIGNNING_STOCKS
 ADD 
 	[FromStore] [int] NULL,
 	[ToStore] [int] NULL,
+	[DateStockOut] [datetime] NOT NULL,
 	[dCreated] [datetime] NULL,
 	[dModified] [datetime] NULL,
 	[iCreated] [int] NULL,
@@ -354,6 +355,9 @@ ADD
 	[AcciModidied] int NULL,
 	[FlagFile] bit NULL
 GO
+ALTER TABLE [dbo].[WAMS_ASSIGNNING_STOCKS] ADD  CONSTRAINT [DF_WAMS_ASSIGNNING_STOCKS_DateStockOut]  DEFAULT (getdate()) FOR [DateStockOut]
+GO
+
 -- WAMS_RETURN_LIST
 ALTER TABLE dbo.WAMS_RETURN_LIST 
 ADD 
@@ -589,3 +593,27 @@ ALTER TABLE WAMS_FULFILLMENT_DETAIL ALTER COLUMN vMRF nvarchar(500) NULL
 GO
 ALTER TABLE WAMS_PO_DETAILS ALTER COLUMN vMRF nvarchar(500) NULL
 GO
+ALTER TABLE WAMS_STOCK_MANAGEMENT_QUANTITY 
+ADD
+	[ProjectCode] [nvarchar](20) NULL,
+	[ProjectName] [nvarchar](64) NULL,
+	[StockCode] [nvarchar](16) NULL,
+	[StockName] [nvarchar](2000) NULL,
+	[StockTypeId] [int] NULL,
+	[StockType] [nvarchar](250) NULL,
+	[CategoryId] [int] NULL,
+	[Category] [nvarchar](64) NULL,
+	[UnitId] [int] NULL,
+	[Unit] [nvarchar](64) NULL,
+	[Supplier] [nvarchar](64) NULL,
+	[PODate] [datetime] NULL,
+	[POCode] [nvarchar](16) NULL,
+    [Weight] [nvarchar](20) NULL,
+    [Note] [nvarchar](max) NULL,
+	[Created] [datetime] NULL,
+	[Modified] [datetime] NULL,
+	[CreatedBy] [nvarchar](500) NULL,
+	[ModifiedBy] [nvarchar](500) NULL,
+	[FagFrom] [nvarchar](10) NULL,
+	[FagId] INT NULL,
+	[MRFCode] [nvarchar](64) NULL
