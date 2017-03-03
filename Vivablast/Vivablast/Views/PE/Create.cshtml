@@ -375,53 +375,49 @@
                         </div>
                     </div>
                 }
-
+                
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">From</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vFromContact, new { @Value = "VIVABLAST (MALAYSIA) SDN.BHD.", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.Address, new { @Value = "Level 7, Menara Milenium, Jalan Damanlela Pusat Bandar Damansara Damansara Heights Kuala Lumpur Wilayah Persekutuan 50490, Malaysia", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Tax Code</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.TaxCode, new { @Value = "000527642624", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Tel</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vFromTel, new { @Value = "+60 (0) 1373 749 83", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fax</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vFromFax, new { @Value = "8965004", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Pe Staff</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.vFromCC, new { @class = "form-control" })
+                    </div>
+                </div>
             </div>
             <div class="alert alert-danger col-xs-12" style="display: none">
                 <strong>Error!</strong> No item in list.
             </div>
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label">From</label>
-                <div class="col-sm-9">
-                    @Html.TextBoxFor(model => model.vFromContact, new { @Value = "VIVABLAST (MALAYSIA) SDN.BHD.", @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Address</label>
-                <div class="col-sm-9">
-                    @Html.TextBoxFor(model => model.Address, new { @Value = "Level 7, Menara Milenium, Jalan Damanlela Pusat Bandar Damansara Damansara Heights Kuala Lumpur Wilayah Persekutuan 50490, Malaysia", @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Tax Code</label>
-                <div class="col-sm-9">
-                    @Html.TextBoxFor(model => model.TaxCode, new { @Value = "000527642624", @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Tel</label>
-                <div class="col-sm-9">
-                    @Html.TextBoxFor(model => model.vFromTel, new { @Value = "+60 (0) 1373 749 83", @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Fax</label>
-                <div class="col-sm-9">
-                    @Html.TextBoxFor(model => model.vFromFax, new { @Value = "8965004", @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Pe Staff</label>
-                <div class="col-sm-9">
-                    @Html.TextBoxFor(model => model.vFromCC, new { @class = "form-control" })
-                </div>
-            </div>
+            
             
             <div class="modal-footer center">
                 <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
