@@ -107,7 +107,9 @@
         },
 
         getPoCode: function () {
-            return $('#searchPE').val();
+            var data = $('#searchPE').val();
+            data = data === "" ? 0 : data;
+            return data;
         },
         
         getSupplier: function () {

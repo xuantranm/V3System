@@ -20,12 +20,12 @@ namespace Ap.Business.Domains
         [Key]
         public int Id { get; set; }
         public string vPOID { get; set; }
-        public Nullable<int> vProjectID { get; set; }
+        public int? vProjectID { get; set; }
         public int bSupplierID { get; set; }
-        public Nullable<int> bPOTypeID { get; set; }
-        public Nullable<int> bCurrencyTypeID { get; set; }
+        public int? bPOTypeID { get; set; }
+        public int? bCurrencyTypeID { get; set; }
         public System.DateTime dPODate { get; set; }
-        public Nullable<decimal> fPOTotal { get; set; }
+        public decimal? fPOTotal { get; set; }
         public string vRemark { get; set; }
         public string vPriceEval { get; set; }
         public string vQuanlityEval { get; set; }
@@ -36,17 +36,24 @@ namespace Ap.Business.Domains
         public string vFromTel { get; set; }
         public string vFromFax { get; set; }
         public string vTermOfPayment { get; set; }
-        public Nullable<bool> iEnable { get; set; }
-        public Nullable<int> iExample { get; set; }
+        public bool? iEnable { get; set; }
+        public int? iExample { get; set; }
         public string vPOStatus { get; set; }
         public string vLocation { get; set; }
-        public Nullable<System.DateTime> dDeliverDate { get; set; }
-        public Nullable<int> iStore { get; set; }
-        public Nullable<int> iPayment { get; set; }
-        public Nullable<System.DateTime> dCreated { get; set; }
-        public Nullable<System.DateTime> dModified { get; set; }
-        public Nullable<int> iCreated { get; set; }
-        public Nullable<int> iModified { get; set; }
+        public DateTime? dDeliverDate { get; set; }
+        public string Address { get; set; }
+        public string TaxCode { get; set; }
+        public string PeStaff { get; set; }
+        public string CoRegNo { get; set; }
+        public string GSTRegNo { get; set; }
+        public string PengerangSite { get; set; }
+        public string GSTAddress { get; set; }
+        public int? iStore { get; set; }
+        public int? iPayment { get; set; }
+        public DateTime? dCreated { get; set; }
+        public DateTime? dModified { get; set; }
+        public int? iCreated { get; set; }
+        public int? iModified { get; set; }
         public byte[] Timestamp { get; set; }
     
         public virtual WAMS_CURRENCY_TYPE WAMS_CURRENCY_TYPE { get; set; }

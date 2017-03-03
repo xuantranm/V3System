@@ -13,7 +13,7 @@
                 <form class="form-inline">
                     <div class="form-group">
                         <label>Store</label>
-                        @Html.DropDownListFor(model => model.iStore, Model.Stores, @Constants.AllDLL, new { @id = "searchStore", @class = "form-control" })
+                        @Html.DropDownListFor(model => model.iStore, Model.Stores, new { @id = "searchStore", @class = "form-control" })
                     </div>
                     <div class="form-group">
                         <label>PE Type</label>
@@ -27,13 +27,17 @@
                             <option value="Complete">Complete</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>PE</label>
-                        <input type="text" name="search" class="form-control width110" id="searchPE" placeholder="PE Code" />
-                    </div>
+                    @*<div class="form-group">
+                            <label>PE</label>
+                            <input type="text" name="search" class="form-control width110" id="searchPE" placeholder="PE Code" />
+                        </div>*@
                     <div class="form-group">
                         <label>Supplier</label>
                         @Html.DropDownListFor(model => model.SupplierId, Model.Suppliers, Constants.AllDLL, new { @id = "searchSupplier", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>PE</label>
+                        @Html.DropDownListFor(model => model.PeId, Model.PeStockIns, Constants.AllDLL, new { @id = "searchPE", @class = "form-control" })
                     </div>
                     <div class="form-group">
                         <label>SRV</label>

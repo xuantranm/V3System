@@ -355,9 +355,14 @@
                             vLocation: $('#vLocation').val(),
                             dDeliverDate: $('#dDeliverDate').val(),
                             iStore: $('#iStore').val(),
-                            vFromCC: $('#vFromCC').val(),
                             iExample: $("#samplePE").is(':checked') ? 1 : 0,
-                            Timestamp: $('#Timestamp').val()
+                            Timestamp: $('#Timestamp').val(),
+                            vFromCC: $('#vFromCC').val(),
+                            vFromContact: $('#vFromContact').val(),
+                            Address: $('#Address').val(),
+                            TaxCode: $('#TaxCode').val(),
+                            vFromTel: $('#vFromTel').val(),
+                            vFromFax: $('#vFromFax').val()
                         },
                         ListPoDetailData: arrDetails,
                         LstDeleteDetailItem: $('#hidDeleteItemDetail').val(),

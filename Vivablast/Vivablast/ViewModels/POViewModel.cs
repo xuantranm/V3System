@@ -57,6 +57,13 @@ namespace Vivablast.ViewModels
         public string vPOStatus { get; set; }
         public string vLocation { get; set; }
         public DateTime? dDeliverDate { get; set; }
+        public string Address { get; set; }
+        public string TaxCode { get; set; }
+        public string PeStaff { get; set; }
+        public string CoRegNo { get; set; }
+        public string GSTRegNo { get; set; }
+        public string PengerangSite { get; set; }
+        public string GSTAddress { get; set; }
         public int? iStore { get; set; }
         public string Payment { get; set; }
         public byte[] Timestamp { get; set; }

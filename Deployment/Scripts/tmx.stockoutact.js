@@ -195,16 +195,17 @@
                             vStockID: $(this).find('.StockId').val(),
                             vProjectID: $('#vProjectID').val(),
                             bQuantity: $(this).find('.Quantity').text().trim(),
-                            vMRF: $(this).find('#vMRF').val(),
+                            vMRF: $('#vMRF').val(),
                             Description: $(this).find('.Remark').text().trim(),
-                            FromStore: $('#FromStore').val()
+                            FromStore: $('#FromStore').val(),
+                            DateStockOut: $('#dDateStockOut').val(),
                         });
                     });
                     var data = {
                         V3: check,
                         LoginId: $('#iLogin').val(),
                         AssignStockItemList: arrDetails,
-                        LstDeleteDetailItem: $('#hidDeleteItemDetail').val()
+                        LstDeleteDetailItem: $('#hidDeleteItemDetail').val(),
                     };
                     SaveEntity(data, 0);
                 }

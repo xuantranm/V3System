@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Store <span class="red">*</span></label>
                     <div class="col-sm-9">
-                        @(Model.vPOID != 0 ? Html.DropDownListFor(model => model.iStore, Model.Stores, Constants.SelectDDL, new { @class = "form-control", disabled = "disabled" }) : Html.DropDownListFor(model => model.iStore, Model.Stores, @Constants.SelectDDL, new { @class = "form-control" }))
+                        @(Model.vPOID != 0 ? Html.DropDownListFor(model => model.iStore, Model.Stores, new { @class = "form-control", disabled = "disabled" }) : Html.DropDownListFor(model => model.iStore, Model.Stores, new { @class = "form-control" }))
                     </div>
                 </div>
                 <div class="form-group">

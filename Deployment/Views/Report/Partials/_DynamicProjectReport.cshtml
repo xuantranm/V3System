@@ -17,23 +17,21 @@
                 <th>Category</th>
                 <th>Unit</th>
                 <th>Supplier</th>
-                <th>SRV</th>
-                <th>SIV</th>
+                <th>SRV/SIV</th>
                 <th>MRF</th>
                 <th>PO Code</th>
-                <th>Stock In</th>
-                <th>Stock Out</th>
-                <th>Stock Return</th>
-                <th>Stock Remain</th>
+                <th>Qty Current</th>
+                <th>Qty Change</th>
+                <th>Qty After Change</th>
                 <th>Weight</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.DynamicProjectReports)
             {
-                <tr id="item@(item.Id)">
-                    <td>@item.Action</td>
-                    <td>@item.Date</td>
+                <tr id="item@(item.ID)">
+                    <td>@item.vStatus</td>
+                    <td>@item.dDate</td>
                     <td>@item.ProjectCode</td>
                     <td>@item.ProjectName</td>
                     <td>@item.StockCode</td>
@@ -42,14 +40,12 @@
                     <td>@item.Category</td>
                     <td>@item.Unit</td>
                     <td>@item.Supplier</td>
-                    <td>@item.SRV</td>
-                    <td>@item.SIV</td>
-                    <td>@item.MRF</td>
+                    <td>@item.vStatusID</td>
+                    <td>@item.MRFCode</td>
                     <td>@item.POCode</td>
-                    <td>@item.QtyStockIn</td>
-                    <td>@item.QtyStockOut</td>
-                    <td>@item.QtyStockReturn</td>
-                    <td>@item.QtyStockCurrent</td>
+                    <td>@item.dQuantityCurrent</td>
+                    <td>@item.dQuantityChange</td>
+                    <td>@item.dQuantityAfterChange</td>
                     <td>@item.Weight</td>
                 </tr>
             }
