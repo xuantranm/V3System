@@ -376,5 +376,9 @@ namespace Vivablast.Controllers
             return Json(data);
         }
         #endregion
+
+        #region Update current password
+
+        #endregion
     }
 }
