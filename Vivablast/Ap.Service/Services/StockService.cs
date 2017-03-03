@@ -35,6 +35,11 @@ namespace Ap.Service.Services
             return _customRepository.StockViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
         }
 
+        public XStockViewModel StockAndServiceViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
+        {
+            return _customRepository.StockAndServiceViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
+        }
+
         public XStockViewModel ProductPeViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable, int supplier)
         {
             return _customRepository.ProductPeViewModelFilter(page, size, stockCode, stockName, store, type, category, enable, supplier);

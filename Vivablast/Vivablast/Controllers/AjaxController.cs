@@ -234,6 +234,20 @@ namespace Vivablast.Controllers
             return PartialView("Partials/_FindStockPartial", model);
         }
 
+        public ActionResult SearchStockAndServiceFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
+        {
+            var model = _stockService.StockAndServiceViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
+            var totalTemp = Convert.ToDecimal(model.TotalRecords) / Convert.ToDecimal(size);
+            var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
+            model.TotalPages = totalPages;
+            model.CurrentPage = page;
+            model.PageSize = size;
+            model.StoreVs = _systemService.StoreList();
+            model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
+
+            return PartialView("Partials/_SearchStockRequisitionPartial", model);
+        }
+
         public ActionResult SearchStockRequisitionFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable)
         {
             var model = _stockService.StockViewModelFilter(page, size, stockCode, stockName, store, type, category, enable);
@@ -250,18 +264,7 @@ namespace Vivablast.Controllers
 
         public ActionResult SearchStockPeFilter(int page, int size, string stockCode, string stockName, string store, int type, int category, string enable,int supplier)
         {
-            //var totalRecord = _stockService.PeListConditionCount(page, size, stockCode, stockName, store, type, category, enable, supplier);
-            //var totalTemp = Convert.ToDecimal(totalRecord) / Convert.ToDecimal(size);
-            //var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
-            //var model = new StockViewModel
-            //{
-            //    StockVs = _stockService.PeListCondition(page, size, stockCode, stockName, store, type, category, enable, supplier),
-            //    StoreVs = _systemService.StoreList(),
-            //    TotalRecords = Convert.ToInt32(totalRecord),
-            //    TotalPages = totalPages,
-            //    CurrentPage = page,
-            //    PageSize = size,
-            //};
+            // NEW RULE, Search all stock
             var model = _stockService.ProductPeViewModelFilter(page, size, stockCode, stockName, store, type, category, enable, supplier);
             var totalTemp = Convert.ToDecimal(model.TotalRecords) / Convert.ToDecimal(size);
             var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
@@ -270,7 +273,6 @@ namespace Vivablast.Controllers
             model.PageSize = size;
             model.StoreVs = _systemService.StoreList();
             model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
-
 
             return PartialView("Partials/_SearchStockPEPartial", model);
         }

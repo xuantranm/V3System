@@ -51,6 +51,35 @@ namespace Ap.Business.Repositories
             return model;
         }
 
+        public XStockViewModel StockAndServiceViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type,
+            int category, string enable)
+        {
+            var model = new XStockViewModel();
+            var paramss = new DynamicParameters();
+            paramss.Add("page", page);
+            paramss.Add("size", size);
+            paramss.Add("stockCode", stockCode);
+            paramss.Add("stockName", stockName);
+            paramss.Add("store", store);
+            paramss.Add("type", type);
+            paramss.Add("category", category);
+            paramss.Add("enable", enable);
+            paramss.Add("out", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (var sql = GetSqlConnection())
+            {
+                var data = sql.Query<XStockModel>("XGetListStockAndService", paramss, commandType: CommandType.StoredProcedure);
+                sql.Close();
+                model.StockVs = data.ToList();
+                var total = paramss.Get<int>("out");
+                model.TotalRecords = total;
+                var totalTemp = Convert.ToDecimal(total) / Convert.ToDecimal(size);
+                model.TotalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
+            }
+
+            return model;
+        }
+
         public XStockViewModel ProductPeViewModelFilter(int page, int size, string stockCode, string stockName, string store, int type,
             int category, string enable, int supplier)
         {

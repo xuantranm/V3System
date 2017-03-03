@@ -13,16 +13,15 @@
     using ViewModels;
     using Constants = Ap.Common.Constants.Constants;
 
-    // SERVICE MOVE TO STOCK. REMOVE TABLE SERVICES LATER
     [Authorize]
-    public class ServiceController : Controller
+    public class ServiceBKController : Controller
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ServiceController).FullName);
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ServiceBKController).FullName);
 
         private readonly ISystemService _systemService;
-        private readonly IStockService _service;
+        private readonly IServiceService _service;
 
-        public ServiceController(ISystemService systemService, IStockService service)
+        public ServiceBKController(ISystemService systemService, IServiceService service)
         {
             _systemService = systemService;
             _service = service;
@@ -55,24 +54,29 @@
         }
         #endregion
 
-        public ActionResult LoadDataList(int page, int size, string code, string name, string store, int category, string enable)
+        public ActionResult LoadDataList(int page, int size, string code, string name, int store, int category, string enable)
         {
-            var model = _service.StockAndServiceViewModelFilter(page, size, code, name, store, 8, category, enable);
-            var totalTemp = Convert.ToDecimal(model.TotalRecords) / Convert.ToDecimal(size);
+            var userName = System.Web.HttpContext.Current.User.Identity.Name;
+            var totalRecord = _service.ListConditionCount(page, size, code, name, store, category, enable);
+            var totalTemp = Convert.ToDecimal(totalRecord) / Convert.ToDecimal(size);
             var totalPages = Convert.ToInt32(Math.Ceiling(totalTemp));
-            model.TotalPages = totalPages;
-            model.CurrentPage = page;
-            model.PageSize = size;
-            model.StoreVs = _systemService.StoreList();
-            model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
+            var model = new ServiceViewModel
+            {
+                UserLogin = _systemService.GetUserAndRole(0, userName),
+                ServiceList = _service.ListCondition(page, size, code, name, store, category, enable),
+                TotalRecords = Convert.ToInt32(totalRecord),
+                TotalPages = totalPages,
+                CurrentPage = page,
+                PageSize = size
+            };
 
             return PartialView("_ServicePartial", model);
         }
 
-        public void ExportToExcel(int page, int size, string code, string name, string store, int category, string enable)
+        public void ExportToExcel(int page, int size, string code, string name, int store, int category, string enable)
         {
             // Get the data to report on
-            var masters = _service.StockViewModelFilter(page, size, code, name, store, 8, category, enable);
+            var masters = _service.ListCondition(page, size, code, name, store, category, enable);
             // Create a new workbook
             var workbook = new HSSFWorkbook();
 
@@ -185,23 +189,23 @@
             rowIndex++;
 
             // Add data rows
-            foreach (var master in masters.StockVs)
+            foreach (var master in masters)
             {
                 row = sheet.CreateRow(rowIndex);
                 row.CreateCell(0).SetCellValue(master.Id);
-                row.CreateCell(1).SetCellValue(master.vStockID);
-                row.CreateCell(2).SetCellValue(master.vStockName);
-                row.CreateCell(3).SetCellValue(master.vAccountCode);
+                row.CreateCell(1).SetCellValue(master.Service_Code);
+                row.CreateCell(2).SetCellValue(master.Service_Name);
+                row.CreateCell(3).SetCellValue(master.Account_Code);
                 row.CreateCell(4).SetCellValue(master.Unit);
                 row.CreateCell(5).SetCellValue(master.Category);
-                row.CreateCell(6).SetCellValue(master.bWeight.ToString());
-                row.CreateCell(7).SetCellValue(master.dCreated != null
-                                                   ? master.dCreated.Value.ToString("dd/MM/yyyy")
-                                                   : master.dCreated.ToString());
+                row.CreateCell(6).SetCellValue(master.Weight.ToString());
+                row.CreateCell(7).SetCellValue(master.Created_Date != null
+                                                   ? master.Created_Date.Value.ToString("dd/MM/yyyy")
+                                                   : master.Created_Date.ToString());
                 row.CreateCell(8).SetCellValue(master.Created_By);
-                row.CreateCell(9).SetCellValue(master.dModified != null
-                                                   ? master.dModified.Value.ToString("dd/MM/yyyy")
-                                                   : master.dModified.ToString());
+                row.CreateCell(9).SetCellValue(master.Modified_Date != null
+                                                   ? master.Modified_Date.Value.ToString("dd/MM/yyyy")
+                                                   : master.Modified_Date.ToString());
                 row.CreateCell(10).SetCellValue(master.Modified_By);
                 rowIndex++;
             }
@@ -250,42 +254,28 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            var item = new WAMS_STOCK();
+            var item = new WAMS_ITEMS_SERVICE();
 
             if (id.HasValue)
             {
                 item = _service.GetByKey(id.Value);
             }
 
-            var model = new StockViewModel
+            var model = new ServiceViewModel
             {
                 Id = item.Id,
-                vStockID = item.vStockID,
-                vStockName = item.vStockName,
-                vRemark = item.vRemark,
+                vIDServiceItem = item.vIDServiceItem,
+                vServiceItemName = item.vServiceItemName,
                 bUnitID = item.bUnitID,
-                vBrand = item.vBrand,
                 bCategoryID = item.bCategoryID,
                 bPositionID = item.bPositionID,
-                //bLabelID = item.bLabelID,
                 bWeight = item.bWeight,
                 vAccountCode = item.vAccountCode,
-                iType = item.iType,
-                PartNo = item.PartNo,
-                PartNoFor = item.PartNoFor,
-                PartNoMiniQty = item.PartNoMiniQty,
-                RalNo = item.RalNo,
-                ColorName = item.ColorName,
-                Position = item.Position,
-                SubCategory = item.SubCategory,
-                UserForPaint = item.UserForPaint,
                 Timestamp = item.Timestamp,
                 UserLogin = user,
-                Types = new SelectList(_systemService.TypeStockList(), "Id", "Name"),
-                Categories = new SelectList(_systemService.CategoryStockList(0), "Id", "Name"),
-                Units = new SelectList(_systemService.UnitStockList(0), "Id", "Name"),
+                Categories = new SelectList(_systemService.CategoryStockList(8), "Id", "Name"),
+                Units = new SelectList(_systemService.UnitStockList(8), "Id", "Name"),
                 Positions = new SelectList(_systemService.PositionStockList(), "Id", "Name")
-                //Labels = new SelectList(_systemService.LabelStockList(0), "Id", "Name")
             };
 
             return View(model);

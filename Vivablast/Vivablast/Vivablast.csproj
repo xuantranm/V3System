@@ -222,6 +222,7 @@
     <Compile Include="Controllers\ReActiveStockController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RequisitionController.cs" />
+    <Compile Include="Controllers\ServiceController - Copy.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\StockInController.cs" />

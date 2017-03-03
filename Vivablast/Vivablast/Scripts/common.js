@@ -1094,14 +1094,17 @@ var searchStockFunction = function () {
         }
 
         // MODE : PE, RETURN , STOCK IN, STOCK OUT,...
-        if ($('#Mode').val() == "PE" && typeof $('#bSupplierID').val() !== 'undefined') {
-            if ($('#bSupplierID').val() == "") {
-                $('#searchProductDiv', modelBox).empty().append("<div>No data. Close and select <b>Supplier</b> again.</div>");
-                eventSearchStockListStock();
-            } else {
-                var supplier = $('#bSupplierID').val();
-                loadStockPe(modelBox, page, size, store, type, category, stockCode, stockName, supplier);
-            }
+        //if ($('#Mode').val() == "PE" && typeof $('#bSupplierID').val() !== 'undefined') {
+        //    if ($('#bSupplierID').val() == "") {
+        //        $('#searchProductDiv', modelBox).empty().append("<div>No data. Close and select <b>Supplier</b> again.</div>");
+        //        eventSearchStockListStock();
+        //    } else {
+        //        var supplier = $('#bSupplierID').val();
+        //        loadStockPe(modelBox, page, size, store, type, category, stockCode, stockName, supplier);
+        //    }
+            //}
+        if ($('#Mode').val() == "PE") {
+            loadStockAndService(modelBox, page, size, store, type, category, stockCode, stockName);
         }
         else if ($('#Mode').val() == "StockIn" && typeof $('#vPOID').val() !== 'undefined') {
             if ($('#vPOID').val() == "") {
@@ -1131,6 +1134,31 @@ var searchStockFunction = function () {
             loadStockRequisition(modelBox, page, size, store, type, category, stockCode, stockName);
         }
     };
+    var loadStockAndService = function (modelBox, page, size, store, type, category, stockCode, stockName) {
+        $.ajax({
+            url: '/Ajax/SearchStockAndServiceFilter',
+            type: 'GET',
+            async: false,
+            data: {
+                page: page,
+                size: size,
+                stockCode: stockCode,
+                stockName: stockName,
+                store: store,
+                type: type,
+                category: category,
+                enable: '1'
+            },
+            datatype: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.length != 0) {
+                    $('#searchProductDiv', modelBox).empty().append(data);
+                    eventSearchStockListStock();
+                }
+            }
+        });
+    }
 
     var loadStockRequisition = function (modelBox, page, size, store, type, category, stockCode, stockName) {
         $.ajax({

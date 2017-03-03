@@ -523,3 +523,5 @@ System.Data.SqlClient.SqlException (0x80131904): Procedure or function V3_Insert
    at Vivablast.Controllers.StockOutController.EditData(AssignAddViewModel model) in d:\PRACTISE\V3\Vivablast\Vivablast\Controllers\StockOutController.cs:line 409
 ClientConnectionId:6a42fdb7-40fd-477f-beb4-17053ce8cf2e
 Error Number:8144,State:2,Class:16
+2017-03-03 11:23:21,485 [20] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test

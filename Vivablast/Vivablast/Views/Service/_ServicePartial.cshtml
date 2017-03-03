@@ -1,6 +1,5 @@
 ﻿@using Ap.Common.Constants
-@using Vivablast.ViewModels
-@model ServiceViewModel
+@model Ap.Business.ViewModels.XStockViewModel
 
 @if (Model.TotalRecords == 0)
 {
@@ -21,7 +20,6 @@ else
                     {
                         <th class="center" style="width: 150px !important">Action</th>
                     }
-                    <th class="center">No</th>
                     <th class="center">Service Code</th>
                     <th class="center">Service Name</th>
                     <th class="center">Unit</th>
@@ -36,7 +34,7 @@ else
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.ServiceList)
+                @foreach (var item in Model.StockVs)
                 {
                     <tr class="vbcolum">
                         @if (Model.UserLogin.StockServiceR > 2)
@@ -55,17 +53,16 @@ else
                                 }
                             </td>
                         }
-                        <td class="center">@item.No</td>
-                        <td class="center StockCode">@item.Service_Code</td>
-                        <td>@item.Service_Name</td>
+                        <td class="center StockCode">@item.vStockID</td>
+                        <td>@item.vStockName</td>
                         <td class="center">@item.Unit</td>
                         <td class="center">@item.Category</td>
-                        <td class="center">@item.Weight</td>
-                        <td class="center">@item.Account_Code</td>
-                        <td class="center">@item.Description</td>
-                        <td class="center">@Constants.ConvertDate(item.Created_Date.ToString())</td>
+                        <td class="center">@item.bWeight</td>
+                        <td class="center">@item.vAccountCode</td>
+                        <td class="center">@item.vRemark</td>
+                        <td class="center">@Constants.ConvertDate(item.dCreated.ToString())</td>
                         <td class="center">@item.Created_By</td>
-                        <td class="center">@Constants.ConvertDate(item.Modified_Date.ToString())</td>
+                        <td class="center">@Constants.ConvertDate(item.dModified.ToString())</td>
                         <td class="center">
                             @item.Modified_By
                             <input type="hidden" class="ItemKey" value="@item.Id" />
