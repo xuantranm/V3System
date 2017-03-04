@@ -28,6 +28,9 @@ namespace Ap.Business.Domains
             Configuration.LazyLoadingEnabled = true;
             Configuration.AutoDetectChangesEnabled = false;
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            // Configure Decimal to always have a precision of 18 and a scale of 4
+            modelBuilder.Conventions.Remove<DecimalPropertyConvention>();
+            modelBuilder.Conventions.Add(new DecimalPropertyConvention(18, 4));
         }
     
         public DbSet<Change_Code> Change_Code { get; set; }

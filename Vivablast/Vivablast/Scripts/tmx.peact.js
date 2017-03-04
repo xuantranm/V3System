@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿var decimalNum = 4;
+$(document).ready(function () {
     tmx.vivablast.peact.init();
     //$("#Store_Id option[value='1']").remove();
 });
@@ -9,6 +10,74 @@
 
     tmx.vivablast.peact = {
         init: function () {
+            $('.money-input').each(function () {
+                $(this).on('focus', function () {
+                    $(this).val($(this).val().replace(/\ đ/g, "").replace(/\ %/g, "").replace(/\ năm/g, ""));
+                }).on('keydown', function (e) {
+                    if ((e.keyCode == 44))
+                        alert('Please using . for decimal');
+                    // Allow: backspace, delete, tab, escape, enter and .
+                    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                        // Allow: Ctrl+A
+                        (e.keyCode == 65 && e.ctrlKey === true) ||
+                        // Allow: Ctrl+C
+                        (e.keyCode == 67 && e.ctrlKey === true) ||
+                        // Allow: Ctrl+X
+                        (e.keyCode == 88 && e.ctrlKey === true) ||
+                        // Allow: home, end, left, right
+                        (e.keyCode >= 35 && e.keyCode <= 39) ||
+                        (e.keyCode == 46)) {
+                        // let it happen, don't do anything
+                        return;
+                    }
+                    //if (this.value.length > 13) e.preventDefault();
+                    //hundreds of millions (50 billion: 11 lenght)
+                    //console.log($(this).val());
+
+                    // Ensure that it is a number and stop the keypress
+                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                        e.preventDefault();
+                    }
+                })
+                    .on('keyup', function (e) {
+                        if (this.value == '' || e.keyCode == 37 || e.keyCode == 39) return; // check null and arrow button
+                        // store current cursor  positions in variables
+                        var start = this.selectionStart;
+                        var bcount = this.value.length;
+                        var main = this.value.replace(/\,/g, "").toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        var decimal = this.value.toString().split('.')[1];
+                        console.log(decimal);
+                        var result = main;
+
+                        if (typeof decimal !== "undefined") {
+                            result += '.' + decimal;
+                        }
+                        $(this).val(result);
+
+                        var end = this.selectionEnd;
+                        var acount = this.value.length;
+                        //start = start + 4 == end ? start + 1 : start; //have input 3 chars will have 1 space
+                        if (bcount != acount) {
+                            start = start + 1;
+                        }
+                        end = bcount != acount ? start : end;
+                        end = start != end ? start : end;
+                        // set cursor  positions after format 
+
+                        this.setSelectionRange(start, end);
+                        $('.hidden', $(this).closest('div')).val(this.value.replace(/\,/g, "").toString());
+                        if ($('.hidden', $(this).closest('div')).val() <= 0) {
+                            $(this).val(0);
+                        }
+                        //$('.money-text', $(this).closest('div')).text('');
+                        //$('.money-text', $(this).closest('div')).text(DocTienBangChu($('.hidden', $(this).closest('div')).val() * 1000000));
+
+                    })
+                    .on('focusout', function () {
+                        tmx.vivablast.peact.calculatorAmountPrice();
+                    });
+            });
+            
             $('#loading-indicator').hide();
             $('#Mode').val("PE");
             $('#Mrf').tooltip({ 'trigger': 'focus', 'title': "Mrf can multible, divide by ' ; '" });
@@ -87,6 +156,8 @@
         registerEventCreateForm: function () {
             var form = $('#pe-create-form');
             searchStockFunction.init();
+
+            
 
             $('#ProjectName').val($('#vProjectID').val());
 
@@ -428,19 +499,29 @@
         },
 
         calculatorAmountPrice: function (form) {
-            var amountPrice;
-            //amountPrice = Math.round((checkNumeric($("#priceCreateFormPO option:selected", form).text()) * $("#Quantity", form).val()) * 100) / 100;
-            amountPrice = Math.round((checkNumeric($("#fUnitPrice", form).val()) * $("#Quantity", form).val()) * 100) / 100;
-            if ($('#Discount', form).val() != '' || $('#Discount', form).val() != 0) {
-                amountPrice = Math.round((amountPrice - (amountPrice * $('#Discount', form).val() / 100)) * 100) / 100;
+            var unitPrice = $("#fUnitPrice").val();
+            var quantity = $("#Quantity").val();
+            var discount = $('#Discount').val();
+            var vat = $('#VAT', form).val();
+            //amountPrice = Math.round((checkNumeric($("#fUnitPrice", form).val()) * $("#Quantity", form).val()) * 100) / 100;
+            var amountPrice =  unitPrice * quantity;
+            if (discount > 0) {
+                amountPrice = amountPrice - (amountPrice * discount / 100);
             }
-            //if ($('#VAT', form).val() != '' || $('#VAT', form).val() != 0) {
-            //    amountPrice = Math.round((amountPrice + (amountPrice * $('#VAT', form).val() / 100)) * 100) / 100;
-            //}
-            if ($('#VAT', form).val() != '' || $('#VAT', form).val() != 0) {
-                amountPrice = Math.round((amountPrice + (amountPrice * $('#VAT', form).val() / 100)) * 100) / 100;
+            if (vat > 0) {
+                amountPrice = amountPrice + (amountPrice * vat)/100;
             }
-            $('#lblAmountPrice', form).text(formatThousands(parseFloat(amountPrice).toString()));
+            // format thousand
+            amountPrice = parseFloat(amountPrice.toFixed(decimalNum));
+            console.log(amountPrice);
+            var main = amountPrice.toString().replace(/\,/g, "").toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            var decimal = amountPrice.toString().split('.')[1];
+            var result = main;
+            if (typeof decimal !== "undefined") {
+                result += '.' + decimal;
+            }
+            $('#lblAmountPrice').text(result);
+            //$('#lblAmountPrice', form).text(formatThousands(parseFloat(amountPrice).toString()));
         },
 
         calculatorAmountTotal: function (form) {

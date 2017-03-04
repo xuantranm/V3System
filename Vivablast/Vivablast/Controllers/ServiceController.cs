@@ -292,90 +292,104 @@
         }
 
         [HttpPost]
-        public ActionResult Create(ServiceViewModel model)
+        public ActionResult Create(StockViewModel model)
         {
             if (model.V3 != true)
             {
                 return Json(new { result = Constants.UnSuccess });
             }
 
+            model.iType = 8;
+            model.Type = "Service";
             return model.Id == 0 ? CreateData(model) : EditData(model);
         }
 
-        private JsonResult CreateData(ServiceViewModel model)
+        private JsonResult CreateData(StockViewModel model)
         {
-            if (_service.ExistedName(model.vServiceItemName))
+            if (_service.ExistedCode(model.Stock.vStockID))
+            {
+                return Json(new { result = Constants.DuplicateCode });
+            }
+
+            if (_service.ExistedName(model.Stock.vStockName))
             {
                 return Json(new { result = Constants.Duplicate });
             }
 
             try
             {
-                var item = new WAMS_ITEMS_SERVICE
-                    {
-                        vIDServiceItem = model.vIDServiceItem,
-                        vServiceItemName = model.vServiceItemName,
-                        vDescription = model.vDescription,
-                        bCategoryID = model.bCategoryID,
-                        bUnitID = model.bUnitID,
-                        bPositionID = model.bPositionID,
-
-                        // bSupplierID = viewModel.bSupplierID,
-                        vStockType = "Service",
-                        iEnable = true,
-                        bWeight = model.bWeight,
-                        vAccountCode = model.vAccountCode,
-                        dCreated = DateTime.Now,
-                        StoreId = model.StoreId
-                    };
-
-                _service.Insert(item);
-
-                return Json(new { result = Constants.Success });
+                model.Stock.iEnable = true;
+                model.Stock.iCreated = model.LoginId;
+                model.Stock.dCreated = DateTime.Now;
+                _service.Insert(model.Stock);
+                //UploadPictureBase64(model, model.Stock.Id);
+                return Json(new { result = Constants.Success, id = model.Stock.Id });
             }
             catch (Exception e)
             {
-                Log.Error("Create New Service!", e);
+                Log.Error("Create New Stock Service!", e);
                 return Json(new { result = Constants.UnSuccess });
             }
         }
 
-        private JsonResult EditData(ServiceViewModel model)
+        private JsonResult EditData(StockViewModel model)
         {
-            var item = _service.GetByKey(model.Id);
-            if (!Convert.ToBase64String(model.Timestamp).Equals(Convert.ToBase64String(item.Timestamp)))
+            if (model.CheckCode != model.Stock.vStockID)
             {
-                return Json(new { result = Constants.DataJustChanged });
+                if (_service.ExistedCode(model.Stock.vStockID))
+                {
+                    return Json(new { result = Constants.DuplicateCode });
+                }
             }
 
-            if (item.vServiceItemName != model.vServiceItemName)
+            if (model.CheckName != model.Stock.vStockName)
             {
-                if (_service.ExistedName(model.vServiceItemName))
+                if (_service.ExistedName(model.Stock.vStockName))
                 {
                     return Json(new { result = Constants.Duplicate });
                 }
             }
 
+            var entity = _service.GetByKey(model.Stock.Id);
+            if (!Convert.ToBase64String(model.Stock.Timestamp).Equals(Convert.ToBase64String(entity.Timestamp)))
+            {
+                return Json(new { result = Constants.DataJustChanged });
+            }
+
             try
             {
-                item.vServiceItemName = model.vServiceItemName;
-                item.vDescription = model.vDescription;
-                item.bCategoryID = model.bCategoryID;
-                item.bUnitID = model.bUnitID;
-                item.bPositionID = model.bPositionID;
-                item.bWeight = model.bWeight;
-                item.vAccountCode = model.vAccountCode;
-                item.dModified = DateTime.Now;
-                _service.Update(item);
+                entity.vStockID = model.Stock.vStockID;
+                entity.vStockName = model.Stock.vStockName;
+                entity.vRemark = model.Stock.vRemark;
+                entity.bUnitID = model.Stock.bUnitID;
+                entity.vBrand = model.Stock.vBrand;
+                entity.bCategoryID = model.Stock.bCategoryID;
+                entity.bPositionID = model.Stock.bPositionID;
+                //entity.bLabelID = model.Stock.bLabelID;
+                entity.bWeight = model.Stock.bWeight;
+                entity.vAccountCode = model.Stock.vAccountCode;
+                entity.iType = model.Stock.iType;
+                entity.PartNo = model.Stock.PartNo;
+                entity.PartNoFor = model.Stock.PartNoFor;
+                entity.PartNoMiniQty = model.Stock.PartNoMiniQty;
+                entity.RalNo = model.Stock.RalNo;
+                entity.ColorName = model.Stock.ColorName;
+                entity.Position = model.Stock.Position;
+                entity.SubCategory = model.Stock.SubCategory;
+                entity.UserForPaint = model.Stock.UserForPaint;
+                entity.iModified = model.LoginId;
+                entity.dModified = DateTime.Now;
+                _service.Update(entity);
 
                 return Json(new { result = Constants.Success });
             }
             catch (Exception e)
             {
-                Log.Error("Update Service!", e);
+                Log.Error("Update Stock Service!", e);
                 return Json(new { result = Constants.UnSuccess });
             }
         }
+
 
         public JsonResult Delete(int id)
         {

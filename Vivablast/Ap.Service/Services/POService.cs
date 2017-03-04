@@ -167,14 +167,14 @@ namespace Ap.Service.Services
                 {
                     vPOID = entity.Id,
                     vMRF = detail.MRFId,
-                    iDiscount = int.Parse(detail.Discount, new CultureInfo(Constants.MyCultureInfo)),
+                    iDiscount = detail.Discount,
                     vProductID = detail.StockId,
-                    fQuantity = decimal.Parse(detail.Quantity, new CultureInfo(Constants.MyCultureInfo)),
-                    fVAT = int.Parse(detail.VAT, new CultureInfo(Constants.MyCultureInfo)),
-                    fItemTotal = decimal.Parse(detail.ItemTotal, new CultureInfo(Constants.MyCultureInfo)),
+                    fQuantity = detail.Quantity,
+                    fVAT = detail.VAT,
+                    fItemTotal = detail.ItemTotal,
                     vRemark = detail.Remark,
                     vPODetailStatus = "Open",
-                    fUnitPrice = decimal.Parse(detail.UnitPrice, new CultureInfo(Constants.MyCultureInfo)),
+                    fUnitPrice = detail.UnitPrice,
                     PriceId = detail.Price_Id,
                     iEnable = true,
                     dDateAssign = entity.dCreated,
@@ -185,7 +185,7 @@ namespace Ap.Service.Services
                 var listMrf = detail.MRFId.Split(';').ToList();
                 listRequisitionUpdate.AddRange(listMrf.Select(mrf => new PeRequisitionUpdate
                 {
-                    Mrf = Convert.ToInt32(mrf), Stock = detail.StockId, Quantity = decimal.Parse(detail.Quantity, new CultureInfo(Constants.MyCultureInfo))
+                    Mrf = Convert.ToInt32(mrf), Stock = detail.StockId, Quantity = detail.Quantity
                 }));
             }
             _unitOfWork.CommitChanges();
@@ -212,12 +212,12 @@ namespace Ap.Service.Services
                 {
                     var detailEntity = _repositoryDetail.GetByKey(detail.Id);
                     detailEntity.vProductID = detail.StockId;
-                    detailEntity.fQuantity = decimal.Parse(detail.Quantity, new CultureInfo(Constants.MyCultureInfo));
+                    detailEntity.fQuantity = detail.Quantity;
                     detailEntity.PriceId = detail.Price_Id;
-                    detailEntity.fUnitPrice = decimal.Parse(detail.UnitPrice, new CultureInfo(Constants.MyCultureInfo));
-                    detailEntity.iDiscount = int.Parse(detail.Discount, new CultureInfo(Constants.MyCultureInfo));
-                    detailEntity.fVAT = int.Parse(detail.VAT, new CultureInfo(Constants.MyCultureInfo));
-                    detailEntity.fItemTotal = decimal.Parse(detail.ItemTotal, new CultureInfo(Constants.MyCultureInfo));
+                    detailEntity.fUnitPrice = detail.UnitPrice;
+                    detailEntity.iDiscount =detail.Discount;
+                    detailEntity.fVAT = detail.VAT;
+                    detailEntity.fItemTotal = detail.ItemTotal;
                     detailEntity.vRemark = detail.Remark;
                     detailEntity.dModified = DateTime.Now;
                     detailEntity.iModified = entity.iModified;
@@ -229,14 +229,14 @@ namespace Ap.Service.Services
                     {
                         vPOID = entity.Id,
                         vMRF = detail.MRFId,
-                        iDiscount = int.Parse(detail.Discount, new CultureInfo(Constants.MyCultureInfo)),
+                        iDiscount = detail.Discount,
                         vProductID = detail.StockId,
-                        fQuantity = decimal.Parse(detail.Quantity, new CultureInfo(Constants.MyCultureInfo)),
-                        fVAT = int.Parse(detail.VAT, new CultureInfo(Constants.MyCultureInfo)),
-                        fItemTotal = decimal.Parse(detail.ItemTotal, new CultureInfo(Constants.MyCultureInfo)),
+                        fQuantity = detail.Quantity,
+                        fVAT = detail.VAT,
+                        fItemTotal = detail.ItemTotal,
                         vRemark = detail.Remark,
                         vPODetailStatus = "Open",
-                        fUnitPrice = decimal.Parse(detail.UnitPrice, new CultureInfo(Constants.MyCultureInfo)),
+                        fUnitPrice = detail.UnitPrice,
                         PriceId = detail.Price_Id,
                         iEnable = true,
                         dDateAssign = entity.dCreated,

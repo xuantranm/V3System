@@ -20,7 +20,7 @@ GO
 UPDATE dbo.WAMS_USER SET iEnable = 1 WHERE iEnable=2
 GO
 -- password@123
--- UPDATE dbo.WAMS_USER SET vNewPassword='4617ECF11B542A14F3D0AE5591BF181FE139C563';
+UPDATE dbo.WAMS_USER SET vNewPassword='4617ECF11B542A14F3D0AE5591BF181FE139C563';
 -- RESOLVE PASSWORD LATER........................................................................................................................
 -- 
 GO

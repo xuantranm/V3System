@@ -14,13 +14,13 @@ namespace Vivablast.Models
     public partial class V3_Pe_Detail_Data
     {
         public int Id { get; set; }
-        public string Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public int Price_Id { get; set; }
-        public string UnitPrice { get; set; }
-        public string Discount { get; set; }
-        public string VAT { get; set; }
-        public string ItemTotal { get; set; }
-        public string DeliveryDate { get; set; }
+        public decimal UnitPrice { get; set; }
+        public int Discount { get; set; }
+        public int VAT { get; set; }
+        public decimal ItemTotal { get; set; }
+        public DateTime DeliveryDate { get; set; }
         public string Remark { get; set; }
         public string Status { get; set; }
         public int StockId { get; set; }

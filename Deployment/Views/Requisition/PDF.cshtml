@@ -138,14 +138,14 @@
                     {
                         <tr>
                             <td style="text-align: center">@i</td>
-                            <td>@item.Stock_Code</td>
+                            <td style="text-align: center">@item.Stock_Code</td>
                             <td>@item.Stock_Name</td>
-                            <td>@item.Ral_No</td>
-                            <td>@item.Color</td>
-                            <td>@item.Quantity.Value.ToString("g29")</td>
-                            <td>@item.Unit</td>
-                            <td>@item.Quantities</td>
-                            <td>@item.Quantity_PE.Value.ToString("g29")</td>
+                            <td style="text-align: center; vertical-align: middle;">@item.Ral_No</td>
+                            <td style="text-align: center">@item.Color</td>
+                            <td style="text-align: center">@item.Quantity.Value.ToString("g29")</td>
+                            <td style="text-align: center">@item.Unit</td>
+                            <td style="text-align: center">@(item.Quantities == "0" ? string.Empty : item.Quantities)</td>
+                            <td style="text-align: center">@item.Quantity_PE.Value.ToString("g29")</td>
                             @*<td style="text-align: center">
                                 @if (item.FollowUpRequired == 1)
                                 {
@@ -181,7 +181,7 @@
                 </table>
             </div>
             <div style="clear: both"></div>
-            <div style="margin-top: -10px;">
+            <div style="margin-top: -1px;">
                 <table>
                     <tr class="th">
                         <td>Prepared by - Chuẩn bị</td>
