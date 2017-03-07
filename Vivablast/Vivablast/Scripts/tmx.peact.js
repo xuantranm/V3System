@@ -14,8 +14,9 @@ $(document).ready(function () {
                 $(this).on('focus', function () {
                     $(this).val($(this).val().replace(/\ đ/g, "").replace(/\ %/g, "").replace(/\ năm/g, ""));
                 }).on('keydown', function (e) {
+                        //console.log(e);
                     if ((e.keyCode == 44))
-                        alert('Please using . for decimal');
+                        { alert('Please using . for decimal'); }
                     // Allow: backspace, delete, tab, escape, enter and .
                     if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
                         // Allow: Ctrl+A
@@ -35,6 +36,9 @@ $(document).ready(function () {
                     //console.log($(this).val());
 
                     // Ensure that it is a number and stop the keypress
+                    //if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 109) || e.keyCode == 108 || e.keyCode == 107 || e.keyCode == 106) {
+                    //    e.preventDefault();
+                    //}
                     if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
                         e.preventDefault();
                     }
@@ -46,7 +50,7 @@ $(document).ready(function () {
                         var bcount = this.value.length;
                         var main = this.value.replace(/\,/g, "").toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         var decimal = this.value.toString().split('.')[1];
-                        console.log(decimal);
+                        //console.log(decimal);
                         var result = main;
 
                         if (typeof decimal !== "undefined") {
@@ -56,15 +60,14 @@ $(document).ready(function () {
 
                         var end = this.selectionEnd;
                         var acount = this.value.length;
-                        //start = start + 4 == end ? start + 1 : start; //have input 3 chars will have 1 space
                         if (bcount != acount) {
                             start = start + 1;
                         }
                         end = bcount != acount ? start : end;
                         end = start != end ? start : end;
                         // set cursor  positions after format 
-
                         this.setSelectionRange(start, end);
+
                         $('.hidden', $(this).closest('div')).val(this.value.replace(/\,/g, "").toString());
                         if ($('.hidden', $(this).closest('div')).val() <= 0) {
                             $(this).val(0);
@@ -77,7 +80,7 @@ $(document).ready(function () {
                         tmx.vivablast.peact.calculatorAmountPrice();
                     });
             });
-            
+
             $('#loading-indicator').hide();
             $('#Mode').val("PE");
             $('#Mrf').tooltip({ 'trigger': 'focus', 'title': "Mrf can multible, divide by ' ; '" });
@@ -157,7 +160,7 @@ $(document).ready(function () {
             var form = $('#pe-create-form');
             searchStockFunction.init();
 
-            
+
 
             $('#ProjectName').val($('#vProjectID').val());
 
@@ -245,6 +248,13 @@ $(document).ready(function () {
             $('.btnAddItem').off('click').on('click', function () {
                 var check = tmx.vivablast.peact.checkValidateAddStock(form);
                 if (check == true) {
+                    var unitPrice = $("#fUnitPrice").val();
+                    var unitPriceFormat = "";
+                    // check nagetive 
+                    if ($('.price-nagetive').val() == '-') {
+                        unitPrice = unitPrice * -1;
+                    }
+
                     var htmls = '<tr class="vbcolum">' +
                         '<td class="center">' +
                         '<button type="button" class="btnEdit btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>Edit</button>' +
@@ -500,16 +510,22 @@ $(document).ready(function () {
 
         calculatorAmountPrice: function (form) {
             var unitPrice = $("#fUnitPrice").val();
+
+            // check nagetive 
+            if ($('.price-nagetive').val() == '-') {
+                unitPrice = unitPrice * -1;
+            }
+            
             var quantity = $("#Quantity").val();
             var discount = $('#Discount').val();
             var vat = $('#VAT', form).val();
             //amountPrice = Math.round((checkNumeric($("#fUnitPrice", form).val()) * $("#Quantity", form).val()) * 100) / 100;
-            var amountPrice =  unitPrice * quantity;
+            var amountPrice = unitPrice * quantity;
             if (discount > 0) {
                 amountPrice = amountPrice - (amountPrice * discount / 100);
             }
             if (vat > 0) {
-                amountPrice = amountPrice + (amountPrice * vat)/100;
+                amountPrice = amountPrice + (amountPrice * vat) / 100;
             }
             // format thousand
             amountPrice = parseFloat(amountPrice.toFixed(decimalNum));
@@ -561,11 +577,11 @@ $(document).ready(function () {
                             if (x == 0) {
                                 markup += data[x].Text;
                             } else {
-                                markup += " ; "+data[x].Text;
+                                markup += " ; " + data[x].Text;
                             }
                         }
                         $('.mrf-suggestion').empty();
-                        $(".mrf-area", form).after('<div class="mrf-suggestion"><label class="sr-only col-xs-3 control-label"></label><div class="col-sm-9">10 lastest MRF code: <b>'+markup+'</b></div></div>');
+                        $(".mrf-area", form).after('<div class="mrf-suggestion"><label class="sr-only col-xs-3 control-label"></label><div class="col-sm-9">10 lastest MRF code: <b>' + markup + '</b></div></div>');
                     },
                     error: function () {
                         errorSystem();
