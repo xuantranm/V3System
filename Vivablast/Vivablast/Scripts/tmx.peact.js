@@ -14,9 +14,9 @@ $(document).ready(function () {
                 $(this).on('focus', function () {
                     $(this).val($(this).val().replace(/\ đ/g, "").replace(/\ %/g, "").replace(/\ năm/g, ""));
                 }).on('keydown', function (e) {
-                        //console.log(e);
+                    //console.log(e);
                     if ((e.keyCode == 44))
-                        { alert('Please using . for decimal'); }
+                    { alert('Please using . for decimal'); }
                     // Allow: backspace, delete, tab, escape, enter and .
                     if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
                         // Allow: Ctrl+A
@@ -83,10 +83,10 @@ $(document).ready(function () {
 
             $('#loading-indicator').hide();
             $('#Mode').val("PE");
-            $('#Mrf').tooltip({ 'trigger': 'focus', 'title': "Mrf can multible, divide by ' ; '" });
+            $('#Mrf').tooltip({ 'trigger': 'focus', 'title': "No use mrf, input 0. Mrf can multible, divide by ' ; '" });
             $('#Mrf').val(0);
             tmx.vivablast.peact.registerEventCreateForm();
-
+            tmx.vivablast.peact.loadPeStaff();
             $('#btnNewVAT').on('click', function () {
                 var html = '<div class="modal fade" id="dynamic-model-box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
                 html = html + '<div class="modal-dialog modal-md"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">New VAT</h4></div>';
@@ -160,8 +160,6 @@ $(document).ready(function () {
             var form = $('#pe-create-form');
             searchStockFunction.init();
 
-
-
             $('#ProjectName').val($('#vProjectID').val());
 
             $('#vProjectID').on('change', function (e) {
@@ -210,6 +208,8 @@ $(document).ready(function () {
                 tmx.vivablast.peact.loadMrf(form);
             });
 
+            tmx.vivablast.peact.loadPaymentType(form, $('#bSupplierID').val());
+
             $('#bSupplierID').on('change', function () {
                 tmx.vivablast.peact.loadPaymentType(form, $('#bSupplierID').val());
                 if ($('#bSupplierID').val() > 0) {
@@ -219,6 +219,10 @@ $(document).ready(function () {
                     $('.more-product').addClass('hidden');
                 }
                 clearVal();
+            });
+
+            $('.price-nagetive').on('change', function (e) {
+                tmx.vivablast.peact.calculatorAmountPrice();
             });
 
             $('#priceCreateFormPO').on('change', function (e) {
@@ -237,10 +241,6 @@ $(document).ready(function () {
                 tmx.vivablast.peact.calculatorAmountPrice();
             });
 
-            //$('#VAT').blur(function () {
-            //    tmx.vivablast.peact.calculatorAmountPrice();
-            //});
-
             $('#VAT').change(function () {
                 tmx.vivablast.peact.calculatorAmountPrice();
             });
@@ -248,35 +248,50 @@ $(document).ready(function () {
             $('.btnAddItem').off('click').on('click', function () {
                 var check = tmx.vivablast.peact.checkValidateAddStock(form);
                 if (check == true) {
+                    var unitPriceDisplay = "";
                     var unitPrice = $("#fUnitPrice").val();
-                    var unitPriceFormat = "";
+                    var amountPrice = $('#hidAmountPrice').val();
+                    var main = unitPrice.toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    var decimal = unitPrice.toString().split('.')[1];
+                    var unitPriceFormat = main;
+                    if (typeof decimal !== "undefined") {
+                        unitPriceFormat += '.' + decimal;
+                    }
                     // check nagetive 
                     if ($('.price-nagetive').val() == '-') {
                         unitPrice = unitPrice * -1;
+                        unitPriceDisplay = "-" + unitPriceFormat;
+                    } else {
+                        unitPriceDisplay = unitPriceFormat;
                     }
 
-                    var htmls = '<tr class="vbcolum">' +
-                        '<td class="center">' +
-                        '<button type="button" class="btnEdit btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>Edit</button>' +
-                        '<button type="button" class="btnDelete btn btn-xs btn-danger marginleft2"><span class="glyphicon glyphicon-remove"></span>Delete</button>' +
-                        '<input type="hidden" value="0" class="DetailId" />' +
-                        '<input type="hidden" value="' + $('#StockId').val() + '" class="StockId" />' +
-                        //'<input type="hidden" value="' + $("#priceCreateFormPO").val() + '" class="PriceId" />' +
-                        '<input type="hidden" value="' + $("#mrfCreateFormPO").val() + '" class="MRFId" />' +
-                        '</td>' +
-                        '<td class="center StockCode">' + $('#StockCode').val() + '</td>' +
-                        '<td class="center StockName">' + $('#lblStockName').text() + '</td>' +
-                        '<td class="center Quantity">' + $('#Quantity').val() + '</td>' +
-                        '<td class="center UnitPrice">' + $("#fUnitPrice").val() + '</td>' +
-                        '<td class="center Discount">' + $('#Discount').val() + '</td>' +
-                        '<td class="center VAT">' + $('#VAT').val() + '</td>' +
-                        '<td class="center TotalPrice">' + $('#lblAmountPrice').text() + '</td>' +
-                        '<td class="center MRF">' + $("#Mrf").val() + '</td>' +
-                        '<td class="center Remark">' + $('#RemarkDetail').val() + '</td>' +
-                        '<td class="center PODetailStatus">Open</td>' +
-                        '<td class="center StockType">' + $('#lblStockType').text() + '</td>' +
-                        '<td class="center Unit">' + $('#lblStockUnit').text() + '</td>' +
-                        '</tr>';
+                    var htmls = '<tr class="vbcolum">';
+                    htmls += '<td class="center">';
+                    htmls += '<button type="button" class="btnEdit btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span>Edit</button>';
+                    htmls += '<button type="button" class="btnDelete btn btn-xs btn-danger marginleft2"><span class="glyphicon glyphicon-remove"></span>Delete</button>';
+                    htmls += '<input type="hidden" value="0" class="DetailId" />';
+                    htmls += '<input type="hidden" value="' + $('#StockId').val() + '" class="StockId" />';
+                    htmls += '<input type="hidden" value="' + $("#mrfCreateFormPO").val() + '" class="MRFId" />';
+                    htmls += '</td>';
+                    htmls += '<td class="center StockCode">' + $('#StockCode').val() + '</td>';
+                    htmls += '<td class="center StockName">' + $('#lblStockName').text() + '</td>';
+                    htmls += '<td class="center Quantity">' + $('#Quantity').val() + '</td>';
+                    htmls += '<td class="center UnitPriceFormat">';
+                    htmls += unitPriceDisplay;
+                    htmls += '<input type="hidden" class="UnitPrice" value="' + unitPrice + '" />';
+                    htmls += '</td>';
+                    htmls += '<td class="center Discount">' + $('#Discount').val() + '</td>';
+                    htmls += '<td class="center VAT">' + $('#VAT').val() + '</td>';
+                    htmls += '<td class="center TotalPriceDisplay">';
+                    htmls += $('#lblAmountPrice').text();
+                    htmls += '<input type="hidden" class="TotalPrice" value="' + amountPrice + '" />';
+                    htmls += '</td>';
+                    htmls += '<td class="center MRF">' + $("#Mrf").val() + '</td>';
+                    htmls += '<td class="center Remark">' + $('#RemarkDetail').val() + '</td>';
+                    htmls += '<td class="center PODetailStatus">Open</td>';
+                    htmls += '<td class="center StockType">' + $('#lblStockType').text() + '</td>';
+                    htmls += '<td class="center Unit">' + $('#lblStockUnit').text() + '</td>';
+                    htmls += '</tr>';
 
                     if ($("#LstItem tr").hasClass("vbcolum")) {
                         $(htmls).insertAfter($('#LstItem tbody tr:last-child'));
@@ -338,8 +353,11 @@ $(document).ready(function () {
                 $('#Quantity').val($('.editing .Quantity').text().trim());
                 $('#Discount').val($('.editing .Discount').text().trim());
                 $('#VAT').val($('.editing .VAT').text().trim());
-                $('#lblAmountPrice').text($('.editing .TotalPrice').text().trim());
-                $('#fUnitPrice').val($('.editing .UnitPrice').text().trim());
+                var unitPrice = parseFloat($('.editing .UnitPrice').val());
+                $('#UnitPrice').val(unitPrice);
+                $('#fUnitPrice').attr('value',$('.editing .UnitPrice').val().trim());
+                $('#lblAmountPrice').text($('.editing .TotalPriceDisplay').text().trim());
+                $('#hidAmountPrice').val($('.editing .TotalPrice').val().trim());
                 $('#Mrf').val($('.editing .MRF').text().trim());
                 //tmx.vivablast.peact.loadPrice();
                 tmx.vivablast.peact.loadMrf();
@@ -455,7 +473,8 @@ $(document).ready(function () {
         },
 
         loadStockInformation: function (form) {
-            if ($('#bSupplierID', form).val() != "" && $('#iStore', form).val() != "" && $('#StockCode', form).val() != "" && $('#StockCode', form).val().length > 5) {
+            //if ($('#bSupplierID', form).val() != "" && $('#iStore', form).val() != "" && $('#StockCode', form).val() != "" && $('#StockCode', form).val().length > 5)
+            if ($('#iStore', form).val() != "" && $('#StockCode', form).val() != "" && $('#StockCode', form).val().length > 5) {
                 $.ajax({
                     url: "/Ajax/PeGetStockInformation",
                     type: "POST",
@@ -515,7 +534,7 @@ $(document).ready(function () {
             if ($('.price-nagetive').val() == '-') {
                 unitPrice = unitPrice * -1;
             }
-            
+
             var quantity = $("#Quantity").val();
             var discount = $('#Discount').val();
             var vat = $('#VAT', form).val();
@@ -529,7 +548,7 @@ $(document).ready(function () {
             }
             // format thousand
             amountPrice = parseFloat(amountPrice.toFixed(decimalNum));
-            console.log(amountPrice);
+            $('#hidAmountPrice').val(amountPrice);
             var main = amountPrice.toString().replace(/\,/g, "").toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             var decimal = amountPrice.toString().split('.')[1];
             var result = main;
@@ -537,17 +556,25 @@ $(document).ready(function () {
                 result += '.' + decimal;
             }
             $('#lblAmountPrice').text(result);
-            //$('#lblAmountPrice', form).text(formatThousands(parseFloat(amountPrice).toString()));
         },
 
         calculatorAmountTotal: function (form) {
             var amountTotal = 0;
             $('#LstItem .vbcolum', form).each(function () {
-                amountTotal = Math.floor(checkNumeric('' + amountTotal + '') * 100) / 100;
-                var temp = Math.floor(checkNumeric($(this).find('.TotalPrice', form).text()) * 100) / 100;
-                amountTotal = Math.round((amountTotal + temp) * 100) / 100;
+                //amountTotal = Math.floor(checkNumeric('' + amountTotal + '') * 100) / 100;
+                //var temp = Math.floor(checkNumeric($(this).find('.TotalPrice', form).val()) * 100) / 100;
+                //amountTotal = Math.round((amountTotal + temp) * 100) / 100;
+                console.log($(this).find('.TotalPrice', form).val());
+                amountTotal = amountTotal + parseFloat($(this).find('.TotalPrice').val());
             });
-            $('.lblTotalAmount', form).text(formatThousands(amountTotal));
+            var main = amountTotal.toString().replace(/\,/g, "").toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            var decimal = amountTotal.toString().split('.')[1];
+            var result = main;
+            if (typeof decimal !== "undefined") {
+                result += '.' + decimal;
+            }
+            $('.lblTotalAmount', form).text(result);
+            //$('.lblTotalAmount', form).text(formatThousands(amountTotal));
             $('.lblCurrency', form).text($('#bCurrencyTypeID option:selected').text());
         },
 
@@ -564,22 +591,17 @@ $(document).ready(function () {
                     asysn: false,
                     type: "POST",
                     success: function (data) {
-                        //var markup = "<option value='0'>0</option>";
-                        //for (var x = 0; x < data.length; x++) {
-                        //    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                        //}
-                        //$("#mrfCreateFormPO", form).html(markup);
-                        //if (valMrf != '') {
-                        //    $("#mrfCreateFormPO option[value='" + valMrf + "']", form).attr("selected", "selected");
-                        //}
                         var markup = "";
+                        var firstMrf = 0;
                         for (var x = 0; x < data.length; x++) {
                             if (x == 0) {
                                 markup += data[x].Text;
+                                firstMrf = data[x].Text;
                             } else {
                                 markup += " ; " + data[x].Text;
                             }
                         }
+                        $('#Mrf').val(firstMrf);
                         $('.mrf-suggestion').empty();
                         $(".mrf-area", form).after('<div class="mrf-suggestion"><label class="sr-only col-xs-3 control-label"></label><div class="col-sm-9">10 lastest MRF code: <b>' + markup + '</b></div></div>');
                     },
@@ -611,6 +633,10 @@ $(document).ready(function () {
             }
         },
 
+        loadPeStaff: function () {
+            $('#vFromCC').val($('#hidFullNameUser').val());
+        },
+
         checkValidateAddStock: function (form) {
             if ($.trim($('#StockId').val()) == 0) {
                 clearVal();
@@ -622,11 +648,6 @@ $(document).ready(function () {
                 $('#fUnitPrice').after('<label id="validate" class="red">Select price.</label>');
                 return false;
             }
-            //if ($.trim($('#priceCreateFormPO').val()) == "") {
-            //    clearVal();
-            //    $('#priceCreateFormPO').after('<label id="validate" class="red">Select price.</label>');
-            //    return false;
-            //}
             if ($.trim($('#Quantity').val()) == "" && $('#Quantity').val() == 0) {
                 clearVal();
                 $('#Quantity').after('<label id="validate" class="red">Quantity not empty or 0.</label>');
@@ -700,7 +721,10 @@ $(document).ready(function () {
             $("#priceCreateFormPO").html(price);
             $("#Mrf").val(0);
             $('.mrf-suggestion').remove();
+            $('.price-nagetive').val('+');
+            $('#UnitPrice').val('');
             $('#lblAmountPrice').text('N/A');
+            $('#hidAmountPrice').val('');
         }
     };
 })(jQuery, window.tmx = window.tmx || {});

@@ -82,11 +82,19 @@ namespace Ap.Business.Repositories
         public V3_Information_Stock PeGetStockInformation(string code, int store, int supplier)
         {
             var sql = GetSqlConnection();
-            var result = sql.Query<V3_Information_Stock>("dbo.V3_Information_Stock_Pe", new
+
+            //var result = sql.Query<V3_Information_Stock>("dbo.V3_Information_Stock_Pe", new
+            //{
+            //    code,
+            //    store,
+            //    supplier
+            //},
+            //                             commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+            var result = sql.Query<V3_Information_Stock>("dbo.V3_Information_Stock_Requisition", new
             {
                 code,
-                store,
-                supplier
+                store
             },
                                          commandType: CommandType.StoredProcedure).FirstOrDefault();
 
