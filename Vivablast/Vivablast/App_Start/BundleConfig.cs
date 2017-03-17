@@ -35,6 +35,8 @@
            
             bundles.Add(new ScriptBundle("~/bundles/user").Include("~/Scripts/pages/user.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/pe-act").Include("~/Scripts/custom/tmx.peact.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include("~/Scripts/knockout-{version}.js"));
 
             // HTML5 IE enabling script

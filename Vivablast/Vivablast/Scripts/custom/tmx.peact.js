@@ -1,4 +1,5 @@
 ﻿var decimalNum = 4;
+var form = $('#pe-create-form');
 $(document).ready(function () {
     tmx.vivablast.peact.init();
     //$("#Store_Id option[value='1']").remove();
@@ -157,7 +158,6 @@ $(document).ready(function () {
         },
 
         registerEventCreateForm: function () {
-            var form = $('#pe-create-form');
             searchStockFunction.init();
 
             $('#ProjectName').val($('#vProjectID').val());
@@ -168,6 +168,10 @@ $(document).ready(function () {
 
             $('#ProjectName').on('change', function (e) {
                 $('#vProjectID').val($('#ProjectName').val());
+            });
+
+            $('#bCurrencyTypeID').on('change', function (e) {
+                $('.lblCurrency').text($(this).find("option:selected").text());
             });
 
             $("#Payment").autocomplete({
@@ -302,24 +306,7 @@ $(document).ready(function () {
                     tmx.vivablast.peact.calculatorAmountTotal(form);
 
                     $('.btnEdit').off("click").on("click", function () {
-                        $('.editing button').removeAttr('disabled');
-                        $('.editing').removeClass('editing');
-
-                        $(this).closest('tr').addClass('editing');
-                        $('#StockId').val($('.editing .StockId').val());
-                        $('#StockCode').val($('.editing .StockCode').text().trim());
-                        tmx.vivablast.peact.loadStockInformation(form);
-                        $('#Quantity').val($('.editing .Quantity').text());
-                        $('#Discount').val($('.editing .Discount').text());
-                        $('#VAT').val($('.editing .VAT').text());
-                        $('#lblAmountPrice').text($('.editing .TotalPrice').text());
-                        $('#fUnitPrice').val($('.editing .UnitPrice').text());
-                        //tmx.vivablast.peact.loadPrice();
-                        tmx.vivablast.peact.loadMrf();
-                        $('#RemarkDetail').val($('.editing .Remark').text());
-                        $('.btnAddItem').hide();
-                        $('.btnUpdateItem').show();
-                        $('.editing button').attr('disabled', 'disabled');
+                        tmx.vivablast.peact.editItem($(this));
                     });
                     $('.btnDelete').off("click").on("click", function () {
                         var id = $(this).closest('tr').find('.DetailId').val();
@@ -333,38 +320,20 @@ $(document).ready(function () {
                         }
                         $(this).closest('tr').remove();
                         tmx.vivablast.peact.calculatorAmountTotal(form);
+                        if ($('.vbcolum', $('#LstItem')).length < 1) {
+                            tmx.vivablast.peact.enablePeInformation();
+                        }
                     });
                     tmx.vivablast.peact.clearStockInformation();
-                    $('#bSupplierID').attr('disabled', 'disabled');
-                    $('#bCurrencyTypeID').attr('disabled', 'disabled');
-                    $('#iStore').attr('disabled', 'disabled');
+                    if ($('.vbcolum', $('#LstItem')).length > 1) {
+                        tmx.vivablast.peact.disablePeInformation();
+                    }
                     $('#StockCode').val('');
                 }
             });
 
             $('.btnEdit').off("click").on("click", function () {
-                $('.editing button').removeAttr('disabled');
-                $('.editing').removeClass('editing');
-
-                $(this).closest('tr').addClass('editing');
-                $('#StockId').val($('.editing .StockId').val());
-                $('#StockCode').val($('.editing .StockCode').text().trim());
-                tmx.vivablast.peact.loadStockInformation(form);
-                $('#Quantity').val($('.editing .Quantity').text().trim());
-                $('#Discount').val($('.editing .Discount').text().trim());
-                $('#VAT').val($('.editing .VAT').text().trim());
-                var unitPrice = parseFloat($('.editing .UnitPrice').val());
-                $('#UnitPrice').val(unitPrice);
-                $('#fUnitPrice').attr('value',$('.editing .UnitPrice').val().trim());
-                $('#lblAmountPrice').text($('.editing .TotalPriceDisplay').text().trim());
-                $('#hidAmountPrice').val($('.editing .TotalPrice').val().trim());
-                $('#Mrf').val($('.editing .MRF').text().trim());
-                //tmx.vivablast.peact.loadPrice();
-                tmx.vivablast.peact.loadMrf();
-                $('#RemarkDetail').val($('.editing .Remark').text());
-                $('.btnAddItem').hide();
-                $('.btnUpdateItem').show();
-                $('.editing button').attr('disabled', 'disabled');
+                tmx.vivablast.peact.editItem($(this));
             });
 
             $('.btnDelete').off("click").on("click", function () {
@@ -424,12 +393,12 @@ $(document).ready(function () {
                             Id: $(this).find('.DetailId').val(),
                             MRFId: $(this).find('.MRF').text(),
                             //Price_Id: $(this).find('.PriceId').val(),
-                            UnitPrice: $(this).find('.UnitPrice').text(),
+                            UnitPrice: $(this).find('.UnitPrice').val(),
                             Discount: $(this).find('.Discount').text(),
                             StockId: $(this).find('.StockId').val(),
                             Quantity: $(this).find('.Quantity').text(),
                             VAT: $(this).find('.VAT').text(),
-                            ItemTotal: checkNumeric($(this).find('.TotalPrice').text()),
+                            ItemTotal: $(this).find('.TotalPrice').val(),
                             Remark: $(this).find('.Remark').text(),
                             Status: $(this).find('.PODetailStatus').text()
                         });
@@ -490,7 +459,7 @@ $(document).ready(function () {
                         $('#lblStockName', form).text(stock.Stock_Name);
                         $('#lblStockType', form).text(stock.Type);
                         $('#lblStockCategory', form).text(stock.Category);
-                        $('#lblQtyPurchased', form).text('0');
+                        //$('#lblQtyPurchased', form).text('0');
                         if (stock.Quantity != null) {
                             $('#lblStockQty', form).text(stock.Quantity);
                         } else {
@@ -564,9 +533,10 @@ $(document).ready(function () {
                 //amountTotal = Math.floor(checkNumeric('' + amountTotal + '') * 100) / 100;
                 //var temp = Math.floor(checkNumeric($(this).find('.TotalPrice', form).val()) * 100) / 100;
                 //amountTotal = Math.round((amountTotal + temp) * 100) / 100;
-                console.log($(this).find('.TotalPrice', form).val());
+                //console.log($(this).find('.TotalPrice', form).val());
                 amountTotal = amountTotal + parseFloat($(this).find('.TotalPrice').val());
             });
+            amountTotal = amountTotal.toFixed(4);
             var main = amountTotal.toString().replace(/\,/g, "").toString().split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             var decimal = amountTotal.toString().split('.')[1];
             var result = main;
@@ -640,27 +610,26 @@ $(document).ready(function () {
         checkValidateAddStock: function (form) {
             if ($.trim($('#StockId').val()) == 0) {
                 clearVal();
-                $('#StockId').after('<label id="validate" class="red">Stock Code not empty.</label>');
-                return false;
-            }
-            if ($.trim($('#fUnitPrice').val()) == "") {
-                clearVal();
-                $('#fUnitPrice').after('<label id="validate" class="red">Select price.</label>');
+                $('#StockId').focus();
+                toastr.error('Stock Code not empty.');
                 return false;
             }
             if ($.trim($('#Quantity').val()) == "" && $('#Quantity').val() == 0) {
                 clearVal();
-                $('#Quantity').after('<label id="validate" class="red">Quantity not empty or 0.</label>');
+                toastr.error('Quantity not empty or 0.');
+                //$('#Quantity').after('<label id="validate" class="red">Quantity not empty or 0.</label>');
                 return false;
             }
             if ($.trim($('#Discount').val()) > 100) {
                 clearVal();
-                $('#Discount').after('<label id="validate" class="red">Discount wrong.</label>');
+                toastr.error('Discount wrong.');
+                //$('#Discount').after('<label id="validate" class="red">Discount wrong.</label>');
                 return false;
             }
             if ($.trim($('#VAT').val()) > 100) {
                 clearVal();
-                $('#VAT').after('<label id="validate" class="red">VAT wrong.</label>');
+                toastr.error('VAT wrong.');
+                //$('#VAT').after('<label id="validate" class="red">VAT wrong.</label>');
                 return false;
             }
             var checkExist = true;
@@ -725,6 +694,44 @@ $(document).ready(function () {
             $('#UnitPrice').val('');
             $('#lblAmountPrice').text('N/A');
             $('#hidAmountPrice').val('');
+        },
+
+        disablePeInformation: function () {
+            $('#iStore').attr('disabled', 'disabled');
+            $('#bSupplierID').attr('disabled', 'disabled');
+            $('#bCurrencyTypeID').attr('disabled', 'disabled');
+        },
+        enablePeInformation: function () {
+            $('#iStore').removeAttr('disabled');
+            $('#bSupplierID').removeAttr('disabled');
+            $('#bCurrencyTypeID').removeAttr('disabled');
+        },
+        editItem: function(element) {
+            $('.editing button').removeAttr('disabled');
+            $('.editing').removeClass('editing');
+            $(element).closest('tr').addClass('editing');
+            $('#StockId').val($('.editing .StockId').val());
+            $('#StockCode').val($('.editing .StockCode').text().trim());
+            var price = $('.editing .UnitPrice').val();
+            if (price < 0) {
+                $('.price-nagetive').val('-');
+            } else {
+                $('.price-nagetive').val('+');
+            }
+            $('#UnitPrice').val($('.editing .UnitPriceFormat').text());
+            $('#fUnitPrice').attr('value', $('.editing .UnitPrice').val());
+            $('#Quantity').val($('.editing .Quantity').text().trim());
+            $('#Discount').val($('.editing .Discount').text().trim());
+            $('#VAT').val($('.editing .VAT').text().trim());
+            $('#lblAmountPrice').text($('.editing .TotalPriceDisplay').text());
+            $('#hidAmountPrice').val($('.editing .TotalPrice').val());
+            $('#Mrf').val($('.editing .MRF').text().trim());
+            tmx.vivablast.peact.loadStockInformation(form);
+            tmx.vivablast.peact.loadMrf();
+            $('#RemarkDetail').val($('.editing .Remark').text());
+            $('.btnAddItem').hide();
+            $('.btnUpdateItem').show();
+            $('.editing button').attr('disabled', 'disabled');
         }
     };
 })(jQuery, window.tmx = window.tmx || {});

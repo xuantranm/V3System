@@ -1154,6 +1154,15 @@ var searchStockFunction = function () {
             success: function (data) {
                 if (data.length != 0) {
                     $('#searchProductDiv', modelBox).empty().append(data);
+                    // remove if item chosed.
+                    var listfag = [];
+                    $('.StockId').each(function (i, obj) {
+                        listfag.push($(obj).attr('value'));
+                    });
+                    listfag.forEach(function (item) {
+                        $('#searchitem-' + item).remove();
+                    });
+
                     eventSearchStockListStock();
                 }
             }
@@ -1180,6 +1189,14 @@ var searchStockFunction = function () {
             success: function (data) {
                 if (data.length != 0) {
                     $('#searchProductDiv', modelBox).empty().append(data);
+                    // remove if item chosed.
+                    var listfag = [];
+                    $('.StockId').each(function (i, obj) {
+                        listfag.push($(obj).attr('value'));
+                    });
+                    listfag.forEach(function (item) {
+                        $('#searchitem-' + item).remove();
+                    });
                     eventSearchStockListStock();
                 }
             }
@@ -1207,6 +1224,14 @@ var searchStockFunction = function () {
             success: function (data) {
                 if (data.length != 0) {
                     $('#searchProductDiv', modelBox).empty().append(data);
+                    // remove if item chosed.
+                    var listfag = [];
+                    $('.StockId').each(function (i, obj) {
+                        listfag.push($(obj).attr('value'));
+                    });
+                    listfag.forEach(function (item) {
+                        $('#searchitem-' + item).remove();
+                    });
                     eventSearchStockListStock();
                 }
             }
@@ -1234,6 +1259,14 @@ var searchStockFunction = function () {
             success: function (data) {
                 if (data.length != 0) {
                     $('#searchProductDiv', modelBox).empty().append(data);
+                    // remove if item chosed.
+                    var listfag = [];
+                    $('.StockId').each(function (i, obj) {
+                        listfag.push($(obj).attr('value'));
+                    });
+                    listfag.forEach(function (item) {
+                        $('#searchitem-' + item).remove();
+                    });
                     eventSearchStockListStock();
                 }
             }
@@ -1259,6 +1292,14 @@ var searchStockFunction = function () {
             success: function (data) {
                 if (data.length != 0) {
                     $('#searchProductDiv', modelBox).empty().append(data);
+                    // remove if item chosed.
+                    var listfag = [];
+                    $('.StockId').each(function (i, obj) {
+                        listfag.push($(obj).attr('value'));
+                    });
+                    listfag.forEach(function (item) {
+                        $('#searchitem-' + item).remove();
+                    });
                     eventSearchStockListStock();
                 }
             }
@@ -1284,6 +1325,14 @@ var searchStockFunction = function () {
             success: function (data) {
                 if (data.length != 0) {
                     $('#searchProductDiv', modelBox).empty().append(data);
+                    // remove if item chosed.
+                    var listfag = [];
+                    $('.StockId').each(function (i, obj) {
+                        listfag.push($(obj).attr('value'));
+                    });
+                    listfag.forEach(function (item) {
+                        $('#searchitem-' + item).remove();
+                    });
                     eventSearchStockListStock();
                 }
             }

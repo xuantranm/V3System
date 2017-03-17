@@ -34,14 +34,14 @@ else
             <tbody>
                 @foreach (var item in Model.StockVs)
                 {
-                <tr>
-                    <input type="hidden" value="@item.Id" class="StockIdSearchForm" />
-                    <td class="center">
-                        <button type="button" class="btn btn-info btnSearchProductSelectProduct">Select</button>
-                    </td>
-                    <td class="center ProductCodeSearchForm">@item.vStockID</td>
-                    <td class="center ProductNameSearchForm">@item.vStockName</td>
-                    @{
+                    <tr id="searchitem-@item.Id">
+                        <input type="hidden" value="@item.Id" class="StockIdSearchForm" />
+                        <td class="center">
+                            <button type="button" class="btn btn-info btnSearchProductSelectProduct">Select</button>
+                        </td>
+                        <td class="center ProductCodeSearchForm">@item.vStockID</td>
+                        <td class="center ProductNameSearchForm">@item.vStockName</td>
+                        @{
                     if (!string.IsNullOrEmpty(item.Quantity))
                     {
                         var qtArr = item.Quantity.Trim().Split(';');
@@ -73,14 +73,14 @@ else
                             <td class="center hidden-xs @store.Id">0</td>
                         }
                     }
-}
-                    <td class="center hidden-xs ProductUnitSearchForm">@item.Unit</td>
-                    <td class="center hidden-xs ProductTypeSearchForm">@item.Type</td>
-                    <td class="center hidden-xs">@item.Category</td>
-                    <td class="center hidden-xs ProductRalNoSearchForm">@item.RalNo</td>
-                    <td class="center hidden-xs ProductColorSearchForm">@item.ColorName</td>
-                    <td class="center hidden-xs ProductPartNoSearchForm">@item.PartNo</td>
-                </tr>
+                        }
+                        <td class="center hidden-xs ProductUnitSearchForm">@item.Unit</td>
+                        <td class="center hidden-xs ProductTypeSearchForm">@item.Type</td>
+                        <td class="center hidden-xs">@item.Category</td>
+                        <td class="center hidden-xs ProductRalNoSearchForm">@item.RalNo</td>
+                        <td class="center hidden-xs ProductColorSearchForm">@item.ColorName</td>
+                        <td class="center hidden-xs ProductPartNoSearchForm">@item.PartNo</td>
+                    </tr>
                 }
             </tbody>
         </table>

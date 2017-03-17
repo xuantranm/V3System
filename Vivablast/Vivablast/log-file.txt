@@ -525,3 +525,17 @@ ClientConnectionId:6a42fdb7-40fd-477f-beb4-17053ce8cf2e
 Error Number:8144,State:2,Class:16
 2017-03-03 11:23:21,485 [20] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
 System.Exception: Test
+2017-03-17 14:11:59,022 [18] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-03-17 14:15:12,459 [14] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-03-17 14:15:54,891 [14] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-03-17 14:21:38,740 [26] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-03-17 14:22:03,868 [14] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-03-17 14:23:56,252 [14] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test
+2017-03-17 14:24:38,827 [31] ERROR Vivablast.Controllers.HelperController [(null)] - Export PDF!
+System.Exception: Test

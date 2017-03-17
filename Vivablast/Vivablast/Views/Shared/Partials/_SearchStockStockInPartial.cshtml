@@ -35,7 +35,7 @@ else
             <tbody>
                 @foreach (var item in Model.StockVs)
                 {
-                    <tr>
+                    <tr id="searchitem-@item.Id">
                         <input type="hidden" value="@item.Id" class="StockIdSearchForm" />
                         <td class="center">
                             <button type="button" class="btn btn-info btnSearchProductSelectProduct">Select</button>
@@ -74,7 +74,7 @@ else
                             <td class="center hidden-xs @store.Id">0</td>
                         }
                     }
-}
+                        }
                         <td class="center hidden-xs ProductUnitSearchForm">@item.Unit</td>
                         <td class="center hidden-xs ProductTypeSearchForm">@item.Type</td>
                         <td class="center hidden-xs">@item.Category</td>

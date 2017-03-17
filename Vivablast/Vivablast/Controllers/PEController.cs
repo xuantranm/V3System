@@ -509,7 +509,75 @@ namespace Vivablast.Controllers
             return View(model);
         }
 
-        public ActionResult Create(int? id)
+        public ActionResult Create()
+        {
+            var userName = System.Web.HttpContext.Current.User.Identity.Name;
+            var user = _systemService.GetUserAndRole(0, userName);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            if (user.PER == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var listDetail = new List<V3_Pe_Detail>();
+            var poGetInformation = new V3_PE_Information();
+            var item = new WAMS_PURCHASE_ORDER
+            {
+                vPOID = _service.GetAutoPoCode(),
+                dPODate = DateTime.Now,
+                dDeliverDate = DateTime.Now
+            };
+
+            var vatList = _systemService.GetLookUp(Constants.LuVat);
+            vatList.Add(new LookUp
+            {
+                LookUpKey = "0",
+                LookUpValue = "0"
+            });
+            vatList = vatList.OrderBy(m => m.LookUpKey).ToList();
+            var model = new POViewModel
+            {
+                Id = item.Id,
+                vPOID = item.vPOID,
+                vPOStatus = item.vPOStatus,
+                sPODate = item.dPODate.ToString("dd/MM/yyyy"),
+                sDeliveryDate = item.dDeliverDate != null ? item.dDeliverDate.Value.ToString("dd/MM/yyyy") : string.Empty,
+                vLocation = item.vLocation,
+                vProjectID = item.vProjectID,
+                vRemark = item.vRemark,
+                Timestamp = item.Timestamp,
+                UserLogin = user,
+                Stores = new SelectList(this._systemService.StoreList(), "Id", "Name"),
+                iStore = item.iStore != null ? item.iStore.Value : 0,
+                Projects = new SelectList(this._systemService.ProjectList(), "Id", "vProjectID"),
+                ProjectNames = new SelectList(this._systemService.ProjectList(), "Id", "vProjectName"),
+                PoTypes = new SelectList(this._systemService.PoTypeList(), "Id", "Name"),
+                bPOTypeID = item.bPOTypeID,
+                Suppliers = new SelectList(this._systemService.SupplierList(), "Id", "Name"),
+                bSupplierID = item.bSupplierID,
+                bCurrencyTypeID = item.bCurrencyTypeID,
+                Currencies = new SelectList(this._systemService.CurrencyList(), "Id", "Name"),
+                Payments = new SelectList(this._systemService.PaymentList(), "Id", "Name"),
+                VatList = new SelectList(vatList, Constants.LookUpKey, Constants.LookUpValue),
+                Payment = item.vTermOfPayment,
+                TotalRecords = 0,
+                PoDetailsVResults = listDetail,
+                PoGetInformation = poGetInformation
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult Create(POViewModel model)
+        {
+            return model.V3 != true ? Json(new { result = Constants.UnSuccess }) : CreateData(model);
+        }
+
+        public ActionResult Edit(int id)
         {
             var userName = System.Web.HttpContext.Current.User.Identity.Name;
             var user = _systemService.GetUserAndRole(0, userName);
@@ -523,25 +591,11 @@ namespace Vivablast.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var item = new WAMS_PURCHASE_ORDER();
-            var totalDetailRecords = 0;
-            var listDetail = new List<V3_Pe_Detail>();
-            var poGetInformation = new V3_PE_Information();
-            if (id.HasValue)
-            {
-                item = _service.GetByKey(id.Value);
-                listDetail = _service.ListConditionDetail(id.Value, "1");
-                totalDetailRecords = listDetail.Count();
-                poGetInformation = _service.GetPeInformation(id.Value);
-            }
-
-            else
-            {
-                item.vPOID = _service.GetAutoPoCode();
-                item.vPOStatus = "Open";
-                item.dPODate = DateTime.Now;
-                item.dDeliverDate = DateTime.Now;
-            }
+            var item = _service.GetByKey(id);
+            var listDetail = _service.ListConditionDetail(id, "1");
+            var totalDetailRecords = listDetail.Count();
+            var poGetInformation = _service.GetPeInformation(id);
+            
             var vatList = _systemService.GetLookUp(Constants.LuVat);
             vatList.Add(new LookUp
             {
@@ -583,17 +637,9 @@ namespace Vivablast.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(POViewModel model)
+        public JsonResult Edit(POViewModel model)
         {
-            if (model.V3 != true)
-            {
-                return Json(new { result = Constants.UnSuccess });
-            }
-            //if (!string.IsNullOrEmpty(model.sPODate))
-            //{
-            //    model.PurchaseOrder.dPODate = DateTime.ParseExact(model.sPODate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //}
-            return model.PurchaseOrder.Id == 0 ? CreateData(model) : EditData(model);
+            return model.V3 != true ? Json(new { result = Constants.UnSuccess }) : EditData(model);
         }
 
         private JsonResult CreateData(POViewModel model)
