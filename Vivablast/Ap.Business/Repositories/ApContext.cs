@@ -19,7 +19,7 @@ namespace Ap.Business.Domains
     public partial class ApContext : DbContext, IDbContext
     {
         public ApContext()
-            : base("name=ap")
+            : base("name=DefaultConnection")
         {
         }
     
