@@ -133,10 +133,10 @@ RETURNS @SupSm TABLE(
 ) 
 AS
 BEGIN
-	IF(EXISTS (SELECT 1 FROM [dbo].[WAMS_SUPPLIER] WHERE bSupplierID = @Id))
+	IF(EXISTS (SELECT 1 FROM [dbo].[WAMS_SUPPLIER] WHERE Id = @Id))
 	BEGIN
 		INSERT INTO @SupSm
-		SELECT vSupplierName FROM [dbo].[WAMS_SUPPLIER] where bSupplierID = @Id
+		SELECT vSupplierName FROM [dbo].[WAMS_SUPPLIER] where Id = @Id
 	END
 	ELSE
 	BEGIN
@@ -249,7 +249,7 @@ CREATE FUNCTION [dbo].[GetStoreNameById](@Id int)
 RETURNS varchar(max)
 AS
 BEGIN
-	RETURN (select Name from Store where ID = @Id)
+	RETURN (select Name from Store where Id = @Id)
 END
 
 -- GetCategoryNameById
@@ -261,7 +261,7 @@ CREATE FUNCTION [dbo].[GetCategoryNameById](@CategoryId int)
 RETURNS varchar(max)
 AS
 BEGIN
-	RETURN (select vCategoryName from WAMS_CATEGORY where bCategoryID = @CategoryId)
+	RETURN (select vCategoryName from WAMS_CATEGORY where Id = @CategoryId)
 END
 GO
 
@@ -273,7 +273,7 @@ CREATE FUNCTION [dbo].[GetSupplierNameById](@SupplierId int)
 RETURNS varchar(max)
 AS
 BEGIN
-	RETURN (select vSupplierName from WAMS_SUPPLIER where bSupplierID = @SupplierId)
+	RETURN (select vSupplierName from WAMS_SUPPLIER where Id = @SupplierId)
 END
 GO
 
@@ -297,7 +297,7 @@ CREATE FUNCTION [dbo].[GetUnitNameById](@UnitId int)
 RETURNS varchar(max)
 AS
 BEGIN
-	RETURN (select vUnitName from WAMS_UNIT where bUnitID = @UnitId)
+	RETURN (select vUnitName from WAMS_UNIT where Id = @UnitId)
 END
 GO
 

@@ -1,11 +1,11 @@
 1.WAMS_CATEGORY
-	bCategoryID Int primary key, auto generate
+	Id Int primary key, auto generate
 2.WAMS_ITEM_SERVICE
 	Id Int primary key, auto generate
 3.WAMS_LABEL
-	bLabelID Int primary key, auto generate
+	Id Int primary key, auto generate
 4. WAMS_POSITION
-	bPositionID Int primary key, auto generate
+	Id Int primary key, auto generate
 5. WAMS_PRODUCT:
 	Id Int primary key, auto generate
 6. WAMS_PROJECT:
@@ -19,9 +19,9 @@
 10. WAMS_STOCK:
 	Id Int primary key, auto generate
 11. WAMS_SUPPLIER:
-	bSupplierID Int primary key, auto generate
+	Id Int primary key, auto generate
 12.WAMS_UNIT
-	bUnitID int primary key, auto generate 
+	Id int primary key, auto generate 
 
 
 

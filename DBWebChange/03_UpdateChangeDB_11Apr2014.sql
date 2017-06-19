@@ -53,7 +53,7 @@ INSERT INTO dbo.Country (Iso, NameBasic, NameNice, Iso3, NumCode, PhoneCode, iEn
 INSERT INTO dbo.Country (Iso, NameBasic, NameNice, Iso3, NumCode, PhoneCode, iEnable) VALUES
 ('ML', 'MALAYSIA', 'Malaysia', 'ML', 704, 84, 1);
 GO
-INSERT INTO dbo.Store (Name,Code,CountryId, iEnable) VALUES ('Malaysia','Malaysia',1,1)
+INSERT INTO dbo.Store (Name,Code,CountryId, iEnable) VALUES ('Binh Chieu','BC',1,1)
 GO
 UPDATE dbo.WAMS_PROJECT SET iEnable=2 WHERE iEnable=0
 GO
@@ -65,8 +65,8 @@ UPDATE dbo.WAMS_PROJECT SET iEnable = 1 WHERE iEnable=2
 GO
 UPDATE dbo.WAMS_PROJECT SET StatusId=1, EnableRequisition =1, EnablePO =1
 GO
---UPDATE dbo.WAMS_PROJECT SET CountryId = (select Id FROM Country WHERE NameNice like '%Viet%')
-UPDATE dbo.WAMS_PROJECT SET CountryId = (select Id FROM Country WHERE NameNice like '%Ma%')
+UPDATE dbo.WAMS_PROJECT SET CountryId = (select Id FROM Country WHERE NameNice like '%Viet%')
+--UPDATE dbo.WAMS_PROJECT SET CountryId = (select Id FROM Country WHERE NameNice like '%Ma%')
 GO
 DELETE Project_Client
 INSERT INTO dbo.Project_Client(Name)
@@ -166,6 +166,8 @@ UPDATE dbo.WAMS_LABELS SET iType=8 WHERE vStockType='Service';
 GO
 
 /* MIGRATE WAMS_STOCK, WAMS_PROJECT LOST DATA => DELETE SOLUTION */
+UPDATE WAMS_PURCHASE_ORDER SET vProjectID = 'BC 0008' WHERE vProjectID = 'All'
+GO
 DELETE WAMS_STOCK_MANAGEMENT_QUANTITY WHERE ID IN (select a.ID from WAMS_STOCK_MANAGEMENT_QUANTITY a
 LEFT JOIN WAMS_STOCK b ON a.vStockID = b.vStockID
 WHERE b.vStockID IS NULL)
@@ -265,13 +267,13 @@ UPDATE dbo.WAMS_SUPPLIER SET iMarket = 1 WHERE vMarket='Checked'
 UPDATE dbo.WAMS_SUPPLIER SET iMarket = 0 WHERE vMarket!='Checked'
 UPDATE dbo.WAMS_SUPPLIER SET vCountry='Viet Nam' WHERE vCountry=''
 UPDATE dbo.WAMS_SUPPLIER SET vCountry='Viet Nam' WHERE vCountry='Add new item'
-UPDATE dbo.WAMS_SUPPLIER SET vCountry='Brazil' WHERE vCountry='Brasil'
-UPDATE dbo.WAMS_SUPPLIER SET vCountry='United Kingdom' WHERE vCountry='England'
-UPDATE dbo.WAMS_SUPPLIER SET vCountry='Hong Kong' WHERE vCountry='Hongkong'
-UPDATE dbo.WAMS_SUPPLIER SET vCountry='South Korea' WHERE vCountry='Korea'
-UPDATE dbo.WAMS_SUPPLIER SET vCountry='Ukraine' WHERE vCountry='Ucraine'
-UPDATE dbo.WAMS_SUPPLIER SET vCountry='United Kingdom' WHERE vCountry='UK'
-UPDATE dbo.WAMS_SUPPLIER SET vCountry='United States' WHERE vCountry='US'
+--UPDATE dbo.WAMS_SUPPLIER SET vCountry='Brazil' WHERE vCountry='Brasil'
+--UPDATE dbo.WAMS_SUPPLIER SET vCountry='United Kingdom' WHERE vCountry='England'
+--UPDATE dbo.WAMS_SUPPLIER SET vCountry='Hong Kong' WHERE vCountry='Hongkong'
+--UPDATE dbo.WAMS_SUPPLIER SET vCountry='South Korea' WHERE vCountry='Korea'
+--UPDATE dbo.WAMS_SUPPLIER SET vCountry='Ukraine' WHERE vCountry='Ucraine'
+--UPDATE dbo.WAMS_SUPPLIER SET vCountry='United Kingdom' WHERE vCountry='UK'
+--UPDATE dbo.WAMS_SUPPLIER SET vCountry='United States' WHERE vCountry='US'
 GO
 UPDATE WP 
 SET WP.CountryId = P.Id
@@ -341,12 +343,12 @@ UPDATE dbo.WAMS_PURCHASE_ORDER SET iEnable=2 WHERE iEnable=0
 UPDATE dbo.WAMS_PURCHASE_ORDER SET iEnable= 3 WHERE iEnable=1
 UPDATE dbo.WAMS_PURCHASE_ORDER SET iEnable = 0 WHERE iEnable=3
 UPDATE dbo.WAMS_PURCHASE_ORDER SET iEnable = 1 WHERE iEnable=2
-UPDATE dbo.WAMS_PURCHASE_ORDER SET dCreated = dPODate, iCreated = 1
-UPDATE dbo.WAMS_PURCHASE_ORDER SET CoRegNo = '1109730-A' , 
-GSTRegNo ='000527642624', 
-Address = 'Level 7, Menara Milenium, Jalan Damanlela  Pusat Bandar Damansara  Damansara Heights  Kuala Lumpur  Wilayah Persekutuan  50490, Malaysia',
-PengerangSite ='HS (D) 18380 PTD 3468 Mukim of Pengerang, 81600 Pengerang, Johor, Malaysia',
-GSTAddress ='02-20 Jalan Austin Perdana 2/22, Taman Austin Perdana, 81100 Johor Bahru, Johor'
+--UPDATE dbo.WAMS_PURCHASE_ORDER SET dCreated = dPODate, iCreated = 1
+--UPDATE dbo.WAMS_PURCHASE_ORDER SET CoRegNo = '1109730-A' , 
+--GSTRegNo ='000527642624', 
+--Address = 'Level 7, Menara Milenium, Jalan Damanlela  Pusat Bandar Damansara  Damansara Heights  Kuala Lumpur  Wilayah Persekutuan  50490, Malaysia',
+--PengerangSite ='HS (D) 18380 PTD 3468 Mukim of Pengerang, 81600 Pengerang, Johor, Malaysia',
+--GSTAddress ='02-20 Jalan Austin Perdana 2/22, Taman Austin Perdana, 81100 Johor Bahru, Johor'
 GO  
 UPDATE WAS 
 SET WAS.vProjectID = P.Id
@@ -418,16 +420,16 @@ INNER JOIN dbo.PaymentTerm AS P
        ON WP.vTermOfPayment = P.PaymentName
 GO
 -- UPDATE Price
-INSERT INTO dbo.Product_Price (StockId, Price, StoreId, SupplierId ,CurrencyId, iEnable)
-SELECT vProductID, bBestPrice, 1, bSupplierID, bCurrencyTypeID, 1
-FROM dbo.WAMS_PRODUCT
-GO
-UPDATE dbo.Product_Price SET dCreated = GETDATE(), iCreated = 1, dStart = GETDATE()
-GO
+--INSERT INTO dbo.Product_Price (StockId, Price, StoreId, SupplierId ,CurrencyId, iEnable)
+--SELECT vProductID, bBestPrice, 1, bSupplierID, bCurrencyTypeID, 1
+--FROM dbo.WAMS_PRODUCT
+--GO
+--UPDATE dbo.Product_Price SET dCreated = GETDATE(), iCreated = 1, dStart = GETDATE()
+--GO
 -- UPDATE Store_Stock
-INSERT INTO dbo.Store_Stock (Store, StockID, Quantity)
-SELECT 1, Id, bQuantity
-FROM dbo.WAMS_STOCK
+--INSERT INTO dbo.Store_Stock (Store, StockID, Quantity)
+--SELECT 1, Id, bQuantity
+--FROM dbo.WAMS_STOCK
 GO
 UPDATE dbo.WAMS_PRODUCT SET dCreated=dDateAssign
 GO
@@ -440,9 +442,9 @@ GO
 INSERT INTO SIV (SIV, vStatus, CreatedDate)
 SELECT DISTINCT SIV, 'OUT', dDateAssign FROM dbo.WAMS_ASSIGNNING_STOCKS WHERE SIV is not null ORDER BY dDateAssign asc
 GO
-UPDATE dbo.WAMS_ASSIGNNING_STOCKS SET dCreated=dDateAssign
+UPDATE dbo.WAMS_ASSIGNNING_STOCKS SET DateStockOut=dDateAssign
 GO
-UPDATE dbo.WAMS_RETURN_LIST SET dCreated=dDateReturn
+UPDATE dbo.WAMS_RETURN_LIST SET DateStockReturn = dDateReturn
 GO
 UPDATE dbo.WAMS_ASSIGNNING_STOCKS SET FROMStore=1
 GO
@@ -506,7 +508,19 @@ FROM dbo.WAMS_STOCK_MANAGEMENT_QUANTITY AS WAS
 INNER JOIN dbo.WAMS_STOCK AS P
        ON WAS.vStockID = P.Id
 GO 
-
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='AUG/13/3393'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='AUG/13/3590'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='DEC/13/5735'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='JUL/14/3781'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='NOV/14/6868'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='DEC/14/7442'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='MAR/15/1404'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='MAY/15/2845'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID='JUL/15/3792'
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID=''
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID=''
+--UPDATE WAMS_STOCK_MANAGEMENT_QUANTITY SET vPOID=1 WHERE vPOID=''
+GO
 UPDATE WAS 
 SET WAS.PODate = P.dPODate,
 WAS.POCode = P.vPOID
