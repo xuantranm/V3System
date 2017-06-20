@@ -1,0 +1,153 @@
+﻿@using Ap.Common.Constants
+@model Vivablast.Models.StockModel
+
+@{
+    ViewBag.Title = "Edit stock";
+}
+
+@using (Html.BeginForm("Create", "Stock", FormMethod.Post, new { id = "stock-create-form", @class = "form-horizontal" }))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-sm-4">@Html.DisplayNameFor(m => m.Entity.StoreId) <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.Entity.StoreId, Model.Stores, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.StoreId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">@Html.DisplayNameFor(m => m.Entity.iType) <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.Entity.iType, Model.Types, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.iType)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.bCategoryID)</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.Entity.bCategoryID, Model.Categories, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.bCategoryID)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.vStockID) <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.vStockID, new { @placeholder = "Code", @class = "form-control", disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.vStockName) <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.vStockName, new { @placeholder = "Name", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.vStockName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.vBrand)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.vBrand, new { @placeholder = "Brand", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.vBrand)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.vAccountCode)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.vAccountCode, new { @placeholder = "Account Code", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.vAccountCode)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.bUnitID) <span class="red">*</span></label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.Entity.bUnitID, Model.Units, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.bUnitID)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.bPositionID)</label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(model => model.Entity.bPositionID, Model.Positions, Constants.SelectDDL, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.bPositionID)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.bWeight)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.bWeight, new { @placeholder = "Weight", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.bWeight)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.vRemark)</label>
+                    <div class="col-sm-8">
+                        @Html.TextAreaFor(model => model.Entity.vRemark, new { @placeholder = "Remark", @class = "auto-size" })
+                        @Html.ValidationMessageFor(model => model.Entity.vRemark)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.RalNo)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.RalNo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.RalNo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.ColorName)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.ColorName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.ColorName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.PartNo)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.PartNo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.PartNo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.PartNoFor)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.PartNoFor, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.PartNoFor)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.PartNoMiniQty)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.PartNoMiniQty, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.PartNoMiniQty)
+                    </div>
+                </div>
+                <div class="form-group hidden">
+                    <label class="col-sm-4">>@Html.DisplayNameFor(m => m.Entity.SubCategory)</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Entity.SubCategory, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entity.SubCategory)
+                    </div>
+                </div>
+            </div>
+
+            <div id="fileareadiv" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 customDisabled">
+                FILES, PICTURES IMPLEMENT LATER
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12">
+            <button id="btnSave" class="btn btn-danger" data-dismiss="modal" data-loading-text="Saving..." type="button">
+                <span class="glyphicon glyphicon-save"></span>Save
+            </button>
+        </div>
+    </div>
+}
+
+<div class="modal-footer center">
+    @Html.ActionLink("Back To List Stock", "Index", "Stock", new { @class = "btn btn-default" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

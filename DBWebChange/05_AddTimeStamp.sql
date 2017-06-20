@@ -1,7 +1,7 @@
 --select 'xfirstx'+ name + 'uulast' as names from sys.tables order by name
 --ALTER TABLE ? ADD [Timestamp] [timestamp] NULL;
 ALTER TABLE Store ADD [Timestamp] [timestamp] NOT NULL;
-ALTER TABLE Store_Stock ADD [Timestamp] [timestamp] NOT NULL;
+--ALTER TABLE Store_Stock ADD [Timestamp] [timestamp] NOT NULL;
 ALTER TABLE WAMS_ASSIGNNING_STOCKS ADD [Timestamp] [timestamp] NOT NULL;
 ALTER TABLE WAMS_CATEGORY ADD [Timestamp] [timestamp] NOT NULL;
 ALTER TABLE WAMS_FULFILLMENT_DETAIL ADD [Timestamp] [timestamp] NOT NULL;

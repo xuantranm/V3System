@@ -279,6 +279,7 @@ GO
 -- WAMS_STOCK
 ALTER TABLE dbo.WAMS_STOCK 
 ADD 
+	[StoreId] int NULL, --Manage quantity a stock 1 store, if 1 stock multi store, => multi rows
 	[Unit] [nvarchar](16) NULL,
 	[Category] [nvarchar](64) NULL,
 	[Position] [nvarchar](64) NULL,
@@ -313,27 +314,27 @@ GO
 ALTER TABLE dbo.WAMS_STOCK ALTER COLUMN vStockType nvarchar(64) null
 GO
 -- Store_Stock
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Store_Stock]') AND type in (N'U'))
-DROP TABLE [dbo].[Store_Stock]
-GO
-CREATE TABLE dbo.Store_Stock(
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Store] [int] NOT NULL,
-	[StockID] [int] NOT NULL,
-	[Quantity] [decimal](18, 0) NOT NULL,
- CONSTRAINT [PK_Store_Stock] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+--IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Store_Stock]') AND type in (N'U'))
+--DROP TABLE [dbo].[Store_Stock]
+--GO
+--CREATE TABLE dbo.Store_Stock(
+--	[Id] [int] IDENTITY(1,1) NOT NULL,
+--	[Store] [int] NOT NULL,
+--	[StockID] [int] NOT NULL,
+--	[Quantity] [decimal](18, 0) NOT NULL,
+-- CONSTRAINT [PK_Store_Stock] PRIMARY KEY CLUSTERED 
+--(
+--	[Id] ASC
+--)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+--) ON [PRIMARY]
+--GO
 ALTER TABLE dbo.WAMS_UNIT ADD iType int;
 GO
 ALTER TABLE dbo.WAMS_LABELS ADD iType int;
 GO
 ALTER TABLE dbo.WAMS_STOCK_MANAGEMENT_QUANTITY 
-ADD Country int NULL,
-	Store int NULL;
+ADD CountryId int NULL,
+	StoreId int NULL;
 GO
 ALTER TABLE dbo.WAMS_STOCK_MANAGEMENT_QUANTITY ALTER COLUMN bUserID int
 GO
@@ -342,7 +343,7 @@ ALTER TABLE dbo.WAMS_ASSIGNNING_STOCKS
 ADD 
 	[FromStore] [int] NULL,
 	[ToStore] [int] NULL,
-	[DateStockOut] [datetime] NOT NULL,
+	[DateStockOut] [datetime] NULL,
 	[dCreated] [datetime] NULL,
 	[dModified] [datetime] NULL,
 	[iCreated] [int] NULL,
@@ -361,6 +362,7 @@ GO
 -- WAMS_RETURN_LIST
 ALTER TABLE dbo.WAMS_RETURN_LIST 
 ADD 
+	[DateStockReturn] [datetime] NULL,
 	[FromStore] [int] NULL,
 	[ToStore] [int] NULL,
 	[dCreated] [datetime] NULL,

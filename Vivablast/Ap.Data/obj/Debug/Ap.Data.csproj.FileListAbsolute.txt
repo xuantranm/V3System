@@ -70,3 +70,15 @@ C:\Projects\V3\Vivablast\Ap.Data\bin\Debug\EntityFramework.xml
 C:\Projects\V3\Vivablast\Ap.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Projects\V3\Vivablast\Ap.Data\obj\Debug\Ap.Data.dll
 C:\Projects\V3\Vivablast\Ap.Data\obj\Debug\Ap.Data.pdb
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\Ap.Data.dll.config
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\Ap.Data.dll
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\Ap.Data.pdb
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\Ap.Common.dll
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\EntityFramework.dll
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\Ap.Common.pdb
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\EntityFramework.xml
+C:\Projects\V3System\Vivablast\Ap.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\V3System\Vivablast\Ap.Data\obj\Debug\Ap.Data.csprojResolveAssemblyReference.cache
+C:\Projects\V3System\Vivablast\Ap.Data\obj\Debug\Ap.Data.dll
+C:\Projects\V3System\Vivablast\Ap.Data\obj\Debug\Ap.Data.pdb

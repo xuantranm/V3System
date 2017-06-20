@@ -1,4 +1,5 @@
-﻿@using System.Globalization
+﻿@using System.Configuration
+@using System.Globalization
 @using Ap.Common.Constants
 @using Ap.Business.ViewModels
 @model XStockViewModel
@@ -19,7 +20,6 @@ else
             <thead>
                 <tr class="vbhead">
                     <th class="center" style="width: 190px !important">Action</th>
-                    <th class="center hidden-xs">No</th>
                     <th class="center">Stock Code</th>
                     <th class="center">Stock Name</th>
                     <th class="center">Picture</th>
@@ -30,11 +30,8 @@ else
                     <th class="center hidden-xs">Ral No</th>
                     <th class="center hidden-xs">Color</th>
                     <th class="center hidden-xs">Weight</th>
-                    @foreach (var store in Model.StoreVs)
-                    {
-                        var storeClass = "store" + store.Id;
-                        <th class="center @storeClass">Quantity in @store.Name</th>
-                    }
+                    <th class="center">Store</th>
+                    <th class="center">Quantity</th>
                     <th class="center hidden-xs">Created Date</th>
                     <th class="center hidden-xs">By</th>
                     <th class="center hidden-xs">Modified Date</th>
@@ -67,10 +64,16 @@ else
                             }
                             <input type="hidden" class="ItemKey" value="@item.Id" />
                         </td>
-                        <td class="center hidden-xs">@item.Id</td>
                         <td class="center StockCode">@item.vStockID</td>
                         <td>@item.vStockName</td>
-                        <td><img class="img-responsive img-table-item" src="@item.FilePath@item.Files" /></td>
+                        @if (!string.IsNullOrEmpty(item.vPhotoPath))
+                        {
+                            <td><img class="img-responsive img-table-item" alt="@item.vStockID" src="@ConfigurationManager.AppSettings["PathImg"]@item.vPhotoPath" /></td>
+                        }
+                        else
+                        {
+                            <td><img class="img-responsive img-table-item" alt="@item.vStockID" src="/Images/No-Image-Available.gif" /></td>
+                        }
                         <td class="center hidden-xs">@item.vAccountCode</td>
                         <td class="center">@item.Type</td>
                         <td class="center hidden-xs">@item.Unit</td>
@@ -78,43 +81,8 @@ else
                         <td class="center hidden-xs">@item.RalNo</td>
                         <td class="center hidden-xs">@item.ColorName</td>
                         <td class="center hidden-xs">@item.bWeight</td>
-                        @{
-                    if (!string.IsNullOrEmpty(item.Quantity))
-                    {
-                        var qtArr = item.Quantity.Trim().Split(';');
-                        var stArr = item.Stores.Trim().Split(';');
-                        foreach (var store in Model.StoreVs)
-                        {
-                            var storeClass = "store" + store.Id;
-                            // Check if store not in stArr
-                            var results = Array.FindAll(stArr, s => s.Equals(store.Id.ToString(CultureInfo.InvariantCulture)));
-                            if (!results.Any())
-                            {
-                                <td class="center @storeClass">0</td>
-                            }
-                            else
-                            {
-                                var i = 0;
-                                foreach (var st in stArr)
-                                {
-                                    if (store.Id == Convert.ToInt32(st))
-                                    {
-                                        <td class="center @storeClass">@qtArr[i]</td>
-                                    }
-                                    i++;
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (var store in Model.StoreVs)
-                        {
-                            var storeClass = "store" + store.Id;
-                            <td class="center @storeClass">0</td>
-                        }
-                    }
-                        }
+                        <td class="center">@item.Store</td>
+                        <td class="center">@item.bQuantity</td>
                         <td class="center hidden-xs">@item.dCreated</td>
                         <td class="center hidden-xs">@item.Created_By</td>
                         <td class="center hidden-xs">@item.dModified</td>

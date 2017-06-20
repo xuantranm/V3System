@@ -23,6 +23,7 @@ namespace Ap.Business.Domains
         [DisplayName("User Name")]  
         public string UserName { get; set; }
         public string Password { get; set; }
+        public string PasswordOrginal { get; set; }
         [DisplayName("First Name")]  
         public string FirstName { get; set; }
         [DisplayName("Last Name")]  

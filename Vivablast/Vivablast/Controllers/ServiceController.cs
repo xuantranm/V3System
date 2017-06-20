@@ -63,7 +63,6 @@
             model.TotalPages = totalPages;
             model.CurrentPage = page;
             model.PageSize = size;
-            model.StoreVs = _systemService.StoreList();
             model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
 
             return PartialView("_ServicePartial", model);
@@ -268,7 +267,7 @@
                 bCategoryID = item.bCategoryID,
                 bPositionID = item.bPositionID,
                 //bLabelID = item.bLabelID,
-                bWeight = item.bWeight,
+                //bWeight = item.bWeight,
                 vAccountCode = item.vAccountCode,
                 iType = item.iType,
                 PartNo = item.PartNo,

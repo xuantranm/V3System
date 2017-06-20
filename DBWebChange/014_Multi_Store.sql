@@ -1,0 +1,1 @@
+UPDATE WAMS_STOCK SET StoreId = 1 

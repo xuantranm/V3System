@@ -1,9 +1,0 @@
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\bin\Vivablast.dll
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\bin\Vivablast.pdb
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\bin\EntityFramework.SqlServer.dll
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\bin\Service.dll
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\bin\Service.pdb
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\bin\EntityFramework.SqlServer.xml
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\obj\Debug\App.csprojResolveAssemblyReference.cache
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\obj\Debug\Vivablast.dll
-D:\MyPractice\Vivablast\Web\Vivablast\Vivablast\obj\Debug\Vivablast.pdb

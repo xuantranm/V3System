@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @* You can disable zooming capabilities on mobile devices by adding user-scalable=no to the viewport meta tag. This disables zooming, meaning users are only able to scroll, and results in your site feeling a bit more like a native application. Overall, we don't recommend this on every site, so use caution!*@
     @*<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">*@
-    <title>Vivablast Management System</title>
+    <title>@ViewBag.Title</title>
     <link href="/Images/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="/Content/jquery.multiselect.css?v=@System.Configuration.ConfigurationManager.AppSettings["Version"]" rel="stylesheet" />
@@ -115,5 +115,7 @@
     <input type="hidden" value="@WebConfigurationManager.AppSettings["PathImages"]" id="hidPathImages" />
     <div class="clearboth"></div>
     <div id="loading-indicator"></div>
+    
+    @RenderSection("scripts", required: false)
 </body>
 </html>

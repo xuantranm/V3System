@@ -13,8 +13,6 @@ namespace Ap.Business.ViewModels
     {
         public IList<XStockModel> StockVs { get; set; }
 
-        public IList<V3_GetStoreDDL_Result> StoreVs { get; set; }
-
         public int TotalRecords { get; set; }
 
         public int TotalPages { get; set; }

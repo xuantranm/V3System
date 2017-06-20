@@ -41,6 +41,7 @@ namespace Ap.Service.Services
             _userepository = userepository;
         }
 
+        #region Old Code, will update
         public bool CheckUser(string user, string password)
         {
             var userS = _customUserRepository.CheckUser(user.ToLower());
@@ -55,7 +56,7 @@ namespace Ap.Service.Services
 
         public XUser GetUserAndRole(int id, string user)
         {
-            return id!=0 ? _userepository.First(x => x.Id.Equals(id)) : _userepository.First(x => x.UserName.Equals(user) || x.Email.Equals(user));
+            return id != 0 ? _userepository.First(x => x.Id.Equals(id)) : _userepository.First(x => x.UserName.Equals(user) || x.Email.Equals(user));
         }
 
         public V3_StockCodeName GetStockCodeName(string code, string name)
@@ -114,7 +115,7 @@ namespace Ap.Service.Services
             return _customSystemRepository.PeGetStockInformation(code, store, supplier);
         }
 
-        public V3_Information_Stock StockInGetStockInformation(string code, int store,int pe)
+        public V3_Information_Stock StockInGetStockInformation(string code, int store, int pe)
         {
             return _customSystemRepository.StockInGetStockInformation(code, store, pe);
         }
@@ -232,7 +233,8 @@ namespace Ap.Service.Services
         {
             return _customSystemRepository.SuppliersFromPe(pe);
         }
-
+        #endregion
+        
         #region DOCUMENT
         public List<Document> GetDocumentList(int key, int type)
         {
@@ -431,6 +433,22 @@ namespace Ap.Service.Services
             return _customSystemRepository.GetDynamicProjectGroupItemReport(page, size, projectId, stockTypeId, categoryId,
                 stockCode, stockName, action, supplierId, fd, td);
         }
+        #endregion
+
+        #region Settings
+
+        public void UpdateHashPassword()
+        {
+            // get users
+            var users = _userepository.GetAll();
+            foreach (var xUser in users)
+            {
+                xUser.Password = UserCommon.CreateHash(xUser.PasswordOrginal.Trim());
+                _userepository.Update(xUser);
+            }
+            _unitOfWork.CommitChanges();
+        }
+
         #endregion
     }
 }

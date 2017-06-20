@@ -1,10 +1,13 @@
+
+GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XUser]') AND type in (N'U'))
 DROP TABLE [dbo].[XUser]
 GO
 CREATE TABLE [dbo].[XUser](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[UserName] [nvarchar](500) NOT NULL,
-	[Password] [varchar](64) NOT NULL,
+	[Password] [varchar](256) NOT NULL,
+	[PasswordOrginal] [varchar](256) NOT NULL,
 	[FirstName] [nvarchar](64) NULL,
 	[LastName] [nvarchar](64) NULL,
 	[DepartmentId] [int] NULL,
@@ -50,6 +53,7 @@ GO
 INSERT INTO [dbo].[XUser]
            ([UserName]
            ,[Password]
+		   ,[PasswordOrginal]
            ,[FirstName]
            ,[LastName]
 		   ,[DepartmentId]
@@ -80,7 +84,7 @@ INSERT INTO [dbo].[XUser]
            ,[ReturnSupplierR]
            ,[StockTypeR]
            ,[CategoryR])
-           (SELECT a.vUsername, a.vNewPassword,a.vFirstName, a.vLastName,NULL,a.vDepartment,
+           (SELECT a.vUsername, a.vNewPassword, a.vPassword, a.vFirstName, a.vLastName,NULL,a.vDepartment,
 		   a.vPhone, a.vMobile, a.vEmail, a.iEnable,1,'Binh Chieu'
 		   ,b.[User],b.Project,b.Store,b.Stock 
 		   ,b.Requisition,b.StockOut,b.StockReturn,b.StockIn  
@@ -162,7 +166,7 @@ stock.Unit,
 (select case when stockin.StockinQty is null then 0 else stockin.StockinQty end) [QtyStockIn], 
 (select case when returnlist.ReturnedQty is null then 0 else returnlist.ReturnedQty end) [QtyStockReturn], 
 (select case when assign.AssignedQty is null then 0 else assign.AssignedQty end) [QtyStockOut], 
-(select case when storeQuantity.RemainingQty is null then 0 else storeQuantity.RemainingQty end) [QtyStockRemaining], 
+(select case when stock.bQuantity is null then 0 else stock.bQuantity end) [QtyStockRemaining], 
 --(select case when stock.bQuantity is null then 0 else stock.bQuantity end) as 'bRemaining' ,
 stock.bWeight
 ,NULL
@@ -190,9 +194,6 @@ LEFT JOIN
 FROM WAMS_RETURN_LIST 
 	 --WHERE dDateReturn >=@dFrom and dDateReturn < @dTo 
 GROUP BY vStockId) AS returnlist ON returnlist.vStockId = stock.Id
-LEFT JOIN (SELECT StockID, sum(Quantity) [RemainingQty] 
-			 FROM [dbo].[Store_Stock] t1 (NOLOCK)
-			GROUP BY StockID) AS storeQuantity ON storeQuantity.StockID= stock.Id
 GO
 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[XDynamicPeReport]') AND type in (N'U'))
@@ -276,19 +277,19 @@ INSERT INTO [dbo].[XDynamicPeReport] ([Action]
            ,[FagId])
 SELECT po.vPODetailStatus, poMaster.Id, poMaster.dPODate, poMaster.vPOID, poType.bPOTypeID, poType.vPOTypeName,
 project.Id, project.vProjectID, project.vProjectName, stock.Id, stock.vStockID, stock.vStockName
-,stockType.Id, stockType.TypeName, po.vMRF, category.bCategoryID, category.vCategoryName
-,supplier.bSupplierID, supplier.vSupplierName 
-,unit.bUnitID ,unit.vUnitName
+,stockType.Id, stockType.TypeName, po.vMRF, category.Id [bCategoryID], category.vCategoryName
+,supplier.Id [SupplierId], supplier.vSupplierName 
+,unit.Id [bUnitID] ,unit.vUnitName
 ,po.fQuantity, fulfill.dReceivedQuantity, fulfill.dPendingQuantity
 ,NULL,NULL,stock.bWeight,NULL,NULL,NULL,NULL,NULL, NULL, NULL
 FROM WAMS_PO_DETAILS po
 INNER JOIN WAMS_STOCK stock ON po.vProductID = stock.Id
 INNER JOIN WAMS_STOCK_TYPE stockType ON stockType.Id = stock.iType
-INNER JOIN WAMS_UNIT unit ON unit.bUnitID = stock.bUnitID
-INNER JOIN WAMS_CATEGORY category On category.bCategoryID = stock.bCategoryID
+INNER JOIN WAMS_UNIT unit ON unit.Id = stock.bUnitID
+INNER JOIN WAMS_CATEGORY category On category.Id = stock.bCategoryID
 INNER JOIN WAMS_PURCHASE_ORDER poMaster ON poMaster.Id = po.vPOID
 INNER JOIN WAMS_PO_TYPE poType ON poType.bPOTypeID = poMaster.bPOTypeID
-INNER JOIN WAMS_SUPPLIER supplier ON supplier.bSupplierID = poMaster.bSupplierID
+INNER JOIN WAMS_SUPPLIER supplier ON supplier.Id = poMaster.bSupplierID
 INNER JOIN WAMS_PROJECT project ON poMaster.vProjectID = project.Id
 INNER JOIN WAMS_FULFILLMENT_DETAIL fulfill ON fulfill.vPOID = poMaster.Id
 ORDER BY poMaster.dPODate ASC
@@ -331,7 +332,7 @@ GO
 --    , stock.iType [StockTypeId], stockType.TypeName [StockType]
 --    , stock.bCategoryID [CategoryId], stockCategory.vCategoryName [Category]
 --    , stock.bUnitID [UnitId], stockUnit.vUnitName [Unit]
---    , supplier.bSupplierID [SupplierId], supplier.vSupplierName [Supplier]
+--    , supplier.Id [SupplierId], supplier.vSupplierName [Supplier]
 --    , CASE stockManager.vStatus
 --    WHEN 'ASSIGN' THEN NULL 
 --    ELSE stockManager.vStatusID
@@ -362,10 +363,10 @@ GO
 --    FROM WAMS_STOCK_MANAGEMENT_QUANTITY (NOLOCK) stockManager
 --    INNER JOIN WAMS_STOCK (NOLOCK) stock ON stockManager.vStockID = stock.Id
 --    INNER JOIN WAMS_STOCK_TYPE (NOLOCK) stockType ON stock.iType = stockType.Id
---    INNER JOIN WAMS_CATEGORY (NOLOCK) stockCategory ON stock.bCategoryID = stockCategory.bCategoryID
+--    INNER JOIN WAMS_CATEGORY (NOLOCK) stockCategory ON stock.bCategoryID = stockcategory.Id
 --    INNER JOIN WAMS_UNIT (NOLOCK) stockUnit ON stock.bUnitID = stockUnit.bUnitID
 --    LEFT JOIN WAMS_PROJECT (NOLOCK) project ON stockManager.vProjectID = project.Id
---    LEFT JOIN WAMS_SUPPLIER (NOLOCK) supplier ON stockManager.bSupplierID = supplier.bSupplierID
+--    LEFT JOIN WAMS_SUPPLIER (NOLOCK) supplier ON stockManager.bSupplierID = supplier.Id
 --    LEFT JOIN WAMS_PURCHASE_ORDER (NOLOCK) po ON stockManager.vPOID = po.Id
 --    ORDER BY stockManager.ID ASC
     

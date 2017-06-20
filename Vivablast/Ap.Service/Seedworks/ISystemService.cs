@@ -109,5 +109,11 @@ namespace Ap.Service.Seedworks
         DynamicProjectReportViewModel GetDynamicProjectGroupItemReport(int page, int size, int projectId, int stockTypeId, int categoryId, string stockCode, string stockName, string action, int supplierId, string fd, string td);
 
         #endregion
+
+        #region Settings
+
+        void UpdateHashPassword();
+
+        #endregion
     }
 }

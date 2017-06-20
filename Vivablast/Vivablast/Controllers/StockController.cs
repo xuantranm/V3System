@@ -3,6 +3,7 @@ using ImageProcessor.Imaging;
 using ImageProcessor.Imaging.Formats;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using Vivablast.Models;
 
 namespace Vivablast.Controllers
 {
@@ -60,7 +61,6 @@ namespace Vivablast.Controllers
             model.TotalPages = totalPages;
             model.CurrentPage = page;
             model.PageSize = size;
-            model.StoreVs = _systemService.StoreList();
             model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
 
             return PartialView("_StockPartial", model);
@@ -293,7 +293,7 @@ namespace Vivablast.Controllers
 
         #endregion
 
-        public ActionResult Create(int? id)
+        public ActionResult Create()
         {
             var userName = System.Web.HttpContext.Current.User.Identity.Name;
             var user = _systemService.GetUserAndRole(0, userName);
@@ -307,37 +307,49 @@ namespace Vivablast.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var item = new WAMS_STOCK();
-
-            if (id.HasValue)
+            var model = new StockModel
             {
-                item = _service.GetByKey(id.Value);
+                Entity = new WAMS_STOCK(),
+                Stores = new SelectList(_systemService.StoreList(), "Id", "Name"),
+                Types = new SelectList(_systemService.TypeStockList(), "Id", "Name"),
+                Categories = new SelectList(_systemService.CategoryStockList(0), "Id", "Name"),
+                Units = new SelectList(_systemService.UnitStockList(0), "Id", "Name"),
+                Positions = new SelectList(_systemService.PositionStockList(), "Id", "Name")
+                //Labels = new SelectList(_systemService.LabelStockList(0), "Id", "Name")
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public JsonResult Create(StockViewModel model)
+        {
+            if (model.V3 != true)
+            {
+                return Json(new { result = Constants.UnSuccess });
             }
 
-            var model = new StockViewModel
+            return model.Stock.Id == 0 ? CreateData(model) : EditData(model);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var userName = System.Web.HttpContext.Current.User.Identity.Name;
+            var user = _systemService.GetUserAndRole(0, userName);
+            if (user == null)
             {
-                Id = item.Id,
-                vStockID = item.vStockID,
-                vStockName = item.vStockName,
-                vRemark = item.vRemark,
-                bUnitID = item.bUnitID,
-                vBrand = item.vBrand,
-                bCategoryID = item.bCategoryID,
-                bPositionID = item.bPositionID,
-                //bLabelID = item.bLabelID,
-                bWeight = item.bWeight,
-                vAccountCode = item.vAccountCode,
-                iType = item.iType,
-                PartNo = item.PartNo,
-                PartNoFor = item.PartNoFor,
-                PartNoMiniQty = item.PartNoMiniQty,
-                RalNo = item.RalNo,
-                ColorName = item.ColorName,
-                Position = item.Position,
-                SubCategory = item.SubCategory,
-                UserForPaint = item.UserForPaint,
-                Timestamp = item.Timestamp,
-                UserLogin = user,
+                return RedirectToAction("Index", "Login");
+            }
+
+            if (user.StockR == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = new StockModel
+            {
+                Entity = _service.GetByKey(id),
                 Types = new SelectList(_systemService.TypeStockList(), "Id", "Name"),
                 Categories = new SelectList(_systemService.CategoryStockList(0), "Id", "Name"),
                 Units = new SelectList(_systemService.UnitStockList(0), "Id", "Name"),
@@ -349,7 +361,7 @@ namespace Vivablast.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(StockViewModel model)
+        public JsonResult Edit(StockViewModel model)
         {
             if (model.V3 != true)
             {

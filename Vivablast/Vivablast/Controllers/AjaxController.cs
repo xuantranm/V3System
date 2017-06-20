@@ -242,7 +242,6 @@ namespace Vivablast.Controllers
             model.TotalPages = totalPages;
             model.CurrentPage = page;
             model.PageSize = size;
-            model.StoreVs = _systemService.StoreList();
             model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
 
             return PartialView("Partials/_SearchStockRequisitionPartial", model);
@@ -256,7 +255,6 @@ namespace Vivablast.Controllers
             model.TotalPages = totalPages;
             model.CurrentPage = page;
             model.PageSize = size;
-            model.StoreVs = _systemService.StoreList();
             model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
 
             return PartialView("Partials/_SearchStockRequisitionPartial", model);
@@ -271,7 +269,6 @@ namespace Vivablast.Controllers
             model.TotalPages = totalPages;
             model.CurrentPage = page;
             model.PageSize = size;
-            model.StoreVs = _systemService.StoreList();
             model.UserLogin = _systemService.GetUserAndRole(0, System.Web.HttpContext.Current.User.Identity.Name);
 
             return PartialView("Partials/_SearchStockPEPartial", model);
