@@ -1,0 +1,138 @@
+﻿<div>
+    <input type="file" id="files" name="files" multiple />
+    <div id="list" class="project-function-picture-area" style="margin-top:5px"></div>
+    <input type="hidden" class="hidMode" value="false" />
+    <script id="LoadImgUpload" type="text/x-jQuery-tmpl">
+        <div class="col-md-6 col-xs-12">
+            <img class="img-responsive" src="${Path}${FileName}" alt="${Title}" />
+            <input type="hidden" name="FileIds" value="${Id}" class="hidIdPicture">
+            <input type="hidden" name="File64S" value="" />
+            <input type="hidden" name="Mains" value="${Main}" class="main-true">
+            <input type="hidden" name="FilePositions" value="${Position}" class="position" />
+            <input type="hidden" name="FileColors" value="${Color}" class="color" />
+            <button type="button" onclick="deleteImg($(this));" class="btn btn-link"><span class="glyphicon glyphicon-trash" style="color:red" aria-hidden="true"></span></button>
+            <input type="radio" checked="checked" name="setMain" class="reset-data cusradio" data-defalut-enabled="false">Chọn làm đại diện
+            <div class="row">
+                <div class="col-sm-6 col-xs-12"><input type="text" class="form-control txtTitleFiles" name="Titles" placeholder="Tiêu đề" value="${Title}"></div>
+                <div class="col-sm-6 col-xs-12 color-selected">
+                    {{if ColorType == 1}}
+                    <img class="colorsSelected" src="${ColorPath}${Color}" />
+                    {{else}}
+                    <div style="width: 50px;height: 50px;background-color: ${Color}"></div>
+                    {{/if}}
+
+
+                </div>
+                <div class='col-sm-6 col-xs-12 dropdown color-picture'>
+                    <span>Choose color</span>
+                    <div class='dropdown-content'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+
+<script>
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+        // Loop through the FileList and render image files as thumbnails.
+        for (var i = 0, f; f = files[i]; i++) {
+            // Only process image files.
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+            var reader = new FileReader();
+            // Closure to capture the file information.
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    // Render thumbnail.
+                    var div = "<div class='col-md-6 col-xs-12 img-element'>";
+                    div += "<img class='img-responsive' src='" + e.target.result + "'alt='" + escape(theFile.name) + "' />";
+                    div += "<input type='hidden' name='FileIds' value='0' class='hidIdPicture'>";
+                    div += "<input type='hidden' name='File64S' value='" + escape(theFile.name) + "," + e.target.result + "'/>";
+                    div += "<input type='hidden' name='Mains' value='0' class='main-true'/>";
+                    div += "<input type='hidden' name='FilePositions' value='0' class='position'/> ";
+                    div += "<input type='hidden' name='FileColors' value='0' class='color'/> ";
+                    div += "<button type='button' onclick='deleteImg($(this));' class='btn btn-link btn-delete-img'><span class='glyphicon glyphicon-trash' style='color:red' aria-hidden='true'></span></button>";
+                    div += "<input type='radio' name='setMain' class='reset-data cusradio' data-defalut-enabled='false'><span class='mainsettext'>Chọn làm đại diện</span>";
+                    div += "<div class='row'>";
+                    div += "<div class='col-sm-6 col-xs-12'><input type='text' class='form-control txtTitleFiles' name='Titles' placeholder='Tiêu đề' /></div>";
+                    if (typeof $('#Color').val() !== "undefined") {
+                        div += "<div class='col-sm-6 col-xs-12 color-selected'></div>";
+                        div += "<div class='col-sm-6 col-xs-12 dropdown color-picture'>";
+                        div += "<span>Choose color</span>";
+                        div += "<div class='dropdown-content'>";
+                        var listColorSelected = $('#Color').val().split(',');
+                        $.each(listColorSelected, function (key, value) {
+                            if (value != "") {
+                                div += "<div class='col-md-2 col-sm-3 col-xs-4 colorsSelects' style='background-color:" + value + "' data-value='" + value + "' data-type='color'></div>";
+                            }
+                        });
+                        $('.img-color').each(function (i, obj) {
+                            div += "<img src=" + $(obj).attr('src') + " class='colorsSelects' data-value='" + $(obj).attr('alt') + "' data-type='img'/>";
+                        });
+                        div += "</div>";
+                        div += "</div>";
+                    }
+                    div += "</div>";
+                    div += "</div>";
+                    $('#list').prepend(div);
+                    setMainPicture();
+                    if ($('#Color').val() != "") {
+                        eventSelectColor();
+                    }
+                };
+            })(f);
+
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
+        }
+    }
+
+    function deleteImg(e) {
+        var parent = e.closest('div');
+        var id = $('.hidIdPicture', parent).attr('value');
+        if (id != 0) {
+            // Delete backend
+            $.post('/files/delete', { id: id }, function (respone) {
+                console.log(respone);
+            });
+        }
+        parent.remove();
+        // Implement delete data later
+    }
+
+    function setMainPicture() {
+        // If exist main mode (edit and have pics), no set main
+        if ($('.hidMode').val() != "true") {
+            $('.main-true').attr('value', 0);
+            $('.main-true:first').attr('value', 1);
+            $('.cusradio:first').prop('checked', true);
+            $('.cusradio').on('change', function () {
+                $('.main-true').attr('value', 0);
+                $('.cusradio').each(function (i, obj) {
+                    if ($(obj).is(':checked')) {
+                        $('.main-true', obj.closest('div')).attr('value', 1);
+                    }
+                });
+            });
+        }
+    }
+
+    function eventSelectColor() {
+        $('.colorsSelects').on('click', function () {
+            if ($(this).attr('data-type') == 'img') {
+                $('.color-selected', $(this).closest('.img-element')).html("<img class='colorsSelected' src='" + $(this).attr('src') + "'/>");
+            } else {
+                $('.color-selected',$(this).closest('.img-element')).html("<div style='width: 50px;height: 50px;background-color:" + $(this).attr('data-value') + "'></div>");
+            }
+            $('.color', $(this).closest('.img-element')).attr('value', $(this).attr('data-value'));
+        });
+    }
+</script>
+
+
+

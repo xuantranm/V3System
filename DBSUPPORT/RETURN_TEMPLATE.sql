@@ -9,7 +9,7 @@ DECLARE @maxSIV NVARCHAR(50)
 SET @maxSIV = (SELECT TOP 1 SRV FROM dbo.WAMS_SRV (NOLOCK) WHERE [Status]='RETURN' ORDER BY SRV DESC)
 SET @newSIV = 'R' + CAST((CAST(substring(@maxSIV,2,12) AS INT) + 1) AS VARCHAR(12))
 SET @project = ''
-SET @date = '2017-02-07'
+SET @date = '2017-06-21'
 INSERT INTO dbo.WAMS_SRV ([SRV],[Status],[dDate]) SELECT @newSIV,'RETURN',@date
 
 GO
